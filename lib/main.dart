@@ -33,7 +33,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 // code………
 // git add .
 // git commit -m 'new commit'
-// git push -u origin Serious-Branch
+// git push origin Serious-Branch
 
 // https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc8Lg0kTShpoEbQ-DOZaNTx-Mtenmtsg1VMw&s
 
