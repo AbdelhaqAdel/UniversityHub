@@ -38,38 +38,39 @@ dependencies:
   cupertino_icons: ^1.0.8
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  hexcolor: ^3.0.1
+#  hexcolor: ^3.0.1
   font_awesome_flutter: ^10.5.0
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
-  #persistent_bottom_nav_bar: ^5.0.2
-  conditional_builder_null_safety: ^0.0.6
-  file_picker: ^6.1.1
-  open_file: ^3.3.2
-  path_provider: ^2.1.1
-  dropdown_button2: ^2.3.9
-  shared_preferences: ^2.2.2
-  intl: ^0.18.1
-  rive: ^0.9.1
-  flutter_svg: ^2.0.5
-  smooth_page_indicator: ^1.1.0
+#  #persistent_bottom_nav_bar: ^5.0.2
+#  conditional_builder_null_safety: ^0.0.6
+#  file_picker: ^6.1.1
+#  open_file: ^3.3.2
+#  path_provider: ^2.1.1
+#  dropdown_button2: ^2.3.9
+#  shared_preferences: ^2.2.2
+#  intl: ^0.18.1
+#  rive: ^0.9.1
+#  flutter_svg: ^2.0.5
+#  smooth_page_indicator: ^1.1.0
   dio: ^5.4.0
-  syncfusion_flutter_charts: ^21.2.4
-  day_night_time_picker: ^1.3.0+1
+#  syncfusion_flutter_charts: ^21.2.4
+#  day_night_time_picker: ^1.3.0+1
   fluttertoast: ^8.2.4
-  carousel_slider: ^5.0.0
-  pin_code_fields: ^8.0.1
-  internet_connection_checker: ^1.0.0+1
-  sqflite: ^2.3.2
-  flutter_datetime_picker_plus: ^2.1.0
-  month_picker_dialog: ^2.0.0
-  table_calendar: ^3.0.9
-  flutter_pdfview: ^1.2.7
-  url_launcher: ^6.2.5
-  percent_indicator: ^4.2.3
-  flutter_image_stack: ^0.0.7
+#  carousel_slider: ^5.0.0
+#  pin_code_fields: ^8.0.1
+#  internet_connection_checker: ^1.0.0+1
+#  sqflite: ^2.3.2
+#  flutter_datetime_picker_plus: ^2.1.0
+#  month_picker_dialog: ^2.0.0
+#  table_calendar: ^3.0.9
+#  flutter_pdfview: ^1.2.7
+#  url_launcher: ^6.2.5
+#  percent_indicator: ^4.2.3
+#  flutter_image_stack: ^0.0.7
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  go_router: ^14.2.7
 
 dev_dependencies:
   flutter_test:
