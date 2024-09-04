@@ -1,16 +1,23 @@
-
 import 'package:hive/hive.dart';
 
-void save(String key, value,String boxName) {
-  var box = Hive.box(boxName);
+class HiveService{
+
+    static void saveDataToHive<ListType>(key,List<ListType> dataList, String boxName) {
+    print('HIVE list type $ListType');
+    var box = Hive.box(boxName);
+    box.put(key,dataList).then((value){
+      print('Hive saved all data');
+    });
+  }
+
+static void save<entityType>(String key, value,String boxName) {
+  var box = Hive.box<entityType>(boxName);
   box.put(key,value);
 }
 
-
-
-void clear(String boxName) {
+static void clear(String boxName) {
   var box = Hive.box(boxName);
   box.clear();
 }
 
-
+}

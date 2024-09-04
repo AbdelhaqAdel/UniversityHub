@@ -1,5 +1,6 @@
 
 import 'package:go_router/go_router.dart';
+import 'package:universityhup/features/AllCourses/presentation/pages/all_courses_screen.dart';
 
 import '../../features/onboarding/presentation/pages/onboarding.dart';
 import '../../features/test/presentation/pages/test.dart';
