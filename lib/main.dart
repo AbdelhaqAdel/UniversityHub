@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/functions/hive_setup.dart';
 import 'core/functions/setup_service_locator.dart';
-import 'core/functions/show_flutter_toast_message.dart';
 import 'core/functions/system_ui_overlay_style.dart';
 import 'core/style/dark_theme.dart';
 import 'core/style/light_theme.dart';
@@ -19,7 +17,6 @@ void main() async {
   setupServiceLocator();
   await hiveSetup();
   Bloc.observer = SimpleBlocObserver();
-
   runApp(const MyApp());
 }
 
