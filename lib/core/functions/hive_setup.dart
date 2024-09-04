@@ -1,13 +1,13 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
-import 'package:universityhup/features/AllCourses/data/models/courses_adapter.dart';
+import 'package:universityhup/features/AllCourses/data/models/all_courses_model.dart';
 
 import '../constants/constant.dart';
 
 
 Future<void> hiveSetup() async {
   await Hive.initFlutter();
-Hive.registerAdapter(AllCoursesAdapter());
+Hive.registerAdapter(CoursesModelAdapter());
 
 
   await Hive.openBox(HiveConstants.kStartBox);

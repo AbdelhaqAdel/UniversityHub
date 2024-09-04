@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:universityhup/features/AllCourses/data/data_sources/courses_local_datasource.dart';
 import 'package:universityhup/features/AllCourses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/AllCourses/data/repositories/courses_repo_impl.dart';
 
@@ -12,6 +13,6 @@ void setupServiceLocator() {
   );
 
   getIt.registerSingleton<CoursesRepository>(CoursesRepository
-    (coursesDataSource: CoursesRemoteDatasourceImpl()));
+    (coursesDataSource: CoursesRemoteDatasourceImpl(),coursesLocalDatasource: CoursesLocalDatasourceImpl()));
 
 }
