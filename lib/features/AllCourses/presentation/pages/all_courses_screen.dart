@@ -25,133 +25,13 @@ class CoursesScreen extends StatelessWidget {
                 child: Column(
                   children: [
                      SizedBox(
-                      height:screenSize.height/30 ,
-                    ),                
+                      height:screenSize.height/35 ,
+                    ),     
+                    const CoursesTitleCustomWidget(),           
                     const SizedBox(
                       height: 15,
                     ),
-                  const CoursesTitleCustomWidget(),
-                  const Expanded(child: CoursesBuilder()),
-
-                    // Expanded(
-                    //   child:
-                    // ConditionalBuilder(
-                    //     condition:
-                    //         cubit.allLECFromHIVE.isEmpty || cubit.connnection,
-                    //     builder: (context) => ListView.separated(
-                    //       itemBuilder: (context, index) => InkWell(
-                    //           onTap: () {
-                    //             // print(cubit.currentCycleId);
-                    //             //  print(courses[index].cycleId);
-                    //             if (rol == 'Student') {
-                    //               cubit.currentCourseName = courses[index].name;
-                    //               cubit.currentInstructorName =
-                    //                   courses[index].instructorFullName;
-                    //               if (cubit.currentCycleId !=
-                    //                   courses[index].cycleId) {
-                    //                 cubit.stuCoursesMatrialModel = [];
-                    //                 cubit.stuLECTUREModel = [];
-                    //                 cubit.stuLABModel = [];
-                    //                 //cubit.stuCoursesMatrialFileModel=[];
-                    //                 cubit.stuCoursesAssignModel = [];
-                    //                 cubit.stuCoursesQuizlModel = [];
-                    //                 cubit.courseGradesModel = [];
-                    //                 cubit.isCycleIdChange = true;
-                    //               } else {
-                    //                 cubit.isCycleIdChange = false;
-                    //               }
-                    //               cubit.currentCycleId =
-                    //                   courses[index].cycleId!;
-                    //             } else {
-                    //               cubit.currentCourseName =
-                    //                   insCourses[index].name;
-
-                    //               if (cubit.currentCycleId !=
-                    //                   insCourses[index].cycleId) {
-                    //                 cubit.ins_Courses_Model = [];
-                    //                 cubit.insLECTUREModel = [];
-                    //                 cubit.insLABModel = [];
-                    //                 //cubit.stuCoursesMatrialFileModel=[];
-                    //                 //   cubit.stuCoursesAssignModel = [];
-                    //                 //   cubit.stuCoursesQuizlModel = [];
-                    //                 //    cubit.courseGradesModel = [];
-                    //                 //   cubit.isCycleIdChange = true;
-                    //               } else {
-                    //                 cubit.isCycleIdChange = false;
-                    //               }
-                    //               cubit.currentCycleId =
-                    //                   insCourses[index].cycleId!;
-                    //             }
-
-                    //             navigateTo(context, STU_About_course());
-                    //           },
-                    //           child: rol == 'Student'
-                    //               ? Build_STU_Lec(
-                    //                   courses: courses[index],
-                    //                 )
-                    //               : INS_Course(
-                    //                   courses: insCourses[index],
-                    //                 )),
-                    //       separatorBuilder: (context, index) => const SizedBox(
-                    //         height: 20,
-                    //       ),
-                    //       itemCount: rol == 'Student'
-                    //           ? courses.length
-                    //           : insCourses.length,
-                    //     ),
-                    //     fallback: (context) => ListView.separated(
-                    //       itemBuilder: (context, index) {
-                    //         if (rol == 'Doctor') {
-                    //           cubit.INS_GetAllCourses_Function(
-                    //             token: token,
-                    //           );
-                    //         }
-                    //         return InkWell(
-                    //             onTap: () {
-                    //               cubit.currentCycleId =
-                    //                   cubit.allLECFromHIVE[index].cycleId;
-
-                    //               print(cubit.allLECFromHIVE[0].name);
-                    //               print('cycle Id : ${cubit.currentCycleId}');
-                    //               //  print(courses[index].cycleId);
-                    //               cubit.currentCourseName =
-                    //                   cubit.allLECFromHIVE[index].name;
-                    //               cubit.currentInstructorName = cubit
-                    //                   .allLECFromHIVE[index].instructorFullName;
-
-                    //               if (cubit.currentCycleId !=
-                    //                   cubit.allLECFromHIVE[index].cycleId) {
-                    //                 cubit.stuCoursesMatrialModel = [];
-                    //                 cubit.stuLECTUREModel = [];
-                    //                 cubit.stuLABModel = [];
-                    //                 //cubit.stuCoursesMatrialFileModel=[];
-                    //                 cubit.stuCoursesAssignModel = [];
-                    //                 cubit.stuCoursesQuizlModel = [];
-                    //                 cubit.courseGradesModel = [];
-                    //                 cubit.isCycleIdChange = true;
-                    //               } else {
-                    //                 cubit.isCycleIdChange = false;
-                    //               }
-                    //               navigateTo(context, STU_About_course());
-                    //             },
-                    //             child: rol == 'Student'
-                    //                 ? Build_STU_Lec(
-                    //                     courses: cubit.allLECFromHIVE[index],
-                    //                   )
-                    //                 : INS_Course(
-                    //                     courses: insCourses[index],
-                    //                   ));
-                    //       },
-                    //       separatorBuilder: (context, index) => const SizedBox(
-                    //         height: 20,
-                    //       ),
-                    //       itemCount: rol == 'Student'
-                    //           ? cubit.allLECFromHIVE.length
-                    //           : insCourses.length,
-                    //     ),
-                    //   ),
-                    // ),
-                
+                    const Expanded(child: CoursesBuilder()),
                   ],
                 ),
               ),
