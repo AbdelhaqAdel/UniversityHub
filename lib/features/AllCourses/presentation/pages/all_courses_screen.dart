@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
-import 'package:universityhup/core/utils/assets.dart';
 import 'package:universityhup/features/AllCourses/data/repositories/courses_repo_impl.dart';
 import 'package:universityhup/features/AllCourses/presentation/manager/cubit/courses_cubit.dart';
 import 'package:universityhup/features/AllCourses/presentation/widgets/courses_builder.dart';
+import 'package:universityhup/features/AllCourses/presentation/widgets/courses_title_custom_widget.dart';
 
 class CoursesScreen extends StatelessWidget {
   const CoursesScreen({super.key});
@@ -27,52 +26,11 @@ class CoursesScreen extends StatelessWidget {
                   children: [
                      SizedBox(
                       height:screenSize.height/30 ,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0),
-                      child: Row(
-                        children: [
-                         Text(
-                            'Enrolled',
-                            style:Theme.of(context).textTheme.titleLarge, 
-                          ),
-                           SizedBox(
-                            width: 8.w,
-                          ),
-                          const Text(
-                            '5',
-                            style: TextStyle(
-                              color: Colors.teal,
-                              fontSize: 27,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                           SizedBox(
-                            width: 8.w,
-                          ),
-                           Text(
-                            'Courses',
-                            style:Theme.of(context).textTheme.titleLarge, 
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          // Spacer(),
-                          Expanded(
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.asset(AssetsData.coursesBookImage),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    ),                
                     const SizedBox(
                       height: 15,
                     ),
+                  const CoursesTitleCustomWidget(),
                   const Expanded(child: CoursesBuilder()),
 
                     // Expanded(
