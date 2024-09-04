@@ -16,7 +16,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const test(),
+        builder: (context, state) => const Onboarding(),
       ),
 
     ],
