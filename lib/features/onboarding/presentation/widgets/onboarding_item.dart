@@ -1,5 +1,6 @@
-import 'package:ez_eat/core/style/textStyles.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/style/textStyles.dart';
 
 class OnboardingItem extends StatelessWidget {
   const OnboardingItem({
@@ -95,10 +96,9 @@ class _Image extends StatelessWidget {
         child: Container(
           alignment: AlignmentDirectional.center,
           child: Padding(
-            padding: const EdgeInsets.all(0.0),
+            padding: const EdgeInsets.all(30.0),
             child: Image.asset(
-              'assets/images/onboarding/$imageName',
-
+              imageName,
             ),
           ),
         ),

@@ -1,10 +1,12 @@
-import 'package:ez_eat/core/constants/constant.dart';
-import 'package:ez_eat/core/widgets/animation_background.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../../core/constants/constant.dart';
 import '../../../../core/functions/hive_function.dart';
 import '../../../../core/utils/app_router.dart';
+import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/strings.dart';
+import '../../../../core/widgets/background.dart';
 import '../../../../core/widgets/custom_button.dart';
 import 'onboarding_item.dart';
 
@@ -18,26 +20,9 @@ class OnboardingBody extends StatefulWidget {
 class _OnboardingBodyState extends State<OnboardingBody> {
   bool isLast = false;
   var smoothPageController = PageController();
-
-  final List title = [
-    'High Quality Food',
-    'Your Diet will be easy',
-    'Fast Delivery',
-  ];
-  final List subTitle = [
-    'We use the best nutritional products for you.',
-    'App display calories, fats, protein and carb.',
-    'You can get your food in 10 min.',
-  ];
-  final List imageName = [
-    'sheif.png',
-    'book.png',
-    'fastd.png',
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return AnimationBackground(
+    return BackGround(
       widget: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -48,9 +33,9 @@ class _OnboardingBodyState extends State<OnboardingBody> {
               flex: 5,
               child: PageView.builder(
                 itemBuilder: (context, index) => OnboardingItem(
-                    imageName: imageName[index],
-                    title: title[index],
-                    subTitle: subTitle[index]),
+                    imageName: AssetsData.onboarding[index],
+                    title: Strings.onboardingTitle[index],
+                    subTitle:  Strings.onboardingSubTitle[index]),
                 physics: const BouncingScrollPhysics(),
                 onPageChanged: (index) {
                   _changeInOnboarding(index);
@@ -106,7 +91,7 @@ class _OnboardingBodyState extends State<OnboardingBody> {
   void _clickOnNext(BuildContext context) {
      if (isLast) {
       save('isOnboarding',true, kStartBox);
-      GoRouter.of(context).go(AppRouter.kLoginOrRegister);
+      GoRouter.of(context).go(AppRouter.kLogin);
 
     } else {
       smoothPageController.nextPage(

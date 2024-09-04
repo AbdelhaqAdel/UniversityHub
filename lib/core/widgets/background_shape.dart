@@ -8,70 +8,30 @@ class BackGroundShape extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
+    return   Column(
       children: [
-        Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height*.13,
-          decoration: const BoxDecoration(
-            color: Color(0xFFFCB0AA),
-          ),
-        ),
         Row(
           children: [
             Expanded(
               child: Container(
-
-                height:MediaQuery.of(context).size.height*.25,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFFCB0AA),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-
-                height:MediaQuery.of(context).size.height*.25,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xFFA39792),
-                ),
+                width: double.infinity,
+                height: 100,
+                color: Colors.blue,
               ),
             ),
           ],
         ),
+        const Spacer(),
         Row(
           children: [
-            Container(
-              alignment: Alignment.topLeft,
+            Expanded(
               child: Container(
-                width: MediaQuery.of(context).size.width*.40,
-                height: MediaQuery.of(context).size.height*.20,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFFCB0AA),
-                ),
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width*.40,
-              height: MediaQuery.of(context).size.height*.20,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-
-                color: Color(0xFFFAE8DF),
+                width: double.infinity,
+                height: 0,
+                color: Colors.blue,
               ),
             ),
           ],
-        ),
-        Expanded(
-          child: Container(
-            width: MediaQuery.of(context).size.width*.85,
-            decoration: const BoxDecoration(
-              color: Color(0xFFF2D0A3),
-            ),
-          ),
         ),
       ],
     );
