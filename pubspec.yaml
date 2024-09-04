@@ -73,6 +73,8 @@ dependencies:
   go_router: ^14.2.7
   get_it: ^7.7.0
   dartz: ^0.10.1
+  flutter_screenutil: ^5.9.0
+
 
 
 dev_dependencies:
