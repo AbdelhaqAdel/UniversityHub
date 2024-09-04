@@ -5,6 +5,7 @@ class AssetsData {
     'assets/images/w1.png',
     'assets/images/3.png',
   ];
+  static const coursesBookImage='assets/images/bluebook.png';
 
 }
 
