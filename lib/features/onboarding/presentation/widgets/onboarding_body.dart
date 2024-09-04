@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../../core/constants/constant.dart';
+import 'package:universityhup/core/constants/hive_constants.dart';
 import '../../../../core/functions/hive_function.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/assets.dart';
@@ -90,7 +90,7 @@ class _OnboardingBodyState extends State<OnboardingBody> {
 
   void _clickOnNext(BuildContext context) {
      if (isLast) {
-      save('isOnboarding',true, kStartBox);
+      HiveService.save('isOnboarding',true, HiveConstants.kStartBox);
       GoRouter.of(context).go(AppRouter.kLogin);
 
     } else {
