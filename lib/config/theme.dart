@@ -18,7 +18,7 @@ ThemeData appTheme = ThemeData(
   
   textTheme: const TextTheme(
       titleLarge: TextStyle(
-      fontSize: 23,
+      fontSize: 25,
       fontWeight: FontWeight.bold,
       color: KColors.primaryColor,
     ),
@@ -50,18 +50,18 @@ ThemeData appTheme = ThemeData(
   //   ),
  
   bodyLarge: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w800,
-      color: KColors.primaryColor,
-    ),
- bodyMedium: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w700,
       color: KColors.primaryColor,
     ),
+ bodyMedium: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: KColors.primaryColor,
+    ),
     bodySmall: TextStyle(
       fontSize: 12,
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.w400,
       color: KColors.subTitleColor,
     ),
     ),
