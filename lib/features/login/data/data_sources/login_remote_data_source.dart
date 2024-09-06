@@ -6,7 +6,6 @@ import '../models/login_model.dart';
 
 abstract class LoginRemoteDataSource{
  Future<LoginEntity>  login({required LoginDataModel loginDataModel});
- Future<LoginEntity> getUserDataFunction({required uid});
 }
 
 class LoginRemoteDataSourceImpl extends LoginRemoteDataSource{
@@ -21,19 +20,12 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource{
       'password': loginDataModel.password,
     }).then((value) async {
 
-      loginEntity = await getUserDataFunction(uid: '');
+      loginEntity = LoginModel.fromJson(value.data);
 
       return loginEntity;
     });
     return loginEntity!;
   }
-
-  @override
-  Future<LoginEntity> getUserDataFunction({required uid}) {
-    // TODO: implement getUserDataFunction
-    throw UnimplementedError();
-  }
-
 
 }
 
