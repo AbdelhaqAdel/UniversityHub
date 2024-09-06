@@ -2,6 +2,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/AllCourses/presentation/pages/all_courses_screen.dart';
 
+import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
 import '../../features/onboarding/presentation/pages/onboarding.dart';
 import '../../features/test/presentation/pages/test.dart';
@@ -22,6 +23,10 @@ abstract class AppRouter {
       GoRoute(
         path: kLogin,
         builder: (context, state) => const Login(),
+      ),
+      GoRoute(
+        path: kLayout,
+        builder: (context, state) => const Layout(),
       ),
 
     ],

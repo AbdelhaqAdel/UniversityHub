@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/utils/app_router.dart';
 import '../../../../core/functions/custom_snack_bar.dart';
 import '../../../../core/style/colors.dart';
 import '../../../../core/widgets/back_icon.dart';
@@ -157,6 +159,7 @@ class _LoginBodyState extends State<LoginBody> {
 
   void _loginSuccess(LoginSuccessState state, context) async {
     showSnackBar(message: 'Login Successful', context: context);
+    GoRouter.of(context).push(AppRouter.kLayout);
     // save('isLogin', true, kStartBox);
     // save('uId', LoginSuccessState.loginEntity?.uid, kStartBox);
     // save('isSkip', false, kStartBox);
