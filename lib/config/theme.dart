@@ -22,16 +22,19 @@ ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.bold,
       color: KColors.primaryColor,
     ),
+
+       titleMedium: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: KColors.primaryColor,
+    ),
+
       titleSmall: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w500,
       color:KColors.subTitleColor,
     ),
-    // titleMedium: const TextStyle(
-    //   fontSize: 30,
-    //   fontWeight: FontWeight.w600,
-    //   color: KColors.subTitleColor,
-    // ),
+ 
   
   // labelSmall: TextStyle(
   //     fontSize: 14,
