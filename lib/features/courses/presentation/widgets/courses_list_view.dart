@@ -16,7 +16,7 @@ class CoursesListView extends StatelessWidget {
       itemCount:courses.length,
       itemBuilder:(context,index)=> InkWell(
         onTap: (){
-       GetAllCoursesSuccessState.setCourseName(coursename: courses[index].name);
+       GetAllCoursesSuccessState.setCourseName(coursename: courses[index].name,courseId: courses[index].cycleId);
        GoRouter.of(context).push(AppRouter.kAboutCourse);
         },
         child: CoursesWidget(courses:courses[index])),
