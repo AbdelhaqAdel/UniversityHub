@@ -1,0 +1,30 @@
+import 'package:dio/dio.dart';
+import 'package:universityhup/core/utils/api_service.dart';
+import 'package:universityhup/core/utils/end_point.dart';
+import 'package:universityhup/features/login/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:universityhup/features/student/quizzes/data/models/quiz_model.dart';
+import 'package:universityhup/features/student/quizzes/domain/entities/quiz_entity.dart';
+
+abstract class QuizzesRmoteDataSourse{
+  Future <List<QuizEntity>>fetchAllQuizes();
+}
+class QuizzesRemoteDatasourceImpl extends QuizzesRmoteDataSourse{
+  List<QuizEntity>quizzesList=[];
+  
+  @override
+  Future<List<QuizEntity>> fetchAllQuizes()async {
+    await DioHelper.get(url:EndPoint.allQuizzes,
+    token: LoginSuccessState.loginEntity?.token
+     ).then((value){
+      fillCoursesList(value);
+    });
+    return quizzesList;
+  }
+ void fillCoursesList(Response<dynamic> list) {
+  quizzesList=[];
+     for (var element in list.data) {
+     quizzesList.add(QuizModel.fromJson(element));
+    }
+  }
+  
+}
