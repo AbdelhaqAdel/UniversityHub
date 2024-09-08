@@ -13,64 +13,64 @@ class CoursesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      var screenSize=MediaQuery.of(context).size;
-    return Container(
-      padding:const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: Colors.black,
-            width: .5,
-          )),
-      child: Row(
-        children: [
-          Container(
-            height: 60.h,
-            width: 60.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: KColors.subTitleColor.withOpacity(.8),
-              image: const DecorationImage(
-                image: AssetImage(AssetsData.courseItemImage),
-                fit: BoxFit.cover,
+    return  Container(
+        padding:const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: Colors.black,
+              width: .5,
+            )),
+        child: Row(
+          children: [
+            Container(
+              height: 60.h,
+              width: 60.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: KColors.subTitleColor.withOpacity(.8),
+                image: const DecorationImage(
+                  image: AssetImage(AssetsData.courseItemImage),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-           SizedBox(
-            width: screenSize.width/20,
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${courses.name}',
-                  maxLines: 1,
-                 style:Theme.of(context).textTheme.bodyLarge,
-                 overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  '${courses.instructorFullName} ',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style:Theme.of(context).textTheme.bodySmall
-                ),
-              ],
+             SizedBox(
+              width: screenSize.width/20,
             ),
-          ),
-           SizedBox(
-            width: screenSize.width/15,
-          ),
-          Container(
-            alignment: AlignmentDirectional.centerEnd,
-            child: FaIcon(
-              FontAwesomeIcons.circleRight,
-              color: KColors.tealColor.withOpacity(.8),
-              size: 35.r,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    courses.name,
+                    maxLines: 1,
+                   style:Theme.of(context).textTheme.bodyLarge,
+                   overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    '${courses.instructorFullName} ',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style:Theme.of(context).textTheme.bodySmall
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+             SizedBox(
+              width: screenSize.width/15,
+            ),
+            Container(
+              alignment: AlignmentDirectional.centerEnd,
+              child: FaIcon(
+                FontAwesomeIcons.circleRight,
+                color: KColors.tealColor.withOpacity(.8),
+                size: 35.r,
+              ),
+            ),
+          ],
+        ),
+      );
   }
 }
