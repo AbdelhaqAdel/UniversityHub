@@ -1,7 +1,6 @@
 
 import 'package:go_router/go_router.dart';
-import 'package:universityhup/features/courses/presentation/pages/all_courses_screen.dart';
-
+import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
 import '../../features/onboarding/presentation/pages/onboarding.dart';
@@ -12,6 +11,7 @@ abstract class AppRouter {
   static const kLogin = '/Login';
   static const kRegister = '/Register';
   static const kOnboarding = '/Onboarding';
+  static const kAboutCourse= '/CoursesScreen/AboutCourseScreen';
 
 
   static final router = GoRouter(
@@ -27,6 +27,10 @@ abstract class AppRouter {
       GoRoute(
         path: kLayout,
         builder: (context, state) => const Layout(),
+      ),
+      GoRoute(
+        path: kAboutCourse,
+        builder: (context, state) => const AboutCourseScreen(),
       ),
 
     ],
