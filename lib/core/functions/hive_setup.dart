@@ -1,6 +1,6 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
-import 'package:universityhup/features/AllCourses/data/models/all_courses_model.dart';
+import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
 
 import '../constants/constant.dart';
 

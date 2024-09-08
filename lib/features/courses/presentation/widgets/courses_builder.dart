@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universityhup/features/AllCourses/presentation/manager/cubit/courses_cubit.dart';
-import 'package:universityhup/features/AllCourses/presentation/widgets/courses_list_view.dart';
+import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
+import 'package:universityhup/features/courses/presentation/widgets/courses_list_view.dart';
 
 class CoursesBuilder extends StatelessWidget {
   const CoursesBuilder({

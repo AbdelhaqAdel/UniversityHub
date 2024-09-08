@@ -7,6 +7,10 @@ class AssetsData {
   ];
   static const coursesBookImage='assets/images/bluebook.png';
   static const courseItemImage='assets/images/post/7.png';
+  static const courseMaterialImage='assets/images/a11.png';
+  static const courseAssignImage='assets/images/a2.png';
+  static const courseQuizImage='assets/images/a3.png';
+  static const courseGradesImage='assets/images/a44.png';
 
 }
 

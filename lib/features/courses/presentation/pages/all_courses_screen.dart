@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
-import 'package:universityhup/features/AllCourses/data/repositories/courses_repo_impl.dart';
-import 'package:universityhup/features/AllCourses/presentation/manager/cubit/courses_cubit.dart';
-import 'package:universityhup/features/AllCourses/presentation/widgets/courses_builder.dart';
-import 'package:universityhup/features/AllCourses/presentation/widgets/courses_title_custom_widget.dart';
+import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
+import 'package:universityhup/features/courses/presentation/widgets/courses_builder.dart';
+import 'package:universityhup/features/courses/presentation/widgets/courses_title_custom_widget.dart';
 
 class CoursesScreen extends StatelessWidget {
   const CoursesScreen({super.key});
