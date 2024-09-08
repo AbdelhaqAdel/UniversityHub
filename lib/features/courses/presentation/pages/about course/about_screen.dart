@@ -27,7 +27,7 @@ class AboutCourseScreen extends StatelessWidget {
                       //   Navigator.pop(context);
                       // }
                     ),
-                    const SizedBox(height: 30,),
+                    SizedBox(height: screenSize.height/30,),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SizedBox(
@@ -54,8 +54,9 @@ class AboutCourseScreen extends StatelessWidget {
                            AboutButton(text: 'Quizzes',
                            color:Colors.pinkAccent.withOpacity(.18),
                            image: AssetsData.courseQuizImage,),
-                                  const SizedBox(width: 15,),
-                           
+
+                          const SizedBox(width: 15,),
+
                            AboutButton(text: 'Grades',
                            color:Colors.lightBlueAccent.withOpacity(.25),
                            image: AssetsData.courseGradesImage,)

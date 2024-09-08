@@ -5,10 +5,12 @@ class AboutButton extends StatelessWidget {
     required this.text,
     required this.image,
     required this.color,
+    // required this.onTap,
     super.key});
   final String text;
   final String image;
   final Color color;
+  // final Function onTap;
 
   @override
   Widget build(BuildContext context) {
