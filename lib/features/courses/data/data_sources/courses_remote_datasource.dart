@@ -3,7 +3,7 @@ import 'package:universityhup/core/constants/hive_constants.dart';
 import 'package:universityhup/core/functions/hive_function.dart';
 import 'package:universityhup/core/utils/api_service.dart';
 import 'package:universityhup/core/utils/end_point.dart';
-import 'package:universityhup/features/AllCourses/data/models/all_courses_model.dart';
+import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
 
 abstract class CoursesRmoteDataSourse{
   Future <List<CoursesModel>>fetchCourses();

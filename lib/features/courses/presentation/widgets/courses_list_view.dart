@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/AllCourses/data/models/all_courses_model.dart';
-import 'package:universityhup/features/AllCourses/presentation/widgets/cousres_custom_widget.dart';
+import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
+import 'package:universityhup/features/courses/presentation/widgets/cousres_custom_widget.dart';
 
 class CoursesListView extends StatelessWidget {
   const CoursesListView({

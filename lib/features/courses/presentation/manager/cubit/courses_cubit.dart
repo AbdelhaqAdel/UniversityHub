@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universityhup/features/AllCourses/data/models/all_courses_model.dart';
-import 'package:universityhup/features/AllCourses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
+import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
 part 'courses_state.dart';
 
 class CoursesCubit extends Cubit<CoursesState> {

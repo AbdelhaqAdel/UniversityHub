@@ -1,7 +1,7 @@
 
 import 'package:hive/hive.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
-import 'package:universityhup/features/AllCourses/data/models/all_courses_model.dart';
+import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
 
 abstract class CoursesLocalDatasource {
   Future<List<CoursesModel>> fetchCoursesFromHive();
