@@ -5,6 +5,11 @@ import 'package:universityhup/features/courses/data/repositories/courses_repo_im
 
 import '../../features/login/data/data_sources/login_remote_data_source.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
+import '../../features/student_role/assignment/data/data_sources/assignment_remote_data_source.dart';
+import '../../features/student_role/assignment/data/repositories/assignment_repo_impl.dart';
+import '../../features/student_role/assignment/domain/repositories/assignment_repo.dart';
+import '../../features/student_role/assignment/domain/use_cases/get_assignment_usecase.dart';
+
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
@@ -12,7 +17,13 @@ void setupServiceLocator() {
     LoginRepoImpl(loginRemoteDataSource: LoginRemoteDataSourceImpl()),
   );
 
-  getIt.registerSingleton<CoursesRepository>(CoursesRepository
-    (coursesDataSource: CoursesRemoteDatasourceImpl(),coursesLocalDatasource: CoursesLocalDatasourceImpl()));
+  getIt.registerSingleton<CoursesRepository>(CoursesRepository(
+      coursesDataSource: CoursesRemoteDatasourceImpl(),
+      coursesLocalDatasource: CoursesLocalDatasourceImpl()));
 
+  getIt.registerSingleton<AssignmentRepo>(
+    AssignmentRepoImpl(
+      assignmentRemoteDataSource: AssignmentRemoteDataSourceImpl(),
+    ),
+  );
 }

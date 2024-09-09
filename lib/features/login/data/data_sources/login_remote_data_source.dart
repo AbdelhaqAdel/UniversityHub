@@ -21,6 +21,7 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource{
     }).then((value) async {
 
       loginEntity = LoginModel.fromJson(value.data);
+      token=loginEntity!.token;
 
       return loginEntity;
     });
