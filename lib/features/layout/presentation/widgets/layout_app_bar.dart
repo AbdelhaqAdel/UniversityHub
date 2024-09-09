@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/constants/constant.dart';
 import '../../../../core/functions/custom_snack_bar.dart';
+import '../../../../core/utils/app_router.dart';
 
 class LayoutAppBar extends StatelessWidget {
   const LayoutAppBar({
@@ -22,6 +24,8 @@ class LayoutAppBar extends StatelessWidget {
             const Spacer(),
             InkWell(
               onTap: (){
+                GoRouter.of(context).push(AppRouter.kAssignmentScreen);
+
                 showSnackBar(message: 'coming soon :)',context: context);
               },
               child: const Padding(

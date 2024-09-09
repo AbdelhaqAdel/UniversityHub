@@ -4,14 +4,16 @@ import 'package:universityhup/features/courses/presentation/pages/about%20course
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
 import '../../features/onboarding/presentation/pages/onboarding.dart';
-import '../../features/test/presentation/pages/test.dart';
+import '../../features/student_role/assignment/presentation/pages/assignment_screen.dart';
 
 abstract class AppRouter {
   static const kLayout = '/Layout';
   static const kLogin = '/Login';
   static const kRegister = '/Register';
   static const kOnboarding = '/Onboarding';
-  static const kAboutCourse= '/CoursesScreen/AboutCourseScreen';
+  static const kAboutCourse= '/AboutCourseScreen';
+  static const kAssignmentScreen= '/AssignmentScreen';
+
 
 
   static final router = GoRouter(
@@ -31,6 +33,10 @@ abstract class AppRouter {
       GoRoute(
         path: kAboutCourse,
         builder: (context, state) => const AboutCourseScreen(),
+      ),
+      GoRoute(
+        path: kAssignmentScreen,
+        builder: (context, state) => const AssignmentScreen(),
       ),
 
     ],
