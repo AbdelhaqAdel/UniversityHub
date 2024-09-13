@@ -16,11 +16,11 @@ class QuizzesRemoteDatasourceImpl extends QuizzesRmoteDataSourse{
     await DioHelper.get(url:EndPoint.allQuizzes,
     token: LoginSuccessState.loginEntity?.token
      ).then((value){
-      fillCoursesList(value);
+      fillQuizList(value);
     });
     return quizzesList;
   }
- void fillCoursesList(Response<dynamic> list) {
+ void fillQuizList(Response<dynamic> list) {
   quizzesList=[];
      for (var element in list.data) {
      quizzesList.add(QuizModel.fromJson(element));
