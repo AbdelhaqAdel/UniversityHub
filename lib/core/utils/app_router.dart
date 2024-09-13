@@ -1,7 +1,10 @@
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
+import 'package:universityhup/features/student/quizzes/presentation/manager/cubit/quiz_cubit.dart';
 import 'package:universityhup/features/student/quizzes/presentation/pages/all_quizes_screen.dart';
+import 'package:universityhup/features/student/quizzes/presentation/pages/quiz_ques_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
 import '../../features/onboarding/presentation/pages/onboarding.dart';
@@ -14,6 +17,8 @@ abstract class AppRouter {
   static const kOnboarding = '/Onboarding';
   static const kAboutCourse= '/AboutCourseScreen';
   static const kQuizzes= '/QuizzesScreen';
+  static const kQuizzesQues= '/QuizQuesScreen';
+  
 
 
 
@@ -38,6 +43,15 @@ abstract class AppRouter {
       GoRoute(
         path: kQuizzes,
         builder: (context, state) => const QuizzesScreen(),
+      ),
+      GoRoute(
+        path: kQuizzesQues,
+        builder: (context, state){
+           return BlocProvider.value(
+      value: context.read<QuizCubit>()..fetchQuizData(),
+      child:const QuizQuesScreen(),
+    );
+        }
       ),
 
     ],
