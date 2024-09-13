@@ -18,3 +18,21 @@ class GetAllQuizzesErrorState extends QuizState {
   final String error;
   GetAllQuizzesErrorState({required this.error});
 }
+
+
+class GetAllQuizDataLoadingState extends QuizState {}
+
+class GetAllQuizDataSuccessState extends QuizState {
+  static List<String> quesAnswers=[];
+  static void setCourseName({required answers}){
+    answers=answers;
+  }
+ final List<Questions> quizzes;
+  GetAllQuizDataSuccessState({required this.quizzes});
+}
+class GetAllQuizDataErrorState extends QuizState {
+  final String error;
+  GetAllQuizDataErrorState({required this.error});
+}
+
+class ChangeQuizAnswerState extends QuizState{}
