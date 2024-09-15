@@ -2,8 +2,11 @@ import 'package:get_it/get_it.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_local_datasource.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/student/material/data/data_sources/material_file_remote_datasource.dart';
 import 'package:universityhup/features/student/material/data/data_sources/material_remote_datasource.dart';
+import 'package:universityhup/features/student/material/data/repositories/material_files_repo_impl.dart';
 import 'package:universityhup/features/student/material/data/repositories/material_repo_impl.dart';
+import 'package:universityhup/features/student/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/student/material/domain/use_cases/material_usecase.dart';
 import 'package:universityhup/features/student/quizzes/data/data_sources/quiz_data_remote_datasource.dart';
 import 'package:universityhup/features/student/quizzes/data/data_sources/quiz_remote_datasource.dart';
@@ -32,6 +35,9 @@ void setupServiceLocator() {
 
    getIt.registerSingleton<MaterialUsecase>(MaterialUsecase
     (materialRepo: MaterialRepository(materialDataSource: MaterialRemoteDatasourceImpl())));
+
+    getIt.registerSingleton<MaterialFilesUsecase>(MaterialFilesUsecase
+    ( filesRepo: MaterialFilesRepository(filesDataSource: MaterialFileRemoteDatasourceImpl())));
 
 
 }
