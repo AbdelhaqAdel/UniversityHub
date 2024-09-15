@@ -25,7 +25,7 @@ abstract class AppRouter {
   static const kAssignmentScreen= '/AssignmentScreen';
 
 
-
+  //---------------------------
   
 
   static BuildContext? context1;
@@ -53,30 +53,30 @@ abstract class AppRouter {
         path: kAssignmentScreen,
         builder: (context, state) => const AssignmentScreen(),
       ),
-      GoRoute(
-        path: kQuizzes,
-        builder: (context, state) => const QuizzesScreen(),
-      ),
-      GoRoute(
-        path: kQuizzesQues,
-        builder: (context, state){
-           return BlocProvider.value(
-      value: context.read<QuizCubit>()..fetchQuizData(),
-      child:const QuizQuesScreen(),
-    );
-        }
-      ),
-        GoRoute(
+    //   GoRoute(
+    //     path: kQuizzes,
+    //     builder: (context, state) => const QuizzesScreen(),
+    //   ),
+    //   GoRoute(
+    //     path: kQuizzesQues,
+    //     builder: (context, state){
+    //        return BlocProvider.value(
+    //   value: context.read<QuizCubit>()..fetchQuizData(),
+    //   child:const QuizQuesScreen(),
+    // );
+    //     }
+    //   ),
+    //     GoRoute(
           
-        path: kMaterialFile,
-        builder: (context, state){
-           return BlocProvider.value(
-      value: context1!.read<MaterialCubit>(),
-      child:const MaterialFileScreen(),
-    );
-        }
+    //     path: kMaterialFile,
+    //     builder: (context, state){
+    //        return BlocProvider.value(
+    //   value: context1!.read<MaterialCubit>(),
+    //   child:const MaterialFileScreen(),
+    // );
+    //     }
 
-      ),
+    //   ),
 
     ],
   );
