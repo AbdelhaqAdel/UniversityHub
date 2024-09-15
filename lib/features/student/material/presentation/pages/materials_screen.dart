@@ -4,6 +4,7 @@ import 'package:universityhup/core/functions/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/core/widgets/screen_path.dart';
 import 'package:universityhup/core/widgets/tapbar_widget.dart';
+import 'package:universityhup/features/student/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/student/material/domain/use_cases/material_usecase.dart';
 import 'package:universityhup/features/student/material/presentation/manager/cubit/material_cubit.dart';
 import 'package:universityhup/features/student/material/presentation/widgets/lec_builder.dart';
@@ -13,7 +14,7 @@ class MatrialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=> MaterialCubit(materialUsecase: getIt<MaterialUsecase>())..fetchAllMaterials(),
+      create: (context)=> MaterialCubit(materialUsecase: getIt<MaterialUsecase>(),fileUsecase: getIt<MaterialFilesUsecase>())..fetchAllMaterials(),
       child: BlocConsumer<MaterialCubit,MaterialsState>(
         listener: (context, state) => {},
         builder: (context, state) {      
@@ -29,7 +30,7 @@ class MatrialScreen extends StatelessWidget {
                       DefaultAppBar(
                           context:context),
                       const SizedBox(height: 30,),
-                      const ScreenPath()    , 
+                      const ScreenPath(from: 'Materials',to: 'instructor',)    , 
                       const SizedBox(height: 15,),
                       TapbarWidget(onTap: (index) { 
                         cubit.changeTabBar(index: index);

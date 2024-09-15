@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/widgets/glass_box.dart';
 
 class ScreenPath extends StatelessWidget {
-  const ScreenPath({super.key});
-
+  const ScreenPath({
+    required this.from,
+    required this.to,
+    super.key});
+  final String from;
+  final String to;
   @override
   Widget build(BuildContext context) {
     return    
@@ -22,16 +26,14 @@ class ScreenPath extends StatelessWidget {
                                     FontAwesomeIcons.folderOpen,
                                     color: KColors.c1Color.withOpacity(.9),
                                   ),
-                                  const SizedBox(
-                                    width: 10,
+                                   SizedBox(
+                                    width: 10.w,
                                   ),
-                                  const Text(
-                                    'Material',
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w700,
-                                      color: KColors.c1Color,
-                                    ),
+                                   Text(
+                                    from,
+                                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                        color: KColors.c1Color,
+                                    )
                                   ),
                                   const Spacer(),
                                   FaIcon(
@@ -43,16 +45,14 @@ class ScreenPath extends StatelessWidget {
                                     FontAwesomeIcons.solidUser,
                                     color: KColors.c1Color.withOpacity(.9),
                                   ),
-                                  const SizedBox(
-                                    width: 10,
+                                   SizedBox(
+                                    width: 10.w,
                                   ),
-                                  const Text(
-                                    'Instructor',
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w700,
-                                      color: KColors.c1Color,
-                                    ),
+                                   Text(
+                                    to,
+                                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                        color: KColors.c1Color,
+                                    )
                                   ),
                                 ],
                               ),
