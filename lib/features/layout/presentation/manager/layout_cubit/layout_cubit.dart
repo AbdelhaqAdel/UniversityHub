@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/features/courses/presentation/pages/all_courses_screen.dart';
-import 'package:universityhup/features/test/presentation/pages/test.dart';
+
 part 'layout_state.dart';
 
 class LayoutCubit extends Cubit<LayoutState> {
@@ -12,11 +12,12 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   int currentNavigationBarIndex = 0;
   List<Widget> navigationBarScreens = [
-    const test(),
-    const test(),
+
     const CoursesScreen(),
-    const test(),
-    const test(),
+    const CoursesScreen(),
+    const CoursesScreen(),
+    const CoursesScreen(),
+    const CoursesScreen(),
   ];
   void onTapNavigationBar(index) {
     currentNavigationBarIndex = index;

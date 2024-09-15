@@ -74,6 +74,7 @@ dependencies:
   get_it: ^7.7.0
   dartz: ^0.10.1
   flutter_screenutil: ^5.9.0
+  conditional_builder_null_safety: ^0.0.6
 
 
 

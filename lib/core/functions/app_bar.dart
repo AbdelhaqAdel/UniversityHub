@@ -4,12 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
 
 class DefaultAppBar extends StatelessWidget {
-  const DefaultAppBar({
-    this.text,
-    required this.context,
-    super.key});
-   final String? text;
-    final BuildContext context;
+  const DefaultAppBar({this.text, required this.context, super.key});
+  final String? text;
+  final BuildContext context;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -25,19 +22,16 @@ class DefaultAppBar extends StatelessWidget {
               },
               child: const FaIcon(FontAwesomeIcons.angleLeft,size: 30)),
         ),
-      Padding(
-        padding:EdgeInsets.only(left: 20.w,),
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width/1.4,
-          child: Text(
-           text??GetAllCoursesSuccessState.currentCourseName,overflow: TextOverflow.ellipsis,maxLines: 1,
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.titleMedium
-          ),
-        ),
-      ),
       ],
     ),
+    Text(
+         text??GetAllCoursesSuccessState.currentCourseName,overflow: TextOverflow.ellipsis,maxLines: 1,
+          textAlign: TextAlign.start,
+          style: Theme.of(context).textTheme.titleMedium
+        ),
+      
+    
+
   ],
 );}
 }

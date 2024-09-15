@@ -11,8 +11,7 @@ import 'package:universityhup/features/student/quizzes/presentation/pages/all_qu
 import 'package:universityhup/features/student/quizzes/presentation/pages/quiz_ques_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
-import '../../features/onboarding/presentation/pages/onboarding.dart';
-import '../../features/test/presentation/pages/test.dart';
+import '../../features/student_role/assignment/presentation/pages/assignment_screen.dart';
 
 abstract class AppRouter {
   static const kLayout = '/Layout';
@@ -23,6 +22,9 @@ abstract class AppRouter {
   static const kQuizzes= '/QuizzesScreen';
   static const kQuizzesQues= '/QuizQuesScreen';
     static const kMaterialFile= '/MaterialFileScreen';
+  static const kAssignmentScreen= '/AssignmentScreen';
+
+
 
   
 
@@ -33,7 +35,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const MatrialScreen(),
+        builder: (context, state) => const Layout(),
       ),
       GoRoute(
         path: kLogin,
@@ -46,6 +48,10 @@ abstract class AppRouter {
       GoRoute(
         path: kAboutCourse,
         builder: (context, state) => const AboutCourseScreen(),
+      ),
+       GoRoute(
+        path: kAssignmentScreen,
+        builder: (context, state) => const AssignmentScreen(),
       ),
       GoRoute(
         path: kQuizzes,
@@ -69,6 +75,7 @@ abstract class AppRouter {
       child:const MaterialFileScreen(),
     );
         }
+
       ),
 
     ],

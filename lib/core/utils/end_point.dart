@@ -4,6 +4,7 @@ import 'package:universityhup/features/student/quizzes/presentation/manager/cubi
 abstract class EndPoint{
 
 //-----------------End  points for Students  ---------------
+  static const String baseURL='https://lms.runasp.net/api/';
   static const String login='Account/login';
   static const String news ='News';
   static const String allCourses='Students/CurrentCourcesInfo';
