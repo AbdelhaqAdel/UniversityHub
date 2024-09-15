@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/features/student/material/presentation/widgets/material_widget.dart';
 
 class MaterialGridView extends StatelessWidget {
   const MaterialGridView({super.key,
   // required this.material
+  required this.context1,
   });
   // final FolderEntity material;
+  final BuildContext context1;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +19,8 @@ class MaterialGridView extends StatelessWidget {
                crossAxisCount: 2, childAspectRatio: 2.5),
            itemBuilder: (context, index) => InkWell(
                onTap: () {
-                //  cubit.getCourseFilesFromHIVE(lecId: cubit.stuHIVElecModel[index].lectureId!);
-                //  cubit.isLec=true;
-                //  navigateTo(context, STU_Show_Material_Lec_Or_Sec());
+             AppRouter.context1=context1;
+                GoRouter.of(context1).push(AppRouter.kMaterialFile);
                },
                child: MaterialWidget(
                    index: index,

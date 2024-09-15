@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/style/colors.dart';
 
@@ -18,43 +20,36 @@ class MaterialWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           border: Border.all(width: .5),
         ),
-        child: Container(
-          //height: 150,
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 20,
+        child:  Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 20,
+            ),
+             FaIcon(
+              FontAwesomeIcons.solidFolderClosed,
+              color: KColors.subTitleColor,
+              size: 30.sp,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Text(
+                maxLines: 2,
+                'material name',
+                // ${material.lectureName}
+               overflow: TextOverflow.ellipsis,
+
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: KColors.c1Color),
               ),
-              FaIcon(
-                FontAwesomeIcons.solidFolderClosed,
-                color: KColors.subTitleColor,
-                size: 30,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Text(
-                  maxLines: 2,
-                  'material name',
-                  // ${material.lectureName}
-                  
-                  style: TextStyle(
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: KColors.c1Color,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-       
-            ],
-          ),
+            ),
+            SizedBox(
+              width:  MediaQuery.of(context).size.width*0.02,
+            ),
+               
+          ],
         ),
       ),
     );
