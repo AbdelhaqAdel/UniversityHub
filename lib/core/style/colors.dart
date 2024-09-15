@@ -11,6 +11,7 @@ abstract class KColors {
   static const buttonColor =Colors.blue;
   static const subTitleColor= Colors.blueGrey;
   static const c1Color = Color(0xFF0D1B2A);
+    static const greyColor = Colors.grey;
 
   
 
