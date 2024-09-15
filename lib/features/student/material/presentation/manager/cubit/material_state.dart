@@ -24,21 +24,17 @@ class GetAllMaterialsErrorState extends MaterialsState {
 
 class ChangeTapBarState extends MaterialsState {}
 
+class GetAllFilesLoadingState extends MaterialsState {}
 
-
-// class GetAllQuizDataLoadingState extends MaterialState {}
-
-// class GetAllQuizDataSuccessState extends MaterialState {
-//   static List<String> quesAnswers=[];
-//   static void setCourseName({required answers}){
-//     answers=answers;
-//   }
-//  final List<Questions> quizzes;
-//   GetAllQuizDataSuccessState({required this.quizzes});
-// }
-// class GetAllQuizDataErrorState extends MaterialState {
-//   final String error;
-//   GetAllQuizDataErrorState({required this.error});
-// }
-
-// class ChangeQuizAnswerState extends MaterialState{}
+class GetAllFilesSuccessState extends MaterialsState {
+  static List<String> quesAnswers=[];
+  static void setCourseName({required answers}){
+    answers=answers;
+  }
+ final List<FileEntity> files;
+  GetAllFilesSuccessState({required this.files});
+}
+class GetAllFilesErrorState extends MaterialsState {
+  final String error;
+  GetAllFilesErrorState({required this.error});
+}
