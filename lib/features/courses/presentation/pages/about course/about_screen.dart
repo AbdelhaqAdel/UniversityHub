@@ -70,11 +70,14 @@ class AboutCourseScreen extends StatelessWidget {
                   Expanded(
                     child: Row(
                       children: [
-                        AboutButton(
-                          text: 'Quizzes',
-                          color: Colors.pinkAccent.withOpacity(.18),
-                          image: AssetsData.courseQuizImage,
-                        ),
+                          AboutButton(text: 'Quizzes',
+                           color:Colors.pinkAccent.withOpacity(.18),
+                           image: AssetsData.courseQuizImage,
+                           onTap: (){
+                            GoRouter.of(context).push(AppRouter.kQuizzes);
+                           },
+                           ),
+
                         const SizedBox(
                           width: 15,
                         ),
@@ -95,3 +98,4 @@ class AboutCourseScreen extends StatelessWidget {
     )));
   }
 }
+

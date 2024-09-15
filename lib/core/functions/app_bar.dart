@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
 
@@ -9,26 +10,28 @@ class DefaultAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: FractionalOffset.center,
+  alignment: FractionalOffset.center,
+  children: [
+    Row(
       children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 30.0),
-              child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const FaIcon(FontAwesomeIcons.angleLeft, size: 30)),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.only(left: 30.0),
+          child: GestureDetector(
+              onTap:(){
+                Navigator.pop(context);
+              },
+              child: const FaIcon(FontAwesomeIcons.angleLeft,size: 30)),
         ),
-        Text(text ?? GetAllCoursesSuccessState.currentCourseName,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.titleMedium),
       ],
-    );
-  }
+    ),
+    Text(
+         text??GetAllCoursesSuccessState.currentCourseName,overflow: TextOverflow.ellipsis,maxLines: 1,
+          textAlign: TextAlign.start,
+          style: Theme.of(context).textTheme.titleMedium
+        ),
+      
+    
+
+  ],
+);}
 }

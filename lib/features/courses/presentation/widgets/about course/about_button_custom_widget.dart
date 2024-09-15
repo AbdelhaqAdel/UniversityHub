@@ -5,20 +5,19 @@ class AboutButton extends StatelessWidget {
     required this.text,
     required this.image,
     required this.color,
-    // required this.onTap,
+    this.onTap,
     super.key});
   final String text;
   final String image;
   final Color color;
-  // final Function onTap;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
     return     Expanded(
              child: InkWell(
-               onTap: (){
-                 // navigateTo(context,rol=='Student'? STU_Matrial_Screen():INS_Matrial_Screen() );
-               },
+               onTap:(){onTap!();},
+               
                child: Container(
                  decoration: BoxDecoration(
                   color:color,

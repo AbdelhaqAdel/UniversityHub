@@ -67,6 +67,11 @@ ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.w400,
       color: KColors.subTitleColor,
     ),
+      labelSmall: TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
+      color: KColors.greyColor,
+    ),
     ),
 
  inputDecorationTheme: InputDecorationTheme(
