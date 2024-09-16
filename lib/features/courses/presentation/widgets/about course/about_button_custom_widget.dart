@@ -5,18 +5,18 @@ class AboutButton extends StatelessWidget {
     required this.text,
     required this.image,
     required this.color,
-    this.onTap,
+    required this.onTap,
     super.key});
   final String text;
   final String image;
   final Color color;
-  final Function? onTap;
+  final GestureTapCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return     Expanded(
              child: InkWell(
-               onTap:(){onTap!();},
+               onTap:onTap,
                
                child: Container(
                  decoration: BoxDecoration(

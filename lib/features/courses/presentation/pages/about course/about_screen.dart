@@ -37,7 +37,7 @@ class AboutCourseScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: SizedBox(
-              height: screenSize.height / 1.5,
+              height: screenSize.height *.65,
               child: Column(
                 children: [
                   Expanded(
@@ -46,20 +46,19 @@ class AboutCourseScreen extends StatelessWidget {
                         AboutButton(
                           text: 'Material',
                           color: Colors.greenAccent.withOpacity(.25),
-                          image: AssetsData.courseMaterialImage,
+                          image: AssetsData.courseMaterialImage, onTap: () {  },
                         ),
                         const SizedBox(
                           width: 15,
                         ),
-                        InkWell(
-                          onTap: (){
+                        AboutButton(
+                          text: 'Assignment',
+                          color: Colors.deepPurpleAccent.withOpacity(.25),
+                          image: AssetsData.courseAssignImage,
+                          onTap: () {
+                            GoRouter.of(context).push(AppRouter.kAssignmentScreen);
 
                           },
-                          child: AboutButton(
-                            text: 'Assignment',
-                            color: Colors.deepPurpleAccent.withOpacity(.25),
-                            image: AssetsData.courseAssignImage,
-                          ),
                         ),
                       ],
                     ),
@@ -85,6 +84,10 @@ class AboutCourseScreen extends StatelessWidget {
                           text: 'Grades',
                           color: Colors.lightBlueAccent.withOpacity(.25),
                           image: AssetsData.courseGradesImage,
+                          onTap: () {
+                            GoRouter.of(context).push(AppRouter.kGrade);
+
+                          },
                         ),
                       ],
                     ),
