@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 
 
 class DioHelper {
@@ -7,9 +8,16 @@ class DioHelper {
 
   static init() {
     dio = Dio(BaseOptions(
-      baseUrl: 'https://lms.runasp.net/api/',//'https://nabilramadan.bsite.net/api/',
+      baseUrl: 'https://lms.runasp.net/api/',
       receiveDataWhenStatusError: true,
     ));
+    // Disable SSL certificate verification (not recommended for production)
+    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
   
 
   }
