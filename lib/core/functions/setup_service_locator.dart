@@ -2,19 +2,6 @@ import 'package:get_it/get_it.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_local_datasource.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
-import 'package:universityhup/features/student/material/data/data_sources/material_file_remote_datasource.dart';
-import 'package:universityhup/features/student/material/data/data_sources/material_remote_datasource.dart';
-import 'package:universityhup/features/student/material/data/repositories/material_files_repo_impl.dart';
-import 'package:universityhup/features/student/material/data/repositories/material_repo_impl.dart';
-import 'package:universityhup/features/student/material/domain/use_cases/material_files_usecase.dart';
-import 'package:universityhup/features/student/material/domain/use_cases/material_usecase.dart';
-import 'package:universityhup/features/student/quizzes/data/data_sources/quiz_data_remote_datasource.dart';
-import 'package:universityhup/features/student/quizzes/data/data_sources/quiz_remote_datasource.dart';
-import 'package:universityhup/features/student/quizzes/data/repositories/quiz_data_repo_impl.dart';
-import 'package:universityhup/features/student/quizzes/data/repositories/quiz_repo_impl.dart';
-import 'package:universityhup/features/student/quizzes/domain/use_cases/quiz_data_usecase.dart';
-import 'package:universityhup/features/student/quizzes/domain/use_cases/quiz_usecase.dart';
-
 import '../../features/login/data/data_sources/login_remote_data_source.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
 import '../../features/student_role/assignment/data/data_sources/assignment_remote_data_source.dart';
@@ -24,6 +11,18 @@ import '../../features/student_role/assignment/domain/use_cases/get_assignment_u
 import '../../features/student_role/grade/data/data_sources/grade_remote_data_source.dart';
 import '../../features/student_role/grade/data/repositories/grade_repo_impl.dart';
 import '../../features/student_role/grade/domain/repositories/grade_repo.dart';
+import '../../features/student_role/material/data/data_sources/material_file_remote_datasource.dart';
+import '../../features/student_role/material/data/data_sources/material_remote_datasource.dart';
+import '../../features/student_role/material/data/repositories/material_files_repo_impl.dart';
+import '../../features/student_role/material/data/repositories/material_repo_impl.dart';
+import '../../features/student_role/material/domain/use_cases/material_files_usecase.dart';
+import '../../features/student_role/material/domain/use_cases/material_usecase.dart';
+import '../../features/student_role/quizzes/data/data_sources/quiz_data_remote_datasource.dart';
+import '../../features/student_role/quizzes/data/data_sources/quiz_remote_datasource.dart';
+import '../../features/student_role/quizzes/data/repositories/quiz_data_repo_impl.dart';
+import '../../features/student_role/quizzes/data/repositories/quiz_repo_impl.dart';
+import '../../features/student_role/quizzes/domain/use_cases/quiz_data_usecase.dart';
+import '../../features/student_role/quizzes/domain/use_cases/quiz_usecase.dart';
 
 final getIt = GetIt.instance;
 

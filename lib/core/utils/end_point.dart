@@ -1,5 +1,6 @@
 import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
-import 'package:universityhup/features/student/quizzes/presentation/manager/cubit/quiz_cubit.dart';
+
+import '../../features/student_role/quizzes/presentation/manager/cubit/quiz_cubit.dart';
 
 abstract class EndPoint{
 

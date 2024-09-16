@@ -1,9 +1,9 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
 import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
-import 'package:universityhup/features/student/material/domain/entities/material_file_entity.dart';
-import 'package:universityhup/features/student/material/domain/entities/material_folder_entity.dart';
 
+import '../../features/student_role/material/domain/entities/material_file_entity.dart';
+import '../../features/student_role/material/domain/entities/material_folder_entity.dart';
 import '../constants/constant.dart';
 
 
