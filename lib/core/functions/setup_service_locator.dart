@@ -26,6 +26,9 @@ import '../../features/student_role/quizzes/data/repositories/quiz_data_repo_imp
 import '../../features/student_role/quizzes/data/repositories/quiz_repo_impl.dart';
 import '../../features/student_role/quizzes/domain/use_cases/quiz_data_usecase.dart';
 import '../../features/student_role/quizzes/domain/use_cases/quiz_usecase.dart';
+import '../../features/student_role/user/data/data_sources/user_remote_data_source.dart';
+import '../../features/student_role/user/data/repositories/user_repo_impl.dart';
+import '../../features/student_role/user/domain/repositories/user_repo.dart';
 
 final getIt = GetIt.instance;
 
@@ -64,6 +67,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<NewsRepo>(
     NewsRepoImpl(
       newsRemoteDataSource: NewsRemoteDataSourceImpl(),
+    ),
+  );
+  getIt.registerSingleton<UserRepo>(
+    UserRepoImpl(
+      userRemoteDataSource: UserRemoteDataSourceImpl(),
     ),
   );
 }
