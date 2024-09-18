@@ -8,7 +8,7 @@ class GetAllQuizzesLoadingState extends QuizState {}
 
 class GetAllQuizzesSuccessState extends QuizState {
   static String currentQuizId='';
-  static void setCourseName({required quizId}){
+  static void setQuizId({required quizId}){
     currentQuizId=quizId;
   }
  final List<QuizEntity> quizzes;
@@ -27,8 +27,9 @@ class GetAllQuizDataSuccessState extends QuizState {
   static void setCourseName({required answers}){
     answers=answers;
   }
- final List<Questions> quizzes;
-  GetAllQuizDataSuccessState({required this.quizzes});
+ final List<Questions> quizQues;
+ final List<String>quizAnswers;
+  GetAllQuizDataSuccessState({required this.quizQues,required this.quizAnswers});
 }
 class GetAllQuizDataErrorState extends QuizState {
   final String error;

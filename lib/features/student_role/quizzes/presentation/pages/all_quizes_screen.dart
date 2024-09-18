@@ -15,7 +15,7 @@ class QuizzesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context)=>QuizCubit(quizUsecase: getIt.get<QuizUsecase>(),
-      quizDataUseCase: getIt.get<QuizDataUsecase>())..fetchAllQuizzes(),
+      quizDataUseCase: getIt.get<FetchQuizDataUseCase>())..fetchAllQuizzes(),
       child: BlocConsumer<QuizCubit,QuizState>(
         listener: (context,state){},
         builder: (context,state){
