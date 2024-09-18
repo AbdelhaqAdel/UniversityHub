@@ -1,7 +1,5 @@
 import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
 
-import '../../features/student_role/quizzes/presentation/manager/cubit/quiz_cubit.dart';
-
 abstract class EndPoint{
 
 //-----------------End  points for Students  ---------------
@@ -10,7 +8,7 @@ abstract class EndPoint{
   static const String news ='News';
   static const String allCourses='Students/CurrentCourcesInfo';
   static String allQuizzes= 'Students/CurrentCourseQuizzes?cycleId=${GetAllCoursesSuccessState.currentCourseId}';
-  static String quizData='Students/Quiz?quizId=${GetAllQuizzesSuccessState.currentQuizId}';
+  static String quizData='Students/Quiz?quizId=';
   static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=${GetAllCoursesSuccessState.currentCourseId}';
     // static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=${lecId}';
 
