@@ -8,9 +8,11 @@ class AnswerListView extends StatelessWidget {
   const AnswerListView({
     required this.questions,
     required this.quizAnswers,
+    required this.qIndex,
     super.key});
       final Questions? questions;
       final List<String> quizAnswers;
+      final int qIndex;
   @override
   Widget build(BuildContext context) {
     return    ListView.builder(
@@ -24,7 +26,7 @@ class AnswerListView extends StatelessWidget {
                 style:Theme.of(context).textTheme.bodyMedium,
               ),
               value: questions?.answers![index].id,
-              groupValue: quizAnswers[index],
+              groupValue: quizAnswers[qIndex],
               onChanged: (value) {
                 QuizCubit.get(context).quizSelectAnswer(index, value);
            },

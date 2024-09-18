@@ -14,8 +14,8 @@ class AnswerBuilder extends StatelessWidget {
     return BlocBuilder<QuizCubit,QuizState>(
       builder:(context,state){
         if(state is GetAllQuizDataSuccessState){
-          return AnswerListView(questions:state.quizzes[index], 
-          quizAnswers:GetAllQuizDataSuccessState.quesAnswers,);
+          return AnswerListView(questions:state.quizQues[index], 
+          quizAnswers:state.quizAnswers, qIndex: index,);
         }
         else if(state is GetAllQuizDataErrorState){
           return Text(state.error);

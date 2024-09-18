@@ -4,26 +4,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/functions/app_bar.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';
+import 'package:universityhup/features/student_role/quizzes/data/models/question_data_model.dart';
 
 import '../manager/cubit/quiz_cubit.dart';
 import '../widgets/quez ques/quiz_ques_builder.dart';
 
 class QuizQuesScreen extends StatefulWidget {
-  const QuizQuesScreen({super.key});
-
+  const QuizQuesScreen({super.key,});
   @override
   State<QuizQuesScreen> createState() => _QuizQuesScreenState();
 }
-
 class _QuizQuesScreenState extends State<QuizQuesScreen> {
-  bool islast = false;
+  bool isLast = false;
   bool isStart = false;
   bool isBack=false;
-  var boardcontroller = PageController();
+  var boardController = PageController();
+  List<Questions>?ques;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<QuizCubit, QuizState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is GetAllQuizDataSuccessState) {
+          ques=state.quizQues;
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           body: SafeArea(
@@ -72,40 +76,23 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child:
-                    QuesBuilder(islast: islast, isStart: isStart,
-                    boardController: boardcontroller,
+                    QuesBuilder(isStart: isStart,
+                    boardController: boardController, isLast: isLast, 
+                    onPageChanged: (index ) {
+                     if (index == ques!.length - 1) {
+                        setState(() {
+                          isLast = true;
+                        });}
+                      else if (index >=1) {
+                        setState(() {
+                          isStart = true;
+                        });
+                      } else {
+                        setState(() {
+                          isLast = false;
+                          isStart = false;
+                        });}},
                     )
-                    //  ConditionalBuilder(
-                    //   condition: state is GetAllQuizDataSuccessState,
-                    //   builder:(context)=> PageView.builder(
-                    //     physics: const NeverScrollableScrollPhysics(),
-                    //     onPageChanged: (index) {
-                    //       if (index == ques.length - 1) {
-                    //         setState(() {
-                    //           islast = true;
-                    //         });
-                    //       }
-                    //       else if (index >=1) {
-                    //         setState(() {
-                    //           isStart = true;
-                    //         });
-                    //       } else {
-                    //         setState(() {
-                    //           islast = false;
-                    //           isStart = false;
-                    //         });
-                    //       }
-                    //     },
-                    //     controller: boardcontroller,
-                    //     itemBuilder: (context, index) => QuizQuesWidget(
-                    //       qIndex: index,
-                    //       questions: ques[index]
-                    //     ),
-                    //     itemCount:ques.length
-                    //   ),
-                    //   fallback: (context)=>Center(child: CircularProgressIndicator(),),
-                    // ),
-
                   ),
                 ),
                 Padding(
@@ -122,9 +109,9 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                         child: IconButton(
                           onPressed: (){
                             setState(() {
-                              islast = false;
+                              isLast = false;
                             });
-                            boardcontroller.previousPage (
+                            boardController.previousPage (
                               duration: const Duration(
                               milliseconds: 750,
                             ),
@@ -152,7 +139,7 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                                 //         const QuizResultScreen());
                                 // }
                                 //  else {
-                                  boardcontroller.nextPage(
+                                  boardController.nextPage(
                                     duration: const Duration(
                                       milliseconds: 750,
                                     ),
@@ -164,7 +151,7 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                                   isBack=false;
                                 });
                               },
-                              text: islast ? 'Submit' : 'Next',
+                              text: isLast ? 'Submit' : 'Next',
                             ),
                         ),
                       ),
