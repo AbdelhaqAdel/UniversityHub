@@ -23,6 +23,7 @@ abstract class AppRouter {
   static const kMaterialFile = '/MaterialFileScreen';
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
+  static const kQuizResultScreen='/QuizResultScreen';
 
   //---------------------------
 
@@ -55,13 +56,15 @@ abstract class AppRouter {
         builder: (context, state) => const QuizzesScreen(),
       ),
       GoRoute(
-          path: kQuizzesQues,
-          builder: (context, state) {
-            return BlocProvider.value(
-              value: context.read<QuizCubit>()..fetchQuizData(),
-              child: const QuizQuesScreen(),
-            );
-          }),
+        path: kQuizzesQues,
+       builder: (context, state) {
+         final quizId = state.extra as String;
+         return BlocProvider.value(
+           value: context1!.read<QuizCubit>()..fetchQuizData(quizId: quizId),
+           child: const QuizQuesScreen(),
+         );
+       },
+     ),
       GoRoute(
           path: kMaterialFile,
           builder: (context, state) {
@@ -74,6 +77,8 @@ abstract class AppRouter {
         path: kGrade,
         builder: (context, state) => const GradeScreen(),
       ),
+
+      
     ],
   );
 }

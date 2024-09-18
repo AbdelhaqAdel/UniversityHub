@@ -10,37 +10,37 @@ class QuizCubit extends Cubit<QuizState> {
   QuizCubit({required this.quizUsecase,required this.quizDataUseCase}) : super(QuizInitial());
   static QuizCubit get(context) => BlocProvider.of(context);
   final QuizUsecase quizUsecase; 
-  final QuizDataUsecase quizDataUseCase; 
+  final FetchQuizDataUseCase quizDataUseCase; 
   Future<void>fetchAllQuizzes()async{
     emit(GetAllQuizzesLoadingState());
-    final resault=await quizUsecase.call();
-    resault.fold(
+    final result=await quizUsecase.call();
+    result.fold(
        (error)=>emit(GetAllQuizzesErrorState(error:error.message )),
-       (quizzes)=>emit(GetAllQuizzesSuccessState(quizzes: quizzes)),
-
+       (quizzes)
+       {
+        emit(GetAllQuizzesSuccessState(quizzes: quizzes));},
        );
   }
 
-    Future<void>fetchQuizData()async{
+    void fetchQuizData({required String quizId})async{
     emit(GetAllQuizDataLoadingState());
-    final resault=await quizDataUseCase.call();
-    resault.fold(
+    final result=await quizDataUseCase.call(quizId);
+    result.fold(
        (error)=>emit(GetAllQuizDataErrorState(error:error.message )),
-       (quizzes){
-         allquizAnswers = List<String>.generate(
-          quizzes.length,
+       (quizQues){
+         allQuizAnswers = List<String>.generate(
+          quizQues.length,
               (index) => '',
         );
-        GetAllQuizDataSuccessState.setCourseName(answers: allquizAnswers);
-        emit(GetAllQuizDataSuccessState(quizzes: quizzes));
+        emit(GetAllQuizDataSuccessState(quizQues: quizQues,quizAnswers: allQuizAnswers!));
         },
 
        );
   }
 
-    List<String>? allquizAnswers;
+    List<String>? allQuizAnswers;
     void quizSelectAnswer(index, value) {
-    allquizAnswers![index] = value;
+    allQuizAnswers![index] = value;
     emit(ChangeQuizAnswerState());
   }
 }
