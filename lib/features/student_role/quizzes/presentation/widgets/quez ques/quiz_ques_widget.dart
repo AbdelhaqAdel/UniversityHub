@@ -17,8 +17,10 @@ class QuizQuesWidget extends StatelessWidget {
       children: [
         QuesWidget(qIndex:qIndex, questions: questions,),
          SizedBox(height:MediaQuery.of(context).size.height/30),
-          AnswerBuilder(index: qIndex,),
-//         ListView.builder(
+          AnswerBuilder(index: qIndex),
+
+
+//  ListView.builder(
 //           shrinkWrap: true,
 //           itemCount: questions?.answers?.length,
 //           itemBuilder: (context, index) {
