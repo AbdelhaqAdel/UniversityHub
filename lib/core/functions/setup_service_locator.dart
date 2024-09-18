@@ -2,8 +2,11 @@ import 'package:get_it/get_it.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_local_datasource.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/news/data/data_sources/news_remote_data_source.dart';
+import 'package:universityhup/features/news/data/repositories/news_repo_impl.dart';
 import '../../features/login/data/data_sources/login_remote_data_source.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
+import '../../features/news/domain/repositories/news_repo.dart';
 import '../../features/student_role/assignment/data/data_sources/assignment_remote_data_source.dart';
 import '../../features/student_role/assignment/data/repositories/assignment_repo_impl.dart';
 import '../../features/student_role/assignment/domain/repositories/assignment_repo.dart';
@@ -56,6 +59,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<GradeRepo>(
     GradeRepoImpl(
        gradeRemoteDataSource: GradeRemoteDataSourceImpl(),
+    ),
+  );
+  getIt.registerSingleton<NewsRepo>(
+    NewsRepoImpl(
+      newsRemoteDataSource: NewsRemoteDataSourceImpl(),
     ),
   );
 }
