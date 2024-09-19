@@ -46,7 +46,9 @@ class AboutCourseScreen extends StatelessWidget {
                         AboutButton(
                           text: 'Material',
                           color: Colors.greenAccent.withOpacity(.25),
-                          image: AssetsData.courseMaterialImage, onTap: () {  },
+                          image: AssetsData.courseMaterialImage, onTap: () { 
+                            GoRouter.of(context).push(AppRouter.kMaterialFolders); 
+                           },
                         ),
                         const SizedBox(
                           width: 15,

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/utils/app_router.dart';
+import 'package:universityhup/features/student_role/material/domain/entities/material_folder_entity.dart';
 
 import 'material_widget.dart';
 
 class MaterialGridView extends StatelessWidget {
   const MaterialGridView({super.key,
-  // required this.material
+  required this.materials,
   required this.context1,
   });
-  // final FolderEntity material;
+  final List<FolderEntity> materials;
   final BuildContext context1;
 
   @override
@@ -21,14 +22,14 @@ class MaterialGridView extends StatelessWidget {
            itemBuilder: (context, index) => InkWell(
                onTap: () {
              AppRouter.context1=context1;
-                GoRouter.of(context1).push(AppRouter.kMaterialFile);
+                GoRouter.of(context1).push(AppRouter.kMaterialFile,extra:materials[index].lectureId,);
                },
                child: MaterialWidget(
                    index: index,
-                    // material: material, 
+                    material: materials[index], 
                )),
            scrollDirection: Axis.vertical,
-           itemCount: 8,
+           itemCount: materials.length, 
          );
   }
 }

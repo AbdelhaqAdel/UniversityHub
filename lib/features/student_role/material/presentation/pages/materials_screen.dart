@@ -10,12 +10,12 @@ import '../../domain/use_cases/material_usecase.dart';
 import '../manager/cubit/material_cubit.dart';
 import '../widgets/lec_builder.dart';
 
-class MatrialScreen extends StatelessWidget {
-  const MatrialScreen({super.key});
+class MaterialScreen extends StatelessWidget {
+  const MaterialScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=> MaterialCubit(materialUsecase: getIt<MaterialUsecase>(),fileUsecase: getIt<MaterialFilesUsecase>())..fetchAllMaterials(),
+      create: (context)=> MaterialCubit(materialUsecase: getIt<MaterialUsecase>(),fileUsecase: getIt<MaterialFilesUseCase>())..fetchAllMaterials(),
       child: BlocConsumer<MaterialCubit,MaterialsState>(
         listener: (context, state) => {},
         builder: (context, state) {      
@@ -33,7 +33,7 @@ class MatrialScreen extends StatelessWidget {
                       const SizedBox(height: 30,),
                       const ScreenPath(from: 'Materials',to: 'instructor',)    , 
                       const SizedBox(height: 15,),
-                      TapbarWidget(onTap: (index) { 
+                      TapBarWidget(onTap: (index) { 
                         cubit.changeTabBar(index: index);
                          }, tapIndex: cubit.tapBarIndex,),
                      const Expanded(child: LectureBuilder()),
