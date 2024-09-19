@@ -6,10 +6,10 @@ import 'package:universityhup/core/utils/end_point.dart';
 import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
 import 'package:universityhup/features/login/presentation/manager/login_cubit/login_cubit.dart';
 
-abstract class CoursesRmoteDataSourse{
+abstract class CoursesRemoteDataSource{
   Future <List<CoursesModel>>fetchCourses();
 }
-class CoursesRemoteDatasourceImpl extends CoursesRmoteDataSourse{
+class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
   List<CoursesModel>coursesList=[];
   @override
   Future<List<CoursesModel>> fetchCourses()async {

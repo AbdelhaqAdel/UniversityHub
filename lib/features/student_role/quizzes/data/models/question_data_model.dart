@@ -10,28 +10,28 @@ class Questions {
   String? createdAt;
   List<Answers>? answers;
 
-  Questions(
-      {this.id,
-        this.text,
-        this.type,
-        this.questionNumber,
-        this.grade,
-        this.createdAt,
-        this.answers});
+  Questions({
+      required this.id,
+      required this.text,
+      required this.type,
+      required this.questionNumber,
+      required this.grade,
+      required this.createdAt,
+      required this.answers});
 
-  Questions.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    text = json['text'];
-    type = json['type'];
-    questionNumber = json['questionNumber'];
-    grade = json['grade'];
-    createdAt = json['createdAt'];
-    if (json['answers'] != null) {
-      answers = <Answers>[];
-      json['answers'].forEach((v) {
-        answers!.add( Answers.fromJson(v));
-      });
-    }
+  factory Questions.fromJson(Map<String, dynamic> json) {
+   return Questions(
+      id : json['id'],
+    text : json['text'],
+    type : json['type'],
+    questionNumber : json['questionNumber'],
+    grade : json['grade'],
+    createdAt : json['createdAt'],
+    answers: json['answers'] != null
+          ? (json['answers'] as List).map((v) => Answers.fromJson(v)).toList()
+          : [],
+   );
+   
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -41,7 +41,7 @@ class Questions {
     data['questionNumber'] = questionNumber;
     data['grade'] = grade;
     data['createdAt'] = createdAt;
-    if (this.answers != null) {
+    if (answers != null) {
       data['answers'] = answers!.map((v) => v.toJson()).toList();
     }
     return data;

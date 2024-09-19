@@ -6,14 +6,14 @@ import 'package:universityhup/features/login/presentation/manager/login_cubit/lo
 import '../../domain/entities/quiz_entity.dart';
 import '../models/quiz_model.dart';
 
-abstract class QuizzesRmoteDataSourse{
-  Future <List<QuizEntity>>fetchAllQuizes();
+abstract class QuizzesRemoteDataSource{
+  Future <List<QuizEntity>>fetchAllQuizzes();
 }
-class QuizzesRemoteDatasourceImpl extends QuizzesRmoteDataSourse{
+class QuizzesRemoteDataSourceImpl extends QuizzesRemoteDataSource{
   List<QuizEntity>quizzesList=[];
   
   @override
-  Future<List<QuizEntity>> fetchAllQuizes()async {
+  Future<List<QuizEntity>> fetchAllQuizzes()async {
     await DioHelper.get(url:EndPoint.allQuizzes,
     token: LoginSuccessState.loginEntity?.token
      ).then((value){

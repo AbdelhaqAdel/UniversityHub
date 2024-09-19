@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
+import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
 import '../../features/student_role/assignment/presentation/pages/assignment_screen.dart';
@@ -23,6 +24,7 @@ abstract class AppRouter {
   static const kMaterialFile = '/MaterialFileScreen';
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
+  static const kQuizResultScreen='/QuizResultScreen';
 
   //---------------------------
 
@@ -55,13 +57,15 @@ abstract class AppRouter {
         builder: (context, state) => const QuizzesScreen(),
       ),
       GoRoute(
-          path: kQuizzesQues,
-          builder: (context, state) {
-            return BlocProvider.value(
-              value: context.read<QuizCubit>()..fetchQuizData(),
-              child: const QuizQuesScreen(),
-            );
-          }),
+        path: kQuizzesQues,
+       builder: (context, state) {
+         final quizId = state.extra as String;
+         return BlocProvider.value(
+           value: context1!.read<QuizCubit>()..fetchQuizData(quizId: quizId),
+           child: const QuizQuesScreen(),
+         );
+       },
+     ),
       GoRoute(
           path: kMaterialFile,
           builder: (context, state) {
@@ -74,6 +78,17 @@ abstract class AppRouter {
         path: kGrade,
         builder: (context, state) => const GradeScreen(),
       ),
+  GoRoute(
+        path: kQuizResultScreen,
+       builder: (context, state) {
+        //  final quizId = state.extra as String;
+         return BlocProvider.value(
+           value: context1!.read<QuizCubit>()..submitQuiz(quizId: GetAllQuizDataSuccessState.quizId!),
+           child: const QuizResultScreen(),
+         );
+       },
+     ),
+      
     ],
   );
 }

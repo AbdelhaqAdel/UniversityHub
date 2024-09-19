@@ -5,17 +5,18 @@ class Answers {
 
   Answers({this.id, this.text, this.createdAt});
 
-  Answers.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    text = json['text'];
-    createdAt = json['createdAt'];
+ factory Answers.fromJson(Map<String, dynamic> json) {
+  return Answers(
+    id : json['id'],
+    text : json['text'],
+    createdAt : json['createdAt'],
+  );
   }
-
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['text'] = this.text;
-    data['createdAt'] = this.createdAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['text'] = text;
+    data['createdAt'] = createdAt;
     return data;
   }
 }
