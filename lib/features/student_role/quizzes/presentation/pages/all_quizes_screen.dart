@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/functions/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
+import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 
 import '../../domain/use_cases/quiz_data_usecase.dart';
 import '../../domain/use_cases/quiz_usecase.dart';
@@ -15,7 +16,8 @@ class QuizzesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context)=>QuizCubit(quizUsecase: getIt.get<QuizUsecase>(),
-      quizDataUseCase: getIt.get<FetchQuizDataUseCase>())..fetchAllQuizzes(),
+      quizDataUseCase: getIt.get<FetchQuizDataUseCase>(),
+      submitQuizUseCase: getIt.get<SubmitQuizUseCase>())..fetchAllQuizzes(),
       child: BlocConsumer<QuizCubit,QuizState>(
         listener: (context,state){},
         builder: (context,state){
