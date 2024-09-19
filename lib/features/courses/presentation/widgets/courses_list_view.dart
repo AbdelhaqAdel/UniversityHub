@@ -5,22 +5,27 @@ import 'package:universityhup/features/courses/data/models/all_courses_model.dar
 import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
 import 'package:universityhup/features/courses/presentation/widgets/cousres_custom_widget.dart';
 
+import '../../../../core/constants/constant.dart';
+
 class CoursesListView extends StatelessWidget {
-  const CoursesListView({
-    required this.courses,
-    super.key});
-  final List<CoursesModel>courses;
+  const CoursesListView({required this.courses, super.key});
+  final List<CoursesModel> courses;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount:courses.length,
-      itemBuilder:(context,index)=> InkWell(
-        onTap: (){
-       GetAllCoursesSuccessState.setCourseName(coursename: courses[index].name,courseId: courses[index].cycleId);
-       GoRouter.of(context).push(AppRouter.kAboutCourse);
-        },
-        child: CoursesWidget(courses:courses[index])),
-      separatorBuilder: (context,index)=>const SizedBox(height: 10,),
+      itemCount: courses.length,
+      itemBuilder: (context, index) => InkWell(
+          onTap: () {
+            currentCycleId=courses[index].cycleId;
+            GetAllCoursesSuccessState.setCourseName(
+                coursename: courses[index].name,
+                courseId: courses[index].cycleId);
+            GoRouter.of(context).push(AppRouter.kAboutCourse);
+          },
+          child: CoursesWidget(courses: courses[index])),
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 10,
+      ),
     );
   }
 }

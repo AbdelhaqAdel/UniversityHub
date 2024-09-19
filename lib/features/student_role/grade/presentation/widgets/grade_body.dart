@@ -11,15 +11,17 @@ class GradeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 30,),
-            DefaultAppBar(
-                text: "currentCourseName",
-                context:context),
-            const SizedBox(height: 30,),
-            const GradeTable(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 30,),
+              DefaultAppBar(
+                  text: "currentCourseName",
+                  context:context),
+              const SizedBox(height: 30,),
+              const GradeTable(),
+            ],
+          ),
         ),
 
       ),
