@@ -4,6 +4,7 @@ import 'package:universityhup/core/functions/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/core/widgets/screen_path.dart';
 import 'package:universityhup/core/widgets/tapbar_widget.dart';
+import 'package:universityhup/features/student_role/material/data/repositories/material_files_repo_impl.dart';
 
 import '../../domain/use_cases/material_files_usecase.dart';
 import '../../domain/use_cases/material_usecase.dart';
@@ -15,7 +16,10 @@ class MaterialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=> MaterialCubit(materialUsecase: getIt<MaterialUsecase>(),fileUsecase: getIt<MaterialFilesUseCase>())..fetchAllMaterials(),
+      create: (context)=> MaterialCubit(
+        materialUsecase: getIt<MaterialUsecase>(),fileUsecase: getIt<MaterialFilesUseCase>(), fileRepo: getIt.get<MaterialFilesRepository>()
+        )..fetchAllMaterials(),
+
       child: BlocConsumer<MaterialCubit,MaterialsState>(
         listener: (context, state) => {},
         builder: (context, state) {      

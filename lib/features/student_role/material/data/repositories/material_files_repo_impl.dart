@@ -1,14 +1,16 @@
-
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' hide OpenFile;
+import 'package:open_file/open_file.dart';
 import 'package:dio/dio.dart';
 import 'package:universityhup/core/errors/failure.dart';
+import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_datasource.dart';
 import '../../domain/entities/material_file_entity.dart';
 import '../../domain/repositories/material_files_repo.dart';
 import '../data_sources/material_file_remote_datasource.dart';
 
 class MaterialFilesRepository extends MaterialFilesRepo{
   final MaterialFileRemoteDataSourceImpl filesDataSource;
-  MaterialFilesRepository({required this.filesDataSource});
+  final MaterialFileLocalDataSourceImpl fileLocalDataSource;
+  MaterialFilesRepository({required this.filesDataSource,required this.fileLocalDataSource,});
 
   @override
   Future<Either<Failure,List<FileEntity>>> getAllMaterialsFiles({required lecId}) async{
@@ -22,4 +24,44 @@ class MaterialFilesRepository extends MaterialFilesRepo{
       return left(ServerFailure(error.toString()));
     }}
   }
-}
+
+    @override
+  Future<Either<Failure,void>>loadFile({required String networkFile,})async{
+    try{
+   await filesDataSource.loadFile(networkFile: networkFile).then((value) {
+      openFile(networkFile: value);
+    });
+    return right(null);
+    }catch(error){
+    if(error is DioException){
+      return left(ServerFailure.fromDiorError(error));
+    }else{
+      return left(ServerFailure(error.toString()));
+    }}
+    }
+  
+  
+    @override
+  Future<void> openFile({required String networkFile}) async {
+    final path= await fileLocalDataSource.getFilePath(networkFile: networkFile);
+     OpenFile.open(path,).then((value) {
+      print(value.message);
+      if (value.message == 'the $path file does not exists') {
+        loadFile(networkFile:networkFile);
+      }
+    }).catchError((error) {
+      loadFile(networkFile: networkFile);
+    });
+
+  //   return OpenResult(message: e.toString());
+  //   if(result.message.contains('does not exist')){
+  //     filesDataSource.loadFile(networkFile: networkFile);
+  //   }
+  //   .then((v){
+  //     print(' ccccc${v.message}');
+  //    if (v.message.contains('does not exist')) {
+  //   }
+  //   }).catchError((e){
+  //  filesDataSource.loadFile(networkFile: networkFile);
+  //   });
+}}
