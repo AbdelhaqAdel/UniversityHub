@@ -47,22 +47,6 @@ class QuizDataModel extends QuizDataEntity{
 
 }
 
-class SubmitQuizModel {
-  bool? q0011;
-
-  SubmitQuizModel({this.q0011});
-
-  SubmitQuizModel.fromJson(Map<String, dynamic> json) {
-  q0011 = json['Q001_1'];
-  }
-
-  Map<String, dynamic> toJson() {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['Q001_1'] = this.q0011;
-  return data;
-  }
-
-}
 
 List<Questions>fillQuestions(json){
   List<Questions>questions=[];

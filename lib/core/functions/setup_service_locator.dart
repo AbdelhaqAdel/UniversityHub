@@ -3,6 +3,7 @@ import 'package:universityhup/features/courses/data/data_sources/courses_local_d
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
 import 'package:universityhup/features/student_role/quizzes/data/data_sources/quiz_data_remote_data_Source.dart';
+import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import '../../features/login/data/data_sources/login_remote_data_source.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
 import '../../features/student_role/assignment/data/data_sources/assignment_remote_data_source.dart';
@@ -38,6 +39,9 @@ void setupServiceLocator() {
     (quizRepo: QuizRepository(quizDataSource: QuizzesRemoteDatasourceImpl())));
 
   getIt.registerSingleton<FetchQuizDataUseCase>(FetchQuizDataUseCase
+    (quizDataRepo: QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
+
+  getIt.registerSingleton<SubmitQuizUseCase>(SubmitQuizUseCase
     (quizDataRepo: QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
 
    getIt.registerSingleton<MaterialUsecase>(MaterialUsecase

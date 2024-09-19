@@ -22,4 +22,17 @@ class QuizDataRepository extends QuizDataRepo{
       return left(ServerFailure(error.toString()));
     }}
   }
+
+  Future<Either<Failure,int>>submitQuiz({required quizId,required List<String>quizAnswers})async{
+    try{
+    final int quizGrade =await quizDataSource.submitQuiz(quizId: quizId,quizAnswers: quizAnswers);
+    return right(quizGrade);
+    }catch(error){
+    if(error is DioException){
+        return left(ServerFailure.fromDiorError(error));
+    }else{
+      return left(ServerFailure(error.toString()));
+    }  
+    }   
+  }
 }

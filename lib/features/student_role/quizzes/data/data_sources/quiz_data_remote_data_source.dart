@@ -7,6 +7,7 @@ import '../models/question_data_model.dart';
 
 abstract class QuizDataRemoteDataSource{
   Future <List<Questions>>fetchQuizData({required String  quizId});
+  Future<int>submitQuiz({required quizId,required List<String>quizAnswers});
 }
 class QuizDataRemoteDataSourceImpl extends QuizDataRemoteDataSource{
   List<Questions>quizData=[];
@@ -29,5 +30,24 @@ class QuizDataRemoteDataSourceImpl extends QuizDataRemoteDataSource{
       print(element.text);
     });
   }
+
+  List<Map<String, dynamic>> submitQuizAnswers = [];
   
+   @override
+   Future<int> submitQuiz({required quizId,required List<String>quizAnswers}) {
+    int quizGrade = 0;
+    for (int i = 0; i < quizData.length; i++) {
+      submitQuizAnswers.add(
+          {'questionId': quizData[i].id, 'answerId': quizAnswers[i]});}
+
+    DioHelper.post(token: LoginSuccessState.loginEntity?.token,
+     url: EndPoint.submitQuiz, data: {
+      'quizId': quizId,
+      'answers': submitQuizAnswers,
+    }).then((value) {
+        quizGrade = value.data['totalGrade'];
+        print('Quiz Grade ${value.data['totalGrade']}');
+    });
+    return Future.value(quizGrade);
+  }
 }
