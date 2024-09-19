@@ -29,7 +29,11 @@ class GetAllQuizDataSuccessState extends QuizState {
   }
  final List<Questions> quizQues;
  final List<String>quizAnswers;
-  GetAllQuizDataSuccessState({required this.quizQues,required this.quizAnswers});
+ static String?quizId;
+ static void setQuizId({required quizId}){
+   quizId=quizId;
+ }
+  GetAllQuizDataSuccessState({required this.quizQues,required this.quizAnswers,});
 }
 class GetAllQuizDataErrorState extends QuizState {
   final String error;
@@ -37,3 +41,14 @@ class GetAllQuizDataErrorState extends QuizState {
 }
 
 class ChangeQuizAnswerState extends QuizState{}
+
+
+class SubmitQuizLoadingState extends QuizState{}
+class SubmitQuizSuccessState extends QuizState{
+  final int quizGrade ;
+  SubmitQuizSuccessState({required this.quizGrade});
+}
+class SubmitQuizErrorState extends QuizState{
+    final String error;
+   SubmitQuizErrorState({required this.error});
+}
