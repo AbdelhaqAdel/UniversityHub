@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:universityhup/features/student_role/material/domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/student_role/material/presentation/manager/cubit/material_cubit.dart';
 
 import 'file_custom_widget.dart';
 
 class FileGridView extends StatelessWidget {
   const FileGridView({super.key,
-  // required this.material
+  required this.files,
   required this.context1,
   });
-  // final FileEntity file;
+  final List<FileEntity> files;
   final BuildContext context1;
 
   @override
@@ -19,15 +21,16 @@ class FileGridView extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10.w,
                 crossAxisSpacing: 10.h,
-                childAspectRatio: .99,
+                childAspectRatio: .96,
               ),
-              itemCount: 8,
+              itemCount:files.length,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => InkWell(
-             onTap: (){},
-             child: const FileWidget(
-              // file: file,
-              // courseMaterial: null,
+             onTap: (){
+              MaterialCubit.get(context).openFile(filePath: files[index].filePath); 
+             },
+             child: FileWidget(
+              file: files[index],
              ),
            ),
          );

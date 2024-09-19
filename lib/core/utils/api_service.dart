@@ -56,9 +56,6 @@ class DioHelper {
       url, queryParameters: query, data: data,);
   }
 
-
-
-
   static Future<Response> postListFileData({
     required String url,
     Map<String, dynamic>? query,
@@ -89,26 +86,13 @@ class DioHelper {
     );
   }
 
-
   static Future<Response>downloadFile({
     required String networkFilePath,
     required String localFilePath,
     String? token
-
   })async{
-    dio.options.headers={
-      // 'lang':lang,
-      //'authorizatio':token??'',
-      'Content-Type':'application/json',
-      'Accept':'application/json',
-      'Authorization':'Bearer $token',
-      'responseType': ResponseType.bytes,
-    };
     return await dio.download(networkFilePath, localFilePath);
   }
-
-
-
 
   static Future<Response> updateData({
     required String url,

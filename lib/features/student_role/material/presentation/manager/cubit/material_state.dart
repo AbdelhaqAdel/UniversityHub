@@ -12,10 +12,9 @@ class GetAllMaterialsSuccessState extends MaterialsState {
   static void setFolderId({required folderId}){
     currentFolderId=folderId;
   }
-  final List<FolderEntity>? lectures;
-  final List<FolderEntity>? labs;
-  
-  GetAllMaterialsSuccessState({this.labs,this.lectures});
+  final List<FolderEntity> lectures;
+  final List<FolderEntity> labs;
+  GetAllMaterialsSuccessState({required this.labs,required this.lectures});
 }
 class GetAllMaterialsErrorState extends MaterialsState {
   final String error;

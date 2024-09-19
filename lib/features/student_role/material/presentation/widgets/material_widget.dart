@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/style/colors.dart';
+import 'package:universityhup/features/student_role/material/domain/entities/material_folder_entity.dart';
 
 class MaterialWidget extends StatelessWidget {
   const MaterialWidget({
-    // required this.material,
+    required this.material,
     required this.index,
     super.key});
-      // final FolderEntity material;
+      final FolderEntity material;
       final int index;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MaterialWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
              FaIcon(
@@ -38,10 +38,9 @@ class MaterialWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 maxLines: 2,
-                'material name',
-                // ${material.lectureName}
+                // 'material name',
+               '${material.lectureName}',
                overflow: TextOverflow.ellipsis,
-
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: KColors.c1Color),
               ),
             ),
