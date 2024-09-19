@@ -9,7 +9,6 @@ import '../manager/news_cubit.dart';
 import '../manager/news_state.dart';
 import '../widgets/news_body.dart';
 
-final List<NewsEntity> newsEntity = [];
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({super.key});
@@ -22,17 +21,8 @@ class NewsScreen extends StatelessWidget {
               getNewsUseCase: GetNewsUseCase(
                 newsRepo: getIt.get<NewsRepo>(),
               ),
-            )..getNewsUseCase,
-      child: BlocConsumer<NewsCubit, NewsState>(
-        listener: (context, state) {
-          if(state is GetNewsSuccessState){
-            showSnackBar(context: context, message: 'GetNewsSuccessState');
-          }
-        },
-        builder: (context, state) {
-          return const NewsBody();
-        },
-      ),
+            )..getNews(),
+      child: const NewsBody(),
     );
   }
 }
