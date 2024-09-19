@@ -6,10 +6,8 @@ import '../../domain/entities/grade_entity.dart';
 import '../../domain/repositories/grade_repo.dart';
 import '../../domain/use_cases/get_grade_usecase.dart';
 import '../manager/grade_cubit.dart';
-import '../manager/grade_state.dart';
 import '../widgets/grade_body.dart';
 
-final List<GradeEntity> gradeEntity = [];
 
 class GradeScreen extends StatelessWidget {
   const GradeScreen({super.key});
@@ -22,17 +20,8 @@ class GradeScreen extends StatelessWidget {
               getGradeUseCase: GetGradeUseCase(
                 gradeRepo: getIt.get<GradeRepo>(),
               ),
-            )..getGradeUseCase,
-      child: BlocConsumer<GradeCubit, GradeState>(
-        listener: (context, state) {
-          if(state is GetGradeSuccessState){
-            showSnackBar(context: context, message: 'GetGradeSuccessState');
-          }
-        },
-        builder: (context, state) {
-          return const GradeBody();
-        },
-      ),
+            )..getGrade(),
+      child: const GradeBody(),
     );
   }
 }
