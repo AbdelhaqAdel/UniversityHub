@@ -26,9 +26,6 @@ class QuizDataRemoteDataSourceImpl extends QuizDataRemoteDataSource{
      for (var element in list.data['questions']) {
      quizData.add(Questions.fromJson(element));
     }
-    quizData.forEach((element) {
-      print(element.text);
-    });
   }
 
   List<Map<String, dynamic>> submitQuizAnswers = [];
@@ -39,14 +36,12 @@ class QuizDataRemoteDataSourceImpl extends QuizDataRemoteDataSource{
     for (int i = 0; i < quizData.length; i++) {
       submitQuizAnswers.add(
           {'questionId': quizData[i].id, 'answerId': quizAnswers[i]});}
-
     DioHelper.post(token: LoginSuccessState.loginEntity?.token,
      url: EndPoint.submitQuiz, data: {
       'quizId': quizId,
       'answers': submitQuizAnswers,
     }).then((value) {
         quizGrade = value.data['totalGrade'];
-        print('Quiz Grade ${value.data['totalGrade']}');
     });
     return Future.value(quizGrade);
   }

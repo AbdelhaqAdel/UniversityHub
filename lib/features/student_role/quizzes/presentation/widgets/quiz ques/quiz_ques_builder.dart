@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quez%20ques/quiz_page_view.dart';
+import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz%20ques/quiz_page_view.dart';
 import '../../manager/cubit/quiz_cubit.dart';
 
 class QuesBuilder extends StatelessWidget {

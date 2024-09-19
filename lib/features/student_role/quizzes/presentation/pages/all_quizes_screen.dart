@@ -4,8 +4,8 @@ import 'package:universityhup/core/functions/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 
-import '../../domain/use_cases/quiz_data_usecase.dart';
-import '../../domain/use_cases/quiz_usecase.dart';
+import '../../domain/use_cases/quiz_data_use_case.dart';
+import '../../domain/use_cases/quiz_use_case.dart';
 import '../manager/cubit/quiz_cubit.dart';
 import '../widgets/quiz_builder.dart';
 
@@ -15,7 +15,7 @@ class QuizzesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=>QuizCubit(quizUsecase: getIt.get<QuizUsecase>(),
+      create: (context)=>QuizCubit(quizUseCase: getIt.get<QuizUseCase>(),
       quizDataUseCase: getIt.get<FetchQuizDataUseCase>(),
       submitQuizUseCase: getIt.get<SubmitQuizUseCase>())..fetchAllQuizzes(),
       child: BlocConsumer<QuizCubit,QuizState>(

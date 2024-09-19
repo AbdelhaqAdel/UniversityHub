@@ -41,7 +41,7 @@ class Questions {
     data['questionNumber'] = questionNumber;
     data['grade'] = grade;
     data['createdAt'] = createdAt;
-    if (this.answers != null) {
+    if (answers != null) {
       data['answers'] = answers!.map((v) => v.toJson()).toList();
     }
     return data;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quez%20ques/quiz_ques_widget.dart';
+import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz%20ques/quiz_ques_widget.dart';
 import '../../../data/models/question_data_model.dart';
 
 class QuizPageView extends StatelessWidget{

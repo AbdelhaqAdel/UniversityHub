@@ -16,7 +16,7 @@ class QuizResultScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 50,),
-                 QuizResultBuilder(),
+                 const QuizResultBuilder(),
                   const Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(15.0),

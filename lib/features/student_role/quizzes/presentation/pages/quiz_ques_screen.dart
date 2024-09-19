@@ -9,7 +9,7 @@ import 'package:universityhup/core/widgets/custom_button.dart';
 import 'package:universityhup/features/student_role/quizzes/data/models/question_data_model.dart';
 
 import '../manager/cubit/quiz_cubit.dart';
-import '../widgets/quez ques/quiz_ques_builder.dart';
+import '../widgets/quiz ques/quiz_ques_builder.dart';
 
 class QuizQuesScreen extends StatefulWidget {
   const QuizQuesScreen({super.key,});

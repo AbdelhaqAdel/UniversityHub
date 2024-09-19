@@ -2,19 +2,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import '../../../data/models/question_data_model.dart';
 import '../../../domain/entities/quiz_entity.dart';
-import '../../../domain/use_cases/quiz_data_usecase.dart';
-import '../../../domain/use_cases/quiz_usecase.dart';
+import '../../../domain/use_cases/quiz_data_use_case.dart';
+import '../../../domain/use_cases/quiz_use_case.dart';
 part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
-  QuizCubit({required this.quizUsecase,required this.quizDataUseCase,required this.submitQuizUseCase}) : super(QuizInitial());
+  QuizCubit({required this.quizUseCase,required this.quizDataUseCase,required this.submitQuizUseCase}) : super(QuizInitial());
   static QuizCubit get(context) => BlocProvider.of(context);
   SubmitQuizUseCase submitQuizUseCase;
-  final QuizUsecase quizUsecase; 
+  final QuizUseCase quizUseCase; 
   final FetchQuizDataUseCase quizDataUseCase; 
   Future<void>fetchAllQuizzes()async{
     emit(GetAllQuizzesLoadingState());
-    final result=await quizUsecase.call();
+    final result=await quizUseCase.call();
     result.fold(
        (error)=>emit(GetAllQuizzesErrorState(error:error.message )),
        (quizzes)
@@ -39,7 +39,6 @@ class QuizCubit extends Cubit<QuizState> {
 
   List<String>? allQuizAnswers;
   void submitQuiz({required String quizId})async{
-    print(allQuizAnswers?.length);
     emit(SubmitQuizLoadingState());
     final response=await submitQuizUseCase.call(quizId,allQuizAnswers);
     response.fold((error)=>emit(SubmitQuizErrorState(error: error.message)),
