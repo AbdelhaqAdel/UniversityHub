@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/functions/app_bar.dart';
+import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';
 import 'package:universityhup/features/student_role/quizzes/data/models/question_data_model.dart';
 
@@ -20,6 +22,7 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
   bool isBack=false;
   var boardController = PageController();
   List<Questions>?ques;
+  String? quizId;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<QuizCubit, QuizState>(
@@ -133,12 +136,10 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                               width: double.infinity,
                               // containerHeight: 50,
                               onTap: () {
-                                // if (islast) {
-                                //   cubit.SumitQuiz();
-                                //     NavigateAndFinish(context,
-                                //         const QuizResultScreen());
-                                // }
-                                //  else {
+                                if (isLast) {
+                                  GoRouter.of(context).push(AppRouter.kQuizResultScreen,);
+                                }
+                                 else {
                                   boardController.nextPage(
                                     duration: const Duration(
                                       milliseconds: 750,
@@ -146,7 +147,7 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                                     curve: Curves.fastLinearToSlowEaseIn,
                                   );
 
-                                // }
+                                }
                                 setState(() {
                                   isBack=false;
                                 });

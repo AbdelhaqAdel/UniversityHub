@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/utils/app_router.dart';
+import 'package:universityhup/features/student_role/quizzes/presentation/manager/cubit/quiz_cubit.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_custom_widget.dart';
 import '../../domain/entities/quiz_entity.dart';
 
@@ -20,6 +21,7 @@ class QuizzesListView extends StatelessWidget {
         onTap: (){
       //  GetAllCoursesSuccessState.setCourseName(coursename: quiz[index].name);
       // QuizCubit.get(context).fetchQuizData();
+      GetAllQuizDataSuccessState.setQuizId(quizId: quiz[index].id);
       AppRouter.context1=context1;
        GoRouter.of(context1).push(AppRouter.kQuizzesQues,extra: quiz[index].id,);
         },

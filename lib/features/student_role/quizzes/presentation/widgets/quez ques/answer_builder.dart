@@ -20,7 +20,7 @@ class AnswerBuilder extends StatelessWidget {
         else if(state is GetAllQuizDataErrorState){
           return Text(state.error);
         }
-        else{
+        else {
           return const Center(child: CircularProgressIndicator(),);
         }
       }
