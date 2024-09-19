@@ -19,6 +19,7 @@ class GradeRemoteDataSourceImpl extends GradeRemoteDataSource {
       token: token,
     ).then((value) async {
       if (value.statusCode == 200) {
+        print(currentCycleId);
         var json = value.data;
         gradeEntityList= setGradeData(json);
       }
