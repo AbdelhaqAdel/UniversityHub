@@ -1,15 +1,15 @@
-import 'dart:io';
 
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../models/assignment_info_model.dart';
 import '../models/assignment_model.dart';
+import '../models/submit_assignment_input.dart';
 
 abstract class AssignmentRemoteDataSource {
   Future<List<AssignmentEntity>> getAssignment();
   Future<AssignmentInfoModel?> getAssignmentInfo({required String assignmentId});
-  Future submitAssignment({required String assignmentId});
+  Future submitAssignment({required SubmitAssignmentInputModel submitAssignmentInputModel});
 }
 
 class AssignmentRemoteDataSourceImpl extends AssignmentRemoteDataSource {
@@ -17,13 +17,12 @@ class AssignmentRemoteDataSourceImpl extends AssignmentRemoteDataSource {
   Future<List<AssignmentEntity>> getAssignment() async {
     List<AssignmentEntity> assignmentEntityList = [];
     await DioHelper.get(
-      url: 'Students/CurrentCourseTasks?CycleId=$currentCycleId',
+      url: 'Students/CurrentCoursesTasks?CycleId=$currentCycleId',
       token: token,
     ).then((value) async {
       if (value.statusCode == 200) {
         var json = value.data;
          assignmentEntityList= setAssignmentData(json);
-         print(assignmentEntityList.length);
       }
     });
     return assignmentEntityList;
@@ -32,7 +31,6 @@ class AssignmentRemoteDataSourceImpl extends AssignmentRemoteDataSource {
   List<AssignmentEntity> setAssignmentData(
       List<dynamic> json) {
     List<AssignmentEntity> assignmentEntityList = [];
-
     for (var element in json) {
       assignmentEntityList.add(AssignmentModel.fromJson(element));
     }
@@ -41,12 +39,11 @@ class AssignmentRemoteDataSourceImpl extends AssignmentRemoteDataSource {
 
 
   @override
-  Future submitAssignment({required String assignmentId}) async{
-    List<File>?files;
+  Future submitAssignment({required SubmitAssignmentInputModel submitAssignmentInputModel}) async{
+
     await DioHelper.postListFileData(
-        token: token,
-        url: 'Students/File/Upload?taskid=$assignmentId',
-        files: files)
+        url: 'Students/File/Upload?taskid=${submitAssignmentInputModel.taskId}',
+        files: submitAssignmentInputModel.file)
         .then((value) {
       if (value.statusCode == 200) {
         var json = value.data;

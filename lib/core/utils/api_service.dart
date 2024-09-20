@@ -62,7 +62,6 @@ class DioHelper {
   static Future<Response> postListFileData({
     required String url,
     Map<String, dynamic>? query,
-    String? token,
     Map<String, dynamic>? data,
     List<File>?files,
   }) async {
@@ -175,7 +174,7 @@ class DioHelperForFiles{
     dio.options.headers={
 
     };
-    return await dio.download('https://www.nabilramadan.runasp.net/Uploads/Assignments/1ba66f86-8b9a-43c4-9f4e-64ffbf45f71f.jpg', localFilePath);
+    return await dio.download(networkFilePath, localFilePath);
   }
 
 
