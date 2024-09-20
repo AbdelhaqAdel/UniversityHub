@@ -2,12 +2,15 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 
+import '../constants/constant.dart';
+
 
 class DioHelper {
   static late Dio dio;
 
   static init() {
-    dio = Dio(BaseOptions(
+    dio = Dio(
+        BaseOptions(
       baseUrl: 'https://lms.runasp.net/api/',
       receiveDataWhenStatusError: true,
     ));
@@ -89,7 +92,6 @@ class DioHelper {
   static Future<Response>downloadFile({
     required String networkFilePath,
     required String localFilePath,
-    String? token
   })async{
     return await dio.download(networkFilePath, localFilePath);
   }
@@ -140,40 +142,41 @@ class DioHelper {
         url, queryParameters: query, data: data);
   }
 
+
+
 }
 
 
-// class DioHelper2{
-//
-//   static late Dio dio2;
-//
-//   static initDio() {
-//     dio2 = Dio(BaseOptions(
-//       baseUrl: 'https://lms.runasp.net/api/',//'https://nabilramadan.bsite.net/api/',
-//       receiveDataWhenStatusError: true,
-//     ));
-//     (dio2.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
-//       client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
-//       return client;
-//     };
-//   }
-//
-//
-//   static Future<Response>DownloadFile2({
-//     required String networkfilePath,
-//     required String localfilePath,
-//     String? token
-//
-//   })async{
-//     dio2.options.headers={
-//       // 'lang':lang,
-//       //'authorizatio':token??'',
-//       //'Content-Type':'application/json',
-//       //'Accept':'application/json',
-//       //'Authorization':'Bearer $token',
-//       //'responseType': ResponseType.bytes,
-//     };
-//     return await dio2.download(networkfilePath, localfilePath);
-//   }
-//
-// }
+class DioHelperForFiles{
+
+  static late Dio dio;
+
+  static init() {
+    dio = Dio(
+    //     BaseOptions(
+    //   baseUrl: 'https://lms.runasp.net/api/',//'https://nabilramadan.bsite.net/api/',
+    //   receiveDataWhenStatusError: true,
+    // )
+    );
+    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+  }
+
+
+  static Future<Response>downloadFile({
+    required String networkFilePath,
+    required String localFilePath,
+
+  })async{
+    dio.options.headers={
+
+    };
+    return await dio.download('https://www.nabilramadan.runasp.net/Uploads/Assignments/1ba66f86-8b9a-43c4-9f4e-64ffbf45f71f.jpg', localFilePath);
+  }
+
+
+}

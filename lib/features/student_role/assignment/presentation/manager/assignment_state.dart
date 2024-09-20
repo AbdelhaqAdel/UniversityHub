@@ -7,8 +7,10 @@ final class AssignmentInitial extends AssignmentState {}
 
 class GetAssignmentLoadingState extends AssignmentState{}
 class GetAssignmentSuccessState extends AssignmentState{
-  final List<AssignmentEntity>  assignmentEntity;
-  GetAssignmentSuccessState({required this.assignmentEntity});
+  static  List<AssignmentEntity>  pendingAssignmentEntity=[];
+  static List<AssignmentEntity>  completedAssignmentEntity=[];
+
+  GetAssignmentSuccessState();
 }
 class GetAssignmentErrorState extends AssignmentState{
   final String errMessage;

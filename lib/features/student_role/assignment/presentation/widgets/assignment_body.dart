@@ -7,45 +7,60 @@ import 'assignment_dashboard.dart';
 import 'complete_assignment_list_view.dart';
 import 'custom_tab_bar.dart';
 
-class AssignmentBody extends StatelessWidget {
+class AssignmentBody extends StatefulWidget {
   const AssignmentBody({
     super.key,
   });
 
   @override
+  State<AssignmentBody> createState() => _AssignmentBodyState();
+}
+
+class _AssignmentBodyState extends State<AssignmentBody>
+    with SingleTickerProviderStateMixin {
+  late final TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2, // Number of tabs
-      initialIndex: 0,
+      initialIndex: tabController.index,
       child: Scaffold(
         body: SafeArea(
           child: Column(
             children: [
-              const SizedBox(height: 30,),
-              DefaultAppBar(
-                  text: "cubit.currentCourseName",
-                  context:context),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
+              DefaultAppBar(text: "cubit.currentCourseName", context: context),
+              const SizedBox(
+                height: 30,
+              ),
               const AssignmentDashboard(),
-              const CustomTabBar(),
+               CustomTabBar(tabController: tabController,),
               const SizedBox(
                 height: 15,
               ),
               Expanded(
-                child: ConditionalBuilder(condition: assignmentTabIndex==0,
-                  builder: (context) =>const PendingAssignmentListView() ,
-                  fallback: (context) => const CompleteAssignmentListView(),
+                child: TabBarView(
+                  controller: tabController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: const [
+                    PendingAssignmentListView(),
+                    CompleteAssignmentListView(),
+                  ],
                 ),
               ),
             ],
           ),
-
         ),
       ),
     );
   }
 }
-
-
-
-
