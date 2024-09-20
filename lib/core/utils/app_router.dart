@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
+import 'package:universityhup/features/student_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
@@ -21,11 +22,11 @@ abstract class AppRouter {
   static const kAboutCourse = '/AboutCourseScreen';
   static const kQuizzes = '/QuizzesScreen';
   static const kQuizzesQues = '/QuizQuesScreen';
+  static const kMaterialFolders = '/MaterialScreen';
   static const kMaterialFile = '/MaterialFileScreen';
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
   static const kQuizResultScreen='/QuizResultScreen';
-
   //---------------------------
 
   static BuildContext? context1;
@@ -69,8 +70,10 @@ abstract class AppRouter {
       GoRoute(
           path: kMaterialFile,
           builder: (context, state) {
+          final lecId = state.extra as String;
+
             return BlocProvider.value(
-              value: context1!.read<MaterialCubit>(),
+              value: context1!.read<MaterialCubit>()..fetchMaterialFiles(lecId: lecId),
               child: const MaterialFileScreen(),
             );
           }),
@@ -78,7 +81,7 @@ abstract class AppRouter {
         path: kGrade,
         builder: (context, state) => const GradeScreen(),
       ),
-  GoRoute(
+    GoRoute(
         path: kQuizResultScreen,
        builder: (context, state) {
         //  final quizId = state.extra as String;
@@ -89,6 +92,12 @@ abstract class AppRouter {
        },
      ),
       
+      GoRoute(
+        path: kMaterialFolders,
+        builder: (context, state) => const MaterialScreen(),
+      ),
+
+
     ],
   );
 }

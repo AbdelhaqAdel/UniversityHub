@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:universityhup/core/style/colors.dart';
+import 'package:universityhup/features/student_role/material/domain/entities/material_file_entity.dart';
 
 
 class FileWidget extends StatelessWidget {
   const FileWidget({super.key,
-  //  required this.folder, required this.file
+  required this.file
    });
-  // final FolderEntity folder;
-  // final FileEntity file;
+  final FileEntity file;
   @override
   Widget build(BuildContext context) {
     var screenSize=MediaQuery.of(context).size;
@@ -31,8 +31,9 @@ class FileWidget extends StatelessWidget {
             color: KColors.subTitleColor.withOpacity(.7),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: const Text(
-              'file name'
+          child: Text(
+              file.filePath.split('.').last,
+              style:Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white), 
             ),
           ),
         
@@ -48,13 +49,13 @@ class FileWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                 'file name',
-                  style: Theme.of(context).textTheme.bodySmall,
+                 file.fileName,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines:1,
                 ),
                 Text(
-                      '12/12/',
+              '${file.createdAt.split('T').first} at ${file.createdAt.split('T').last}',
                   style:Theme.of(context).textTheme.labelSmall,)
               ],
             ),

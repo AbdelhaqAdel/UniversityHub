@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class TapbarWidget extends StatelessWidget {
-  const TapbarWidget({super.key,required this.onTap,required this.tapIndex});
+class TapBarWidget extends StatelessWidget {
+  const TapBarWidget({super.key,required this.onTap,required this.tapIndex});
   final Function(int) onTap;
   final int tapIndex;
   @override

@@ -46,6 +46,8 @@ dependencies:
   # conditional_builder_null_safety: ^0.0.6
   file_picker: ^6.1.1
   open_file: ^3.5.4
+#  file_picker: ^6.1.1
+  open_file: ^3.3.2
   path_provider: ^2.1.1
 #  dropdown_button2: ^2.3.9
 #  shared_preferences: ^2.2.2

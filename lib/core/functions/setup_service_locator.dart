@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_local_data_source.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_datasource.dart';
 import 'package:universityhup/features/student_role/quizzes/data/data_sources/quiz_data_remote_data_Source.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import 'package:universityhup/features/news/data/data_sources/news_remote_data_source.dart';
@@ -50,11 +51,15 @@ void setupServiceLocator() {
   getIt.registerSingleton<SubmitQuizUseCase>(SubmitQuizUseCase
     (quizDataRepo: QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
 
+    getIt.registerSingleton<MaterialFilesRepository >(MaterialFilesRepository
+    (filesDataSource: MaterialFileRemoteDataSourceImpl(), fileLocalDataSource: MaterialFileLocalDataSourceImpl(),));
+
    getIt.registerSingleton<MaterialUsecase>(MaterialUsecase
     (materialRepo: MaterialRepository(materialDataSource: MaterialRemoteDatasourceImpl())));
 
-    getIt.registerSingleton<MaterialFilesUsecase>(MaterialFilesUsecase
-    ( filesRepo: MaterialFilesRepository(filesDataSource: MaterialFileRemoteDatasourceImpl())));
+    getIt.registerSingleton<MaterialFilesUseCase>(MaterialFilesUseCase
+    ( filesRepo: MaterialFilesRepository(filesDataSource: MaterialFileRemoteDataSourceImpl(), 
+    fileLocalDataSource: MaterialFileLocalDataSourceImpl())));
 
 
   getIt.registerSingleton<AssignmentRepo>(
