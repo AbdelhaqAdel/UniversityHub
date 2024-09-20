@@ -33,3 +33,7 @@ class SubmitAssignmentErrorState extends AssignmentState{
   final String errMessage;
   SubmitAssignmentErrorState(this.errMessage);
 }
+
+class PickFileLoading extends AssignmentState{}
+class PickFileError extends AssignmentState{}
+class PickFileSuccess extends AssignmentState{}

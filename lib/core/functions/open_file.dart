@@ -1,91 +1,44 @@
+import 'dart:io';
+
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../utils/api_service.dart';
 
-void openFile({required String networkFile}) async {
-  var dir = await getExternalStorageDirectory();
-  String filePath = "${dir?.path}/${networkFile.split('/').last}";
-  print(' ---------------');
-  print('filePath');
-  print(filePath);
-  print(' ---------------');
 
 
- await OpenFile.open(filePath).then((value) {
-    print(' ---------------');
-    print('open file success');
-    print(' ---------------');
-    if (value.message == 'the $filePath file does not exist') {
-      print(' ---------------');
-      print('if open file success');
-      print(' ---------------');
-      loadPDF(networkFile: networkFile);
-    }
-  }).catchError((error) {
-    loadPDF(networkFile: networkFile);
-    print(' ---------------');
-    print('open file fun catch error $error');
-    print(' ---------------');
-  });
-}
-
-
-// Function to load the PDF from the network
-Future<void> loadPDF({required String networkFile}) async {
-  var dir = await getExternalStorageDirectory();
-  String filePath = "${dir?.path}/${networkFile.split('/').last}";
-  // Download file using Dio
+Future<void> downloadAndOpenFile(String url) async {
   try {
-    await DioHelperForFiles.downloadFile( networkFilePath: networkFile, localFilePath: filePath).then((onValue)async{
-      print(' ---------------');
-      print('downloadFile');
-      print(' ---------------');
-     await OpenFile.open(filePath);
-      // openFile(networkFile: filePath);
-    });
-
+    var dir = await getExternalStorageDirectory();
+    String fileName = url.split('/').last;
+    String filePath = "${dir?.path}/$fileName";
+    await DioHelperForFiles.dio.download(url, filePath);
+    OpenFile.open(filePath);
   } catch (error) {
-    print(' ---------------');
-    print('loadPDF file fun catch error  $error');
-    print(' ---------------');
+    print('Error: $error');
   }
 }
 
-List<PlatformFile> pickedFileList = [];
-// Function to pick a file using FilePicker
-void pickFile() async {
+
+
+Future<List<File>> pickFile() async {
+  List<File> pickedFile = [];
   FilePickerResult? result = await FilePicker.platform.pickFiles(
     type: FileType.custom,
     allowMultiple: false,
     allowedExtensions: ['png', 'cdr', 'psd', 'jpeg', 'pdf'],
   );
-
   if (result != null) {
-    pickedFileList = result.files;
-    print('Files picked: ${pickedFileList.length}');
-  } else {
-    print('File picking cancelled.');
+    for (var element in result.files) {
+      pickedFile.add(File(element.path!));
+    }
+    return pickedFile;
   }
+  return pickedFile;
+
 }
 
-// // Another file picker function for picking assignment files
-// List<File> all_assign_files_List = [];
-//
-// void pick_File() async {
-//   FilePickerResult? result = await FilePicker.platform.pickFiles(
-//     type: FileType.custom,
-//     allowMultiple: false,
-//     allowedExtensions: ['png', 'cdr', 'psd', 'jpeg', 'jpg', 'pdf'],
-//   );
-//
-//   if (result != null) {
-//     result.files.forEach((element) {
-//       all_assign_files_List.add(File(element.path!));
-//     });
-//     print('Assignment files picked: ${all_assign_files_List.length}');
-//   } else {
-//     print('File picking cancelled.');
-//   }
-// }
+
+
+

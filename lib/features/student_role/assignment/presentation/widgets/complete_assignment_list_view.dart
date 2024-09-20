@@ -36,6 +36,7 @@ class _CompleteAssignmentListViewState
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => InkWell(
+                borderRadius: BorderRadius.circular(20),
                   onTap: () {},
                   child: CompleteAssignment(
                       assignmentEntity: GetAssignmentSuccessState
