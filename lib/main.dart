@@ -18,6 +18,7 @@ void main() async {
   setupServiceLocator();
   await hiveSetup();
   DioHelper.init();
+  DioHelperForFiles.init();
   Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }

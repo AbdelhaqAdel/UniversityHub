@@ -13,11 +13,16 @@ import '../../domain/use_cases/submit_assignment_usecase.dart';
 import '../manager/assignment_cubit.dart';
 import '../widgets/assignment_body.dart';
 
-final List<AssignmentEntity> assignmentEntity = [];
 
-class AssignmentScreen extends StatelessWidget {
+
+class AssignmentScreen extends StatefulWidget {
   const AssignmentScreen({super.key});
 
+  @override
+  State<AssignmentScreen> createState() => _AssignmentScreenState();
+}
+
+class _AssignmentScreenState extends State<AssignmentScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -31,17 +36,8 @@ class AssignmentScreen extends StatelessWidget {
               ),
               submitAssignmentUseCase: SubmitAssignmentUseCase(
                 assignmentRepo: getIt.get<AssignmentRepo>(),
-              ))..getAssignmentUseCase,
-      child: BlocConsumer<AssignmentCubit, AssignmentState>(
-        listener: (context, state) {
-          if(state is GetAssignmentSuccessState){
-            showSnackBar(context: context, message: 'GetAssignmentSuccessState');
-          }
-        },
-        builder: (context, state) {
-          return const AssignmentBody();
-        },
-      ),
+              ))..getAssignment(),
+      child: const AssignmentBody(),
     );
   }
 }

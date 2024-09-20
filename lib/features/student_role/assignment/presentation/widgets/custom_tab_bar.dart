@@ -3,25 +3,24 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomTabBar extends StatefulWidget {
   const CustomTabBar({
-    super.key,
+    super.key,    required this.tabController,
   });
-
+  final TabController tabController;
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
 }
-int assignmentTabIndex=0;
+
 class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     return TabBar(
+      controller:widget.tabController ,
       onTap: (index) {
         setState(() {
-          assignmentTabIndex=index;
-
         });
         },
       indicatorColor:
-      assignmentTabIndex==0? Colors.red : Colors.teal,
+      widget.tabController.index==0? Colors.red : Colors.teal,
       indicatorWeight: 5,
       splashBorderRadius: BorderRadius.circular(25),
       indicatorSize: TabBarIndicatorSize.label,
@@ -34,10 +33,10 @@ class _CustomTabBarState extends State<CustomTabBar> {
             children: [
               FaIcon(
                 FontAwesomeIcons.clock,
-                color: assignmentTabIndex == 0
+                color: widget.tabController.index == 0
                     ? Colors.red
                     : Colors.black.withOpacity(.6),
-                size: assignmentTabIndex == 0 ? 25 : 22,
+                size: widget.tabController.index == 0 ? 25 : 22,
               ),
               const SizedBox(
                 width: 15,
@@ -45,8 +44,8 @@ class _CustomTabBarState extends State<CustomTabBar> {
               Text(
                 'Pending',
                 style: TextStyle(
-                  fontSize: assignmentTabIndex == 0 ? 20 : 18,
-                  color: assignmentTabIndex == 0
+                  fontSize: widget.tabController.index == 0 ? 20 : 18,
+                  color: widget.tabController.index == 0
                       ? Colors.red
                       : Colors.black.withOpacity(.6),
                 ),
@@ -61,10 +60,10 @@ class _CustomTabBarState extends State<CustomTabBar> {
             children: [
               FaIcon(
                 FontAwesomeIcons.circleCheck,
-                color:assignmentTabIndex == 1
+                color:widget.tabController.index == 1
                     ? Colors.teal
                     : Colors.black.withOpacity(.6),
-                size: assignmentTabIndex == 1 ? 25 : 22,
+                size: widget.tabController.index == 1 ? 25 : 22,
               ),
               const SizedBox(
                 width: 15,
@@ -72,8 +71,8 @@ class _CustomTabBarState extends State<CustomTabBar> {
               Text(
                 'Complete',
                 style: TextStyle(
-                  fontSize: assignmentTabIndex == 1 ? 20 : 18,
-                  color: assignmentTabIndex == 1
+                  fontSize: widget.tabController.index == 1 ? 20 : 18,
+                  color: widget.tabController.index == 1
                       ? Colors.teal
                       : Colors.black.withOpacity(.6),
                 ),
