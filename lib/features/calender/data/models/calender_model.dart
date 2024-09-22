@@ -26,25 +26,3 @@ class CalenderModel extends CalendarEntity {
   }
 }
 
-
-// class GetCalenderDayEventModel {
-//   String? startDate;
-//   String? endDate;
-//   String? body;
-
-//   GetCalenderDayEventModel({this.startDate, this.endDate, this.body});
-
-//   GetCalenderDayEventModel.fromJson(Map<String, dynamic> json) {
-//     startDate = json['start'];
-//     endDate = json['end'];
-//     body = json['body'];
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     data['startDate'] = this.startDate;
-//     data['endDate'] = this.endDate;
-//     data['body'] = this.body;
-//     return data;
-//   }
-// }

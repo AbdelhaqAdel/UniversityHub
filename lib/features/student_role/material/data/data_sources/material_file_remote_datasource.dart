@@ -37,7 +37,6 @@ class MaterialFileRemoteDataSourceImpl extends MaterialFileRemoteDataSource{
     var dir = await getExternalStorageDirectory();
     String localFilePath = "${dir?.path}/${networkFile.split('/').last}";
     DioHelper.downloadFile(
-       token: token,
         networkFilePath: networkFile,
          localFilePath: localFilePath);
         return localFilePath;
