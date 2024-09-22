@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/utils/api_service.dart';
 import 'package:universityhup/core/utils/end_point.dart';
-import 'package:universityhup/features/login/presentation/manager/login_cubit/login_cubit.dart';
 
 import '../../domain/entities/quiz_entity.dart';
 import '../models/quiz_model.dart';
@@ -14,8 +14,8 @@ class QuizzesRemoteDataSourceImpl extends QuizzesRemoteDataSource{
   
   @override
   Future<List<QuizEntity>> fetchAllQuizzes()async {
-    await DioHelper.get(url:EndPoint.allQuizzes,
-    token: LoginSuccessState.loginEntity?.token
+    await DioHelper.get(url:'${EndPoint.allQuizzes}$currentCycleId',
+    token:token
      ).then((value){
       fillQuizList(value);
     });

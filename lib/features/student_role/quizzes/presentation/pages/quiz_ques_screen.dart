@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/functions/app_bar.dart';
+import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';
 import 'package:universityhup/features/student_role/quizzes/data/models/question_data_model.dart';
@@ -36,12 +37,12 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
           body: SafeArea(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: MediaQuery.of(context).size.height*.04,
                 ),
                 DefaultAppBar(context: context),
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: MediaQuery.of(context).size.height*.06,
                 ),
                  Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.0.w),
@@ -54,13 +55,13 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                       Text(
                         '1',
                        style:Theme.of(context).textTheme.titleLarge
-
+            
                       ),
                       const Spacer(),
                       Text(
                         '1:25 ',
                        style:Theme.of(context).textTheme.titleLarge
-
+            
                       ),
                       const SizedBox(
                         width: 5,
@@ -103,8 +104,8 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                   child: Row(
                     children: [
                      isStart? Container(
-                        height: 50,
-                        width: 100,
+                        height: MediaQuery.of(context).size.height*.07,
+                        width: MediaQuery.of(context).size.width*.25,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(25),
@@ -133,10 +134,12 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                             child: CustomButton(
+                              color: KColors.buttonColor,
+                              height: MediaQuery.of(context).size.height*.07,
                               width: double.infinity,
-                              // containerHeight: 50,
                               onTap: () {
                                 if (isLast) {
+                                  print('-------------------quiz id--------------${GetAllQuizDataSuccessState.quizId}');
                                   GoRouter.of(context).push(AppRouter.kQuizResultScreen,);
                                 }
                                  else {
@@ -146,7 +149,7 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                                     ),
                                     curve: Curves.fastLinearToSlowEaseIn,
                                   );
-
+            
                                 }
                                 setState(() {
                                   isBack=false;

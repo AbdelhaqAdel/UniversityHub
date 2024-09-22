@@ -1,4 +1,3 @@
-import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
 
 abstract class EndPoint{
 
@@ -7,7 +6,7 @@ abstract class EndPoint{
   static const String login='Account/login';
   static const String news ='News';
   static const String allCourses='Students/CurrentCourcesInfo';
-  static String allQuizzes= 'Students/CurrentCourseQuizzes?cycleId=${GetAllCoursesSuccessState.currentCourseId}';
+  static String allQuizzes= 'Students/CurrentCourseQuizzes?cycleId=';
   static String quizData='Students/Quiz?quizId=';
   static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=';
   static String submitQuiz= 'Students/quiz/submit';

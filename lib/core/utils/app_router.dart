@@ -86,7 +86,7 @@ abstract class AppRouter {
        builder: (context, state) {
         //  final quizId = state.extra as String;
          return BlocProvider.value(
-           value: context1!.read<QuizCubit>()..submitQuiz(quizId: GetAllQuizDataSuccessState.quizId!),
+           value: context1!.read<QuizCubit>()..submitQuiz(quizId:GetAllQuizDataSuccessState.quizId!),
            child: const QuizResultScreen(),
          );
        },
