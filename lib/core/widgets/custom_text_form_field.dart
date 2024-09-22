@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../style/colors.dart';
 import '../style/textStyles.dart';
 import 'glass_box.dart';
@@ -13,8 +12,12 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.obscureText,
-    required this.suffix, required this.borderRadius,
-  });
+    required this.suffix, 
+    required this.borderRadius,
+    this.cursorColor,
+    this.height,
+    this.withBorder
+    });
 
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -23,10 +26,13 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final Widget suffix;
   final double borderRadius;
+  final Color? cursorColor;
+  final double? height;
+  final bool? withBorder;
   @override
   Widget build(BuildContext context) {
     return GlassBox(widget: SizedBox(
-      height: 70,
+      height:height?? 70,
       width: MediaQuery.of(context).size.width<600? MediaQuery.of(context).size.width: 600,
       child: TextFormField(
         controller: controller,
@@ -39,8 +45,7 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         },
         textAlignVertical: TextAlignVertical.center,
-        cursorColor: KColors.primaryColor,
-
+        cursorColor:cursorColor?? KColors.primaryColor,
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
         decoration: InputDecoration(
           prefixIcon: Padding(
@@ -77,7 +82,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
       ),
     ),  color: Colors.white.withOpacity(.3),
-      border: true,
+      border:withBorder?? true,
       borderRadius: borderRadius,
       x: 20,
       y: 20,);

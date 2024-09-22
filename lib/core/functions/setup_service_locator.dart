@@ -1,4 +1,8 @@
 import 'package:get_it/get_it.dart';
+import 'package:universityhup/features/calender/data/data_sources/calender_remote_data_source.dart';
+import 'package:universityhup/features/calender/data/repositories/calender_repo_impl.dart';
+import 'package:universityhup/features/calender/domain/use_cases/add_to_calender_use_case.dart';
+import 'package:universityhup/features/calender/domain/use_cases/get_calender_usecase.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_local_data_source.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
@@ -60,7 +64,12 @@ void setupServiceLocator() {
     getIt.registerSingleton<MaterialFilesUseCase>(MaterialFilesUseCase
     ( filesRepo: MaterialFilesRepository(filesDataSource: MaterialFileRemoteDataSourceImpl(), 
     fileLocalDataSource: MaterialFileLocalDataSourceImpl())));
+    
+     getIt.registerSingleton<GetCalendarDayEventsUseCase>(GetCalendarDayEventsUseCase
+    (CalendarRepositoryImpl(calenderRemoteDataSourceImpl: CalenderRemoteDataSourceImpl())));
 
+   getIt.registerSingleton<AddEventToCalendarUseCase>(AddEventToCalendarUseCase
+    (CalendarRepositoryImpl(calenderRemoteDataSourceImpl: CalenderRemoteDataSourceImpl())));
 
   getIt.registerSingleton<AssignmentRepo>(
     AssignmentRepoImpl(

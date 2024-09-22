@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universityhup/features/calender/presentation/pages/calender_screen.dart';
 import 'package:universityhup/features/courses/presentation/pages/all_courses_screen.dart';
 
 import '../../../../news/presentation/pages/news_screen.dart';
@@ -19,7 +19,7 @@ class LayoutCubit extends Cubit<LayoutState> {
     const CoursesScreen(),
     const NewsScreen(),
     const CoursesScreen(),
-    const CoursesScreen(),
+    const CalenderScreen(),
     const UserScreen(),
   ];
   void onTapNavigationBar(index) {
