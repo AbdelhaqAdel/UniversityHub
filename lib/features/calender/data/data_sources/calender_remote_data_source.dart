@@ -19,7 +19,6 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
       url: 'Calendar/GetByStartAndEnd?start=$startDate&end=$endDate',
       token: token,
     ).then((value){
-            print('event date $startDate $endDate');
       fillCalenderList(value);
     });
     return dayEvents;
@@ -29,12 +28,7 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
      for (var element in list.data) {
      dayEvents.add(CalenderModel.fromJson(element));
     }
-    print('--------------------------------');
-    dayEvents.forEach((v){
-      print(v.eventBody);
-    });
   }
-
 
     @override
   Future<String> addEventToCalendar({required String startDate, required String endDate, required String eventBody}) async {
@@ -43,7 +37,6 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
       'end':  endDate.toString(),
       'body': eventBody,
     }).then((value) {
-            print('ssssssss${value.data}');
       return value.data;
     });
     return '';
