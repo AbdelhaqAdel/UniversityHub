@@ -5,6 +5,7 @@ import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/core/widgets/screen_path.dart';
 import 'package:universityhup/core/widgets/tapbar_widget.dart';
 import 'package:universityhup/features/student_role/material/data/repositories/material_files_repo_impl.dart';
+import 'package:universityhup/features/student_role/material/presentation/widgets/labs_builder.dart';
 
 import '../../domain/use_cases/material_files_usecase.dart';
 import '../../domain/use_cases/material_usecase.dart';
@@ -12,12 +13,14 @@ import '../manager/cubit/material_cubit.dart';
 import '../widgets/lec_builder.dart';
 
 class MaterialScreen extends StatelessWidget {
-  const MaterialScreen({super.key});
+   MaterialScreen({super.key});
+  // TabController tabController;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context)=> MaterialCubit(
-        materialUsecase: getIt<MaterialUsecase>(),fileUsecase: getIt<MaterialFilesUseCase>(), fileRepo: getIt.get<MaterialFilesRepository>()
+        materialUseCase: getIt<MaterialUseCase>(),fileUseCase: getIt<MaterialFilesUseCase>(), fileRepo: getIt.get<MaterialFilesRepository>()
         )..fetchAllMaterials(),
 
       child: BlocConsumer<MaterialCubit,MaterialsState>(
@@ -32,16 +35,23 @@ class MaterialScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 30,),
-                      DefaultAppBar(
-                          context:context),
+                      DefaultAppBar(context:context),
                       const SizedBox(height: 30,),
                       const ScreenPath(from: 'Materials',to: 'instructor',)    , 
                       const SizedBox(height: 15,),
                       TapBarWidget(onTap: (index) { 
                         cubit.changeTabBar(index: index);
                          }, tapIndex: cubit.tapBarIndex,),
-                     const Expanded(child: LectureBuilder()),
-        
+                    //  const Expanded(child: LectureBuilder()),
+                       const Expanded(
+                child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    LectureBuilder(),
+                    LabBuilder(),
+                  ],
+                ),
+              ),
                       // ConditionalBuilder(
                       //   condition: cubit.Tab_Bar_2_index == 0,
                       //   builder: (context) => Expanded(

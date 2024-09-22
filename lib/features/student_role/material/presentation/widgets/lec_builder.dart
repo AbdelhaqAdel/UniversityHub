@@ -9,14 +9,17 @@ class LectureBuilder extends StatelessWidget {
   @override
  Widget build(BuildContext context) {
     return BlocBuilder<MaterialCubit,MaterialsState>(builder: (context,state){
-      if(state is GetAllMaterialsSuccessState){
+       if(state is GetAllMaterialsLoadingState){
+        return const Center(child: CircularProgressIndicator());
+      }
+     else if(GetAllMaterialsSuccessState.allLectures.isNotEmpty){
         return MaterialGridView(
         context1: context,
-        materials:state.lectures,
+        materials:GetAllMaterialsSuccessState.allLectures,
       );}else if(state is GetAllMaterialsErrorState){
         return Center(child: Text(state.error));
       }else{
-        return const Center(child: CircularProgressIndicator());
+        return const Center(child: Text('No Lectures Found'));
       }
     }
     );

@@ -94,7 +94,7 @@ abstract class AppRouter {
       
       GoRoute(
         path: kMaterialFolders,
-        builder: (context, state) => const MaterialScreen(),
+        builder: (context, state) => MaterialScreen(),
       ),
 
 

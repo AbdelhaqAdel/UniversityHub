@@ -6,7 +6,7 @@ import 'package:universityhup/core/utils/assets.dart';
 import 'package:universityhup/features/courses/presentation/widgets/about%20course/about_button_custom_widget.dart';
 
 class AboutCourseScreen extends StatelessWidget {
-  const AboutCourseScreen({super.key});
+  const AboutCourseScreen({super.key,});
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;

@@ -58,8 +58,8 @@ void setupServiceLocator() {
     getIt.registerSingleton<MaterialFilesRepository >(MaterialFilesRepository
     (filesDataSource: MaterialFileRemoteDataSourceImpl(), fileLocalDataSource: MaterialFileLocalDataSourceImpl(),));
 
-   getIt.registerSingleton<MaterialUsecase>(MaterialUsecase
-    (materialRepo: MaterialRepository(materialDataSource: MaterialRemoteDatasourceImpl())));
+   getIt.registerSingleton<MaterialUseCase>(MaterialUseCase
+    (materialRepo: MaterialRepository(materialDataSource: MaterialRemoteDataSourceImpl())));
 
     getIt.registerSingleton<MaterialFilesUseCase>(MaterialFilesUseCase
     ( filesRepo: MaterialFilesRepository(filesDataSource: MaterialFileRemoteDataSourceImpl(), 

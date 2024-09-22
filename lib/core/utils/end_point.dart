@@ -9,7 +9,7 @@ abstract class EndPoint{
   static const String allCourses='Students/CurrentCourcesInfo';
   static String allQuizzes= 'Students/CurrentCourseQuizzes?cycleId=${GetAllCoursesSuccessState.currentCourseId}';
   static String quizData='Students/Quiz?quizId=';
-  static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=${GetAllCoursesSuccessState.currentCourseId}';
+  static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=';
   static String submitQuiz= 'Students/quiz/submit';
   static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=';
   static String getCalendarEvents='Calendar/GetAllCalendar';
