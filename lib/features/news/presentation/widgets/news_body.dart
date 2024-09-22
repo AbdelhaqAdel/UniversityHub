@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/functions/app_bar.dart';
+import '../../../../core/widgets/app_bar.dart';
 import 'news_listview.dart';
 
 class NewsBody extends StatelessWidget {

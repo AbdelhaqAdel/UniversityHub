@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:universityhup/core/functions/app_bar.dart';
+import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';

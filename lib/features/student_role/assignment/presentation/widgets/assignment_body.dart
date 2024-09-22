@@ -2,7 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_list_view.dart';
 
-import '../../../../../core/functions/app_bar.dart';
+import '../../../../../core/widgets/app_bar.dart';
 import 'assignment_dashboard.dart';
 import 'complete_assignment_list_view.dart';
 import 'custom_tab_bar.dart';

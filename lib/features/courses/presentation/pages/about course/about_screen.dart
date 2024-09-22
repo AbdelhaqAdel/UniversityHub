@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:universityhup/core/functions/app_bar.dart';
+import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/utils/assets.dart';
 import 'package:universityhup/features/courses/presentation/widgets/about%20course/about_button_custom_widget.dart';
