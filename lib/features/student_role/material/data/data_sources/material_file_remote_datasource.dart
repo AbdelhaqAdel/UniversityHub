@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/utils/api_service.dart';
 import 'package:universityhup/core/utils/end_point.dart';
@@ -9,8 +8,8 @@ import '../../domain/entities/material_file_entity.dart';
 
 abstract class MaterialFileRemoteDataSource{
   Future <List<FileEntity>>fetchAllMaterialFiles({required lecId});
-  Future<String> loadFile({required networkFile});
 }
+
 class MaterialFileRemoteDataSourceImpl extends MaterialFileRemoteDataSource{
   List<FileEntity>allFiles=[];
   @override
@@ -29,17 +28,4 @@ class MaterialFileRemoteDataSourceImpl extends MaterialFileRemoteDataSource{
     }
   }
 
-  
-  @override
-    Future<String> loadFile({
-    required networkFile,
-  }) async {
-    var dir = await getExternalStorageDirectory();
-    String localFilePath = "${dir?.path}/${networkFile.split('/').last}";
-    DioHelper.downloadFile(
-        networkFilePath: networkFile,
-         localFilePath: localFilePath);
-        return localFilePath;
-  }
-  
 }
