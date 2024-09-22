@@ -1,17 +1,16 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
 
 class CalendarItem extends StatelessWidget {
-  const CalendarItem({super.key, required this.event, required this.color1, required this.color2}); 
+  const CalendarItem({super.key,required this.event,required this.color1,required this.color2});
   final CalendarEntity event;
-  final Color color1;
-  final Color color2;
+ final Color color1;
+ final Color color2;
+
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
+    return  Container(
       width: double.infinity,
       decoration: BoxDecoration(
         color: color1,
