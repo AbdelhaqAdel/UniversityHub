@@ -12,6 +12,9 @@ abstract class EndPoint{
   static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=${GetAllCoursesSuccessState.currentCourseId}';
   static String submitQuiz= 'Students/quiz/submit';
   static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=';
+  static String getCalendarEvents='Calendar/GetAllCalendar';
+  static String addToCalendar='Calendar';
+  
 
   static const String STU_INFO='Students/GetStudentInfo';
   static const String SUBMITQUIZ='Students/quiz/submit';
