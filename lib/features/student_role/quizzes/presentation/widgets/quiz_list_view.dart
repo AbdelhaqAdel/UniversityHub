@@ -19,9 +19,7 @@ class QuizzesListView extends StatelessWidget {
       itemCount:quiz.length,
       itemBuilder:(context,index)=> InkWell(
         onTap: (){
-      //  GetAllCoursesSuccessState.setCourseName(coursename: quiz[index].name);
-      // QuizCubit.get(context).fetchQuizData();
-      GetAllQuizDataSuccessState.setQuizId(quizId: quiz[index].id);
+      GetAllQuizDataSuccessState.setQuizId(id: quiz[index].id);
       AppRouter.context1=context1;
        GoRouter.of(context1).push(AppRouter.kQuizzesQues,extra: quiz[index].id,);
         },

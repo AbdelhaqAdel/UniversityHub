@@ -8,13 +8,13 @@ class GetAllMaterialsLoadingState extends MaterialsState {}
 
 class GetAllMaterialsSuccessState extends MaterialsState {
 
-  static String currentFolderId='';
-  static void setFolderId({required folderId}){
-    currentFolderId=folderId;
+  static List<FolderEntity> allLectures=[];
+  static List<FolderEntity> allLabs=[];
+  static void setCourseMaterials({required lectures,required labs}){
+    allLectures=lectures;
+    allLabs=labs;  
   }
-  final List<FolderEntity> lectures;
-  final List<FolderEntity> labs;
-  GetAllMaterialsSuccessState({required this.labs,required this.lectures});
+  GetAllMaterialsSuccessState();
 }
 class GetAllMaterialsErrorState extends MaterialsState {
   final String error;

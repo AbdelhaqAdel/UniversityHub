@@ -8,13 +8,13 @@ import '../../domain/entities/material_folder_entity.dart';
 import '../../domain/repositories/material_repo.dart';
 
 class MaterialRepository extends MaterialRepo{
-  final MaterialRemoteDatasourceImpl materialDataSource;
+  final MaterialRemoteDataSourceImpl materialDataSource;
   MaterialRepository({required this.materialDataSource});
 
   @override
-  Future<Either<Failure, Map<String,List<FolderEntity>>>> getAllMaterials() async{
+  Future<Either<Failure, List<FolderEntity>>> getAllMaterials({required String courseId}) async{
     try{
-      final Map<String, List<FolderEntity>>allMaterials=await materialDataSource.fetchAllMaterials();
+      final List<FolderEntity>allMaterials=await materialDataSource.fetchAllMaterials(courseId:courseId );
       return right(allMaterials);
     }catch(error){
     if(error is DioException){

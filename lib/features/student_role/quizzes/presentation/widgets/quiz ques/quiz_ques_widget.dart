@@ -18,37 +18,6 @@ class QuizQuesWidget extends StatelessWidget {
         QuesWidget(qIndex:qIndex, questions: questions,),
          SizedBox(height:MediaQuery.of(context).size.height/30),
           AnswerBuilder(index: qIndex),
-
-
-//  ListView.builder(
-//           shrinkWrap: true,
-//           itemCount: questions?.answers?.length,
-//           itemBuilder: (context, index) {
-//             return RadioListTile(
-//               selectedTileColor: Colors.blue,
-//               title: Text(
-//                 '${questions?.answers![index].text}',
-//                 style:
-//                     const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-//               ),
-//               value: questions?.answers![index].id,
-//               groupValue: //'',//App_cubit.get(context).quizAnswerSelected,
-//                   App_cubit.get(context).allquizAnswers![qIndex],
-//               onChanged: (value) {
-//                 print(App_cubit.get(context).allquizAnswers![qIndex]);
-//                 print(('------${value}'));
-//                 App_cubit.get(context).Quiz_Select_answer(qIndex, value);
-// //                App_cubit.get(context).allquizAnswers[qIndex]=App_cubit.get(context).quizAnswerSelected;
-//                 print(App_cubit.get(context).allquizAnswers);
-//                 print(App_cubit.get(context).allquizAnswers![qIndex]);
-//                 print(
-//                   questions?.answers![index].id,
-//                 );
-//               },
-//             );
-//           },
-//         ),
-     
       ],
     );
   }

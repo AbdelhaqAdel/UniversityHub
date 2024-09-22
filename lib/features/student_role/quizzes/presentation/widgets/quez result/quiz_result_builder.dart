@@ -8,8 +8,8 @@ class QuizResultBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder <QuizCubit,QuizState>(builder:(context,state){
-      if(state is SubmitQuizSuccessState){
-        return QuizResultWidget(quizGrade: state.quizGrade,);
+      if(SubmitQuizSuccessState.quizGrade!=null){
+        return QuizResultWidget(quizGrade:SubmitQuizSuccessState.quizGrade!,);
         }else if(state is SubmitQuizErrorState){
        return Text(state.error); 
       }else {

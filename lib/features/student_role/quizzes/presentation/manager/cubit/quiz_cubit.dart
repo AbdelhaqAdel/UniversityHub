@@ -19,7 +19,8 @@ class QuizCubit extends Cubit<QuizState> {
        (error)=>emit(GetAllQuizzesErrorState(error:error.message )),
        (quizzes)
        {
-        emit(GetAllQuizzesSuccessState(quizzes: quizzes));},
+        GetAllQuizzesSuccessState.fillQuizList(quizzes:quizzes);
+        emit(GetAllQuizzesSuccessState());},
        );
   } 
     void fetchQuizData({required String quizId})async{
@@ -42,7 +43,10 @@ class QuizCubit extends Cubit<QuizState> {
     emit(SubmitQuizLoadingState());
     final response=await submitQuizUseCase.call(quizId,allQuizAnswers);
     response.fold((error)=>emit(SubmitQuizErrorState(error: error.message)),
-     (grade)=>emit(SubmitQuizSuccessState(quizGrade: grade)),
+     (grade){
+      print('user grade : $grade');
+      SubmitQuizSuccessState.setQuizGrade(grade: grade);
+      emit(SubmitQuizSuccessState());},
      );
 }
 }

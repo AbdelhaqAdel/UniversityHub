@@ -11,8 +11,8 @@ class QuizBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuizCubit,QuizState>(
       builder:(context,state){
-        if(state is GetAllQuizzesSuccessState){
-          return QuizzesListView(quiz: state.quizzes,context1: context,);
+        if(GetAllQuizzesSuccessState.allQuizzes.isNotEmpty){
+          return QuizzesListView(quiz: GetAllQuizzesSuccessState.allQuizzes,context1: context,);
         }
         else if(state is GetAllQuizzesErrorState){
           return Text(state.error);

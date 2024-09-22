@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universityhup/core/functions/app_bar.dart';
+import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 
