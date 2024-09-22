@@ -7,6 +7,7 @@ import '../../domain/entities/assignment_entity.dart';
 import '../../domain/repositories/assignment_repo.dart';
 import '../data_sources/assignment_remote_data_source.dart';
 import '../models/assignment_info_model.dart';
+import '../models/submit_assignment_input.dart';
 
 class AssignmentRepoImpl extends AssignmentRepo{
  final AssignmentRemoteDataSource assignmentRemoteDataSource;
@@ -37,9 +38,9 @@ class AssignmentRepoImpl extends AssignmentRepo{
   }
 
   @override
-  Future<Either<Failure, void>> submitAssignment({required String assignmentId}) async {
+  Future<Either<Failure, void>> submitAssignment({required SubmitAssignmentInputModel submitAssignmentInputModel}) async {
     try{
-      await assignmentRemoteDataSource.submitAssignment(assignmentId: assignmentId);
+      await assignmentRemoteDataSource.submitAssignment(submitAssignmentInputModel: submitAssignmentInputModel);
       return right(null);
     }catch(e){
       return left(ServerFailure(e.toString()));
