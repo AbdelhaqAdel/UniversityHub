@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
+import 'package:universityhup/core/constants/constant.dart';
 
 class DefaultAppBar extends StatelessWidget {
   const DefaultAppBar({this.text, required this.context, super.key});
@@ -29,7 +29,7 @@ class DefaultAppBar extends StatelessWidget {
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.7, 
               child: Text(
-                text ?? GetAllCoursesSuccessState.currentCourseName,
+                text ?? currentCycleName!,
                 overflow: TextOverflow.visible,
                 maxLines: 1,
                 textAlign: TextAlign.center,
