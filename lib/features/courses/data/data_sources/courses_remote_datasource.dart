@@ -19,7 +19,7 @@ class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
       ).then((value) {
        fillCoursesList(value);
   });
-    HiveService.saveDataToHive<CoursesModel>(HiveConstants.coursesBox,coursesList, HiveConstants.coursesBox);
+    HiveService.saveDataToHive<CoursesModel>(coursesList, HiveConstants.coursesBox);
    return coursesList;
 }
  void fillCoursesList(Response<dynamic> list) {

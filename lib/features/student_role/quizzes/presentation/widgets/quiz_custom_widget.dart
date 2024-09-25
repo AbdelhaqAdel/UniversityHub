@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_data.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_status.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_title.dart';
@@ -43,7 +43,7 @@ class QuizWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           QuizData(icon: FontAwesomeIcons.bookmark,
-                          text: GetAllCoursesSuccessState.currentCourseName,),
+                          text: currentCycleName!,),
                         
                         QuizData(icon:FontAwesomeIcons.user,
                           text: quiz.status??'not found',),

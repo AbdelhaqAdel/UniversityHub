@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universityhup/features/calender/presentation/pages/calender_screen.dart';
+import 'package:universityhup/features/calendar/presentation/pages/calender_screen.dart';
 import 'package:universityhup/features/courses/presentation/pages/all_courses_screen.dart';
 
 import '../../../../news/presentation/pages/news_screen.dart';
