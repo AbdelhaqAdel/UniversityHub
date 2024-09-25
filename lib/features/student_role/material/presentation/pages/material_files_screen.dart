@@ -26,7 +26,7 @@ class MaterialFileScreen extends StatelessWidget {
                  SizedBox(
                   height: screenSize.height * 0.03,
                 ),
-                const ScreenPath(from: 'Materials',to: 'instructor',)    , 
+                const ScreenPath(from: 'Folders',to: 'Files',)    , 
                  SizedBox(
                  height: screenSize.height * 0.015,
                 ),
@@ -34,82 +34,6 @@ class MaterialFileScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.0),
                      child: FileBuilder(),
-                     
-                    // child: ConditionalBuilder(
-                    //   condition:
-                    //   files.isNotEmpty &&
-                    //       state is! Stu_Get_Course_Material_File_LoadingState,
-                    //   builder: (context) => GridView.builder(
-                    //       gridDelegate:
-                    //           const SliverGridDelegateWithFixedCrossAxisCount(
-                    //         crossAxisCount: 2,
-                    //         mainAxisSpacing: 10,
-                    //         crossAxisSpacing: 10,
-                    //         childAspectRatio: .9,
-                    //       ),
-                    //       itemCount: files.length,
-                    //       physics: const BouncingScrollPhysics(),
-                    //       itemBuilder: (context, index) {
-                    //         return InkWell(
-                    //           onTap: () {
-                    //             print('*************************************');
-                    //             cubit.currentFileName=files[index].fileName;
-                    //             print(files[index].fileName);
-                    //             print(files[index].filePath?.split('net/').last);
-                    //             print(files[index].filePath);
-                    //             cubit.openFile_Fun(networkFile: files[index].filePath);
-                    //                 // ?.split('net/').last);
-                    //             print('from material ${cubit.pathPDF}');
-
-                    //            // App_cubit.openURL('${files[index].filePath}');
-                    //           //  navigateTo(context, fileVierwer(pdfUrl:cubit.pathPDF ,));
-                    //             //cubit.openFile_Fun(filePath:files[index].filePath);
-                    //           },
-                    //           child: STU_Build_Lec_View_Widget(
-                    //               index: index,
-                    //               context: context,
-                    //               file: files[index], //cubit.isLec!?lectures[index]:labs[index]
-
-                    //               ),
-                    //         );
-                    //       }),
-                    //   fallback: (context) =>  ConditionalBuilder(
-                    //       condition:
-                    //       cubit.MaterialLecFiles.isNotEmpty ,
-                    //       builder: (context) => GridView.builder(
-                    //           gridDelegate:
-                    //           const SliverGridDelegateWithFixedCrossAxisCount(
-                    //             crossAxisCount: 2,
-                    //             mainAxisSpacing: 10,
-                    //             crossAxisSpacing: 10,
-                    //             childAspectRatio: .9,
-                    //           ),
-                    //           itemCount:  cubit.MaterialLecFiles.length,
-                    //           physics: const BouncingScrollPhysics(),
-                    //           itemBuilder: (context, index) {
-                    //             return InkWell(
-                    //               onTap: () {
-                    //                   print(cubit.MaterialLecFiles[index].filePath?.split('net/').last);
-                    //                   print(cubit.MaterialLecFiles[index].filePath);
-                    //                   cubit.openFile_Fun(networkFile: cubit.MaterialLecFiles[index].filePath
-                    //                       ?.split('net/').last);                                      print('from material ${cubit.pathPDF}');
-
-                    //                 // App_cubit.openURL('${files[index].filePath}');
-                    //                 //  navigateTo(context, fileVierwer(pdfUrl:cubit.pathPDF ,));
-                    //                 //cubit.openFile_Fun(filePath:files[index].filePath);
-                    //               },
-                    //               child: STU_Build_Lec_View_Widget(
-                    //                 index: index,
-                    //                 context: context,
-                    //                 file: cubit.MaterialLecFiles[index], //cubit.isLec!?lectures[index]:labs[index]
-
-                    //               ),
-                    //             );
-                    //           }),
-                    //       fallback: (context) =>Center(child: CircularProgressIndicator(),)
-                    //   )
-                    //   ),
-                  
                     ),
                   ),
 

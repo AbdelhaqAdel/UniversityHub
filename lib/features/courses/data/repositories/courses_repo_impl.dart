@@ -13,11 +13,11 @@ class CoursesRepository extends CoursesRepo{
   @override
   Future<Either<Failure, List<CoursesModel>>> getAllCourses() async{
    try{
-     List<CoursesModel>cachedCourses =await coursesLocalDataSource
-         .fetchCoursesFromHive();
-     if(cachedCourses.isNotEmpty){
-       return right(cachedCourses);
-     }
+    //  List<CoursesModel>cachedCourses =await coursesLocalDataSource
+    //      .fetchCoursesFromHive();
+    //  if(cachedCourses.isNotEmpty){
+    //    return right(cachedCourses);
+    //  }
       List<CoursesModel>courses=await coursesDataSource.fetchCourses();
     return right(courses);
      }catch(error){
@@ -50,7 +50,5 @@ class CoursesRepository extends CoursesRepo{
   //     return left(ServerFailure(error.toString()));
   //   }
   //  }
-  
-     
   // }
 }

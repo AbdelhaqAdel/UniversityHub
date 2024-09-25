@@ -33,10 +33,6 @@ void filterMaterialsIntoMap(List<FolderEntity> list) {
       }
     }
    allMaterials.addAll({"lectures":lectures,"labs":labs});
-   print(allMaterials['lectures']?.length);
-   allMaterials['lectures']?.forEach((element) {
-       print('sssssss${element.lectureName}');
-   });
   }
 }
 

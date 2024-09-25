@@ -6,7 +6,7 @@ import 'package:universityhup/features/calendar/domain/use_cases/get_calender_us
 import 'package:universityhup/features/courses/data/data_sources/courses_local_data_source.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
-import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_datasource.dart';
+import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_data_source.dart';
 import 'package:universityhup/features/student_role/quizzes/data/data_sources/quiz_data_remote_data_Source.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import 'package:universityhup/features/news/data/data_sources/news_remote_data_source.dart';
@@ -20,8 +20,8 @@ import '../../features/student_role/assignment/domain/repositories/assignment_re
 import '../../features/student_role/grade/data/data_sources/grade_remote_data_source.dart';
 import '../../features/student_role/grade/data/repositories/grade_repo_impl.dart';
 import '../../features/student_role/grade/domain/repositories/grade_repo.dart';
-import '../../features/student_role/material/data/data_sources/material_file_remote_datasource.dart';
-import '../../features/student_role/material/data/data_sources/material_remote_datasource.dart';
+import '../../features/student_role/material/data/data_sources/material_file_remote_data_source.dart';
+import '../../features/student_role/material/data/data_sources/material_remote_data_source.dart';
 import '../../features/student_role/material/data/repositories/material_files_repo_impl.dart';
 import '../../features/student_role/material/data/repositories/material_repo_impl.dart';
 import '../../features/student_role/material/domain/use_cases/material_files_usecase.dart';

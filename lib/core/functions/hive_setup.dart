@@ -16,7 +16,8 @@ Hive.registerAdapter(FileEntityAdapter());
 
 
   await Hive.openBox(HiveConstants.kStartBox);
-  await Hive.openBox<CoursesModel>(HiveConstants.coursesBox);
+  await Hive.openBox(HiveConstants.coursesBox);
+  await Hive.openBox<FolderEntity>(HiveConstants.materialBox);
 
  
   var startBoxData = Hive.box(HiveConstants.kStartBox);
