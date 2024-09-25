@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/widgets/custom_text_form_field.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_state.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
 
 class AddEventForm extends StatelessWidget {
   const AddEventForm({super.key,required this.eventBodyController});  

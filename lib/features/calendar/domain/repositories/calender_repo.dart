@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:universityhup/core/errors/failure.dart';
-import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
+import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 
 abstract class CalendarRepository {
 

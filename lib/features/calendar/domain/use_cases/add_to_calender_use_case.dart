@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:universityhup/core/errors/failure.dart';
 import 'package:universityhup/core/use_cases/use_case.dart';
-import 'package:universityhup/features/calender/domain/repositories/calender_repo.dart';
+import 'package:universityhup/features/calendar/domain/repositories/calender_repo.dart';
 
 class AddEventToCalendarUseCase extends UseCase<String,String> {
   final CalendarRepository repository;

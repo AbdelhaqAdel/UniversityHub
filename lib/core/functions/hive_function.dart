@@ -2,10 +2,10 @@ import 'package:hive/hive.dart';
 
 class HiveService{
 
-    static void saveDataToHive<ListType>(key,List<ListType> dataList, String boxName) {
+    static void saveDataToHive<ListType>(List<ListType> dataList, String boxName) {
     print('HIVE list type $ListType');
     var box = Hive.box(boxName);
-    box.put(key,dataList).then((value){
+    box.addAll(dataList).then((value){
       print('Hive saved all data');
     });
   }
