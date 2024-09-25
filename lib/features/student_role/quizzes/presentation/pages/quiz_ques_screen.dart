@@ -139,7 +139,6 @@ class _QuizQuesScreenState extends State<QuizQuesScreen> {
                               width: double.infinity,
                               onTap: () {
                                 if (isLast) {
-                                  print('-------------------quiz id--------------${GetAllQuizDataSuccessState.quizId}');
                                   GoRouter.of(context).push(AppRouter.kQuizResultScreen,);
                                 }
                                  else {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quez%20result/quiz_result_builder.dart';
 import '../manager/cubit/quiz_cubit.dart';
 
@@ -12,16 +14,16 @@ class QuizResultScreen extends StatelessWidget {
       builder: (context,state){
         return Scaffold(
           body: SafeArea(
-            child:   Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+            child:   ListView(
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 50,),
+                   SizedBox(height: MediaQuery.of(context).size.height/15,),
                  const QuizResultBuilder(),
-                  const Spacer(),
+                   SizedBox(height: MediaQuery.of(context).size.height/15,),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Container(
-                      height: 50,
+                      height: MediaQuery.of(context).size.height/15,
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(20),
@@ -30,16 +32,14 @@ class QuizResultScreen extends StatelessWidget {
                         child:
                         TextButton(
                           onPressed: (){
-                            // print('all answers :${cubit.allquizAnswers}');
-                            // NavigateAndFinish(context, Layout_Screen());
-                            // navigateTo(context,STU_About_course ());
-                            // navigateTo(context,STU_Quizes_Screen ());
-                          },
-                          child: const Text('Done',
+                           GoRouter.of(context).pop();
+                           GoRouter.of(context).pop();
+                            },
+                          child: Text('Done',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 25
+                                fontSize: 25.sp
                             ),
                           ),
                         ),
