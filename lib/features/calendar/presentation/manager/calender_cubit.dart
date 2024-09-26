@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 import 'package:universityhup/features/calendar/domain/use_cases/add_to_calender_use_case.dart';
-import 'package:universityhup/features/calendar/domain/use_cases/get_calender_usecase.dart';
+import 'package:universityhup/features/calendar/domain/use_cases/get_calender_use_case.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
 import 'package:intl/intl.dart' ;
 
@@ -33,18 +32,14 @@ void addEvent({required String event, required String start, required String end
 }
 
 
-  Future<List<CalendarEntity>> getDayEvents() async {
+  Future<void> getDayEvents() async {
     emit(GetEventsLoadingState());
       final events = await getEventsUseCase.call(
       startDate??DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day}THH:mm:ss.SSS').format(ChangeCalenderDayState.thisFocusDay), 
       endDate?? DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day + 1}THH:mm:ss.SSS').format(ChangeCalenderDayState.thisFocusDay));
       events.fold((error)=>emit(GetEventsErrorState(error.toString())),
        (allEvents)=>emit(GetEventsSuccessState(events: allEvents)));
-        if(events.runtimeType == List<CalendarEntity>){
-          return events as List<CalendarEntity>;    
         }
-        return [];
-  }
 
   String? startDate;
   String? endDate;

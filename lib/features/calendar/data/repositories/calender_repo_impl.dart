@@ -17,7 +17,6 @@ class CalendarRepositoryImpl implements CalendarRepository {
     final response=await calenderRemoteDataSourceImpl.getCalendarDayEvents(startDate, endDate);
      return Right(response);
     }catch(error){
-      print(error);
        if(error is DioException){
       return left(ServerFailure.fromDiorError(error));
     }else{
@@ -32,7 +31,6 @@ class CalendarRepositoryImpl implements CalendarRepository {
      final response= await calenderRemoteDataSourceImpl.addEventToCalendar( startDate: startDate, endDate: endDate, eventBody: eventBody);
       return right(response);
   }catch(error){
-      print(error);
        if(error is DioException){
       return left(ServerFailure.fromDiorError(error));
     }else{

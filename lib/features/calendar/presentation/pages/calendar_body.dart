@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 import 'package:universityhup/features/calendar/domain/use_cases/add_to_calender_use_case.dart';
-import 'package:universityhup/features/calendar/domain/use_cases/get_calender_usecase.dart';
+import 'package:universityhup/features/calendar/domain/use_cases/get_calender_use_case.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_cubit.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/calendar_listview.dart';

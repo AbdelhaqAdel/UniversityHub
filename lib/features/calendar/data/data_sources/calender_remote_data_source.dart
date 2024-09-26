@@ -33,7 +33,7 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
     @override
   Future<String> addEventToCalendar({required String startDate, required String endDate, required String eventBody}) async {
      await DioHelper.post(token: token, url: EndPoint.addToCalendar,data: {
-      'start': startDate.toString(), //'2024-03-28T04:12:00.000'
+      'start': startDate.toString(),
       'end':  endDate.toString(),
       'body': eventBody,
     }).then((value) {
