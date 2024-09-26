@@ -2,7 +2,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:universityhup/core/errors/failure.dart';
-import 'package:universityhup/features/student_role/material/data/data_sources/material_remote_datasource.dart';
+import 'package:universityhup/features/student_role/material/data/data_sources/material_remote_data_source.dart';
 
 import '../../domain/entities/material_folder_entity.dart';
 import '../../domain/repositories/material_repo.dart';
@@ -18,11 +18,8 @@ class MaterialRepository extends MaterialRepo{
       return right(allMaterials);
     }catch(error){
     if(error is DioException){
-      print(error.toString());
       return left(ServerFailure.fromDiorError(error));
     }else{
-            print(error.toString());
-
       return left(ServerFailure(error.toString()));
     }}
   }

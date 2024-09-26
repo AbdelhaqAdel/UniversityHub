@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:universityhup/core/errors/failure.dart';
-import 'package:universityhup/features/calender/data/data_sources/calender_remote_data_source.dart';
-import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
-import 'package:universityhup/features/calender/domain/repositories/calender_repo.dart';
+import 'package:universityhup/features/calendar/data/data_sources/calender_remote_data_source.dart';
+import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
+import 'package:universityhup/features/calendar/domain/repositories/calender_repo.dart';
 
 class CalendarRepositoryImpl implements CalendarRepository {
 
@@ -17,7 +17,6 @@ class CalendarRepositoryImpl implements CalendarRepository {
     final response=await calenderRemoteDataSourceImpl.getCalendarDayEvents(startDate, endDate);
      return Right(response);
     }catch(error){
-      print(error);
        if(error is DioException){
       return left(ServerFailure.fromDiorError(error));
     }else{
@@ -32,7 +31,6 @@ class CalendarRepositoryImpl implements CalendarRepository {
      final response= await calenderRemoteDataSourceImpl.addEventToCalendar( startDate: startDate, endDate: endDate, eventBody: eventBody);
       return right(response);
   }catch(error){
-      print(error);
        if(error is DioException){
       return left(ServerFailure.fromDiorError(error));
     }else{

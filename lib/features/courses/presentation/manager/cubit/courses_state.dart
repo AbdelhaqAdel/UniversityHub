@@ -7,13 +7,7 @@ final class CoursesInitial extends CoursesState {}
 class GetAllCoursesLoadingState extends CoursesState {}
 
 class GetAllCoursesSuccessState extends CoursesState {
-  static String currentCourseName='';
-    static String currentCourseId='';
 
-  static void setCourseName({required coursename,required courseId}){
-    currentCourseName=coursename;
-    currentCourseId=courseId;
-  }
  final List<CoursesModel> courses;
   GetAllCoursesSuccessState({required this.courses});
 }

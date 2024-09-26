@@ -17,7 +17,7 @@ class QuizData extends StatelessWidget {
              children: [
                 FaIcon(
                  icon,
-                 size: 12,
+                 size: 12.sp,
                ),
                SizedBox(
                  width: 7.w,
@@ -33,8 +33,8 @@ class QuizData extends StatelessWidget {
                ),
              ],
            ),
-           const SizedBox(
-             height: 2,
+           SizedBox(
+             height: 2.h,
            ),
       ],
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/utils/assets.dart';
 
 class CoursesTitleCustomWidget extends StatelessWidget {
@@ -22,7 +23,7 @@ class CoursesTitleCustomWidget extends StatelessWidget {
                           const Text(
                             '5',
                             style: TextStyle(
-                              color: Colors.teal,
+                              color: KColors.tealColor,
                               fontSize: 27,
                               fontWeight: FontWeight.bold,
                             ),
@@ -37,7 +38,6 @@ class CoursesTitleCustomWidget extends StatelessWidget {
                           const SizedBox(
                             width: 8,
                           ),
-                          // Spacer(),
                           Expanded(
                             child: Container(
                               decoration: const BoxDecoration(

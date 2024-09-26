@@ -10,12 +10,6 @@ class AboutCourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    // return
-    // BlocConsumer<CoursesCubit, CoursesState>(
-    //   listener: (context, state) {},
-    //   builder: (context, state) {
-    // App_cubit cubit=App_cubit.get(context);
-    // cubit.INS_GetAllCourses_Function( token: token,);
     return Scaffold(
         body: SafeArea(
             child: SingleChildScrollView(
@@ -26,11 +20,7 @@ class AboutCourseScreen extends StatelessWidget {
           ),
           DefaultAppBar(
             context: context,
-            // onTap:(){
-            //   cubit.INS_GetAllCourses_Function( token: token,);
-            //   Navigator.pop(context);
-            // }
-          ),
+            ),
           SizedBox(
             height: screenSize.height / 30,
           ),

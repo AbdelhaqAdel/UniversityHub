@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:universityhup/features/courses/presentation/manager/cubit/courses_cubit.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_data.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_status.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_title.dart';
@@ -13,8 +14,6 @@ class QuizWidget extends StatelessWidget {
      required this.index,
      super.key});
   final QuizEntity quiz;
-  // final List<bool> quizIsComplete;
-  // final List<bool> isQuizStart;
   final int index;
    @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class QuizWidget extends StatelessWidget {
       ),
       child: Padding(
         padding:
-            const EdgeInsets.only(top: 10.0, right: 15, bottom: 10, left: 15),
+             EdgeInsets.only(top: 10.h, right: 15.w, bottom: 10.h, left: 15.w),
         child: Column(
           children: [
             QuizTitle(quiz: quiz,),
@@ -43,7 +42,7 @@ class QuizWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           QuizData(icon: FontAwesomeIcons.bookmark,
-                          text: GetAllCoursesSuccessState.currentCourseName,),
+                          text: currentCycleName!,),
                         
                         QuizData(icon:FontAwesomeIcons.user,
                           text: quiz.status??'not found',),
@@ -55,95 +54,6 @@ class QuizWidget extends StatelessWidget {
                           text:'From ${DateTime.parse(quiz.startDate!).hour}:${DateTime.parse(quiz.startDate!).minute}'
                           ' to  ${DateTime.parse(quiz.endDate!).hour}:${DateTime.parse(quiz.endDate!).minute} ',
                           ),
-                        
-                          // Row(
-                          //   children: [
-                          //     const FaIcon(
-                          //       FontAwesomeIcons.bookmark,
-                          //       size: 12,
-                          //     ),
-                          //     SizedBox(
-                          //       width: 7.w,
-                          //     ),
-                          //     Expanded(
-                          //       child: Text(
-                          //         '${App_cubit.get(context).currentCourseName}',
-                          //         maxLines: 1,
-                          //         overflow: TextOverflow.ellipsis,
-                          //         textAlign: TextAlign.start,
-                          //         style: TextStyle(
-                          //             fontWeight: FontWeight.w700, fontSize: 13),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                          // SizedBox(
-                          //   height: 2,
-                          // ),
-                          // Row(
-                          //   children: [
-                          //     FaIcon(
-                          //       FontAwesomeIcons.user,
-                          //       size: 12,
-                          //     ),
-                          //     SizedBox(
-                          //       width: 7,
-                          //     ),
-                          //     Text(
-                          //       '${quiz?.status}',
-                          //       textAlign: TextAlign.start,
-                          //       style: TextStyle(
-                          //           fontWeight: FontWeight.w700, fontSize: 13),
-                          //     ),
-                          //   ],
-                          // ),
-                          // SizedBox(
-                          //   height: 2,
-                          // ),
-                          // Row(
-                          //   children: [
-                          //     FaIcon(
-                          //       FontAwesomeIcons.chartLine,
-                          //       size: 12,
-                          //     ),
-                          //     SizedBox(
-                          //       width: 7,
-                          //     ),
-                          //     Text(
-                          //       '10 minutes',
-                          //       textAlign: TextAlign.start,
-                          //       style: TextStyle(
-                          //           fontWeight: FontWeight.w700, fontSize: 13),
-                          //     ),
-                          //   ],
-                          // ),
-                          // SizedBox(
-                          //   height: 2,
-                          // ),
-                          // Row(
-                          //   children: [
-                          //     FaIcon(
-                          //       FontAwesomeIcons.clock,
-                          //       size: 12,
-                          //     ),
-                          //     SizedBox(
-                          //       width: 7,
-                          //     ),
-                          //     Container(
-                          //       width: 150,
-                          //       child: Text(
-                          //         'From ${DateTime.parse(quiz!.startDate!).hour}:${DateTime.parse(quiz!.startDate!).minute}  to  ${DateTime.parse(quiz!.endDate!).hour}:${DateTime.parse(quiz!.endDate!).minute} ',
-                          //         overflow: TextOverflow.ellipsis,
-                          //         maxLines: 1,
-                          //         textAlign: TextAlign.start,
-                          //         style: TextStyle(
-                          //             fontWeight: FontWeight.w700,
-                          //             fontSize: 13),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                       
                         ],
                       ),
                     ),

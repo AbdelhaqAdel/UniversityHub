@@ -1,4 +1,4 @@
-import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
+import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 
 abstract class CalendarState {}
 

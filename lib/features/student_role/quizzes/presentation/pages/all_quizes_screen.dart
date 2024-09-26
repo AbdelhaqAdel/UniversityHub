@@ -25,7 +25,7 @@ class QuizzesScreen extends StatelessWidget {
               body: SafeArea(
                 child: Column(
                   children: [
-                    const SizedBox(height: 30,),
+                   SizedBox(height: MediaQuery.of(context).size.height/25,),
                     DefaultAppBar(context:context,),
                     const SizedBox(height: 40,),
                      Text('All Quizzes',

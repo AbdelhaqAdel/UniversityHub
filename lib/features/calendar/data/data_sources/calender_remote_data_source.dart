@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/utils/api_service.dart';
 import 'package:universityhup/core/utils/end_point.dart';
-import 'package:universityhup/features/calender/data/models/calender_model.dart';
-import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
+import 'package:universityhup/features/calendar/data/models/calender_model.dart';
+import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 
 abstract class CalenderRemoteDataSource {
    Future<String> addEventToCalendar({required String startDate, required String endDate, required String eventBody});
@@ -33,7 +33,7 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
     @override
   Future<String> addEventToCalendar({required String startDate, required String endDate, required String eventBody}) async {
      await DioHelper.post(token: token, url: EndPoint.addToCalendar,data: {
-      'start': startDate.toString(), //'2024-03-28T04:12:00.000'
+      'start': startDate.toString(),
       'end':  endDate.toString(),
       'body': eventBody,
     }).then((value) {

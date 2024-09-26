@@ -17,7 +17,7 @@ class QuizzesListView extends StatelessWidget {
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
       itemCount:quiz.length,
-      itemBuilder:(context,index)=> InkWell(
+      itemBuilder:(context,index)=> GestureDetector(
         onTap: (){
       GetAllQuizDataSuccessState.setQuizId(id: quiz[index].id);
       AppRouter.context1=context1;

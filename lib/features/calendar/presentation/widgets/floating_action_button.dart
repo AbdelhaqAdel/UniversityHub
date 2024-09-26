@@ -7,12 +7,12 @@ import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';
 import 'package:universityhup/core/widgets/glass_box.dart';
-import 'package:universityhup/features/calender/domain/use_cases/add_to_calender_use_case.dart';
-import 'package:universityhup/features/calender/domain/use_cases/get_calender_usecase.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_cubit.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_state.dart';
-import 'package:universityhup/features/calender/presentation/widgets/add_event_form.dart';
-import 'package:universityhup/features/calender/presentation/widgets/select_date_buttons.dart';
+import 'package:universityhup/features/calendar/domain/use_cases/add_to_calender_use_case.dart';
+import 'package:universityhup/features/calendar/domain/use_cases/get_calender_use_case.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_cubit.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
+import 'package:universityhup/features/calendar/presentation/widgets/add_event_form.dart';
+import 'package:universityhup/features/calendar/presentation/widgets/select_date_buttons.dart';
 
 // ignore: must_be_immutable
 class CustomFloatingAction extends StatelessWidget {

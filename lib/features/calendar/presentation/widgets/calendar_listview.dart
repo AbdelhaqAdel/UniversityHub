@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
-import 'package:universityhup/features/calender/presentation/widgets/event_item.dart';
+import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
+import 'package:universityhup/features/calendar/presentation/widgets/event_item.dart';
 
 class CalendarListView extends StatelessWidget {
   const CalendarListView({super.key, required this.events,}); 

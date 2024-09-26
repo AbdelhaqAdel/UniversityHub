@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_cubit.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_state.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_cubit.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
 
 class SelectDateButtons extends StatelessWidget {
   const SelectDateButtons({super.key,required this.time,required this.focusDay});

@@ -9,8 +9,8 @@ class CoursesCubit extends Cubit<CoursesState> {
   final CoursesRepository coursesRepo; 
   Future<void>fetchAllCourses()async{
     emit(GetAllCoursesLoadingState());
-    final resault=await coursesRepo.getAllCourses();
-    resault.fold(
+    final result=await coursesRepo.getAllCourses();
+    result.fold(
        (error)=>emit(GetAllCoursesErrorState(error:error.message )),
        (courses)=>emit(GetAllCoursesSuccessState(courses: courses)),
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_cubit.dart';
-import 'package:universityhup/features/calender/presentation/manager/calender_state.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_cubit.dart';
+import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
 
 class CalendarTable extends StatelessWidget {
    CalendarTable({super.key});

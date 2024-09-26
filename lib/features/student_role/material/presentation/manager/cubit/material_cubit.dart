@@ -21,7 +21,6 @@ class MaterialCubit extends Cubit<MaterialsState> {
     result.fold(
        (error)=>emit(GetAllMaterialsErrorState(error:error.message )),
        (materials){
-        materials['lectures']!.forEach((element){print(element.lectureName);});
         GetAllMaterialsSuccessState.setCourseMaterials(lectures:materials['lectures'],labs:  materials['labs']);
         emit(GetAllMaterialsSuccessState());},
        );

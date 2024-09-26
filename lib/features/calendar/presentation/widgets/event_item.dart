@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:universityhup/features/calender/domain/entities/calender_entity.dart';
+import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 
 class CalendarItem extends StatelessWidget {
   const CalendarItem({super.key,required this.event,required this.color1,required this.color2});

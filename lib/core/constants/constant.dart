@@ -7,6 +7,7 @@ bool? isLogin;
 
 String? token;
 String? currentCycleId;
+String? currentCycleName;
 
 
 
