@@ -34,7 +34,7 @@ class UploadAndDownload extends StatelessWidget {
           getAssignmentInstructorInfoUseCase: GetAssignmentInstructorInfoUseCase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ),
-          submitAssignmentInstructorUseCase: SubmitAssignmentInstructorUseCase(
+          submitAssignmentInstructorUseCase: UpdateAssignmentInstructorUseCase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           )),
       child: BlocConsumer<AssignmentInstructorCubit, AssignmentInstructorState>(

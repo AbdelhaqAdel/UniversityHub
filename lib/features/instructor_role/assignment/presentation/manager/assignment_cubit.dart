@@ -25,7 +25,7 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
   static AssignmentInstructorCubit get(context) => BlocProvider.of(context);
   final GetAssignmentInstructorUseCase getAssignmentInstructorUseCase;
   final GetAssignmentInstructorInfoUseCase getAssignmentInstructorInfoUseCase;
-  final SubmitAssignmentInstructorUseCase submitAssignmentInstructorUseCase;
+  final UpdateAssignmentInstructorUseCase submitAssignmentInstructorUseCase;
 
   void getAssignmentInstructor() async {
     emit(GetAssignmentInstructorLoadingState());
@@ -68,8 +68,8 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
 
   void submitAssignmentInstructor({required String assignmentId}) async {
     emit(SubmitAssignmentInstructorLoadingState());
-    SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel =
-        SubmitAssignmentInstructorInputModel(taskId: assignmentId, file: file);
+    UpdateAssignmentInstructorInputModel submitAssignmentInstructorInputModel =
+        UpdateAssignmentInstructorInputModel(taskId: assignmentId, file: file);
     var result = await submitAssignmentInstructorUseCase.call(submitAssignmentInstructorInputModel);
     result.fold((failure) {
       emit(SubmitAssignmentInstructorErrorState(failure.toString()));

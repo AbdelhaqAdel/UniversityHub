@@ -4,12 +4,12 @@ import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../models/assignment_info_model.dart';
 import '../models/assignment_model.dart';
-import '../models/submit_assignment_input.dart';
+import '../models/update_assignment_input.dart';
 
 abstract class AssignmentInstructorRemoteDataSource {
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor();
-  Future<AssignmentInstructorInfoModel?> getAssignmentInstructorInfo({required String assignmentId});
-  Future submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel});
+  Future updateAssignment({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel});
+  Future deleteAssignment({required String assignmentId});
 }
 
 class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemoteDataSource {
@@ -39,30 +39,23 @@ class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemot
 
 
   @override
-  Future submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel}) async{
+  Future updateAssignment({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async{
 
-    await DioHelper.postListFileData(
-        url: 'Students/File/Upload?taskid=${submitAssignmentInstructorInputModel.taskId}',
-        files: submitAssignmentInstructorInputModel.file)
+    await DioHelper.updateData(
+        url: 'Instructor/UpdateAnAssignment?taskId=${updateAssignmentInstructorInputModel.taskId}',
+        token: token,
+        data: updateAssignmentInstructorInputModel.toMap())
         .then((value) {
-      if (value.statusCode == 200) {
-        var json = value.data;
-      }
     });
   }
 
+
   @override
-  Future<AssignmentInstructorInfoModel?> getAssignmentInstructorInfo({required String assignmentId}) async{
-    AssignmentInstructorInfoModel? assignmentInfoModel;
-  await  DioHelper.get(
-      url: 'Students/GetAssignmentInstructor?taskId=$assignmentId',
+  Future deleteAssignment({required String assignmentId}) async {
+  await  DioHelper.deleteData(
+      url: 'Instructor/DeleteAnAssignment?taskId=$assignmentId',
       token: token,
-    ).then((value) {
-      if (value.statusCode == 200) {
-        var json=value.data;
-        assignmentInfoModel = AssignmentInstructorInfoModel.fromJson(json);
-      }
-    });
-  return assignmentInfoModel;
+    );
+
   }
 }

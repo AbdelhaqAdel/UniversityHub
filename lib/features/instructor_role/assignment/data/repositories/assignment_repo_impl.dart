@@ -7,7 +7,7 @@ import '../../domain/entities/assignment_entity.dart';
 import '../../domain/repositories/assignment_repo.dart';
 import '../data_sources/assignment_remote_data_source.dart';
 import '../models/assignment_info_model.dart';
-import '../models/submit_assignment_input.dart';
+import '../models/update_assignment_input.dart';
 
 class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
  final AssignmentInstructorRemoteDataSource assignmentRemoteDataSource;
@@ -27,20 +27,19 @@ class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
   }
 
   @override
-  Future<Either<Failure, AssignmentInstructorInfoModel>> getAssignmentInstructorInfo({required String assignmentId}) async {
+  Future<Either<Failure, void>> deleteAssignment({required String assignmentId}) async {
     try{
-      AssignmentInstructorInfoModel? assignmentInfoModel ;
-      assignmentInfoModel = await assignmentRemoteDataSource.getAssignmentInstructorInfo(assignmentId: assignmentId);
-      return right(assignmentInfoModel!);
+      await assignmentRemoteDataSource.deleteAssignment(assignmentId: assignmentId);
+      return right(null);
     }catch(e){
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, void>> submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel}) async {
+  Future<Either<Failure, void>> updateAssignmentInstructor({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async {
     try{
-      await assignmentRemoteDataSource.submitAssignmentInstructor(submitAssignmentInstructorInputModel: submitAssignmentInstructorInputModel);
+      await assignmentRemoteDataSource.updateAssignment(updateAssignmentInstructorInputModel: updateAssignmentInstructorInputModel);
       return right(null);
     }catch(e){
       return left(ServerFailure(e.toString()));

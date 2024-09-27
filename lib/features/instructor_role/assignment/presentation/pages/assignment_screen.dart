@@ -28,7 +28,7 @@ class AssignmentInstructorScreen extends StatelessWidget {
           getAssignmentInstructorInfoUseCase: GetAssignmentInstructorInfoUseCase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ),
-          submitAssignmentInstructorUseCase: SubmitAssignmentInstructorUseCase(
+          submitAssignmentInstructorUseCase: UpdateAssignmentInstructorUseCase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ))..getAssignmentInstructor(),
       child: const AssignmentInstructorBody(),
