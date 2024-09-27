@@ -17,7 +17,7 @@ class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemot
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor() async {
     List<AssignmentInstructorEntity> assignmentEntityList = [];
     await DioHelper.get(
-      url: 'Students/CurrentCoursesTasks?CycleId=$currentCycleId',
+      url: 'Instructor/GetCurrentCourseTasks?CycleId=$currentCycleId',
       token: token,
     ).then((value) async {
       if (value.statusCode == 200) {
