@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
 import 'package:universityhup/features/student_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
+import '../../features/instructor_role/assignment/presentation/pages/assignment_result_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
@@ -29,6 +30,7 @@ abstract class AppRouter {
   static const kGrade = '/Grade';
   static const kQuizResultScreen='/QuizResultScreen';
   static const kAssignmentInstructorScreen='/AssignmentInstructorScreen';
+  static const kTaskResultScreen='/TaskResultScreen';
   //---------------------------
 
   static BuildContext? context1;
@@ -101,8 +103,14 @@ abstract class AppRouter {
 
       GoRoute(
         path: kAssignmentInstructorScreen,
-        builder: (context, state) =>  AssignmentInstructorScreen(),
+        builder: (context, state) =>  const AssignmentInstructorScreen(),
       ),
+
+      GoRoute(
+        path: kTaskResultScreen,
+        builder: (context, state) =>  TaskResultScreen(taskId: state.extra as String,),
+      ),
+
 
     ],
   );

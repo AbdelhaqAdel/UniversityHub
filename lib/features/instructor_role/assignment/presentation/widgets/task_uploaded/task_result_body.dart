@@ -9,8 +9,8 @@ import '../../../domain/entities/student_task_uploaded_entity.dart';
 import '../../manager/assignment_cubit.dart';
 
 final List studentUploadedTask=[];
-class TaskResult extends StatelessWidget {
-  const TaskResult({super.key, required this.taskId});
+class TaskResultBody extends StatelessWidget {
+  const TaskResultBody({super.key, required this.taskId});
 
   final String taskId;
 
@@ -72,17 +72,17 @@ class TaskResult extends StatelessWidget {
                           height: 2,
                           color: Colors.teal,
                           width: double.infinity,
-        
+
                         ),
                         SizedBox(height: 20,),
-        
+
                         Container(
                           height: 150,
                           child: ListView.separated(
                             itemBuilder:(context,index)=> CheckStudentTask(
-                              taskId: taskId,
-        
-        
+                                taskId: taskId,
+
+
                                 index: index+1,
                                 context: context,
                                 studentTaskUploadedEntity:studentUploadedTask[index]
@@ -91,7 +91,7 @@ class TaskResult extends StatelessWidget {
                               height: 1,
                               color: Colors.teal,
                               width: double.infinity,
-        
+
                             ),
                             itemCount:studentUploadedTask.length,
                           ),
@@ -100,13 +100,12 @@ class TaskResult extends StatelessWidget {
                     ),
                   ),
                 ),
-        
-        
-        
+
+
+
               ],
             ),
           ),
-        
         );
       },
     );

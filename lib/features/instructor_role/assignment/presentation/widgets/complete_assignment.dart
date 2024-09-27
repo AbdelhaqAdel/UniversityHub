@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../../core/constants/constant.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../domain/entities/assignment_entity.dart';
 import 'complete_assignment_widget/complete_header.dart';
-import 'complete_assignment_widget/info.dart';
-import 'complete_assignment_widget/states.dart';
 
 class CompleteAssignmentInstructor extends StatelessWidget {
   final AssignmentInstructorEntity? assignmentEntity;
@@ -44,18 +44,18 @@ class CompleteAssignmentInstructor extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 5.0),
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Row(
                             children: [
-                              FaIcon(
+                              const FaIcon(
                                 FontAwesomeIcons.bookmark,
                                 size: 12,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 7,
                               ),
                               Expanded(
@@ -64,17 +64,17 @@ class CompleteAssignmentInstructor extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                   textAlign: TextAlign.start,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
-                          Row(
+                          const Row(
                             children: [
                               FaIcon(
                                 FontAwesomeIcons.user,
@@ -92,10 +92,10 @@ class CompleteAssignmentInstructor extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
-                          Row(
+                          const Row(
                             children: [
                               FaIcon(
                                 FontAwesomeIcons.clock,
@@ -130,184 +130,7 @@ class CompleteAssignmentInstructor extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            // App_cubit.get(context).insGetStuUploadTasks(
-                            //     assignId: assign?.taskId);
-                            // showDialog<String>(
-                            //   context: context,
-                            //   barrierColor: Colors.black.withOpacity(.3),
-                            //   useSafeArea: true,
-                            //   builder: (BuildContext context) => AlertDialog(
-                            //     insetPadding: const EdgeInsets.all(0.0),
-                            //     scrollable: false,
-                            //     shadowColor: Colors.transparent,
-                            //     content: Center(
-                            //       child: Container(
-                            //         width: MediaQuery.of(context).size.width,
-                            //         child: GestureDetector(
-                            //           onTap: () {
-                            //             Navigator.pop(context);
-                            //           },
-                            //           child: GlassBox(
-                            //               widget: Stack(
-                            //                 children: [
-                            //                   Column(
-                            //                     children: [
-                            //                       const Spacer(),
-                            //                       Padding(
-                            //                         padding:
-                            //                             const EdgeInsets.all(
-                            //                                 15.0),
-                            //                         child: GlassBoxWithBorder(
-                            //                           widget: Container(
-                            //                             height: 350,
-                            //                             child: Padding(
-                            //                               padding:
-                            //                                   const EdgeInsets
-                            //                                       .only(
-                            //                                       bottom:
-                            //                                           25.0,
-                            //                                       left: 25,
-                            //                                       right: 25,
-                            //                                       top: 20),
-                            //                               child: Column(
-                            //                                 children: [
-                            //                                   Row(
-                            //                                     mainAxisAlignment:
-                            //                                         MainAxisAlignment
-                            //                                             .center,
-                            //                                     crossAxisAlignment:
-                            //                                         CrossAxisAlignment
-                            //                                             .center,
-                            //                                     children: [
-                            //                                       FaIcon(
-                            //                                         FontAwesomeIcons
-                            //                                             .solidUser,
-                            //                                         color: Colors
-                            //                                             .teal,
-                            //                                         size: 18,
-                            //                                       ),
-                            //                                       SizedBox(
-                            //                                         width: 15,
-                            //                                       ),
-                            //                                       Container(
-                            //                                           child:
-                            //                                               Text(
-                            //                                         'Student name',
-                            //                                         textAlign:
-                            //                                             TextAlign
-                            //                                                 .center,
-                            //                                         style: Theme.of(
-                            //                                                 context)
-                            //                                             .textTheme
-                            //                                             .bodySmall
-                            //                                             ?.copyWith(
-                            //                                               color:
-                            //                                                   Colors.teal,
-                            //                                               fontSize:
-                            //                                                   18,
-                            //                                               fontWeight:
-                            //                                                   FontWeight.w900,
-                            //                                             ),
-                            //                                       )),
-                            //                                       Spacer(),
-                            //                                       // Container(
-                            //                                       //     child: Text(
-                            //                                       //       'Upload at',
-                            //                                       //       textAlign: TextAlign.center,
-                            //                                       //       style: Theme.of(context)
-                            //                                       //           .textTheme
-                            //                                       //           .bodySmall
-                            //                                       //           ?.copyWith(
-                            //                                       //         color: Colors.teal,
-                            //                                       //         fontSize: 15,
-                            //                                       //         fontWeight: FontWeight.w900,
-                            //                                       //       ),
-                            //                                       //     )),
-                            //                                     ],
-                            //                                   ),
-                            //                                   SizedBox(
-                            //                                     height: 20,
-                            //                                   ),
-                            //                                   Container(
-                            //                                     height: 2,
-                            //                                     color: Colors
-                            //                                         .teal,
-                            //                                     width: double
-                            //                                         .infinity,
-                            //                                   ),
-                            //                                   SizedBox(
-                            //                                     height: 20,
-                            //                                   ),
-                            //                                   Container(
-                            //                                     height: 150,
-                            //                                     child: ListView
-                            //                                         .separated(
-                            //                                       itemBuilder:
-                            //                                           (context,
-                            //                                                   index) =>
-                            //                                               showSTU_UploadeTask(
-                            //                                         index:
-                            //                                             index +
-                            //                                                 1,
-                            //                                         context:
-                            //                                             context,
-                            //                                         stuAssign:
-                            //                                             App_cubit.get(context)
-                            //                                                 .studentUplodeTaskModel[index],
-                            //                                         taskid:
-                            //                                             '',
-                            //                                       ),
-                            //                                       separatorBuilder:
-                            //                                           (context,
-                            //                                                   index) =>
-                            //                                               Container(
-                            //                                         height: 1,
-                            //                                         color: Colors
-                            //                                             .teal,
-                            //                                         width: double
-                            //                                             .infinity,
-                            //                                       ),
-                            //                                       itemCount: App_cubit.get(
-                            //                                               context)
-                            //                                           .studentUplodeTaskModel
-                            //                                           .length,
-                            //                                     ),
-                            //                                   ),
-                            //                                 ],
-                            //                               ),
-                            //                             ),
-                            //                           ),
-                            //                           color: Colors.white
-                            //                               .withOpacity(.5),
-                            //                           borderRadius: 30,
-                            //                           x: 15,
-                            //                           y: 15,
-                            //                           BorderWidth: 1,
-                            //                           BorderColor:
-                            //                               Colors.white,
-                            //                         ),
-                            //                       ),
-                            //                       const Spacer(
-                            //                         flex: 1,
-                            //                       ),
-                            //                     ],
-                            //                   ),
-                            //                 ],
-                            //               ),
-                            //               color: Colors.transparent,
-                            //               borderRadius: 0,
-                            //               x: 3,
-                            //               y: 3),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //     elevation: 0,
-                            //     clipBehavior: Clip.none,
-                            //     surfaceTintColor: Colors.transparent,
-                            //     backgroundColor: Colors.transparent,
-                            //     contentPadding: EdgeInsets.zero,
-                            //   ),
-                            // );
+                            GoRouter.of(context).push(AppRouter.kTaskResultScreen,extra:assignmentEntity!.taskId! );
                           },
                           child: Container(
                             height: 45,

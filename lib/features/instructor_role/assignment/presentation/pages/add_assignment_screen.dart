@@ -14,8 +14,11 @@ import '../../domain/use_cases/submit_assignment_usecase.dart';
 import '../manager/assignment_cubit.dart';
 import '../widgets/assignment_body.dart';
 
-class AssignmentInstructorScreen extends StatelessWidget {
-  const AssignmentInstructorScreen({super.key});
+
+
+
+class AddAssignmentScreen extends StatelessWidget {
+  const AddAssignmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
