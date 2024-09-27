@@ -30,8 +30,8 @@ class CoursesModel {
     cycleId : json['cycleId'],
     name : json['name'],
     hours : json['hours'],
-    imagePath : json['imagePath'],
-    instructorFullName : json['instructorFullName'],
+    imagePath : json['imagePath']??'',
+    instructorFullName : json['instructorFullName']??'',
     );
   }
   Map<String, dynamic> toJson() {

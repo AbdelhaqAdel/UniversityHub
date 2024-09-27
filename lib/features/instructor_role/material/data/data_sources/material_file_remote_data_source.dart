@@ -1,10 +1,10 @@
+
 import 'package:dio/dio.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/utils/api_service.dart';
 import 'package:universityhup/core/utils/end_point.dart';
-import 'package:universityhup/features/student_role/material/data/models/material_file_model.dart';
-
-import '../../domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/instructor_role/material/data/models/material_file_model.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
 
 abstract class MaterialFileRemoteDataSource{
   Future <List<FileEntity>>fetchAllMaterialFiles({required lecId});

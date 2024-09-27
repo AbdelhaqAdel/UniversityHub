@@ -14,19 +14,23 @@ class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
   @override
   Future<List<CoursesModel>> fetchCourses()async {
      await  DioHelper.get(
-        url: EndPoint.allCourses,
+        url:role=="Student"? EndPoint.allCourses:EndPoint.insAllCourses,
         token:token,
       ).then((value) {
        fillCoursesList(value);
   });
-    HiveService.saveDataToHive<CoursesModel>(coursesList, HiveConstants.coursesBox);
+    // HiveService.saveDataToHive<CoursesModel>(coursesList, HiveConstants.coursesBox);
    return coursesList;
 }
  void fillCoursesList(Response<dynamic> list) {
+
   coursesList=[];
      for (var element in list.data) {
      coursesList.add(CoursesModel.fromJson(element));
     }
+    coursesList.forEach((e){
+      print(e.name);
+    });
   }
 
 }
