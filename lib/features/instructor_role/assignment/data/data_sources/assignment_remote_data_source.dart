@@ -1,9 +1,11 @@
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/assignment_entity.dart';
+import '../../domain/entities/student_task_uploaded_entity.dart';
 import '../models/add_assignment_input.dart';
 import '../models/assignment_model.dart';
 import '../models/set_grade_assignment_input.dart';
+import '../models/student_task_uploaded_model.dart';
 import '../models/update_assignment_input.dart';
 
 abstract class AssignmentInstructorRemoteDataSource {
@@ -16,6 +18,7 @@ abstract class AssignmentInstructorRemoteDataSource {
   Future addAssignment(
       {required AddAssignmentInputModel addAssignmentInputModel});
   Future deleteAssignment({required String assignmentId});
+  Future<List<StudentTaskUploadedEntity>> getStudentSubmitAssignment({required String assignmentId});
 }
 
 class AssignmentInstructorRemoteDataSourceImpl
@@ -81,5 +84,23 @@ class AssignmentInstructorRemoteDataSourceImpl
       url: 'Instructor/UploadAssignment?TaskName=${addAssignmentInputModel.taskName}&TaskGrade=${addAssignmentInputModel.taskGrade}&StartDate=${addAssignmentInputModel.startDate}&EndDate=${addAssignmentInputModel.endDate}&CourseCycleId=$currentCycleId',
       files:addAssignmentInputModel.file ,
     );
+  }
+
+  @override
+  Future<List<StudentTaskUploadedEntity>>  getStudentSubmitAssignment({required String assignmentId}) async {
+  List<StudentTaskUploadedEntity> studentTaskUploadedEntity=[];
+   await DioHelper.get(
+      url: 'Instructor/GetStudentsWhoUploadThetask?taskId=$assignmentId',
+      token: token,
+    ).then((onValue){
+     if (onValue.statusCode == 200) {
+       List Json = onValue.data;
+       for (var element in Json) {
+         studentTaskUploadedEntity.add(
+             StudentTaskUploadedModel.fromJson(element));
+       }
+     }
+   });
+   return studentTaskUploadedEntity;
   }
 }
