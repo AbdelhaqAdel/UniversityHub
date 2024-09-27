@@ -1,13 +1,13 @@
 import 'dart:io';
 
-class UploadAssignmentInstructorInputModel {
+class AddAssignmentInputModel {
   final String? taskName;
   final String? taskGrade;
   final String? startDate;
   final String? endDate;
   final List<File>? file;
 
-  UploadAssignmentInstructorInputModel( {
+  AddAssignmentInputModel( {
     required this.taskName,
     required this.taskGrade,
     required this.startDate,
