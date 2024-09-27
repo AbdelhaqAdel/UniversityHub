@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/student_role/user/presentation/widgets/user_actions.dart';
-import 'package:universityhup/features/student_role/user/presentation/widgets/user_image.dart';
-import 'package:universityhup/features/student_role/user/presentation/widgets/user_name.dart';
-import '../../domain/entities/user_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universityhup/features/instructor_role/user/domain/entities/user_entity.dart';
+import 'package:universityhup/features/instructor_role/user/presentation/widgets/user_actions.dart';
+import 'package:universityhup/features/instructor_role/user/presentation/widgets/user_image.dart';
+import 'package:universityhup/features/instructor_role/user/presentation/widgets/user_name.dart';
 import '../../../../../core/functions/custom_snack_bar.dart';
 
 import '../manager/user_cubit.dart';

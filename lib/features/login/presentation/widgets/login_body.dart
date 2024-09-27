@@ -232,6 +232,7 @@ class _LoginBodyState extends State<LoginBody> {
     showSnackBar(message: 'Login Successful', context: context);
     GoRouter.of(context).push(AppRouter.kLayout);
     token=LoginSuccessState.loginEntity?.token;
+    role=LoginSuccessState.loginEntity?.userRole;
 
     // save('isLogin', true, kStartBox);
     // save('uId', LoginSuccessState.loginEntity?.uid, kStartBox);
