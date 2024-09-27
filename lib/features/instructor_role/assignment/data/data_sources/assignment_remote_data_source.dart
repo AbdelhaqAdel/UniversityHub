@@ -2,7 +2,6 @@ import '../../../../../core/constants/constant.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../models/add_assignment_input.dart';
-import '../models/assignment_info_model.dart';
 import '../models/assignment_model.dart';
 import '../models/set_grade_assignment_input.dart';
 import '../models/update_assignment_input.dart';
