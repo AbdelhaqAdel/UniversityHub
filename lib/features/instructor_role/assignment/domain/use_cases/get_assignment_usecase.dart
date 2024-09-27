@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:universityhup/features/student_role/assignment/domain/entities/assignment_entity.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/use_cases/use_case.dart';
+import '../entities/assignment_entity.dart';
 import '../repositories/assignment_repo.dart';
 
 class GetAssignmentInstructorUseCase extends UseCase<

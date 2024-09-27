@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:universityhup/features/student_role/assignment/data/models/assignment_info_model.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/use_cases/use_case.dart';
+import '../../data/models/assignment_info_model.dart';
 import '../repositories/assignment_repo.dart';
 
 class GetAssignmentInstructorInfoUseCase extends UseCase<void,String>{
