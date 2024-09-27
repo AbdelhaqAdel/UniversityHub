@@ -119,7 +119,7 @@ class UploadAndDownload extends StatelessWidget {
                                               width: 15,
                                             ),
                                             Text(
-                                              '${assignmentEntity!.taskGrade ?? ''}',
+                                              '',
                                               maxLines: 2,
                                               overflow:
                                               TextOverflow.ellipsis,

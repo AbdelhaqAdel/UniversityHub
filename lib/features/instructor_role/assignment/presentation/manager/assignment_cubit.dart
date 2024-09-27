@@ -8,6 +8,7 @@ import 'package:universityhup/features/student_role/assignment/domain/entities/a
 import '../../../../../core/functions/open_file.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../data/models/submit_assignment_input.dart';
+import '../../domain/entities/assignment_entity.dart';
 import '../../domain/entities/assignment_info_entity.dart';
 import '../../domain/use_cases/get_assignment_info_usecase.dart';
 import '../../domain/use_cases/get_assignment_usecase.dart';

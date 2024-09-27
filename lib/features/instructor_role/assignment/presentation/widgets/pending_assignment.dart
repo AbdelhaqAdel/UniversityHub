@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_widget/header.dart';
-import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_widget/info.dart';
-import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_widget/states.dart';
-import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_widget/upload_download.dart';
+import 'package:universityhup/features/instructor_role/assignment/domain/entities/assignment_entity.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/header.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/info.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/states.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/upload_download.dart';
 
-import '../../domain/entities/assignment_entity.dart';
+
 
 
 class PendingAssignmentInstructor extends StatelessWidget {

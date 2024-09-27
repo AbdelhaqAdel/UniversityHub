@@ -34,7 +34,7 @@ class PendingInfo extends StatelessWidget {
                   width: 7,
                 ),
                 Text(
-                  '${assignmentEntity?.taskGrade}',
+                  '',
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                       fontWeight: FontWeight.w700,

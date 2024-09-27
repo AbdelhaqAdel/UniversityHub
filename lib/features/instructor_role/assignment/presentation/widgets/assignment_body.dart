@@ -1,10 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_list_view.dart';
 import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_list_view.dart';
 
 import '../../../../../core/widgets/app_bar.dart';
 import 'assignment_dashboard.dart';
-import 'complete_assignment_list_view.dart';
 import 'custom_tab_bar.dart';
 
 class AssignmentInstructorBody extends StatefulWidget {
@@ -38,25 +38,25 @@ class _AssignmentInstructorBodyState extends State<AssignmentInstructorBody>
               const SizedBox(
                 height: 30,
               ),
-              DefaultAppBar(text: "cubit.currentCourseName", context: context),
+              // DefaultAppBar(text: "cubit.currentCourseName", context: context),
               const SizedBox(
                 height: 30,
               ),
               const AssignmentInstructorDashboard(),
-               CustomTabBar(tabController: tabController,),
+               // CustomTabBar(tabController: tabController,),
               const SizedBox(
                 height: 15,
               ),
-              Expanded(
-                child: TabBarView(
-                  controller: tabController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [
-                    PendingAssignmentInstructorListView(),
-                    CompleteAssignmentInstructorListView(),
-                  ],
-                ),
-              ),
+              // Expanded(
+              //   child: TabBarView(
+              //     controller: tabController,
+              //     physics: const NeverScrollableScrollPhysics(),
+              //     children: const [
+              //       PendingAssignmentInstructorListView(),
+              //       CompleteAssignmentInstructorListView(),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

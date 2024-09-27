@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment.dart';
 import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment.dart';
 
 import '../../../../../core/functions/custom_snack_bar.dart';
