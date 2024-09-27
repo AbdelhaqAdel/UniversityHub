@@ -5,6 +5,7 @@ import '../models/assignment_info_model.dart';
 import '../models/assignment_model.dart';
 import '../models/set_grade_assignment_input.dart';
 import '../models/update_assignment_input.dart';
+import '../models/upload_assignment_input.dart';
 
 abstract class AssignmentInstructorRemoteDataSource {
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor();
@@ -13,6 +14,8 @@ abstract class AssignmentInstructorRemoteDataSource {
           updateAssignmentInstructorInputModel});
   Future setGradeAssignment(
       {required SetGradeAssignmentInputModel setGradeAssignmentInputModel});
+  Future uploadAssignment(
+      {required UploadAssignmentInstructorInputModel uploadAssignmentInstructorInputModel});
   Future deleteAssignment({required String assignmentId});
 }
 
@@ -70,6 +73,14 @@ class AssignmentInstructorRemoteDataSourceImpl
       url:
           'Instructor/editStudentGrade?studentId=${setGradeAssignmentInputModel.studentId}&examId=${setGradeAssignmentInputModel.taskId}&grade=${setGradeAssignmentInputModel.grade}',
       token: token,
+    );
+  }
+
+  @override
+  Future uploadAssignment({required UploadAssignmentInstructorInputModel uploadAssignmentInstructorInputModel}) async{
+    DioHelper.postListFileData(
+      url: 'Instructor/UploadAssignment?TaskName=${uploadAssignmentInstructorInputModel.taskName}&TaskGrade=${uploadAssignmentInstructorInputModel.taskGrade}&StartDate=${uploadAssignmentInstructorInputModel.startDate}&EndDate=${uploadAssignmentInstructorInputModel.endDate}&CourseCycleId=$currentCycleId',
+      files:uploadAssignmentInstructorInputModel.file ,
     );
   }
 }
