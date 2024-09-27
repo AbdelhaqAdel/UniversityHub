@@ -7,6 +7,7 @@ import 'package:universityhup/features/student_role/assignment/domain/repositori
 import '../../../../../core/functions/setup_service_locator.dart';
 import '../../data/data_sources/assignment_remote_data_source.dart';
 import '../../domain/entities/assignment_entity.dart';
+import '../../domain/repositories/assignment_repo.dart';
 import '../../domain/use_cases/get_assignment_info_usecase.dart';
 import '../../domain/use_cases/get_assignment_usecase.dart';
 import '../../domain/use_cases/submit_assignment_usecase.dart';
@@ -15,29 +16,29 @@ import '../widgets/assignment_body.dart';
 
 
 
-class AssignmentScreen extends StatefulWidget {
-  const AssignmentScreen({super.key});
+class AssignmentInstructorScreen extends StatefulWidget {
+  const AssignmentInstructorScreen({super.key});
 
   @override
-  State<AssignmentScreen> createState() => _AssignmentScreenState();
+  State<AssignmentInstructorScreen> createState() => _AssignmentInstructorScreenState();
 }
 
-class _AssignmentScreenState extends State<AssignmentScreen> {
+class _AssignmentInstructorScreenState extends State<AssignmentInstructorScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          AssignmentCubit(
-              getAssignmentUseCase: GetAssignmentUseCase(
-                assignmentRepo: getIt.get<AssignmentRepo>(),
+          AssignmentInstructorCubit(
+              getAssignmentInstructorUseCase: GetAssignmentInstructorUseCase(
+                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
               ),
-              getAssignmentInfoUseCase: GetAssignmentInfoUseCase(
-                assignmentRepo: getIt.get<AssignmentRepo>(),
+              getAssignmentInstructorInfoUseCase: GetAssignmentInstructorInfoUseCase(
+                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
               ),
-              submitAssignmentUseCase: SubmitAssignmentUseCase(
-                assignmentRepo: getIt.get<AssignmentRepo>(),
-              ))..getAssignment(),
-      child: const AssignmentBody(),
+              submitAssignmentInstructorUseCase: SubmitAssignmentInstructorUseCase(
+                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
+              ))..getAssignmentInstructor(),
+      child: const AssignmentInstructorBody(),
     );
   }
 }

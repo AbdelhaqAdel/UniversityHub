@@ -1,22 +1,23 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/student_role/assignment/presentation/widgets/pending_assignment_list_view.dart';
+import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_list_view.dart';
 
+import '../../../../../core/constants/constant.dart';
 import '../../../../../core/widgets/app_bar.dart';
 import 'assignment_dashboard.dart';
 import 'complete_assignment_list_view.dart';
 import 'custom_tab_bar.dart';
 
-class AssignmentBody extends StatefulWidget {
-  const AssignmentBody({
+class AssignmentInstructorBody extends StatefulWidget {
+  const AssignmentInstructorBody({
     super.key,
   });
 
   @override
-  State<AssignmentBody> createState() => _AssignmentBodyState();
+  State<AssignmentInstructorBody> createState() => _AssignmentInstructorBodyState();
 }
 
-class _AssignmentBodyState extends State<AssignmentBody>
+class _AssignmentInstructorBodyState extends State<AssignmentInstructorBody>
     with SingleTickerProviderStateMixin {
   late final TabController tabController;
 
@@ -38,11 +39,11 @@ class _AssignmentBodyState extends State<AssignmentBody>
               const SizedBox(
                 height: 30,
               ),
-              DefaultAppBar(text: "cubit.currentCourseName", context: context),
+              DefaultAppBar(text: currentCycleName, context: context),
               const SizedBox(
                 height: 30,
               ),
-              const AssignmentDashboard(),
+              const AssignmentInstructorDashboard(),
                CustomTabBar(tabController: tabController,),
               const SizedBox(
                 height: 15,
@@ -52,8 +53,8 @@ class _AssignmentBodyState extends State<AssignmentBody>
                   controller: tabController,
                   physics: const NeverScrollableScrollPhysics(),
                   children: const [
-                    PendingAssignmentListView(),
-                    CompleteAssignmentListView(),
+                    PendingAssignmentInstructorListView(),
+                    CompleteAssignmentInstructorListView(),
                   ],
                 ),
               ),

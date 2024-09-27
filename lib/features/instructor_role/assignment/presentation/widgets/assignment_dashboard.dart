@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class AssignmentDashboard extends StatelessWidget {
-  const AssignmentDashboard({
+class AssignmentInstructorDashboard extends StatelessWidget {
+  const AssignmentInstructorDashboard({
     super.key,
   });
 

@@ -7,30 +7,30 @@ import '../manager/assignment_cubit.dart';
 import '../pages/assignment_screen.dart';
 import 'complete_assignment.dart';
 
-class CompleteAssignmentListView extends StatefulWidget {
-  const CompleteAssignmentListView({
+class CompleteAssignmentInstructorListView extends StatefulWidget {
+  const CompleteAssignmentInstructorListView({
     super.key,
   });
 
   @override
-  State<CompleteAssignmentListView> createState() =>
-      _CompleteAssignmentListViewState();
+  State<CompleteAssignmentInstructorListView> createState() =>
+      _CompleteAssignmentInstructorListViewState();
 }
 
-class _CompleteAssignmentListViewState
-    extends State<CompleteAssignmentListView> {
-  static List<AssignmentEntity> completedAssignmentEntity = [];
+class _CompleteAssignmentInstructorListViewState
+    extends State<CompleteAssignmentInstructorListView> {
+  static List<AssignmentInstructorEntity> completedAssignmentInstructorEntity = [];
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AssignmentCubit, AssignmentState>(
+    return BlocConsumer<AssignmentInstructorCubit, AssignmentInstructorState>(
       listener: (context, state) {
-        if (state is GetAssignmentSuccessState) {
-          showSnackBar(context: context, message: 'GetAssignmentSuccessState');
+        if (state is GetAssignmentInstructorSuccessState) {
+          showSnackBar(context: context, message: 'GetAssignmentInstructorSuccessState');
         }
       },
       builder: (context, state) {
-        if (GetAssignmentSuccessState.completedAssignmentEntity.isNotEmpty) {
+        if (GetAssignmentInstructorSuccessState.completedAssignmentInstructorEntity.isNotEmpty) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: ListView.separated(
@@ -38,14 +38,14 @@ class _CompleteAssignmentListViewState
               itemBuilder: (context, index) => InkWell(
                 borderRadius: BorderRadius.circular(20),
                   onTap: () {},
-                  child: CompleteAssignment(
-                      assignmentEntity: GetAssignmentSuccessState
-                          .completedAssignmentEntity[index])),
+                  child: CompleteAssignmentInstructor(
+                      assignmentEntity: GetAssignmentInstructorSuccessState
+                          .completedAssignmentInstructorEntity[index])),
               separatorBuilder: (context, index) => const SizedBox(
                 height: 10,
               ),
               itemCount:
-                  GetAssignmentSuccessState.completedAssignmentEntity.length,
+                  GetAssignmentInstructorSuccessState.completedAssignmentInstructorEntity.length,
             ),
           );
         } else {

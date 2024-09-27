@@ -8,46 +8,47 @@ import 'package:universityhup/features/student_role/assignment/domain/entities/a
 import '../../../../../core/functions/open_file.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../data/models/submit_assignment_input.dart';
+import '../../domain/entities/assignment_entity.dart';
 import '../../domain/entities/assignment_info_entity.dart';
 import '../../domain/use_cases/get_assignment_info_usecase.dart';
 import '../../domain/use_cases/get_assignment_usecase.dart';
 import '../../domain/use_cases/submit_assignment_usecase.dart';
 part 'assignment_state.dart';
 
-class AssignmentCubit extends Cubit<AssignmentState> {
-  AssignmentCubit(
-      {required this.getAssignmentUseCase,
-      required this.getAssignmentInfoUseCase,
-      required this.submitAssignmentUseCase})
-      : super(AssignmentInitial());
+class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
+  AssignmentInstructorCubit(
+      {required this.getAssignmentInstructorUseCase,
+      required this.getAssignmentInstructorInfoUseCase,
+      required this.submitAssignmentInstructorUseCase})
+      : super(AssignmentInstructorInitial());
 
-  static AssignmentCubit get(context) => BlocProvider.of(context);
-  final GetAssignmentUseCase getAssignmentUseCase;
-  final GetAssignmentInfoUseCase getAssignmentInfoUseCase;
-  final SubmitAssignmentUseCase submitAssignmentUseCase;
+  static AssignmentInstructorCubit get(context) => BlocProvider.of(context);
+  final GetAssignmentInstructorUseCase getAssignmentInstructorUseCase;
+  final GetAssignmentInstructorInfoUseCase getAssignmentInstructorInfoUseCase;
+  final SubmitAssignmentInstructorUseCase submitAssignmentInstructorUseCase;
 
-  void getAssignment() async {
-    emit(GetAssignmentLoadingState());
-    var result = await getAssignmentUseCase.call();
+  void getAssignmentInstructor() async {
+    emit(GetAssignmentInstructorLoadingState());
+    var result = await getAssignmentInstructorUseCase.call();
     result.fold((failure) {
-      emit(GetAssignmentErrorState(failure.toString()));
+      emit(GetAssignmentInstructorErrorState(failure.toString()));
     }, (right) {
-      GetAssignmentSuccessState.completedAssignmentEntity =
+      GetAssignmentInstructorSuccessState.completedAssignmentInstructorEntity =
           right.assignmentEntityCompleteList;
-      GetAssignmentSuccessState.pendingAssignmentEntity =
+      GetAssignmentInstructorSuccessState.pendingAssignmentInstructorEntity =
           right.assignmentEntityPendingList;
 
-      emit(GetAssignmentSuccessState());
+      emit(GetAssignmentInstructorSuccessState());
     });
   }
 
-  void getAssignmentInfo({required String assignmentId}) async {
-    emit(GetAssignmentInfoLoadingState());
-    var result = await getAssignmentInfoUseCase.call(assignmentId);
+  void getAssignmentInstructorInfo({required String assignmentId}) async {
+    emit(GetAssignmentInstructorInfoLoadingState());
+    var result = await getAssignmentInstructorInfoUseCase.call(assignmentId);
     result.fold((failure) {
-      emit(GetAssignmentInfoErrorState(failure.toString()));
+      emit(GetAssignmentInstructorInfoErrorState(failure.toString()));
     }, (right) {
-      emit(GetAssignmentInfoSuccessState(assignmentInfoEntity: right));
+      emit(GetAssignmentInstructorInfoSuccessState(assignmentInfoEntity: right));
     });
   }
 
@@ -65,15 +66,15 @@ class AssignmentCubit extends Cubit<AssignmentState> {
     });
   }
 
-  void submitAssignment({required String assignmentId}) async {
-    emit(SubmitAssignmentLoadingState());
-    SubmitAssignmentInputModel submitAssignmentInputModel =
-        SubmitAssignmentInputModel(taskId: assignmentId, file: file);
-    var result = await submitAssignmentUseCase.call(submitAssignmentInputModel);
+  void submitAssignmentInstructor({required String assignmentId}) async {
+    emit(SubmitAssignmentInstructorLoadingState());
+    SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel =
+        SubmitAssignmentInstructorInputModel(taskId: assignmentId, file: file);
+    var result = await submitAssignmentInstructorUseCase.call(submitAssignmentInstructorInputModel);
     result.fold((failure) {
-      emit(SubmitAssignmentErrorState(failure.toString()));
+      emit(SubmitAssignmentInstructorErrorState(failure.toString()));
     }, (right) {
-      emit(SubmitAssignmentSuccessState());
+      emit(SubmitAssignmentInstructorSuccessState());
     });
   }
 }

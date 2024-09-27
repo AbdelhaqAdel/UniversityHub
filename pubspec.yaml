@@ -76,6 +76,7 @@ dependencies:
   dartz: ^0.10.1
   flutter_screenutil: ^5.9.0
   conditional_builder_null_safety: ^0.0.6
+  percent_indicator: ^4.2.3
 
 
 

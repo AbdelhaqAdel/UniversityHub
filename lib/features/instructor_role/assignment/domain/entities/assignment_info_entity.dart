@@ -1,4 +1,4 @@
-class AssignmentInfoEntity {
+class AssignmentInstructorInfoEntity {
   final String? taskName;
   final int? taskGrade;
   final String? startDate;
@@ -7,7 +7,7 @@ class AssignmentInfoEntity {
   final String? filePath;
   final String? createdAt;
 
-  AssignmentInfoEntity(
+  AssignmentInstructorInfoEntity(
       {required this.taskName,
       required this.taskGrade,
       required this.startDate,

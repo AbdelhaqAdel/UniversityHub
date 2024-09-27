@@ -5,6 +5,8 @@ import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/utils/assets.dart';
 import 'package:universityhup/features/courses/presentation/widgets/about%20course/about_button_custom_widget.dart';
 
+import '../../../../../core/constants/constant.dart';
+
 class AboutCourseScreen extends StatelessWidget {
   const AboutCourseScreen({super.key,});
   @override
@@ -36,7 +38,7 @@ class AboutCourseScreen extends StatelessWidget {
                         AboutButton(
                           text: 'Material',
                           color: Colors.greenAccent.withOpacity(.25),
-                          image: AssetsData.courseMaterialImage, onTap: () { 
+                          image: AssetsData.courseMaterialImage, onTap: () {
                             GoRouter.of(context).push(AppRouter.kMaterialFolders); 
                            },
                         ),
@@ -48,7 +50,11 @@ class AboutCourseScreen extends StatelessWidget {
                           color: Colors.deepPurpleAccent.withOpacity(.25),
                           image: AssetsData.courseAssignImage,
                           onTap: () {
-                            GoRouter.of(context).push(AppRouter.kAssignmentScreen);
+                            if(role=='Student'){
+                              GoRouter.of(context).push(AppRouter.kAssignmentScreen);
+                            }else{
+                              GoRouter.of(context).push(AppRouter.kAssignmentInstructorScreen);
+                            }
 
                           },
                         ),
