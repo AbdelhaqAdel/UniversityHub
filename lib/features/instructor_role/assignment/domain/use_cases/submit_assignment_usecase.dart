@@ -7,14 +7,14 @@ import '../../../../../core/use_cases/use_case.dart';
 import '../../data/models/submit_assignment_input.dart';
 import '../repositories/assignment_repo.dart';
 
-class SubmitAssignmentUseCase extends UseCase<void,SubmitAssignmentInputModel>{
- final AssignmentRepo assignmentRepo;
+class SubmitAssignmentInstructorUseCase extends UseCase<void,SubmitAssignmentInstructorInputModel>{
+ final AssignmentInstructorRepo assignmentRepo;
 
 
- SubmitAssignmentUseCase({required this.assignmentRepo});
+ SubmitAssignmentInstructorUseCase({required this.assignmentRepo});
   @override
-  Future<Either<Failure, void>> call([SubmitAssignmentInputModel? submitAssignmentInputModel ]) {
-  return assignmentRepo.submitAssignment(submitAssignmentInputModel: submitAssignmentInputModel!);
+  Future<Either<Failure, void>> call([SubmitAssignmentInstructorInputModel? submitAssignmentInstructorInputModel ]) {
+  return assignmentRepo.submitAssignmentInstructor(submitAssignmentInstructorInputModel: submitAssignmentInstructorInputModel!);
   }
 
 }

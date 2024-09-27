@@ -5,9 +5,9 @@ import '../../domain/entities/assignment_entity.dart';
 import 'complete_assignment_widget/info.dart';
 import 'complete_assignment_widget/states.dart';
 
-class CompleteAssignment extends StatelessWidget {
-  final AssignmentEntity? assignmentEntity;
-  const CompleteAssignment({
+class CompleteAssignmentInstructor extends StatelessWidget {
+  final AssignmentInstructorEntity? assignmentEntity;
+  const CompleteAssignmentInstructor({
     super.key, required this.assignmentEntity,
   });
 
@@ -66,8 +66,8 @@ class CompleteAssignment extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  CompleteAssignmentInfo(assignmentEntity: assignmentEntity),
-                  const CompleteAssignmentStates(),
+                  CompleteAssignmentInstructorInfo(assignmentEntity: assignmentEntity),
+                  const CompleteAssignmentInstructorStates(),
                 ],
               ),
             ),

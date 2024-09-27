@@ -4,40 +4,40 @@ import '../../../../../core/errors/failure.dart';
 import '../../../../../core/use_cases/use_case.dart';
 import '../repositories/assignment_repo.dart';
 
-class GetAssignmentUseCase extends UseCase<
+class GetAssignmentInstructorUseCase extends UseCase<
     ({
-    List<AssignmentEntity> assignmentEntityCompleteList,
-    List<AssignmentEntity> assignmentEntityPendingList
+    List<AssignmentInstructorEntity> assignmentEntityCompleteList,
+    List<AssignmentInstructorEntity> assignmentEntityPendingList
     }),
     NoParam> {
- final AssignmentRepo assignmentRepo;
+ final AssignmentInstructorRepo assignmentRepo;
 
- GetAssignmentUseCase({required this.assignmentRepo});
+ GetAssignmentInstructorUseCase({required this.assignmentRepo});
 
  @override
  Future<
      Either<
          Failure,
          ({
-         List<AssignmentEntity> assignmentEntityCompleteList,
-         List<AssignmentEntity> assignmentEntityPendingList
+         List<AssignmentInstructorEntity> assignmentEntityCompleteList,
+         List<AssignmentInstructorEntity> assignmentEntityPendingList
          })>> call([NoParam? param]) async {
-  final result = await assignmentRepo.getAssignment();
+  final result = await assignmentRepo.getAssignmentInstructor();
   return result.fold(
        (failure) => Left(failure),
        (assignmentEntityList) {
-    var filteredData = filterAssignmentData(assignmentEntityList);
+    var filteredData = filterAssignmentInstructorData(assignmentEntityList);
     return Right(filteredData);
    },
   );
  }
 
  ({
- List<AssignmentEntity> assignmentEntityPendingList,
- List<AssignmentEntity> assignmentEntityCompleteList
- }) filterAssignmentData(List<AssignmentEntity> assignmentEntityList) {
-  List<AssignmentEntity> assignmentEntityCompleteList = [];
-  List<AssignmentEntity> assignmentEntityPendingList = [];
+ List<AssignmentInstructorEntity> assignmentEntityPendingList,
+ List<AssignmentInstructorEntity> assignmentEntityCompleteList
+ }) filterAssignmentInstructorData(List<AssignmentInstructorEntity> assignmentEntityList) {
+  List<AssignmentInstructorEntity> assignmentEntityCompleteList = [];
+  List<AssignmentInstructorEntity> assignmentEntityPendingList = [];
   for (var element in assignmentEntityList) {
    if (DateTime.now().isBefore(DateTime.parse(element.endDate!))) {
     assignmentEntityPendingList.add(element);

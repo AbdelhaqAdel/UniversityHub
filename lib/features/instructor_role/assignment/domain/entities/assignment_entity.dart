@@ -1,4 +1,4 @@
-class AssignmentEntity {
+class AssignmentInstructorEntity {
   final String? taskId;
   final String? taskName;
   final int? taskGrade;
@@ -10,7 +10,7 @@ class AssignmentEntity {
   final String? instructorName;
   final String? createdAt;
 
-  AssignmentEntity(
+  AssignmentInstructorEntity(
       {required this.taskId,
       required this.taskName,
       required this.taskGrade,

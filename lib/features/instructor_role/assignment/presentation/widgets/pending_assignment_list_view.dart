@@ -5,40 +5,40 @@ import 'package:universityhup/features/student_role/assignment/presentation/widg
 import '../../../../../core/functions/custom_snack_bar.dart';
 import '../manager/assignment_cubit.dart';
 
-class PendingAssignmentListView extends StatefulWidget {
-  const PendingAssignmentListView({
+class PendingAssignmentInstructorListView extends StatefulWidget {
+  const PendingAssignmentInstructorListView({
     super.key,
   });
 
   @override
-  State<PendingAssignmentListView> createState() =>
-      _PendingAssignmentListViewState();
+  State<PendingAssignmentInstructorListView> createState() =>
+      _PendingAssignmentInstructorListViewState();
 }
 
-class _PendingAssignmentListViewState extends State<PendingAssignmentListView> {
+class _PendingAssignmentInstructorListViewState extends State<PendingAssignmentInstructorListView> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AssignmentCubit, AssignmentState>(
+    return BlocConsumer<AssignmentInstructorCubit, AssignmentInstructorState>(
       listener: (context, state) {
-        if (state is GetAssignmentSuccessState) {
-          showSnackBar(context: context, message: 'GetAssignmentSuccessState');
+        if (state is GetAssignmentInstructorSuccessState) {
+          showSnackBar(context: context, message: 'GetAssignmentInstructorSuccessState');
         }
       },
       builder: (context, state) {
-        if (GetAssignmentSuccessState.pendingAssignmentEntity.isNotEmpty) {
+        if (GetAssignmentInstructorSuccessState.pendingAssignmentInstructorEntity.isNotEmpty) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => PendingAssignment(
-                assignmentEntity: GetAssignmentSuccessState
-                    .pendingAssignmentEntity[index],
+              itemBuilder: (context, index) => PendingAssignmentInstructor(
+                assignmentEntity: GetAssignmentInstructorSuccessState
+                    .pendingAssignmentInstructorEntity[index],
               ),
               separatorBuilder: (context, index) => const SizedBox(
                 height: 10,
               ),
               itemCount:
-                  GetAssignmentSuccessState.pendingAssignmentEntity.length,
+                  GetAssignmentInstructorSuccessState.pendingAssignmentInstructorEntity.length,
             ),
           );
         } else {

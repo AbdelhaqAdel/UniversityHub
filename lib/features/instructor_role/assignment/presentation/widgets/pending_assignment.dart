@@ -7,9 +7,9 @@ import 'package:universityhup/features/student_role/assignment/presentation/widg
 import '../../domain/entities/assignment_entity.dart';
 
 
-class PendingAssignment extends StatelessWidget {
-  final AssignmentEntity? assignmentEntity;
-  const PendingAssignment({
+class PendingAssignmentInstructor extends StatelessWidget {
+  final AssignmentInstructorEntity? assignmentEntity;
+  const PendingAssignmentInstructor({
     super.key,
     required this.assignmentEntity,
   });

@@ -9,7 +9,7 @@ class PendingInfo extends StatelessWidget {
     required this.assignmentEntity,
   });
 
-  final AssignmentEntity? assignmentEntity;
+  final AssignmentInstructorEntity? assignmentEntity;
 
   @override
   Widget build(BuildContext context) {

@@ -7,16 +7,16 @@ import 'assignment_dashboard.dart';
 import 'complete_assignment_list_view.dart';
 import 'custom_tab_bar.dart';
 
-class AssignmentBody extends StatefulWidget {
-  const AssignmentBody({
+class AssignmentInstructorBody extends StatefulWidget {
+  const AssignmentInstructorBody({
     super.key,
   });
 
   @override
-  State<AssignmentBody> createState() => _AssignmentBodyState();
+  State<AssignmentInstructorBody> createState() => _AssignmentInstructorBodyState();
 }
 
-class _AssignmentBodyState extends State<AssignmentBody>
+class _AssignmentInstructorBodyState extends State<AssignmentInstructorBody>
     with SingleTickerProviderStateMixin {
   late final TabController tabController;
 
@@ -42,7 +42,7 @@ class _AssignmentBodyState extends State<AssignmentBody>
               const SizedBox(
                 height: 30,
               ),
-              const AssignmentDashboard(),
+              const AssignmentInstructorDashboard(),
                CustomTabBar(tabController: tabController,),
               const SizedBox(
                 height: 15,
@@ -52,8 +52,8 @@ class _AssignmentBodyState extends State<AssignmentBody>
                   controller: tabController,
                   physics: const NeverScrollableScrollPhysics(),
                   children: const [
-                    PendingAssignmentListView(),
-                    CompleteAssignmentListView(),
+                    PendingAssignmentInstructorListView(),
+                    CompleteAssignmentInstructorListView(),
                   ],
                 ),
               ),

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 
-class CompleteAssignmentStates extends StatelessWidget {
-  const CompleteAssignmentStates({
+class CompleteAssignmentInstructorStates extends StatelessWidget {
+  const CompleteAssignmentInstructorStates({
     super.key,
   });
 

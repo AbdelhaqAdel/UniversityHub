@@ -9,17 +9,17 @@ import '../data_sources/assignment_remote_data_source.dart';
 import '../models/assignment_info_model.dart';
 import '../models/submit_assignment_input.dart';
 
-class AssignmentRepoImpl extends AssignmentRepo{
- final AssignmentRemoteDataSource assignmentRemoteDataSource;
+class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
+ final AssignmentInstructorRemoteDataSource assignmentRemoteDataSource;
 
 
- AssignmentRepoImpl( {required this.assignmentRemoteDataSource,});
+ AssignmentInstructorRepoImpl( {required this.assignmentRemoteDataSource,});
 
   @override
-  Future<Either<Failure, List<AssignmentEntity>>> getAssignment() async {
+  Future<Either<Failure, List<AssignmentInstructorEntity>>> getAssignmentInstructor() async {
     try{
-      List<AssignmentEntity> assignmentEntityList = [];
-       assignmentEntityList = await assignmentRemoteDataSource.getAssignment();
+      List<AssignmentInstructorEntity> assignmentEntityList = [];
+       assignmentEntityList = await assignmentRemoteDataSource.getAssignmentInstructor();
        return right(assignmentEntityList);
     }catch(e){
       return left(ServerFailure(e.toString()));
@@ -27,10 +27,10 @@ class AssignmentRepoImpl extends AssignmentRepo{
   }
 
   @override
-  Future<Either<Failure, AssignmentInfoModel>> getAssignmentInfo({required String assignmentId}) async {
+  Future<Either<Failure, AssignmentInstructorInfoModel>> getAssignmentInstructorInfo({required String assignmentId}) async {
     try{
-      AssignmentInfoModel? assignmentInfoModel ;
-      assignmentInfoModel = await assignmentRemoteDataSource.getAssignmentInfo(assignmentId: assignmentId);
+      AssignmentInstructorInfoModel? assignmentInfoModel ;
+      assignmentInfoModel = await assignmentRemoteDataSource.getAssignmentInstructorInfo(assignmentId: assignmentId);
       return right(assignmentInfoModel!);
     }catch(e){
       return left(ServerFailure(e.toString()));
@@ -38,9 +38,9 @@ class AssignmentRepoImpl extends AssignmentRepo{
   }
 
   @override
-  Future<Either<Failure, void>> submitAssignment({required SubmitAssignmentInputModel submitAssignmentInputModel}) async {
+  Future<Either<Failure, void>> submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel}) async {
     try{
-      await assignmentRemoteDataSource.submitAssignment(submitAssignmentInputModel: submitAssignmentInputModel);
+      await assignmentRemoteDataSource.submitAssignmentInstructor(submitAssignmentInstructorInputModel: submitAssignmentInstructorInputModel);
       return right(null);
     }catch(e){
       return left(ServerFailure(e.toString()));

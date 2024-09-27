@@ -1,7 +1,7 @@
 import '../../domain/entities/assignment_entity.dart';
 
-class AssignmentModel extends AssignmentEntity {
-  AssignmentModel(
+class AssignmentInstructorModel extends AssignmentInstructorEntity {
+  AssignmentInstructorModel(
       {required super.taskId,
       required super.taskName,
       required super.taskGrade,
@@ -13,8 +13,8 @@ class AssignmentModel extends AssignmentEntity {
       required super.instructorName,
       required super.createdAt});
 
-  factory AssignmentModel.fromJson(Map<String, dynamic> json) =>
-      AssignmentModel(
+  factory AssignmentInstructorModel.fromJson(Map<String, dynamic> json) =>
+      AssignmentInstructorModel(
           taskId: json['taskId'],
           taskName: json['taskName'],
           taskGrade: json['taskGrade'],

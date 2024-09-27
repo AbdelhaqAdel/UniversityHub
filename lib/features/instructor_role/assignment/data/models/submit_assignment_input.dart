@@ -1,8 +1,8 @@
 import 'dart:io';
 
-class SubmitAssignmentInputModel {
+class SubmitAssignmentInstructorInputModel {
   final String? taskId;
   final List<File> file;
 
-  SubmitAssignmentInputModel({required this.taskId, required this.file});
+  SubmitAssignmentInstructorInputModel({required this.taskId, required this.file});
 }

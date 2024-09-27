@@ -22,27 +22,27 @@ class UploadAndDownload extends StatelessWidget {
     required this.assignmentEntity,
   });
 
-  final AssignmentEntity? assignmentEntity;
+  final AssignmentInstructorEntity? assignmentEntity;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AssignmentCubit(
-          getAssignmentUseCase: GetAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentRepo>(),
+      create: (context) => AssignmentInstructorCubit(
+          getAssignmentInstructorUseCase: GetAssignmentInstructorUseCase(
+            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ),
-          getAssignmentInfoUseCase: GetAssignmentInfoUseCase(
-            assignmentRepo: getIt.get<AssignmentRepo>(),
+          getAssignmentInstructorInfoUseCase: GetAssignmentInstructorInfoUseCase(
+            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ),
-          submitAssignmentUseCase: SubmitAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentRepo>(),
+          submitAssignmentInstructorUseCase: SubmitAssignmentInstructorUseCase(
+            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           )),
-      child: BlocConsumer<AssignmentCubit, AssignmentState>(
+      child: BlocConsumer<AssignmentInstructorCubit, AssignmentInstructorState>(
         listener: (context, state) {
-          if(state is SubmitAssignmentSuccessState){
+          if(state is SubmitAssignmentInstructorSuccessState){
             GoRouter.of(context).pop();
             showSnackBar(context: context, message: 'Submit Success');
-          }else if(state is SubmitAssignmentErrorState){
+          }else if(state is SubmitAssignmentInstructorErrorState){
             GoRouter.of(context).pop();
             showSnackBar(context: context, message: 'Submit Failed');
 
@@ -156,24 +156,24 @@ class UploadAndDownload extends StatelessWidget {
                                               ),
                                               GestureDetector(
                                                   onTap: () {
-                                                    if (AssignmentCubit
+                                                    if (AssignmentInstructorCubit
                                                         .get(context)
                                                         .file
                                                         .isEmpty) {
-                                                      AssignmentCubit.get(
+                                                      AssignmentInstructorCubit.get(
                                                           context)
                                                           .callPickFile();
                                                     } else {
-                                                      AssignmentCubit.get(
+                                                      AssignmentInstructorCubit.get(
                                                           context)
-                                                          .submitAssignment(
+                                                          .submitAssignmentInstructor(
                                                           assignmentId:
                                                           assignmentEntity!
                                                               .taskId!);
                                                     }
                                                   },
-                                                  child:state is SubmitAssignmentLoadingState? const Center(child: CircularProgressIndicator())
-                                                      :  AssignmentCubit.get(
+                                                  child:state is SubmitAssignmentInstructorLoadingState? const Center(child: CircularProgressIndicator())
+                                                      :  AssignmentInstructorCubit.get(
                                                       context)
                                                       .file
                                                       .isEmpty

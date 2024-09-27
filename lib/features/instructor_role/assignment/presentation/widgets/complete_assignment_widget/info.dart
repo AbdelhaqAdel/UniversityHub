@@ -5,13 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../domain/entities/assignment_entity.dart';
 
 
-class CompleteAssignmentInfo extends StatelessWidget {
-  const CompleteAssignmentInfo({
+class CompleteAssignmentInstructorInfo extends StatelessWidget {
+  const CompleteAssignmentInstructorInfo({
     super.key,
     required this.assignmentEntity,
   });
 
-  final AssignmentEntity? assignmentEntity;
+  final AssignmentInstructorEntity? assignmentEntity;
 
   @override
   Widget build(BuildContext context) {
