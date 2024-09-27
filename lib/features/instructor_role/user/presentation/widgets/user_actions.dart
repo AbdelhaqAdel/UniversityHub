@@ -219,7 +219,9 @@ class _CardInfo extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'Faculty : ',
+              'university : ',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:
               TextStyle(
                 fontWeight: FontWeight.w900,
@@ -227,13 +229,18 @@ class _CardInfo extends StatelessWidget {
                 color: Colors.teal,
               ),
             ),
-            Text(
-             userEntity!.universityName!,
-              style:
-              const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-                color:Colors.black,
+            SizedBox(
+              width: MediaQuery.of(context).size.width*.3,
+              child: Text(
+               userEntity!.universityName!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style:
+                const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color:Colors.black,
+                ),
               ),
             ),
           ],
@@ -245,7 +252,7 @@ class _CardInfo extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'faculty : ',
+              'email : ',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style:
@@ -256,7 +263,9 @@ class _CardInfo extends StatelessWidget {
               ),
             ),
             Text(
-              userEntity!.facultyName!,
+              userEntity!.email!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:
               const TextStyle(
                 fontWeight: FontWeight.w500,
