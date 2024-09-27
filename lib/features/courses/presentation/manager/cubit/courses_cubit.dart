@@ -12,7 +12,11 @@ class CoursesCubit extends Cubit<CoursesState> {
     final result=await coursesRepo.getAllCourses();
     result.fold(
        (error)=>emit(GetAllCoursesErrorState(error:error.message )),
-       (courses)=>emit(GetAllCoursesSuccessState(courses: courses)),
+       (courses){
+        courses.forEach((e){
+          print(e.name);
+        });
+        emit(GetAllCoursesSuccessState(courses: courses));},
 
        );
   }

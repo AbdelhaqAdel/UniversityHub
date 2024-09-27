@@ -2,10 +2,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:universityhup/core/errors/failure.dart';
-import 'package:universityhup/features/student_role/material/data/data_sources/material_remote_data_source.dart';
-
-import '../../domain/entities/material_folder_entity.dart';
-import '../../domain/repositories/material_repo.dart';
+import 'package:universityhup/features/instructor_role/material/data/data_sources/material_remote_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/repositories/material_repo.dart';
 
 class MaterialRepository extends MaterialRepo{
   final MaterialRemoteDataSourceImpl materialDataSource;
