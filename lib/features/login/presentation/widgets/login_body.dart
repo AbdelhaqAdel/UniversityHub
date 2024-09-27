@@ -25,6 +25,8 @@ class _LoginBodyState extends State<LoginBody> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var loginFormKey = GlobalKey<FormState>();
+  String? skip;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
@@ -121,6 +123,73 @@ class _LoginBodyState extends State<LoginBody> {
                             ),
                           ),
                         ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Expanded(
+                              child: RadioListTile(
+                                selectedTileColor: Colors.blue,
+                                tileColor: Colors.blue,
+                                hoverColor: Colors.blue,
+                                activeColor: Colors.blue,
+                                title: Text(
+                                  'Student',
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                contentPadding: EdgeInsets.all(0),
+
+
+                                value:  'AbdulMajeedSallam@gmail.com',
+                                groupValue: skip,
+                                onChanged: (value) {
+                                  setState(() {
+                                    skip=value;
+
+                                  });
+
+
+                                },
+                              ),
+                            ),
+
+
+                            Expanded(
+                              child: RadioListTile(
+                                selectedTileColor: Colors.blue,
+                                tileColor: Colors.blue,
+                                hoverColor: Colors.blue,
+                                activeColor: Colors.blue,
+                                title: Text(
+                                  'Doctor',
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                contentPadding: EdgeInsets.all(0),
+
+
+
+                                value: 'Sara@gmail.com',
+                                groupValue: skip,
+                                onChanged: (value) {
+                                  setState(() {
+
+                                    skip=value;
+
+                                  });
+
+
+
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+
                         const SizedBox(
                           height: 15,
                         ),
@@ -150,7 +219,7 @@ class _LoginBodyState extends State<LoginBody> {
     LoginDataModel loginDataModel = LoginDataModel(
       // email: emailController.text,
       // password: passwordController.text,
-      email: 'AbdulMajeedSallam@gmail.com',
+      email: skip,
       password: 'P@ssw0rd',
     );
     cubit.login(
