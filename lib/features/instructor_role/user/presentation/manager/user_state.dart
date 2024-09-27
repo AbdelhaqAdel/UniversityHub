@@ -1,16 +1,16 @@
 
 import '../../domain/entities/user_entity.dart';
 
-sealed class UserState {}
+sealed class UserInstructorState {}
 
-final class UserInitial extends UserState {}
+final class UserInstructorInitial extends UserInstructorState {}
 
-class GetUserLoadingState extends UserState{}
-class GetUserSuccessState extends UserState{
-  final UserEntity  userEntity;
-  GetUserSuccessState({required this.userEntity});
+class GetUserInstructorLoadingState extends UserInstructorState{}
+class GetUserInstructorSuccessState extends UserInstructorState{
+  final UserInstructorEntity  userEntity;
+  GetUserInstructorSuccessState({required this.userEntity});
 }
-class GetUserErrorState extends UserState{
+class GetUserInstructorErrorState extends UserInstructorState{
   final String errMessage;
-  GetUserErrorState(this.errMessage);
+  GetUserInstructorErrorState(this.errMessage);
 }

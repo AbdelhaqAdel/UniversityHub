@@ -2,13 +2,13 @@
 
 import '../../domain/entities/user_entity.dart';
 
-class UserModel extends UserEntity {
+class UserInstructorModel extends UserInstructorEntity {
 
 
-  UserModel({required super.userId, required super.fullName, required super.email, required super.phone, required super.imagePath, required super.academicId, required super.level, required super.departmentName, required super.facultyName, required super.universityName});
+  UserInstructorModel({required super.userId, required super.fullName, required super.email, required super.phone, required super.imagePath, required super.academicId, required super.level, required super.departmentName, required super.facultyName, required super.universityName});
 
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>UserModel(
+  factory UserInstructorModel.fromJson(Map<String, dynamic> json) =>UserInstructorModel(
     userId : json['userId'],
     fullName : json['fullName'],
     email : json['email'],

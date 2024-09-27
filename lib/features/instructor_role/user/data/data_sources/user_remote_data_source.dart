@@ -5,21 +5,21 @@ import '../../domain/entities/user_entity.dart';
 import '../models/user_model.dart';
 
 
-abstract class UserRemoteDataSource {
-  Future<UserEntity?> getUser();
+abstract class UserInstructorRemoteDataSource {
+  Future<UserInstructorEntity?> getUserInstructor();
 }
 
-class UserRemoteDataSourceImpl extends UserRemoteDataSource {
+class UserInstructorRemoteDataSourceImpl extends UserInstructorRemoteDataSource {
   @override
-  Future<UserEntity?> getUser() async {
-    UserEntity? userEntity;
+  Future<UserInstructorEntity?> getUserInstructor() async {
+    UserInstructorEntity? userEntity;
     await DioHelper.get(
-      url: 'https://lms.runasp.net/api/Students/GetStudentInfo',
+      url: 'https://lms.runasp.net/api/Instructor/GetInstructorInfo',
       token: token,
     ).then((value) async {
       if (value.statusCode == 200) {
         var json = value.data;
-        userEntity= UserModel.fromJson(json);
+        userEntity= UserInstructorModel.fromJson(json);
       }
     });
     return userEntity;

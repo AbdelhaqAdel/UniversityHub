@@ -2,20 +2,20 @@ import 'package:bloc/bloc.dart';
 import '../../domain/use_cases/get_user_info_usecase.dart';
 import 'user_state.dart';
 
-class UserCubit extends Cubit<UserState> {
-  UserCubit(
-      {required this.getUserUseCase})
-      : super(UserInitial());
+class UserInstructorCubit extends Cubit<UserInstructorState> {
+  UserInstructorCubit(
+      {required this.getUserInstructorUseCase})
+      : super(UserInstructorInitial());
 
-  final GetUserUseCase getUserUseCase;
+  final GetUserInstructorUseCase getUserInstructorUseCase;
 
-  void getUser() async {
-    emit(GetUserLoadingState());
-    var result = await getUserUseCase.call();
+  void getUserInstructor() async {
+    emit(GetUserInstructorLoadingState());
+    var result = await getUserInstructorUseCase.call();
     result.fold((failure) {
-      emit(GetUserErrorState(failure.toString()));
+      emit(GetUserInstructorErrorState(failure.toString()));
     }, (right) {
-      emit(GetUserSuccessState(userEntity: right));
+      emit(GetUserInstructorSuccessState(userEntity: right));
     });
   }
 

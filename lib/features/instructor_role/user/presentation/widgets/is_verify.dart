@@ -51,7 +51,7 @@ class IsVerify extends StatelessWidget {
                           onPressed: () {
                             // cubit.verfiy_Function();
                             // print(FirebaseAuth.instance
-                            //     .currentUser?.emailVerified);
+                            //     .currentUserInstructor?.emailVerified);
                           },
                           icon: const Icon(
                             Icons.restart_alt,

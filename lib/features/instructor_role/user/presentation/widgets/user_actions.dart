@@ -8,7 +8,7 @@ class ButtonsActions extends StatelessWidget {
     required this.userEntity,
   });
 
-  final UserEntity? userEntity;
+  final UserInstructorEntity? userEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +175,7 @@ class _CardInfo extends StatelessWidget {
     required this.userEntity,
   });
 
-  final UserEntity? userEntity;
+  final UserInstructorEntity? userEntity;
 
   @override
   Widget build(BuildContext context) {

@@ -10,24 +10,24 @@ import '../manager/user_cubit.dart';
 import '../manager/user_state.dart';
 import 'is_verify.dart';
 
-class UserBody extends StatefulWidget {
-  const UserBody({
+class UserInstructorBody extends StatefulWidget {
+  const UserInstructorBody({
     super.key,
   });
 
   @override
-  State<UserBody> createState() => _UserBodyState();
+  State<UserInstructorBody> createState() => _UserInstructorBodyState();
 }
 
-class _UserBodyState extends State<UserBody> {
-  UserEntity? userEntity ;
+class _UserInstructorBodyState extends State<UserInstructorBody> {
+  UserInstructorEntity? userEntity ;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<UserCubit, UserState>(
+    return BlocConsumer<UserInstructorCubit, UserInstructorState>(
       listener: (context, state) {
-        if(state is GetUserSuccessState){
-          showSnackBar(context: context, message: 'GetUserSuccessState');
+        if(state is GetUserInstructorSuccessState){
+          showSnackBar(context: context, message: 'GetUserInstructorSuccessState');
           userEntity=state.userEntity;
         }
       },
@@ -39,7 +39,7 @@ class _UserBodyState extends State<UserBody> {
               const SizedBox(
                 height: 3,
               ),
-              UserName(userEntity: userEntity),
+              UserInstructorName(userEntity: userEntity),
               ButtonsActions(userEntity: userEntity),
               const IsVerify(),
             ],

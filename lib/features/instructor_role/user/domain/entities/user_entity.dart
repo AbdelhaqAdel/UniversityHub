@@ -1,4 +1,4 @@
-class UserEntity {
+class UserInstructorEntity {
   final String? userId;
   final String? fullName;
   final String? email;
@@ -10,7 +10,7 @@ class UserEntity {
   final String? facultyName;
   final String? universityName;
 
-  UserEntity(
+  UserInstructorEntity(
       {required this.userId,
       required this.fullName,
       required this.email,
