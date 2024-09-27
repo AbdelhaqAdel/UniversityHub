@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../../core/widgets/alert.dart';
-import '../../../../../../core/widgets/glass_box.dart';
 import '../../../domain/entities/assignment_entity.dart';
 
 class PendingHeader extends StatelessWidget {
@@ -32,8 +31,6 @@ class PendingHeader extends StatelessWidget {
                 },
                 text: 'Do you want to edit Task ?',
                 yes: () {
-                  // Navigator.pop(context);
-                  // print(assign!.taskId);
                   // showDialog<String>(
                   //   context: context,
                   //   barrierColor: Colors.black.withOpacity(.3),
