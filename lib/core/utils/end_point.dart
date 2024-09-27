@@ -6,6 +6,8 @@ abstract class EndPoint{
   static const String login='Account/login';
   static const String news ='News';
   static const String allCourses='Students/CurrentCourcesInfo';
+  static const String insAllCourses='Instructor/CurrentCoursesInfo';
+
   static String allQuizzes= 'Students/CurrentCourseQuizzes?cycleId=';
   static String quizData='Students/Quiz?quizId=';
   static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=';
@@ -13,7 +15,6 @@ abstract class EndPoint{
   static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=';
   static String getCalendarEvents='Calendar/GetAllCalendar';
   static String addToCalendar='Calendar';
-  
 
   static const String STU_INFO='Students/GetStudentInfo';
   static const String SUBMITQUIZ='Students/quiz/submit';

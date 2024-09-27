@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/style/colors.dart';
 import 'package:universityhup/core/utils/assets.dart';
 import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
@@ -49,12 +50,17 @@ class CoursesWidget extends StatelessWidget {
                    style:Theme.of(context).textTheme.bodyLarge,
                    overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
+                 role=='Student'? Text(
                     '${courses.instructorFullName} ',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style:Theme.of(context).textTheme.bodySmall
-                  ),
+                  ):Text(
+                    '${courses.hours} Hours',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style:Theme.of(context).textTheme.bodySmall
+                  )
                 ],
               ),
             ),
