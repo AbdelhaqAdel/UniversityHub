@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../../core/widgets/alert.dart';
 import '../../../../../../core/widgets/glass_box.dart';
 import '../../../domain/entities/assignment_entity.dart';
 
@@ -24,7 +25,7 @@ class PendingHeader extends StatelessWidget {
         const Spacer(),
         InkWell(
           onTap: () {
-            Alrat(
+            alert(
                 context: context,
                 no: () {
                   Navigator.pop(context);
@@ -854,7 +855,7 @@ class PendingHeader extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Alrat(
+            alert(
                 context: context,
                 no: () {
                   Navigator.pop(context);
@@ -891,7 +892,7 @@ class PendingHeader extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Alrat(
+            alert(
                 context: context,
                 no: () {
                   Navigator.pop(context);
