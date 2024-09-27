@@ -219,7 +219,7 @@ class _CardInfo extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'Academic ID : ',
+              'Faculty : ',
               style:
               TextStyle(
                 fontWeight: FontWeight.w900,
@@ -228,7 +228,7 @@ class _CardInfo extends StatelessWidget {
               ),
             ),
             Text(
-              userEntity!.academicId!,
+             userEntity!.universityName!,
               style:
               const TextStyle(
                 fontWeight: FontWeight.w500,
@@ -245,7 +245,9 @@ class _CardInfo extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'Level : ',
+              'faculty : ',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:
               TextStyle(
                 fontWeight: FontWeight.w900,
@@ -254,7 +256,7 @@ class _CardInfo extends StatelessWidget {
               ),
             ),
             Text(
-              '${userEntity!.level!} ${userEntity!.departmentName!}',
+              userEntity!.facultyName!,
               style:
               const TextStyle(
                 fontWeight: FontWeight.w500,
