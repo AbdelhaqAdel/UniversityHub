@@ -49,42 +49,42 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
   }
 
   void addAssignment({required AddAssignmentInputModel addAssignmentInputModel}) async {
-    emit(SubmitAssignmentInstructorLoadingState());
+    emit(AddAssignmentLoadingState());
     var result = await addAssignmentUseCase.call(addAssignmentInputModel);
     result.fold((failure) {
-      emit(SubmitAssignmentInstructorErrorState(failure.toString()));
+      emit(AddAssignmentErrorState(failure.toString()));
     }, (right) {
-      emit(SubmitAssignmentInstructorSuccessState());
+      emit(AddAssignmentSuccessState());
     });
   }
 
   void updateAssignment({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async {
-    emit(SubmitAssignmentInstructorLoadingState());
+    emit(UpdateAssignmentLoadingState());
     var result = await updateAssignmentInstructorUseCase.call(updateAssignmentInstructorInputModel);
     result.fold((failure) {
-      emit(SubmitAssignmentInstructorErrorState(failure.toString()));
+      emit(UpdateAssignmentErrorState(failure.toString()));
     }, (right) {
-      emit(SubmitAssignmentInstructorSuccessState());
+      emit(UpdateAssignmentSuccessState());
     });
   }
 
   void deleteAssignment({required String assignmentId}) async {
-    emit(SubmitAssignmentInstructorLoadingState());
+    emit(DeleteAssignmentLoadingState());
     var result = await deleteAssignmentUseCase.call(assignmentId);
     result.fold((failure) {
-      emit(SubmitAssignmentInstructorErrorState(failure.toString()));
+      emit(DeleteAssignmentErrorState(failure.toString()));
     }, (right) {
-      emit(SubmitAssignmentInstructorSuccessState());
+      emit(DeleteAssignmentSuccessState());
     });
   }
 
   void setGradeAssignment({required SetGradeAssignmentInputModel setGradeAssignmentInputModel}) async {
-    emit(SubmitAssignmentInstructorLoadingState());
+    emit(SetGradeAssignmentLoadingState());
     var result = await setGradeAssignmentUseCase.call(setGradeAssignmentInputModel);
     result.fold((failure) {
-      emit(SubmitAssignmentInstructorErrorState(failure.toString()));
+      emit(SetGradeAssignmentErrorState(failure.toString()));
     }, (right) {
-      emit(SubmitAssignmentInstructorSuccessState());
+      emit(SetGradeAssignmentSuccessState());
     });
   }
 
@@ -105,3 +105,4 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     });
   }
 }
+
