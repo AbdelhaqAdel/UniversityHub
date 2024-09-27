@@ -324,7 +324,7 @@ class PendingAssignmentInstructor extends StatelessWidget {
                                 'Available',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 20,
+                                    fontSize: 16,
                                     color: Colors.white),
                               ),
                             ),
