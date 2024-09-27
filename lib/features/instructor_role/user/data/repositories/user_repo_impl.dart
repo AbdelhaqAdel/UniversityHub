@@ -5,17 +5,17 @@ import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/user_repo.dart';
 import '../data_sources/user_remote_data_source.dart';
 
-class UserRepoImpl extends UserRepo{
- final UserRemoteDataSource userRemoteDataSource;
+class UserInstructorRepoImpl extends UserInstructorRepo{
+ final UserInstructorRemoteDataSource userRemoteDataSource;
 
 
- UserRepoImpl( {required this.userRemoteDataSource,});
+ UserInstructorRepoImpl( {required this.userRemoteDataSource,});
 
   @override
-  Future<Either<Failure, UserEntity>> getUser() async {
+  Future<Either<Failure, UserInstructorEntity>> getUserInstructor() async {
     try{
-      UserEntity? userEntity;
-      userEntity = await userRemoteDataSource.getUser();
+      UserInstructorEntity? userEntity;
+      userEntity = await userRemoteDataSource.getUserInstructor();
        return right(userEntity!);
     }catch(e){
       return left(ServerFailure(e.toString()));

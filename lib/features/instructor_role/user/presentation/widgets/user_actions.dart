@@ -8,7 +8,7 @@ class ButtonsActions extends StatelessWidget {
     required this.userEntity,
   });
 
-  final UserEntity? userEntity;
+  final UserInstructorEntity? userEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +175,7 @@ class _CardInfo extends StatelessWidget {
     required this.userEntity,
   });
 
-  final UserEntity? userEntity;
+  final UserInstructorEntity? userEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +219,9 @@ class _CardInfo extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'Academic ID : ',
+              'university : ',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:
               TextStyle(
                 fontWeight: FontWeight.w900,
@@ -227,13 +229,18 @@ class _CardInfo extends StatelessWidget {
                 color: Colors.teal,
               ),
             ),
-            Text(
-              userEntity!.academicId!,
-              style:
-              const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-                color:Colors.black,
+            SizedBox(
+              width: MediaQuery.of(context).size.width*.3,
+              child: Text(
+               userEntity!.universityName!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style:
+                const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color:Colors.black,
+                ),
               ),
             ),
           ],
@@ -245,7 +252,9 @@ class _CardInfo extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'Level : ',
+              'email : ',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:
               TextStyle(
                 fontWeight: FontWeight.w900,
@@ -254,7 +263,9 @@ class _CardInfo extends StatelessWidget {
               ),
             ),
             Text(
-              '${userEntity!.level!} ${userEntity!.departmentName!}',
+              userEntity!.email!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:
               const TextStyle(
                 fontWeight: FontWeight.w500,

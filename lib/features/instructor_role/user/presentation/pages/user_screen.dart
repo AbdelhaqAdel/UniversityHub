@@ -14,12 +14,12 @@ class UserInstructorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          UserCubit(
-              getUserUseCase: GetUserUseCase(
-                userRepo: getIt.get<UserRepo>(),
+          UserInstructorCubit(
+              getUserInstructorUseCase: GetUserInstructorUseCase(
+                userRepo: getIt.get<UserInstructorRepo>(),
               ),
-            )..getUser(),
-      child: const UserBody(),
+            )..getUserInstructor(),
+      child: const UserInstructorBody(),
     );
   }
 }

@@ -11,6 +11,9 @@ import 'package:universityhup/features/student_role/quizzes/data/data_sources/qu
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import 'package:universityhup/features/news/data/data_sources/news_remote_data_source.dart';
 import 'package:universityhup/features/news/data/repositories/news_repo_impl.dart';
+import '../../features/instructor_role/user/data/data_sources/user_remote_data_source.dart';
+import '../../features/instructor_role/user/data/repositories/user_repo_impl.dart';
+import '../../features/instructor_role/user/domain/repositories/user_repo.dart';
 import '../../features/login/data/data_sources/login_remote_data_source.dart';
 import '../../features/login/data/repositories/login_repo_impl.dart';
 import '../../features/news/domain/repositories/news_repo.dart';
@@ -89,6 +92,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<UserRepo>(
     UserRepoImpl(
       userRemoteDataSource: UserRemoteDataSourceImpl(),
+    ),
+  );
+  getIt.registerSingleton<UserInstructorRepo>(
+    UserInstructorRepoImpl(
+      userRemoteDataSource: UserInstructorRemoteDataSourceImpl(),
     ),
   );
 }

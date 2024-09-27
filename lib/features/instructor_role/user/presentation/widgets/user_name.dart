@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../domain/entities/user_entity.dart';
 
-class UserName extends StatelessWidget {
-  const UserName({
+class UserInstructorName extends StatelessWidget {
+  const UserInstructorName({
     super.key,
     required this.userEntity,
   });
 
-  final UserEntity? userEntity;
+  final UserInstructorEntity? userEntity;
 
   @override
   Widget build(BuildContext context) {
