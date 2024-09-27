@@ -41,99 +41,100 @@ class _LoginBodyState extends State<LoginBody> {
         return BackGround(
           widget: SafeArea(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Form(
-                  key: loginFormKey,
-                  child: Column(
-                    children: [
-                      const BackIcon(),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .1,
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        child: CircleAvatar(
-                          radius: 130,
-                          backgroundColor: Colors.black.withOpacity(.0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image.asset(
-                              'assets/images/login.png',
+              child: Form(
+                key: loginFormKey,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height*.97,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+
+                        const BackIcon(),
+                        Container(
+                          alignment: AlignmentDirectional.center,
+                          child: CircleAvatar(
+                            radius: 130,
+                            backgroundColor: Colors.black.withOpacity(.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image.asset(
+                                'assets/images/login.png',
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      Text('Welcome !',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(fontSize: 35)),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text('You can login here',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(fontSize: 20)
-                        // TextStyle(
-                        //   fontSize:25,
-                        //   color: Colors.black87,
-                        // ),
-                      ),
-                      const SizedBox(
-                        height: 60,
-                      ),
-                      CustomTextFormField(
-                        borderRadius: 20,
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        hintText: 'Email',
-                        prefixIcon: FontAwesomeIcons.solidEnvelope,
-                        obscureText: false,
-                        suffix: const SizedBox(),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      CustomTextFormField(
-                        borderRadius: 20,
-                        controller: passwordController,
-                        keyboardType: TextInputType.visiblePassword,
-                        hintText: 'Password',
-                        prefixIcon: FontAwesomeIcons.lock,
-                        obscureText: cubit.isVisible,
-                        suffix: Padding(
-                          padding: const EdgeInsets.only(left: 15.0, right: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              cubit.changeEye();
-                            },
-                            child: FaIcon(
-                              cubit.isVisible
-                                  ? FontAwesomeIcons.eyeSlash
-                                  : FontAwesomeIcons.eye,
-                              color: KColors.primaryColor,
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        Text('Welcome !',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(fontSize: 35)),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text('You can login here',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(fontSize: 20)
+                          // TextStyle(
+                          //   fontSize:25,
+                          //   color: Colors.black87,
+                          // ),
+                        ),
+                        const Spacer(),
+                        CustomTextFormField(
+                          borderRadius: 20,
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          hintText: 'Email',
+                          prefixIcon: FontAwesomeIcons.solidEnvelope,
+                          obscureText: false,
+                          suffix: const SizedBox(),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        CustomTextFormField(
+                          borderRadius: 20,
+                          controller: passwordController,
+                          keyboardType: TextInputType.visiblePassword,
+                          hintText: 'Password',
+                          prefixIcon: FontAwesomeIcons.lock,
+                          obscureText: cubit.isVisible,
+                          suffix: Padding(
+                            padding: const EdgeInsets.only(left: 15.0, right: 20),
+                            child: GestureDetector(
+                              onTap: () {
+                                cubit.changeEye();
+                              },
+                              child: FaIcon(
+                                cubit.isVisible
+                                    ? FontAwesomeIcons.eyeSlash
+                                    : FontAwesomeIcons.eye,
+                                color: KColors.primaryColor,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      state is LoginLoadingState
-                          ? const CircularProgressIndicator()
-                          : CustomButton(
-                        onTap: () {
-                          _clickOnLogin(cubit);
-                        },
-                        text: 'Login',
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        state is LoginLoadingState
+                            ? const CircularProgressIndicator()
+                            : CustomButton(
+                          onTap: () {
+                            _clickOnLogin(cubit);
+                          },
+                          text: 'Login',
+                        ),
+
+                      ],
+                    ),
                   ),
                 ),
               ),
