@@ -2,6 +2,7 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:universityhup/core/errors/failure.dart';
+import 'package:universityhup/features/instructor_role/assignment/data/models/set_grade_assignment_input.dart';
 
 import '../../domain/entities/assignment_entity.dart';
 import '../../domain/repositories/assignment_repo.dart';
@@ -40,6 +41,16 @@ class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
   Future<Either<Failure, void>> updateAssignmentInstructor({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async {
     try{
       await assignmentRemoteDataSource.updateAssignment(updateAssignmentInstructorInputModel: updateAssignmentInstructorInputModel);
+      return right(null);
+    }catch(e){
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> setGradeAssignment({required SetGradeAssignmentInputModel setGradeAssignmentInputModel}) async{
+    try{
+      await assignmentRemoteDataSource.setGradeAssignment(setGradeAssignmentInputModel: setGradeAssignmentInputModel);
       return right(null);
     }catch(e){
       return left(ServerFailure(e.toString()));

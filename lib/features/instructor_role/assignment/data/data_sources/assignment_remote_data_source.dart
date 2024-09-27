@@ -1,18 +1,23 @@
-
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../models/assignment_info_model.dart';
 import '../models/assignment_model.dart';
+import '../models/set_grade_assignment_input.dart';
 import '../models/update_assignment_input.dart';
 
 abstract class AssignmentInstructorRemoteDataSource {
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor();
-  Future updateAssignment({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel});
+  Future updateAssignment(
+      {required UpdateAssignmentInstructorInputModel
+          updateAssignmentInstructorInputModel});
+  Future setGradeAssignment(
+      {required SetGradeAssignmentInputModel setGradeAssignmentInputModel});
   Future deleteAssignment({required String assignmentId});
 }
 
-class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemoteDataSource {
+class AssignmentInstructorRemoteDataSourceImpl
+    extends AssignmentInstructorRemoteDataSource {
   @override
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor() async {
     List<AssignmentInstructorEntity> assignmentEntityList = [];
@@ -22,7 +27,7 @@ class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemot
     ).then((value) async {
       if (value.statusCode == 200) {
         var json = value.data;
-         assignmentEntityList= setAssignmentInstructorData(json);
+        assignmentEntityList = setAssignmentInstructorData(json);
       }
     });
     return assignmentEntityList;
@@ -37,25 +42,34 @@ class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemot
     return assignmentEntityList;
   }
 
-
   @override
-  Future updateAssignment({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async{
-
+  Future updateAssignment(
+      {required UpdateAssignmentInstructorInputModel
+          updateAssignmentInstructorInputModel}) async {
     await DioHelper.updateData(
-        url: 'Instructor/UpdateAnAssignment?taskId=${updateAssignmentInstructorInputModel.taskId}',
-        token: token,
-        data: updateAssignmentInstructorInputModel.toMap())
-        .then((value) {
-    });
+            url:
+                'Instructor/UpdateAnAssignment?taskId=${updateAssignmentInstructorInputModel.taskId}',
+            token: token,
+            data: updateAssignmentInstructorInputModel.toMap())
+        .then((value) {});
   }
-
 
   @override
   Future deleteAssignment({required String assignmentId}) async {
-  await  DioHelper.deleteData(
+    await DioHelper.deleteData(
       url: 'Instructor/DeleteAnAssignment?taskId=$assignmentId',
       token: token,
     );
+  }
 
+  @override
+  Future setGradeAssignment(
+      {required SetGradeAssignmentInputModel
+          setGradeAssignmentInputModel}) async {
+    await DioHelper.updateData(
+      url:
+          'Instructor/editStudentGrade?studentId=${setGradeAssignmentInputModel.studentId}&examId=${setGradeAssignmentInputModel.taskId}&grade=${setGradeAssignmentInputModel.grade}',
+      token: token,
+    );
   }
 }
