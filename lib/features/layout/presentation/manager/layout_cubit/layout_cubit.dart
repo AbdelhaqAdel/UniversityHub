@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/features/calendar/presentation/pages/calender_screen.dart';
 import 'package:universityhup/features/courses/presentation/pages/all_courses_screen.dart';
 
+import '../../../../../core/constants/constant.dart';
+import '../../../../instructor_role/user/presentation/pages/user_screen.dart';
 import '../../../../news/presentation/pages/news_screen.dart';
 import '../../../../student_role/user/presentation/pages/user_screen.dart';
 
@@ -20,8 +22,9 @@ class LayoutCubit extends Cubit<LayoutState> {
     const NewsScreen(),
     const CoursesScreen(),
     const CalenderScreen(),
-    const UserScreen(),
+    role=='Student'? const UserScreen():const UserInstructorScreen(),
   ];
+
   void onTapNavigationBar(index) {
     currentNavigationBarIndex = index;
     emit(NavigationBarState());

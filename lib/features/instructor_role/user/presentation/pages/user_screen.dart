@@ -7,8 +7,8 @@ import '../manager/user_cubit.dart';
 import '../widgets/user_body.dart';
 
 
-class UserScreen extends StatelessWidget {
-  const UserScreen({super.key});
+class UserInstructorScreen extends StatelessWidget {
+  const UserInstructorScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
