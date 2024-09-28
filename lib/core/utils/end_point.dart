@@ -15,6 +15,8 @@ abstract class EndPoint{
 
   static String submitQuiz= 'Students/quiz/submit';
   static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=';
+    static String insAllMaterialFiles= 'Instructor/Getfilesoflecture?lectureId=';
+
   static String getCalendarEvents='Calendar/GetAllCalendar';
   static String addToCalendar='Calendar';
 

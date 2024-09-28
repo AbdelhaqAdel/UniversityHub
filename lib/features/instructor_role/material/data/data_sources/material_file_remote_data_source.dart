@@ -14,7 +14,7 @@ class InsMaterialFileRemoteDataSourceImpl extends InsMaterialFileRemoteDataSourc
   List<FileEntity>allFiles=[];
   @override
    Future <List<FileEntity>> fetchAllMaterialFiles({required lecId})async {
-    await DioHelper.get(url:'${EndPoint.allMaterialFiles}$lecId',
+    await DioHelper.get(url:'${EndPoint.insAllMaterialFiles}$lecId',
     token:token,
      ).then((value){
       fillFilesList(value);

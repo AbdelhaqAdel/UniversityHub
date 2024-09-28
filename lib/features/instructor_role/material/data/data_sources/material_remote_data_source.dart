@@ -29,9 +29,7 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
      for (var element in list.data) {
       allMaterials.add(FolderModel.fromJson(element));
     }
-    allMaterials.forEach((e){
-      print(e.lectureName);
-    });
+   
   }
 
    @override
@@ -39,11 +37,10 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
     required String url,
   }) async {
     print(url);
-    await DioHelper.updateData(
+    await DioHelper.put(
       url:'Instructor/UpdateLecture$url',
       token: token
     ).then((v){print('updated successfully');
-    // return v;
     }).catchError((e){
       print('error in update material ${e.toString()}');
     });

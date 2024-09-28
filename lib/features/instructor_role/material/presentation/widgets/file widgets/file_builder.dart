@@ -11,13 +11,15 @@ class FileBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<InsMaterialCubit,MaterialsState>(builder: (context,state)
     {
-        if(state is GetAllFilesSuccessState){
+        if(GetAllFilesSuccessState.allFiles.isNotEmpty){
         return FileGridView(
-      context1: context, files: state.files,
+      context1: context, files: GetAllFilesSuccessState.allFiles,
       );}else if(state is GetAllFilesErrorState){
         return Center(child: Text(state.error));
-      }else{
+      }else if (state is GetAllFilesLoadingState){
         return const Center(child: CircularProgressIndicator());
+      }else{
+         return const Center(child: Text('No files here'));
       }
     }
     );

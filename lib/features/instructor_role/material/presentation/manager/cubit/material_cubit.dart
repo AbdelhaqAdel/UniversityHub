@@ -33,6 +33,7 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
     result.fold(
        (error)=>emit(GetAllFilesErrorState(error:error.message )),
        (allFiles){
+        GetAllFilesSuccessState.setFilesList(files:allFiles);
         emit(GetAllFilesSuccessState(files: allFiles));},
        );
   }
@@ -50,7 +51,6 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
     required String folderId,
     required String newFolderName,
   }) async {
-    print('updating folder name-----$newFolderName $folderId');
     emit(UpdateMaterialLoadingState());
      final result= await updateMaterialUseCase.call(
         'FolderName?name=$newFolderName&lectureId=$folderId'
@@ -64,7 +64,7 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
     required int fileId,
     required String newFileName,
   }) async {
-
+    print('File id ::: $fileId');
     emit(UpdateMaterialLoadingState());
      final result= await updateMaterialUseCase.call(
         'file?file_Id=$fileId&fileName=$newFileName'
