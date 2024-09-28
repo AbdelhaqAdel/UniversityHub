@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_file/open_file.dart';
+import 'package:universityhup/features/instructor_role/assignment/domain/use_cases/get_student_submit_assignment_usecase.dart';
 
 import '../../../../../core/functions/open_file.dart';
 import '../../data/models/add_assignment_input.dart';
@@ -10,6 +11,7 @@ import '../../data/models/set_grade_assignment_input.dart';
 import '../../data/models/update_assignment_input.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../../domain/entities/assignment_info_entity.dart';
+import '../../domain/entities/student_task_uploaded_entity.dart';
 import '../../domain/use_cases/add_assignment_usecase.dart';
 import '../../domain/use_cases/delete_assignment_usecase.dart';
 import '../../domain/use_cases/get_assignment_usecase.dart';
@@ -19,7 +21,8 @@ part 'assignment_state.dart';
 
 class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
   AssignmentInstructorCubit(
-      {required this.getAssignmentInstructorUseCase,
+      {required this.getStudentSubmitAssignmentUsecase,
+        required this.getAssignmentInstructorUseCase,
       required this.updateAssignmentInstructorUseCase,
       required this.setGradeAssignmentUseCase,
       required this.addAssignmentUseCase,
@@ -32,6 +35,7 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
   final SetGradeAssignmentUseCase setGradeAssignmentUseCase;
   final DeleteAssignmentUseCase deleteAssignmentUseCase;
   final AddAssignmentUseCase addAssignmentUseCase;
+  final GetStudentSubmitAssignmentUsecase getStudentSubmitAssignmentUsecase;
 
   void getAssignmentInstructor() async {
     emit(GetAssignmentInstructorLoadingState());
@@ -88,7 +92,15 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     });
   }
 
-
+  void getStudentSubmitAssignment({required String assignmentId}) async {
+    emit(GetStudentSubmitAssignmentLoadingState());
+    var result = await getStudentSubmitAssignmentUsecase.call(assignmentId);
+    result.fold((failure) {
+      emit(GetStudentSubmitAssignmentErrorState(failure.toString()));
+    }, (right) {
+      emit(GetStudentSubmitAssignmentSuccessState(studentTaskUploadedEntity: right));
+    });
+  }
 
 
   List<File> file = [];

@@ -17,14 +17,16 @@ class GetAssignmentInstructorErrorState extends AssignmentInstructorState{
   GetAssignmentInstructorErrorState(this.errMessage);
 }
 
-class GetAssignmentInstructorInfoLoadingState extends AssignmentInstructorState{}
-class GetAssignmentInstructorInfoSuccessState extends AssignmentInstructorState{
-  final AssignmentInstructorInfoEntity  assignmentInfoEntity;
-  GetAssignmentInstructorInfoSuccessState({required this.assignmentInfoEntity});
+
+
+class GetStudentSubmitAssignmentLoadingState extends AssignmentInstructorState{}
+class GetStudentSubmitAssignmentSuccessState extends AssignmentInstructorState{
+  final List<StudentTaskUploadedEntity>  studentTaskUploadedEntity;
+  GetStudentSubmitAssignmentSuccessState({required this.studentTaskUploadedEntity});
 }
-class GetAssignmentInstructorInfoErrorState extends AssignmentInstructorState{
+class GetStudentSubmitAssignmentErrorState extends AssignmentInstructorState{
   final String errMessage;
-  GetAssignmentInstructorInfoErrorState(this.errMessage);
+  GetStudentSubmitAssignmentErrorState(this.errMessage);
 }
 
 class DeleteAssignmentLoadingState extends AssignmentInstructorState{}
