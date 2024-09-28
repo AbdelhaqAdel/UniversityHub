@@ -5,8 +5,8 @@ import 'package:universityhup/features/instructor_role/material/domain/entities/
 
 import 'material_widget.dart';
 
-class MaterialGridView extends StatelessWidget {
-  const MaterialGridView({super.key,
+class MaterialListView extends StatelessWidget {
+  const MaterialListView({super.key,
   required this.materials,
   required this.context1,
   });
@@ -15,20 +15,16 @@ class MaterialGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  GridView.builder(
-           gridDelegate:
-           const SliverGridDelegateWithFixedCrossAxisCount(
-               crossAxisCount: 2, childAspectRatio: 2.5),
+    return  ListView.builder(
            itemBuilder: (context, index) => InkWell(
                onTap: () {
              AppRouter.context1=context1;
-                GoRouter.of(context1).push(AppRouter.kMaterialFile,extra:materials[index].lectureId,);
+                GoRouter.of(context1).push(AppRouter.kInsMaterialFile,extra:materials[index].lectureId,);
                },
                child: MaterialWidget(
                    index: index,
                     material: materials[index], 
                )),
-           scrollDirection: Axis.vertical,
            itemCount: materials.length, 
          );
   }

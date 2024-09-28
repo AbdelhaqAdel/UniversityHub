@@ -17,14 +17,14 @@ class InsMaterialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=> MaterialCubit(
+      create: (context)=> InsMaterialCubit(
         materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),
         )..fetchAllMaterials(),
 
-      child: BlocConsumer<MaterialCubit,MaterialsState>(
+      child: BlocConsumer<InsMaterialCubit,MaterialsState>(
         listener: (context, state) => {},
         builder: (context, state) {      
-         MaterialCubit cubit=MaterialCubit.get(context);
+         InsMaterialCubit cubit=InsMaterialCubit.get(context);
           return DefaultTabController(
             length: 2, // Number of tabs
             initialIndex: cubit.tapBarIndex,
