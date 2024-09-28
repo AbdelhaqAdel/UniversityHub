@@ -13,8 +13,7 @@ import '../manager/cubit/material_cubit.dart';
 import '../widgets/lec_builder.dart';
 
 class MaterialScreen extends StatelessWidget {
-   MaterialScreen({super.key});
-  // TabController tabController;
+   const MaterialScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

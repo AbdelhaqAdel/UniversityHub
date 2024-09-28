@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/style/colors.dart';
-import 'package:universityhup/features/student_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
 
 class MaterialWidget extends StatelessWidget {
   const MaterialWidget({

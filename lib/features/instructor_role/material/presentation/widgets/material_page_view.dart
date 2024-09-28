@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/utils/app_router.dart';
-import 'package:universityhup/features/student_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
 
 import 'material_widget.dart';
 

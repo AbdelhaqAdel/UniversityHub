@@ -4,23 +4,21 @@ import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/core/widgets/screen_path.dart';
 import 'package:universityhup/core/widgets/tapbar_widget.dart';
-import 'package:universityhup/features/student_role/material/data/repositories/material_files_repo_impl.dart';
-import 'package:universityhup/features/student_role/material/presentation/widgets/labs_builder.dart';
-
+import 'package:universityhup/features/instructor_role/material/presentation/widgets/labs_builder.dart';
 import '../../domain/use_cases/material_files_usecase.dart';
 import '../../domain/use_cases/material_usecase.dart';
 import '../manager/cubit/material_cubit.dart';
 import '../widgets/lec_builder.dart';
 
-class MaterialScreen extends StatelessWidget {
-   MaterialScreen({super.key});
+class InsMaterialScreen extends StatelessWidget {
+  const InsMaterialScreen({super.key});
   // TabController tabController;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context)=> MaterialCubit(
-        materialUseCase: getIt<MaterialUseCase>(),fileUseCase: getIt<MaterialFilesUseCase>(), fileRepo: getIt.get<MaterialFilesRepository>()
+        materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),
         )..fetchAllMaterials(),
 
       child: BlocConsumer<MaterialCubit,MaterialsState>(

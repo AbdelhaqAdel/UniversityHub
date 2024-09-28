@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../manager/cubit/material_cubit.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
 import 'material_page_view.dart';
 
 class LabBuilder extends StatelessWidget {
