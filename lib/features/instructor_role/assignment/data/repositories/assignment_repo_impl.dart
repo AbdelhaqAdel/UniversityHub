@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:universityhup/core/errors/failure.dart';
 import 'package:universityhup/features/instructor_role/assignment/data/models/add_assignment_input.dart';
 import 'package:universityhup/features/instructor_role/assignment/data/models/set_grade_assignment_input.dart';
+import 'package:universityhup/features/instructor_role/assignment/domain/entities/student_task_uploaded_entity.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../../domain/repositories/assignment_repo.dart';
 import '../data_sources/assignment_remote_data_source.dart';
@@ -59,6 +60,17 @@ class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
     try{
       await assignmentRemoteDataSource.addAssignment(addAssignmentInputModel: addAssignmentInputModel);
       return right(null);
+    }catch(e){
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<StudentTaskUploadedEntity>>> getStudentSubmitAssignment({required String assignmentId}) async{
+    try{
+      List<StudentTaskUploadedEntity> studentTaskUploadedEntity = [];
+      studentTaskUploadedEntity = await assignmentRemoteDataSource.getStudentSubmitAssignment(assignmentId: assignmentId);
+      return right(studentTaskUploadedEntity);
     }catch(e){
       return left(ServerFailure(e.toString()));
     }
