@@ -94,11 +94,11 @@ class PendingHeader extends StatelessWidget {
                             child: Column(
                               children: [
                                 const Spacer(),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       vertical: 5, horizontal: 10),
                                   alignment: Alignment.center,
                                   height: 60,
@@ -130,9 +130,9 @@ class PendingHeader extends StatelessWidget {
                                       style: const TextStyle(
                                         fontSize: 18,
                                       ),
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         prefixIcon: Padding(
-                                          padding: const EdgeInsets.symmetric(
+                                          padding: EdgeInsets.symmetric(
                                               horizontal: 10.0, vertical: 10),
                                           child: FaIcon(
                                             FontAwesomeIcons.edit,
@@ -146,11 +146,11 @@ class PendingHeader extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       vertical: 5, horizontal: 10),
                                   alignment: Alignment.center,
                                   height: 60,
@@ -176,15 +176,13 @@ class PendingHeader extends StatelessWidget {
                                         }
                                         return null;
                                       },
-                                      toolbarOptions:
-                                          ToolbarOptions(paste: true, copy: true),
                                       cursorColor: Colors.white,
                                       style: const TextStyle(
                                         fontSize: 18,
                                       ),
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         prefixIcon: Padding(
-                                          padding: const EdgeInsets.symmetric(
+                                          padding: EdgeInsets.symmetric(
                                               horizontal: 10.0, vertical: 10),
                                           child: FaIcon(
                                             FontAwesomeIcons.solidEdit,
@@ -198,7 +196,7 @@ class PendingHeader extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Container(
@@ -215,7 +213,7 @@ class PendingHeader extends StatelessWidget {
                                           return Theme(
                                             data: ThemeData.dark().copyWith(
                                               colorScheme:
-                                                  ColorScheme.dark().copyWith(
+                                                  const ColorScheme.dark().copyWith(
                                                 primary: Colors
                                                     .blue, // Change the primary color as needed
                                               ),
@@ -289,8 +287,8 @@ class PendingHeader extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            FaIcon(FontAwesomeIcons.clock),
-                                            SizedBox(
+                                            const FaIcon(FontAwesomeIcons.clock),
+                                            const SizedBox(
                                               width: 12,
                                             ),
                                             Text(
@@ -302,7 +300,7 @@ class PendingHeader extends StatelessWidget {
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             Container(
                                               decoration: BoxDecoration(
                                                 borderRadius:
@@ -310,9 +308,9 @@ class PendingHeader extends StatelessWidget {
                                                 color: Colors.white
                                                     .withOpacity(.3),
                                               ),
-                                              child: Padding(
+                                              child: const Padding(
                                                 padding:
-                                                    const EdgeInsets.symmetric(
+                                                    EdgeInsets.symmetric(
                                                         vertical: 8.0,
                                                         horizontal: 15),
                                                 child: Row(
@@ -327,7 +325,7 @@ class PendingHeader extends StatelessWidget {
                                                       ),
                                                     ),
                                                     Text(
-                                                      '${''}',
+                                                      '',
                                                       style: TextStyle(
                                                         fontSize: 13,
                                                         color: Colors.black,
@@ -339,7 +337,7 @@ class PendingHeader extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 10,
                                             ),
                                             Container(
@@ -349,9 +347,9 @@ class PendingHeader extends StatelessWidget {
                                                 color: Colors.white
                                                     .withOpacity(.3),
                                               ),
-                                              child: Padding(
+                                              child: const Padding(
                                                 padding:
-                                                    const EdgeInsets.symmetric(
+                                                    EdgeInsets.symmetric(
                                                         vertical: 8.0,
                                                         horizontal: 15),
                                                 child: Row(
@@ -375,7 +373,7 @@ class PendingHeader extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
@@ -392,7 +390,7 @@ class PendingHeader extends StatelessWidget {
                                           return Theme(
                                             data: ThemeData.dark().copyWith(
                                               colorScheme:
-                                                  ColorScheme.dark().copyWith(
+                                                  const ColorScheme.dark().copyWith(
                                                 primary: Colors.blue,
 
                                                 // Change the primary color as needed
@@ -465,8 +463,8 @@ class PendingHeader extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            FaIcon(FontAwesomeIcons.clock),
-                                            SizedBox(
+                                            const FaIcon(FontAwesomeIcons.clock),
+                                            const SizedBox(
                                               width: 12,
                                             ),
                                             Text(
@@ -478,7 +476,7 @@ class PendingHeader extends StatelessWidget {
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             Container(
                                               decoration: BoxDecoration(
                                                 borderRadius:
@@ -486,9 +484,9 @@ class PendingHeader extends StatelessWidget {
                                                 color: Colors.white
                                                     .withOpacity(.3),
                                               ),
-                                              child: Padding(
+                                              child: const Padding(
                                                 padding:
-                                                    const EdgeInsets.symmetric(
+                                                    EdgeInsets.symmetric(
                                                         vertical: 8.0,
                                                         horizontal: 15),
                                                 child: Row(
@@ -503,7 +501,7 @@ class PendingHeader extends StatelessWidget {
                                                       ),
                                                     ),
                                                     Text(
-                                                      '${''}',
+                                                      '',
                                                       style: TextStyle(
                                                         fontSize: 13,
                                                         color: Colors.black,
@@ -515,7 +513,7 @@ class PendingHeader extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 10,
                                             ),
                                             Container(
@@ -525,9 +523,9 @@ class PendingHeader extends StatelessWidget {
                                                 color: Colors.white
                                                     .withOpacity(.3),
                                               ),
-                                              child: Padding(
+                                              child: const Padding(
                                                 padding:
-                                                    const EdgeInsets.symmetric(
+                                                    EdgeInsets.symmetric(
                                                         vertical: 8.0,
                                                         horizontal: 15),
                                                 child: Row(
@@ -551,7 +549,7 @@ class PendingHeader extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 CustomButton(
