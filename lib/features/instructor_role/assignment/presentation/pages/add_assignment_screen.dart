@@ -5,6 +5,7 @@ import '../../domain/repositories/assignment_repo.dart';
 import '../../domain/use_cases/add_assignment_usecase.dart';
 import '../../domain/use_cases/delete_assignment_usecase.dart';
 import '../../domain/use_cases/get_assignment_usecase.dart';
+import '../../domain/use_cases/get_student_submit_assignment_usecase.dart';
 import '../../domain/use_cases/set_grade_assignment_usecase.dart';
 import '../../domain/use_cases/update_assignment_usecase.dart';
 import '../manager/assignment_cubit.dart';
@@ -25,7 +26,7 @@ class AddAssignmentScreen extends StatelessWidget {
           ),
           setGradeAssignmentUseCase: SetGradeAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),),
           addAssignmentUseCase: AddAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),),
-          deleteAssignmentUseCase: DeleteAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),)),
+          deleteAssignmentUseCase: DeleteAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),), getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(assignmentRepo:  getIt.get<AssignmentInstructorRepo>(),)),
       child: const AssignmentInstructorBody(),
     );
   }

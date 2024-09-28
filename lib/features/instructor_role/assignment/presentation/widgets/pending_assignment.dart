@@ -3,10 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:universityhup/features/instructor_role/assignment/domain/entities/assignment_entity.dart';
 import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/header.dart';
-import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/info.dart';
-import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/states.dart';
-import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/upload_download.dart';
-
 import '../../../../../core/constants/constant.dart';
 
 class PendingAssignmentInstructor extends StatelessWidget {
@@ -46,18 +42,18 @@ class PendingAssignmentInstructor extends StatelessWidget {
                    Expanded(
                     flex: 2,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 5.0),
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Row(
                             children: [
-                              FaIcon(
+                              const FaIcon(
                                 FontAwesomeIcons.bookmark,
                                 size: 12,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 7,
                               ),
                               Expanded(
@@ -66,17 +62,17 @@ class PendingAssignmentInstructor extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                   textAlign: TextAlign.start,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
-                          Row(
+                          const Row(
                             children: [
                               FaIcon(
                                 FontAwesomeIcons.user,
@@ -94,10 +90,10 @@ class PendingAssignmentInstructor extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
-                          Row(
+                          const Row(
                             children: [
                               FaIcon(
                                 FontAwesomeIcons.clock,
