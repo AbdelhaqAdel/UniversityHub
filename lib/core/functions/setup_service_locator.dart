@@ -19,6 +19,9 @@ import 'package:universityhup/features/student_role/quizzes/data/data_sources/qu
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import 'package:universityhup/features/news/data/data_sources/news_remote_data_source.dart';
 import 'package:universityhup/features/news/data/repositories/news_repo_impl.dart';
+import '../../features/instructor_role/assignment/data/data_sources/assignment_remote_data_source.dart';
+import '../../features/instructor_role/assignment/data/repositories/assignment_repo_impl.dart';
+import '../../features/instructor_role/assignment/domain/repositories/assignment_repo.dart';
 import '../../features/instructor_role/user/data/data_sources/user_remote_data_source.dart';
 import '../../features/instructor_role/user/data/repositories/user_repo_impl.dart';
 import '../../features/instructor_role/user/domain/repositories/user_repo.dart';
@@ -109,7 +112,6 @@ void setupServiceLocator() {
     ),
   );
 
-
    getIt.registerSingleton<InsMaterialUseCase>(InsMaterialUseCase
     (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
   
@@ -120,5 +122,9 @@ void setupServiceLocator() {
       getIt.registerSingleton<UpdateMaterialUseCase>(UpdateMaterialUseCase
     (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
 
-
+  getIt.registerSingleton<AssignmentInstructorRepo>(
+    AssignmentInstructorRepoImpl(
+      assignmentRemoteDataSource: AssignmentInstructorRemoteDataSourceImpl(),
+    ),
+  );
 }

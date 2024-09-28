@@ -1,11 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/utils/app_router.dart';
 
 
-class CompleteAssignmentStates extends StatelessWidget {
-  const CompleteAssignmentStates({
-    super.key,
+class CompleteAssignmentInstructorStates extends StatelessWidget {
+  const CompleteAssignmentInstructorStates({
+    super.key, required this.taskId,
   });
+  final String taskId;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,9 @@ class CompleteAssignmentStates extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              // GoRouter.of(context).push(AppRouter.kTaskResult,extra: taskId);
+            },
             child: Container(
               height: 45,
               width: double.infinity,
@@ -26,7 +31,7 @@ class CompleteAssignmentStates extends StatelessWidget {
               ),
               child: const Center(
                 child: Text(
-                  'Completed',
+                  'Result',
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 20,

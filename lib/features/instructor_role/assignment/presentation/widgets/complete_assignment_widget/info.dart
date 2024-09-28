@@ -5,13 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../domain/entities/assignment_entity.dart';
 
 
-class CompleteAssignmentInfo extends StatelessWidget {
-  const CompleteAssignmentInfo({
+class CompleteAssignmentInstructorInfo extends StatelessWidget {
+  const CompleteAssignmentInstructorInfo({
     super.key,
     required this.assignmentEntity,
   });
 
-  final AssignmentEntity? assignmentEntity;
+  final AssignmentInstructorEntity? assignmentEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CompleteAssignmentInfo extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    '${assignmentEntity?.courseName}',
+                    '${assignmentEntity?.taskName}',
                     textAlign: TextAlign.start,
                     maxLines: 1,
                     style: const TextStyle(
@@ -56,7 +56,7 @@ class CompleteAssignmentInfo extends StatelessWidget {
                   width: 7,
                 ),
                 Text(
-                  '${assignmentEntity?.instructorName}',
+                  '${assignmentEntity?.endDate}',
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 13),
@@ -66,19 +66,19 @@ class CompleteAssignmentInfo extends StatelessWidget {
             const SizedBox(
               height: 2,
             ),
-            Row(
+            const Row(
               children: [
-                const FaIcon(
+                FaIcon(
                   FontAwesomeIcons.chartLine,
                   size: 12,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 7,
                 ),
                 Text(
-                  '${assignmentEntity?.taskGrade}',
+                  '',
                   textAlign: TextAlign.start,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 13),
                 ),
               ],
