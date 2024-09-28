@@ -51,7 +51,8 @@ class AssignmentInstructorRemoteDataSourceImpl
   Future updateAssignment(
       {required UpdateAssignmentInstructorInputModel
           updateAssignmentInstructorInputModel}) async {
-    await DioHelper.updateData(
+    print(updateAssignmentInstructorInputModel.toMap());
+    await DioHelper.put(
             url:
                 'Instructor/UpdateAnAssignment?taskId=${updateAssignmentInstructorInputModel.taskId}',
             token: token,
@@ -71,11 +72,12 @@ class AssignmentInstructorRemoteDataSourceImpl
   Future setGradeAssignment(
       {required SetGradeAssignmentInputModel
           setGradeAssignmentInputModel}) async {
-    await DioHelper.updateData(
+    await DioHelper.put(
       url:
           'Instructor/editStudentGrade?studentId=${setGradeAssignmentInputModel.studentId}&examId=${setGradeAssignmentInputModel.taskId}&grade=${setGradeAssignmentInputModel.grade}',
       token: token,
-    );
+    ).then((onValue){
+    });
   }
 
   @override

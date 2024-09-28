@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:open_file/open_file.dart';
 import 'package:universityhup/features/instructor_role/assignment/domain/use_cases/get_student_submit_assignment_usecase.dart';
 
 import '../../../../../core/functions/open_file.dart';
@@ -10,7 +8,6 @@ import '../../data/models/add_assignment_input.dart';
 import '../../data/models/set_grade_assignment_input.dart';
 import '../../data/models/update_assignment_input.dart';
 import '../../domain/entities/assignment_entity.dart';
-import '../../domain/entities/assignment_info_entity.dart';
 import '../../domain/entities/student_task_uploaded_entity.dart';
 import '../../domain/use_cases/add_assignment_usecase.dart';
 import '../../domain/use_cases/delete_assignment_usecase.dart';
@@ -68,6 +65,7 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     result.fold((failure) {
       emit(UpdateAssignmentErrorState(failure.toString()));
     }, (right) {
+      getAssignmentInstructor();
       emit(UpdateAssignmentSuccessState());
     });
   }
@@ -78,6 +76,7 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     result.fold((failure) {
       emit(DeleteAssignmentErrorState(failure.toString()));
     }, (right) {
+      getAssignmentInstructor();
       emit(DeleteAssignmentSuccessState());
     });
   }
@@ -86,6 +85,7 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     emit(SetGradeAssignmentLoadingState());
     var result = await setGradeAssignmentUseCase.call(setGradeAssignmentInputModel);
     result.fold((failure) {
+      print(failure.message);
       emit(SetGradeAssignmentErrorState(failure.toString()));
     }, (right) {
       emit(SetGradeAssignmentSuccessState());
