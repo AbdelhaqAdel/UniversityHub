@@ -1,18 +1,28 @@
-
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/assignment_entity.dart';
-import '../models/assignment_info_model.dart';
+import '../../domain/entities/student_task_uploaded_entity.dart';
+import '../models/add_assignment_input.dart';
 import '../models/assignment_model.dart';
-import '../models/submit_assignment_input.dart';
+import '../models/set_grade_assignment_input.dart';
+import '../models/student_task_uploaded_model.dart';
+import '../models/update_assignment_input.dart';
 
 abstract class AssignmentInstructorRemoteDataSource {
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor();
-  Future<AssignmentInstructorInfoModel?> getAssignmentInstructorInfo({required String assignmentId});
-  Future submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel});
+  Future updateAssignment(
+      {required UpdateAssignmentInstructorInputModel
+          updateAssignmentInstructorInputModel});
+  Future setGradeAssignment(
+      {required SetGradeAssignmentInputModel setGradeAssignmentInputModel});
+  Future addAssignment(
+      {required AddAssignmentInputModel addAssignmentInputModel});
+  Future deleteAssignment({required String assignmentId});
+  Future<List<StudentTaskUploadedEntity>> getStudentSubmitAssignment({required String assignmentId});
 }
 
-class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemoteDataSource {
+class AssignmentInstructorRemoteDataSourceImpl
+    extends AssignmentInstructorRemoteDataSource {
   @override
   Future<List<AssignmentInstructorEntity>> getAssignmentInstructor() async {
     List<AssignmentInstructorEntity> assignmentEntityList = [];
@@ -22,7 +32,7 @@ class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemot
     ).then((value) async {
       if (value.statusCode == 200) {
         var json = value.data;
-         assignmentEntityList= setAssignmentInstructorData(json);
+        assignmentEntityList = setAssignmentInstructorData(json);
       }
     });
     return assignmentEntityList;
@@ -37,32 +47,60 @@ class AssignmentInstructorRemoteDataSourceImpl extends AssignmentInstructorRemot
     return assignmentEntityList;
   }
 
-
   @override
-  Future submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel}) async{
-
-    await DioHelper.postListFileData(
-        url: 'Students/File/Upload?taskid=${submitAssignmentInstructorInputModel.taskId}',
-        files: submitAssignmentInstructorInputModel.file)
-        .then((value) {
-      if (value.statusCode == 200) {
-        var json = value.data;
-      }
-    });
+  Future updateAssignment(
+      {required UpdateAssignmentInstructorInputModel
+          updateAssignmentInstructorInputModel}) async {
+    await DioHelper.updateData(
+            url:
+                'Instructor/UpdateAnAssignment?taskId=${updateAssignmentInstructorInputModel.taskId}',
+            token: token,
+            data: updateAssignmentInstructorInputModel.toMap())
+        .then((value) {});
   }
 
   @override
-  Future<AssignmentInstructorInfoModel?> getAssignmentInstructorInfo({required String assignmentId}) async{
-    AssignmentInstructorInfoModel? assignmentInfoModel;
-  await  DioHelper.get(
-      url: 'Students/GetAssignmentInstructor?taskId=$assignmentId',
+  Future deleteAssignment({required String assignmentId}) async {
+    await DioHelper.deleteData(
+      url: 'Instructor/DeleteAnAssignment?taskId=$assignmentId',
       token: token,
-    ).then((value) {
-      if (value.statusCode == 200) {
-        var json=value.data;
-        assignmentInfoModel = AssignmentInstructorInfoModel.fromJson(json);
-      }
-    });
-  return assignmentInfoModel;
+    );
+  }
+
+  @override
+  Future setGradeAssignment(
+      {required SetGradeAssignmentInputModel
+          setGradeAssignmentInputModel}) async {
+    await DioHelper.updateData(
+      url:
+          'Instructor/editStudentGrade?studentId=${setGradeAssignmentInputModel.studentId}&examId=${setGradeAssignmentInputModel.taskId}&grade=${setGradeAssignmentInputModel.grade}',
+      token: token,
+    );
+  }
+
+  @override
+  Future addAssignment({required AddAssignmentInputModel addAssignmentInputModel}) async{
+    DioHelper.postListFileData(
+      url: 'Instructor/UploadAssignment?TaskName=${addAssignmentInputModel.taskName}&TaskGrade=${addAssignmentInputModel.taskGrade}&StartDate=${addAssignmentInputModel.startDate}&EndDate=${addAssignmentInputModel.endDate}&CourseCycleId=$currentCycleId',
+      files:addAssignmentInputModel.file ,
+    );
+  }
+
+  @override
+  Future<List<StudentTaskUploadedEntity>>  getStudentSubmitAssignment({required String assignmentId}) async {
+  List<StudentTaskUploadedEntity> studentTaskUploadedEntity=[];
+   await DioHelper.get(
+      url: 'Instructor/GetStudentsWhoUploadThetask?taskId=$assignmentId',
+      token: token,
+    ).then((onValue){
+     if (onValue.statusCode == 200) {
+       List Json = onValue.data;
+       for (var element in Json) {
+         studentTaskUploadedEntity.add(
+             StudentTaskUploadedModel.fromJson(element));
+       }
+     }
+   });
+   return studentTaskUploadedEntity;
   }
 }

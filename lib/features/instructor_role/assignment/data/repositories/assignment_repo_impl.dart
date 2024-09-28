@@ -1,13 +1,12 @@
-
 import 'package:dartz/dartz.dart';
-
 import 'package:universityhup/core/errors/failure.dart';
-
+import 'package:universityhup/features/instructor_role/assignment/data/models/add_assignment_input.dart';
+import 'package:universityhup/features/instructor_role/assignment/data/models/set_grade_assignment_input.dart';
+import 'package:universityhup/features/instructor_role/assignment/domain/entities/student_task_uploaded_entity.dart';
 import '../../domain/entities/assignment_entity.dart';
 import '../../domain/repositories/assignment_repo.dart';
 import '../data_sources/assignment_remote_data_source.dart';
-import '../models/assignment_info_model.dart';
-import '../models/submit_assignment_input.dart';
+import '../models/update_assignment_input.dart';
 
 class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
  final AssignmentInstructorRemoteDataSource assignmentRemoteDataSource;
@@ -27,21 +26,51 @@ class AssignmentInstructorRepoImpl extends AssignmentInstructorRepo{
   }
 
   @override
-  Future<Either<Failure, AssignmentInstructorInfoModel>> getAssignmentInstructorInfo({required String assignmentId}) async {
+  Future<Either<Failure, void>> deleteAssignment({required String assignmentId}) async {
     try{
-      AssignmentInstructorInfoModel? assignmentInfoModel ;
-      assignmentInfoModel = await assignmentRemoteDataSource.getAssignmentInstructorInfo(assignmentId: assignmentId);
-      return right(assignmentInfoModel!);
+      await assignmentRemoteDataSource.deleteAssignment(assignmentId: assignmentId);
+      return right(null);
     }catch(e){
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, void>> submitAssignmentInstructor({required SubmitAssignmentInstructorInputModel submitAssignmentInstructorInputModel}) async {
+  Future<Either<Failure, void>> updateAssignmentInstructor({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async {
     try{
-      await assignmentRemoteDataSource.submitAssignmentInstructor(submitAssignmentInstructorInputModel: submitAssignmentInstructorInputModel);
+      await assignmentRemoteDataSource.updateAssignment(updateAssignmentInstructorInputModel: updateAssignmentInstructorInputModel);
       return right(null);
+    }catch(e){
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> setGradeAssignment({required SetGradeAssignmentInputModel setGradeAssignmentInputModel}) async{
+    try{
+      await assignmentRemoteDataSource.setGradeAssignment(setGradeAssignmentInputModel: setGradeAssignmentInputModel);
+      return right(null);
+    }catch(e){
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addAssignment({required AddAssignmentInputModel addAssignmentInputModel}) async{
+    try{
+      await assignmentRemoteDataSource.addAssignment(addAssignmentInputModel: addAssignmentInputModel);
+      return right(null);
+    }catch(e){
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<StudentTaskUploadedEntity>>> getStudentSubmitAssignment({required String assignmentId}) async{
+    try{
+      List<StudentTaskUploadedEntity> studentTaskUploadedEntity = [];
+      studentTaskUploadedEntity = await assignmentRemoteDataSource.getStudentSubmitAssignment(assignmentId: assignmentId);
+      return right(studentTaskUploadedEntity);
     }catch(e){
       return left(ServerFailure(e.toString()));
     }

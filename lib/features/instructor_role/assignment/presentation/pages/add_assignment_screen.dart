@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/functions/setup_service_locator.dart';
 import '../../domain/repositories/assignment_repo.dart';
 import '../../domain/use_cases/add_assignment_usecase.dart';
@@ -12,8 +11,8 @@ import '../../domain/use_cases/update_assignment_usecase.dart';
 import '../manager/assignment_cubit.dart';
 import '../widgets/assignment_body.dart';
 
-class AssignmentInstructorScreen extends StatelessWidget {
-  const AssignmentInstructorScreen({super.key});
+class AddAssignmentScreen extends StatelessWidget {
+  const AddAssignmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +24,9 @@ class AssignmentInstructorScreen extends StatelessWidget {
           updateAssignmentInstructorUseCase: UpdateAssignmentInstructorUseCase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ),
-          setGradeAssignmentUseCase: SetGradeAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          addAssignmentUseCase: AddAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          deleteAssignmentUseCase: DeleteAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ))..getAssignmentInstructor(),
+          setGradeAssignmentUseCase: SetGradeAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),),
+          addAssignmentUseCase: AddAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),),
+          deleteAssignmentUseCase: DeleteAssignmentUseCase(assignmentRepo: getIt.get<AssignmentInstructorRepo>(),), getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(assignmentRepo:  getIt.get<AssignmentInstructorRepo>(),)),
       child: const AssignmentInstructorBody(),
     );
   }

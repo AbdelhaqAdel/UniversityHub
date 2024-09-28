@@ -17,23 +17,48 @@ class GetAssignmentInstructorErrorState extends AssignmentInstructorState{
   GetAssignmentInstructorErrorState(this.errMessage);
 }
 
-class GetAssignmentInstructorInfoLoadingState extends AssignmentInstructorState{}
-class GetAssignmentInstructorInfoSuccessState extends AssignmentInstructorState{
-  final AssignmentInstructorInfoEntity  assignmentInfoEntity;
-  GetAssignmentInstructorInfoSuccessState({required this.assignmentInfoEntity});
+
+
+class GetStudentSubmitAssignmentLoadingState extends AssignmentInstructorState{}
+class GetStudentSubmitAssignmentSuccessState extends AssignmentInstructorState{
+  final List<StudentTaskUploadedEntity>  studentTaskUploadedEntity;
+  GetStudentSubmitAssignmentSuccessState({required this.studentTaskUploadedEntity});
 }
-class GetAssignmentInstructorInfoErrorState extends AssignmentInstructorState{
+class GetStudentSubmitAssignmentErrorState extends AssignmentInstructorState{
   final String errMessage;
-  GetAssignmentInstructorInfoErrorState(this.errMessage);
+  GetStudentSubmitAssignmentErrorState(this.errMessage);
 }
 
-class SubmitAssignmentInstructorLoadingState extends AssignmentInstructorState{}
-class SubmitAssignmentInstructorSuccessState extends AssignmentInstructorState{}
-class SubmitAssignmentInstructorErrorState extends AssignmentInstructorState{
+class DeleteAssignmentLoadingState extends AssignmentInstructorState{}
+class DeleteAssignmentSuccessState extends AssignmentInstructorState{}
+class DeleteAssignmentErrorState extends AssignmentInstructorState{
   final String errMessage;
-  SubmitAssignmentInstructorErrorState(this.errMessage);
+  DeleteAssignmentErrorState(this.errMessage);
 }
 
 class PickFileLoading extends AssignmentInstructorState{}
 class PickFileError extends AssignmentInstructorState{}
 class PickFileSuccess extends AssignmentInstructorState{}
+
+class UpdateAssignmentLoadingState extends AssignmentInstructorState{}
+class UpdateAssignmentSuccessState extends AssignmentInstructorState{}
+class UpdateAssignmentErrorState extends AssignmentInstructorState{
+  final String errMessage;
+  UpdateAssignmentErrorState(this.errMessage);
+}
+
+
+class AddAssignmentLoadingState extends AssignmentInstructorState{}
+class AddAssignmentSuccessState extends AssignmentInstructorState{}
+class AddAssignmentErrorState extends AssignmentInstructorState{
+  final String errMessage;
+  AddAssignmentErrorState(this.errMessage);
+}
+
+
+class SetGradeAssignmentLoadingState extends AssignmentInstructorState{}
+class SetGradeAssignmentSuccessState extends AssignmentInstructorState{}
+class SetGradeAssignmentErrorState extends AssignmentInstructorState{
+  final String errMessage;
+  SetGradeAssignmentErrorState(this.errMessage);
+}

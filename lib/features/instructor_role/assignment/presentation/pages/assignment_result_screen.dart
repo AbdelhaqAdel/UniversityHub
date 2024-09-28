@@ -10,11 +10,12 @@ import '../../domain/use_cases/get_student_submit_assignment_usecase.dart';
 import '../../domain/use_cases/set_grade_assignment_usecase.dart';
 import '../../domain/use_cases/update_assignment_usecase.dart';
 import '../manager/assignment_cubit.dart';
-import '../widgets/assignment_body.dart';
+import '../widgets/task_uploaded/task_result_body.dart';
 
-class AssignmentInstructorScreen extends StatelessWidget {
-  const AssignmentInstructorScreen({super.key});
+class TaskResultScreen extends StatelessWidget {
+  const TaskResultScreen({super.key, required this.taskId});
 
+  final String taskId;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -36,8 +37,10 @@ class AssignmentInstructorScreen extends StatelessWidget {
           ),
           getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ))..getAssignmentInstructor(),
-      child: const AssignmentInstructorBody(),
+          ))..getStudentSubmitAssignment(assignmentId: taskId),
+      child: TaskResultBody(
+        taskId: taskId,
+      ),
     );
   }
 }
