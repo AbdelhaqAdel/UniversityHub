@@ -2,19 +2,19 @@ import 'package:dio/dio.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/utils/api_service.dart';
 import 'package:universityhup/core/utils/end_point.dart';
+import 'package:universityhup/features/instructor_role/material/data/models/material_folder_model.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
 
-import '../../domain/entities/material_folder_entity.dart';
-import '../models/material_folder_model.dart';
 
-abstract class MaterialRemoteDataSource{
+abstract class InsMaterialRemoteDataSource{
   Future<List<FolderEntity>>fetchAllMaterials({required String courseId});
 }
-class MaterialRemoteDataSourceImpl extends MaterialRemoteDataSource{
+class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
   List<FolderEntity>allMaterials=[];
   
   @override
   Future<List<FolderEntity>> fetchAllMaterials({required String courseId})async {
-    await DioHelper.get(url:'${EndPoint.allMaterials}$courseId',
+    await DioHelper.get(url:'${EndPoint.insAllMaterials}$courseId',
     token:token
      ).then((value){
       fillMateriaMap(value);
@@ -26,6 +26,9 @@ class MaterialRemoteDataSourceImpl extends MaterialRemoteDataSource{
      for (var element in list.data) {
       allMaterials.add(FolderModel.fromJson(element));
     }
+    allMaterials.forEach((e){
+      print(e.lectureName);
+    });
   }
   
 }
