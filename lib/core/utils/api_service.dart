@@ -121,6 +121,20 @@ class DioHelper {
         url, queryParameters: query, data: data??formData);
   }
 
+  static Future<Response> put({
+    required String url,
+    Map<String, dynamic>? query,
+    String? token,
+    Map<String, dynamic>? data,
+  }) async {
+    dio.options.headers={
+      'Content-Type':'application/json',
+      'Accept':'application/json',
+      'Authorization':'Bearer $token',
+    };
+    return await dio.put(
+        url,data: data);
+  }
 
 
   static Future<Response> deleteData({
