@@ -1,20 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/functions/open_file.dart';
-import 'package:universityhup/features/student_role/material/data/repositories/material_files_repo_impl.dart';
-import '../../../domain/entities/material_file_entity.dart';
-import '../../../domain/entities/material_folder_entity.dart';
-import '../../../domain/use_cases/material_files_usecase.dart';
-import '../../../domain/use_cases/material_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
 part 'material_state.dart';
 
-class MaterialCubit extends Cubit<MaterialsState> {
+class InsMaterialCubit extends Cubit<MaterialsState> {
  
-  MaterialCubit({required this.materialUseCase,required this.fileUseCase,required this.fileRepo}) : super(MaterialInitial());
-  static MaterialCubit get(context) => BlocProvider.of(context);
-  final MaterialUseCase materialUseCase; 
-  final MaterialFilesUseCase fileUseCase; 
-  final MaterialFilesRepository fileRepo;
+  InsMaterialCubit({required this.materialUseCase,required this.fileUseCase,required this.updateMaterialUseCase}) : super(MaterialInitial());
+  static InsMaterialCubit get(context) => BlocProvider.of(context);
+  final InsMaterialUseCase materialUseCase; 
+  final InsMaterialFilesUseCase fileUseCase; 
+  final UpdateMaterialUseCase updateMaterialUseCase; 
+
   Future<void>fetchAllMaterials()async{
     emit(GetAllMaterialsLoadingState());
     final result=await materialUseCase.call(currentCycleId);
@@ -44,5 +45,32 @@ class MaterialCubit extends Cubit<MaterialsState> {
  void openFile({required String filePath}){
   downloadAndOpenFile(filePath);
  }
+ 
+ Future<void> updateFolderName({
+    required String folderId,
+    required String newFolderName,
+  }) async {
+    print('updating folder name-----$newFolderName $folderId');
+    emit(UpdateMaterialLoadingState());
+     final result= await updateMaterialUseCase.call(
+        'FolderName?name=$newFolderName&lectureId=$folderId'
+      );
+      result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
+        (r) => emit(UpdateMaterialSuccessState(),), 
+      );
+  }
 
+  Future<void> updateFileName({
+    required int fileId,
+    required String newFileName,
+  }) async {
+
+    emit(UpdateMaterialLoadingState());
+     final result= await updateMaterialUseCase.call(
+        'file?file_Id=$fileId&fileName=$newFileName'
+      );
+      result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
+        (right) => emit(UpdateMaterialSuccessState(),), 
+      );
+  }
 }

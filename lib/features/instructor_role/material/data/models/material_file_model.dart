@@ -1,5 +1,6 @@
 
-import '../../domain/entities/material_file_entity.dart';
+
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
 
 class FileModel extends FileEntity{
   FileModel({

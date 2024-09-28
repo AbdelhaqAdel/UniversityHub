@@ -37,3 +37,13 @@ class GetAllFilesErrorState extends MaterialsState {
   final String error;
   GetAllFilesErrorState({required this.error});
 }
+
+
+class UpdateMaterialLoadingState extends MaterialsState {}
+
+class UpdateMaterialSuccessState extends MaterialsState {}
+
+class UpdateMaterialErrorState extends MaterialsState {
+    final String error;
+  UpdateMaterialErrorState({required this.error});
+}

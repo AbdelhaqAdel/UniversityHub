@@ -3,7 +3,7 @@ part 'material_file_entity.g.dart';
 @HiveType(typeId: 3)
 class FileEntity{
   @HiveField(0)
-  int  lectureFileId;
+  int lectureFileId;
   @HiveField(1)
   String fileName;
   @HiveField(2)

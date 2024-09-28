@@ -6,11 +6,11 @@ import 'package:universityhup/core/utils/end_point.dart';
 import 'package:universityhup/features/instructor_role/material/data/models/material_file_model.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
 
-abstract class MaterialFileRemoteDataSource{
+abstract class InsMaterialFileRemoteDataSource{
   Future <List<FileEntity>>fetchAllMaterialFiles({required lecId});
 }
 
-class MaterialFileRemoteDataSourceImpl extends MaterialFileRemoteDataSource{
+class InsMaterialFileRemoteDataSourceImpl extends InsMaterialFileRemoteDataSource{
   List<FileEntity>allFiles=[];
   @override
    Future <List<FileEntity>> fetchAllMaterialFiles({required lecId})async {

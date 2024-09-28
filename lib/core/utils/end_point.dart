@@ -11,6 +11,8 @@ abstract class EndPoint{
   static String allQuizzes= 'Students/CurrentCourseQuizzes?cycleId=';
   static String quizData='Students/Quiz?quizId=';
   static String allMaterials= 'Students/CurrentCourseMaterial?CycleId=';
+  static String insAllMaterials= 'Instructor/CurrentCourseMaterial?CycleId=';
+
   static String submitQuiz= 'Students/quiz/submit';
   static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=';
   static String getCalendarEvents='Calendar/GetAllCalendar';

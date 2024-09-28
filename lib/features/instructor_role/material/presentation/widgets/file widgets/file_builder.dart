@@ -9,7 +9,7 @@ class FileBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MaterialCubit,MaterialsState>(builder: (context,state)
+    return BlocBuilder<InsMaterialCubit,MaterialsState>(builder: (context,state)
     {
         if(state is GetAllFilesSuccessState){
         return FileGridView(

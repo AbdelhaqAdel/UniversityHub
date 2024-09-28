@@ -1,11 +1,11 @@
 import 'package:hive/hive.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
-import 'package:universityhup/features/student_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
 
-abstract class MaterialFileLocalDataSource {
+abstract class InsMaterialFileLocalDataSource {
   Future<List<FolderEntity>> fetchCoursesFromHive();
 }
-class MaterialFileLocalDataSourceImpl extends MaterialFileLocalDataSource{
+class InsMaterialFileLocalDataSourceImpl extends InsMaterialFileLocalDataSource{
   @override
   Future<List<FolderEntity>> fetchCoursesFromHive() async {
   var box= Hive.box<FolderEntity>(HiveConstants.materialBox);

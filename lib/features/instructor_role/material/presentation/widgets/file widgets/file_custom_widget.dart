@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:universityhup/core/style/colors.dart';
-import 'package:universityhup/features/student_role/material/domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/widgets/file%20widgets/file_buttons.dart';
 
 
 class FileWidget extends StatelessWidget {
   const FileWidget({super.key,
-  required this.file
+  required this.file,
    });
   final FileEntity file;
   @override
   Widget build(BuildContext context) {
+      // final TextEditingController fileController = TextEditingController();
     var screenSize=MediaQuery.of(context).size;
     return  Container(
     decoration: BoxDecoration(
@@ -25,7 +27,7 @@ class FileWidget extends StatelessWidget {
           height: 5,
         ),
         Container(
-          height: screenSize.height/7.5,
+          height: screenSize.height/10,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: KColors.subTitleColor.withOpacity(.7),
@@ -40,6 +42,7 @@ class FileWidget extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
+        FileButtons(fileEntity: file,),
         Padding(
           padding: const EdgeInsets.all(3.0),
           child: SizedBox(

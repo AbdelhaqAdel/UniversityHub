@@ -1,15 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:universityhup/core/errors/failure.dart';
-import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_data_source.dart';
-import '../../domain/entities/material_file_entity.dart';
-import '../../domain/repositories/material_files_repo.dart';
-import '../data_sources/material_file_remote_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/data/data_sources/material_file_local_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/data/data_sources/material_file_remote_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/repositories/material_files_repo.dart';
 
-class MaterialFilesRepository extends MaterialFilesRepo{
-  final MaterialFileRemoteDataSourceImpl filesDataSource;
-  final MaterialFileLocalDataSourceImpl fileLocalDataSource;
-  MaterialFilesRepository({required this.filesDataSource,required this.fileLocalDataSource,});
+
+class InsMaterialFilesRepository extends InsMaterialFilesRepo{
+  final InsMaterialFileRemoteDataSourceImpl filesDataSource;
+  final InsMaterialFileLocalDataSourceImpl fileLocalDataSource;
+  InsMaterialFilesRepository({required this.filesDataSource,required this.fileLocalDataSource,});
 
   @override
   Future<Either<Failure,List<FileEntity>>> getAllMaterialsFiles({required lecId}) async{

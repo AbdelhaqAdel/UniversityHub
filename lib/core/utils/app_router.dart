@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/pages/material_files_screen.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_result_screen.dart';
@@ -25,7 +28,10 @@ abstract class AppRouter {
   static const kQuizzes = '/QuizzesScreen';
   static const kQuizzesQues = '/QuizQuesScreen';
   static const kMaterialFolders = '/MaterialScreen';
+  static const kInsMaterialScreen = '/InsMaterialScreen';
   static const kMaterialFile = '/MaterialFileScreen';
+  static const kInsMaterialFile = '/InsMaterialFileScreen';
+
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
   static const kQuizResultScreen='/QuizResultScreen';
@@ -102,6 +108,21 @@ abstract class AppRouter {
       ),
 
       GoRoute(
+        path: kInsMaterialScreen,
+        builder: (context, state) => const InsMaterialScreen(),
+      ),
+   
+       GoRoute(
+          path: kInsMaterialFile,
+          builder: (context, state) {
+          final lecId = state.extra as String;
+
+            return BlocProvider.value(
+              value: context1!.read<InsMaterialCubit>()..fetchMaterialFiles(lecId: lecId),
+              child: const InsMaterialFileScreen(),
+            );
+          }),
+      GoRoute(
         path: kAssignmentInstructorScreen,
         builder: (context, state) =>  const AssignmentInstructorScreen(),
       ),
@@ -110,7 +131,6 @@ abstract class AppRouter {
         path: kTaskResultScreen,
         builder: (context, state) =>  TaskResultScreen(taskId: state.extra as String,),
       ),
-
 
     ],
   );

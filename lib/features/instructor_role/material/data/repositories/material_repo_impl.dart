@@ -6,9 +6,9 @@ import 'package:universityhup/features/instructor_role/material/data/data_source
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
 import 'package:universityhup/features/instructor_role/material/domain/repositories/material_repo.dart';
 
-class MaterialRepository extends MaterialRepo{
-  final MaterialRemoteDataSourceImpl materialDataSource;
-  MaterialRepository({required this.materialDataSource});
+class InsMaterialRepository extends InsMaterialRepo{
+  final InsMaterialRemoteDataSourceImpl materialDataSource;
+  InsMaterialRepository({required this.materialDataSource});
 
   @override
   Future<Either<Failure, List<FolderEntity>>> getAllMaterials({required String courseId}) async{
@@ -21,5 +21,22 @@ class MaterialRepository extends MaterialRepo{
     }else{
       return left(ServerFailure(error.toString()));
     }}
+  }
+  
+  @override
+  Future<Either<Failure, void>>updateMaterial({
+    required String url})async {
+     try{
+      final response= await materialDataSource.updateMaterial(
+      url: url
+    );
+    return right(response);
+    }catch(error){
+      if(error is DioException){
+        return left(ServerFailure.fromDiorError(error));
+      }else{
+        return left(ServerFailure(error.toString()));
+      }
+    }
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/utils/assets.dart';
 import 'package:universityhup/features/courses/presentation/widgets/about%20course/about_button_custom_widget.dart';
 
-import '../../../../../core/constants/constant.dart';
 
 class AboutCourseScreen extends StatelessWidget {
   const AboutCourseScreen({super.key,});
@@ -38,9 +38,12 @@ class AboutCourseScreen extends StatelessWidget {
                         AboutButton(
                           text: 'Material',
                           color: Colors.greenAccent.withOpacity(.25),
-                          image: AssetsData.courseMaterialImage, onTap: () {
-                            GoRouter.of(context).push(AppRouter.kMaterialFolders); 
-                           },
+                          image: AssetsData.courseMaterialImage, onTap: () { 
+                           role=="Student"? GoRouter.of(context).push(AppRouter.kMaterialFolders)
+                           :GoRouter.of(context).push(AppRouter.kInsMaterialScreen);
+
+                          },
+                        
                         ),
                         const SizedBox(
                           width: 15,

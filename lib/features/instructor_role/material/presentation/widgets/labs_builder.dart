@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../manager/cubit/material_cubit.dart';
-import 'material_page_view.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
+import 'material_list_view.dart';
 
 class LabBuilder extends StatelessWidget {
   const LabBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MaterialCubit,MaterialsState>(builder: (context,state){
+    return BlocBuilder<InsMaterialCubit,MaterialsState>(builder: (context,state){
       if(GetAllMaterialsSuccessState.allLabs.isNotEmpty){
-        return MaterialGridView(
+        return MaterialListView(
         context1: context,
         materials:GetAllMaterialsSuccessState.allLabs,
       );}else if(state is GetAllMaterialsErrorState){

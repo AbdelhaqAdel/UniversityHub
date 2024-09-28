@@ -6,12 +6,12 @@ import 'package:universityhup/core/widgets/screen_path.dart';
 import '../manager/cubit/material_cubit.dart';
 import '../widgets/file widgets/file_builder.dart';
 
-class MaterialFileScreen extends StatelessWidget {
-  const MaterialFileScreen({super.key});
+class InsMaterialFileScreen extends StatelessWidget {
+  const InsMaterialFileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MaterialCubit,MaterialsState>(
+    return BlocConsumer<InsMaterialCubit,MaterialsState>(
       listener: (context, state) {},
       builder: (context, state) {
         var screenSize=MediaQuery.of(context).size;
