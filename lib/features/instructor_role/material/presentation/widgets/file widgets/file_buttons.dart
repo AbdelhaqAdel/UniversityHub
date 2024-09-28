@@ -8,6 +8,8 @@ class FileButtons extends StatelessWidget {
   final FileEntity fileEntity;
   @override
   Widget build(BuildContext context) {
+            GlobalKey<FormState> folderFormKey=GlobalKey();
+
       TextEditingController folderController=TextEditingController();
     return Padding(
       padding: const EdgeInsets.all(5.0),
@@ -18,7 +20,12 @@ class FileButtons extends StatelessWidget {
         child:     Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-               EditButton(folderController: folderController, text: fileEntity.fileName,onTap: (){},),
+               EditButton(folderController: folderController,
+                folderFormKey:folderFormKey ,
+                text: fileEntity.fileName,onTap: (){
+                // InsMaterialCubit.get(context).updateFileName(folderId: fileEntity.lectureFileId,
+                //  newFolderName: folderController.text, url: url)
+               },),
                const SizedBox(width: 10,),
                DeleteButton(folderController: folderController, text: fileEntity.fileName,),
                 ],

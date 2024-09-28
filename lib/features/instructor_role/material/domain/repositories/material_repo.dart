@@ -5,4 +5,8 @@ import 'package:universityhup/features/instructor_role/material/domain/entities/
 
 abstract class InsMaterialRepo{
   Future<Either<Failure,List<FolderEntity>>>getAllMaterials({required String courseId});
+   Future<Either<Failure, void>>updateMaterial({
+    required String url
+  });
+  
 }

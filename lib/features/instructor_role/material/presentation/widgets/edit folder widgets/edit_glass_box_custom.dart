@@ -48,14 +48,7 @@ class GlassBoxCustom extends StatelessWidget {
                                           if (folderFormKey
                                               .currentState!
                                               .validate()) {
-                                            // CalendarCubit.get(context).addEvent(
-                                            //     start: CalendarCubit.get(context).startDate!,
-                                            //     end: CalendarCubit.get(context).endDate!,
-                                            //     event:eventBodyController.text);
-                                            //     CalendarCubit.get(context).getDayEvents().then((v){
-                                            //       Navigator.pop(context);
-                                            //     });
-                                          }
+                                            onTap();}
                                         },
                                         height: screenSize.height /17,
                                         color: KColors.buttonColor,

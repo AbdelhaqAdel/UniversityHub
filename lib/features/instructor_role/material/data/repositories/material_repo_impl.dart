@@ -22,4 +22,21 @@ class InsMaterialRepository extends InsMaterialRepo{
       return left(ServerFailure(error.toString()));
     }}
   }
+  
+  @override
+  Future<Either<Failure, void>>updateMaterial({
+    required String url})async {
+     try{
+      final response= await materialDataSource.updateMaterial(
+      url: url
+    );
+    return right(response);
+    }catch(error){
+      if(error is DioException){
+        return left(ServerFailure.fromDiorError(error));
+      }else{
+        return left(ServerFailure(error.toString()));
+      }
+    }
+  }
 }

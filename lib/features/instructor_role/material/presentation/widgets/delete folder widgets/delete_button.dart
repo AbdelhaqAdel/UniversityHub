@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/widgets/delete%20folder%20widgets/delete_glass_box_custom.dart';
 
@@ -24,7 +25,9 @@ class DeleteButton<EntityType> extends StatelessWidget {
               useSafeArea: true,
               builder: (BuildContext context) => BlocProvider(
                 create: (context) => InsMaterialCubit(
-                          materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),),
+                          materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),
+                               updateMaterialUseCase: getIt.get<UpdateMaterialUseCase>(),
+                          ),
                 child:   BlocConsumer<InsMaterialCubit,MaterialsState>(
                      listener: (context, state) {},
                      builder: (context, state) {

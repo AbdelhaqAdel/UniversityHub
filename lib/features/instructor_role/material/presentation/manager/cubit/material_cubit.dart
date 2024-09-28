@@ -5,14 +5,17 @@ import 'package:universityhup/features/instructor_role/material/domain/entities/
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
 part 'material_state.dart';
 
-class MaterialCubit extends Cubit<MaterialsState> {
+class InsMaterialCubit extends Cubit<MaterialsState> {
  
-  MaterialCubit({required this.materialUseCase,required this.fileUseCase,}) : super(MaterialInitial());
-  static MaterialCubit get(context) => BlocProvider.of(context);
+  InsMaterialCubit({required this.materialUseCase,required this.fileUseCase,required this.updateMaterialUseCase}) : super(MaterialInitial());
+  static InsMaterialCubit get(context) => BlocProvider.of(context);
   final InsMaterialUseCase materialUseCase; 
   final InsMaterialFilesUseCase fileUseCase; 
+  final UpdateMaterialUseCase updateMaterialUseCase; 
+
   Future<void>fetchAllMaterials()async{
     emit(GetAllMaterialsLoadingState());
     final result=await materialUseCase.call(currentCycleId);
@@ -42,5 +45,32 @@ class MaterialCubit extends Cubit<MaterialsState> {
  void openFile({required String filePath}){
   downloadAndOpenFile(filePath);
  }
+ 
+ Future<void> updateFolderName({
+    required String folderId,
+    required String newFolderName,
+  }) async {
+    print('updating folder name-----$newFolderName $folderId');
+    emit(UpdateMaterialLoadingState());
+     final result= await updateMaterialUseCase.call(
+        'FolderName?name=$newFolderName&lectureId=$folderId'
+      );
+      result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
+        (r) => emit(UpdateMaterialSuccessState(),), 
+      );
+  }
 
+  Future<void> updateFileName({
+    required int fileId,
+    required String newFileName,
+  }) async {
+
+    emit(UpdateMaterialLoadingState());
+     final result= await updateMaterialUseCase.call(
+        'file?file_Id=$fileId&fileName=$newFileName'
+      );
+      result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
+        (right) => emit(UpdateMaterialSuccessState(),), 
+      );
+  }
 }

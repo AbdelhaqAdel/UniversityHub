@@ -4,30 +4,33 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/widgets/edit%20folder%20widgets/edit_glass_box_custom.dart';
 
 class EditButton extends StatelessWidget {
-  const EditButton({super.key,required this.folderController,required this.text,required this.onTap});
+  const EditButton({super.key,required this.folderController,required this.text,required this.onTap,
+  required this.folderFormKey,
+  });
  final TextEditingController folderController;
  final String text;
   final Function onTap;
-
+  final GlobalKey<FormState> folderFormKey;
 
   @override
   Widget build(BuildContext context) {
-          GlobalKey<FormState> folderFormKey=GlobalKey<FormState>();
-      TextEditingController folderController=TextEditingController();
     return    InkWell(
                     onTap: () {
-                      folderController.text = '';
+                      // folderController.text = '';
                     showDialog<String>(
               context: context,
               barrierColor: Colors.black.withOpacity(.3),
               useSafeArea: true,
               builder: (BuildContext context) => BlocProvider(
                 create: (context) => InsMaterialCubit(
-                          materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),),
+                          materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),
+                        updateMaterialUseCase: getIt.get<UpdateMaterialUseCase>(),
+                          ),
                 child:   BlocConsumer<InsMaterialCubit,MaterialsState>(
                      listener: (context, state) {},
                      builder: (context, state) {

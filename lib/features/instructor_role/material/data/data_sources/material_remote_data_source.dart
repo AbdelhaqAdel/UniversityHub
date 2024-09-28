@@ -8,6 +8,9 @@ import 'package:universityhup/features/instructor_role/material/domain/entities/
 
 abstract class InsMaterialRemoteDataSource{
   Future<List<FolderEntity>>fetchAllMaterials({required String courseId});
+  Future<void> updateMaterial({
+   required String url,
+  });
 }
 class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
   List<FolderEntity>allMaterials=[];
@@ -28,6 +31,21 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
     }
     allMaterials.forEach((e){
       print(e.lectureName);
+    });
+  }
+
+   @override
+  Future<void> updateMaterial({
+    required String url,
+  }) async {
+    print(url);
+    await DioHelper.updateData(
+      url:'Instructor/UpdateLecture$url',
+      token: token
+    ).then((v){print('updated successfully');
+    // return v;
+    }).catchError((e){
+      print('error in update material ${e.toString()}');
     });
   }
   
