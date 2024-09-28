@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/widgets/custom_button.dart';
-import '../../../../../../core/functions/open_file.dart';
+import 'package:universityhup/core/widgets/custom_text_form_field.dart';
 import '../../../data/models/set_grade_assignment_input.dart';
 import '../../../domain/entities/student_task_uploaded_entity.dart';
 import '../../manager/assignment_cubit.dart';
@@ -11,7 +11,8 @@ import 'open_student_task.dart';
 class AddGradeDialog extends StatefulWidget {
   const AddGradeDialog({
     super.key,
-    required this.studentTaskUploadedEntity, required this.taskId,
+    required this.studentTaskUploadedEntity,
+    required this.taskId,
   });
 
   final StudentTaskUploadedEntity studentTaskUploadedEntity;
@@ -29,11 +30,8 @@ class _AddGradeDialogState extends State<AddGradeDialog> {
     return SizedBox(
       height: 300,
       child: Padding(
-        padding: const EdgeInsets.only(
-            bottom: 25.0,
-            left: 25,
-            right: 25,
-            top: 20),
+        padding:
+            const EdgeInsets.only(bottom: 25.0, left: 25, right: 25, top: 20),
         child: Form(
           key: gradeFromKey,
           child: Column(
@@ -50,22 +48,17 @@ class _AddGradeDialogState extends State<AddGradeDialog> {
               Container(
                 decoration: BoxDecoration(
                   // border: Border.all(color: Colors.white),
-                  borderRadius:
-                  BorderRadius.circular(18),
-                  color: Colors.blueGrey
-                      .withOpacity(.25),
+                  borderRadius: BorderRadius.circular(18),
+                  color: Colors.blueGrey.withOpacity(.25),
                 ),
                 child: Padding(
-                  padding:
-                  const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
                       const SizedBox(
                         width: 8,
                       ),
-                      const FaIcon(
-                          FontAwesomeIcons
-                              .clock),
+                      const FaIcon(FontAwesomeIcons.clock),
                       const SizedBox(
                         width: 10,
                       ),
@@ -87,82 +80,20 @@ class _AddGradeDialogState extends State<AddGradeDialog> {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      // width: 150,
-
-                      padding: const EdgeInsets
-                          .symmetric(
-                          vertical: 5,
-                          horizontal: 10),
-                      alignment:
-                      Alignment.center,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        // border: Border.all(color: Colors.white),
-                        borderRadius:
-                        BorderRadius
-                            .circular(18),
-                        color: Colors.white
-                            .withOpacity(.5),
-                      ),
-                      child: Padding(
-                        padding:
-                        const EdgeInsets
-                            .symmetric(
-                            horizontal:
-                            0.0),
-                        child: TextFormField(
-                          controller:
-                          setTaskGradeController,
-                          keyboardType:
-                          TextInputType
-                              .number,
-                          onFieldSubmitted:
-                              (value) {
-                          },
-                          validator:
-                              (value) {
-                            if (value!
-                                .isEmpty) {
-                              return 'Points title can\'t be empty';
-                            }
-                            return null;
-                          },
-                          cursorColor:
-                          Colors.white,
-                          style:
-                          const TextStyle(
-                            fontSize: 18,
-                          ),
-                          decoration:
-                          const InputDecoration(
-                            prefixIcon: Padding(
-                              padding: EdgeInsets
-                                  .symmetric(
-                                  horizontal:
-                                  10.0,
-                                  vertical:
-                                  10),
-                              child: FaIcon(
-                                FontAwesomeIcons
-                                    .solidPenToSquare,
-                                color: Colors
-                                    .white,
-                                size: 25,
-                              ),
-                            ),
-                            hintText: 'Points',
-                            border: InputBorder
-                                .none,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                      child: CustomTextFormField(
+                          controller: setTaskGradeController,
+                          keyboardType: TextInputType.number,
+                          hintText: 'Points',
+                          prefixIcon:  FontAwesomeIcons.solidPenToSquare,
+                          obscureText: false,
+                          suffix: const SizedBox(),
+                          borderRadius: 18,
+                      withBorder: false,height: 60,)),
                   const SizedBox(
                     width: 10,
                   ),
-                  OpenStudentTask(filePath: widget.studentTaskUploadedEntity.filePath!),
+                  OpenStudentTask(
+                      filePath: widget.studentTaskUploadedEntity.filePath!),
                 ],
               ),
 
@@ -172,24 +103,7 @@ class _AddGradeDialogState extends State<AddGradeDialog> {
 
               CustomButton(
                   onTap: () {
-                    if(gradeFromKey.currentState!.validate()){
-                      SetGradeAssignmentInputModel
-                      setGradeAssignmentInputModel =
-                      SetGradeAssignmentInputModel(
-                          taskId:widget.taskId,
-                          studentId:    widget.studentTaskUploadedEntity
-                              .studentId,
-                          grade:  int.parse(
-                              setTaskGradeController
-                                  .text));
-                      AssignmentInstructorCubit
-                          .get(context)
-                          .setGradeAssignment(
-                          setGradeAssignmentInputModel:
-                          setGradeAssignmentInputModel);
-                      GoRouter.of(context).pop();
-                    }
-
+                    _addGrade(context);
                   },
                   text: 'Confirm changes'),
               // SizedBox(
@@ -201,5 +115,20 @@ class _AddGradeDialogState extends State<AddGradeDialog> {
       ),
     );
   }
-}
 
+  void _addGrade(BuildContext context) {
+     if (gradeFromKey.currentState!.validate()) {
+      SetGradeAssignmentInputModel
+          setGradeAssignmentInputModel =
+          SetGradeAssignmentInputModel(
+              taskId: widget.taskId,
+              studentId:
+                  widget.studentTaskUploadedEntity.studentId,
+              grade: int.parse(setTaskGradeController.text));
+      AssignmentInstructorCubit.get(context).setGradeAssignment(
+          setGradeAssignmentInputModel:
+              setGradeAssignmentInputModel);
+      GoRouter.of(context).pop();
+    }
+  }
+}

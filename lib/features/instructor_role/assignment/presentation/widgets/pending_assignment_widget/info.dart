@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import '../../../../../../core/constants/constant.dart';
 import '../../../domain/entities/assignment_entity.dart';
 class PendingInfo extends StatelessWidget {
   const PendingInfo({
@@ -21,43 +21,18 @@ class PendingInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 2,
-            ),
             Row(
               children: [
                 const FaIcon(
-                  FontAwesomeIcons.user,
+                  FontAwesomeIcons.bookmark,
                   size: 12,
                 ),
                 const SizedBox(
                   width: 7,
                 ),
-                Text(
-                  '',
-                  textAlign: TextAlign.start,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 2,
-            ),
-            Row(
-              children: [
-                const FaIcon(
-                  FontAwesomeIcons.chartLine,
-                  size: 12,
-                ),
-                const SizedBox(
-                  width: 7,
-                ),
-                SizedBox(
-                  width: 150,
+                Expanded(
                   child: Text(
-                    'From ${assignmentEntity?.startDate}',
+                    currentCycleName!,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.start,
@@ -71,24 +46,46 @@ class PendingInfo extends StatelessWidget {
             const SizedBox(
               height: 2,
             ),
-            Row(
+            const Row(
               children: [
-                const FaIcon(
+                FaIcon(
+                  FontAwesomeIcons.user,
+                  size: 12,
+                ),
+                SizedBox(
+                  width: 7,
+                ),
+                Text(
+                  'Start',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 2,
+            ),
+            const Row(
+              children: [
+                FaIcon(
                   FontAwesomeIcons.clock,
                   size: 12,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 7,
                 ),
                 SizedBox(
                   width: 150,
                   child: Text(
-                    'to  ${assignmentEntity?.endDate}',
+                    'Ended ',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.start,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontWeight: FontWeight.w700,
+                        color: Colors.red,
                         fontSize: 13),
                   ),
                 ),
