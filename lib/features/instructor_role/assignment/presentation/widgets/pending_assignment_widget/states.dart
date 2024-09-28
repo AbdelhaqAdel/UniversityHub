@@ -9,13 +9,14 @@ class PendingStates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return  Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+            },
             child: Container(
               height: 45,
               width: double.infinity,
@@ -29,7 +30,7 @@ class PendingStates extends StatelessWidget {
                   'Available',
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: 20,
+                      fontSize: 16,
                       color: Colors.white),
                 ),
               ),
