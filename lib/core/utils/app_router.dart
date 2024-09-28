@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
@@ -23,6 +24,7 @@ abstract class AppRouter {
   static const kQuizzes = '/QuizzesScreen';
   static const kQuizzesQues = '/QuizQuesScreen';
   static const kMaterialFolders = '/MaterialScreen';
+  static const kInsMaterialScreen = '/InsMaterialScreen';
   static const kMaterialFile = '/MaterialFileScreen';
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
@@ -95,6 +97,11 @@ abstract class AppRouter {
       GoRoute(
         path: kMaterialFolders,
         builder: (context, state) => MaterialScreen(),
+      ),
+
+      GoRoute(
+        path: kInsMaterialScreen,
+        builder: (context, state) => const InsMaterialScreen(),
       ),
 
 

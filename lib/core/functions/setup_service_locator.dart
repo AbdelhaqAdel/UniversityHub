@@ -6,6 +6,13 @@ import 'package:universityhup/features/calendar/domain/use_cases/get_calender_us
 import 'package:universityhup/features/courses/data/data_sources/courses_local_data_source.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/material/data/data_sources/material_file_local_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/data/data_sources/material_file_remote_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/data/data_sources/material_remote_data_source.dart';
+import 'package:universityhup/features/instructor_role/material/data/repositories/material_files_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/material/data/repositories/material_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
 import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_data_source.dart';
 import 'package:universityhup/features/student_role/quizzes/data/data_sources/quiz_data_remote_data_Source.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
@@ -37,6 +44,7 @@ import '../../features/student_role/quizzes/domain/use_cases/quiz_use_case.dart'
 import '../../features/student_role/user/data/data_sources/user_remote_data_source.dart';
 import '../../features/student_role/user/data/repositories/user_repo_impl.dart';
 import '../../features/student_role/user/domain/repositories/user_repo.dart';
+
 
 final getIt = GetIt.instance;
 
@@ -99,4 +107,14 @@ void setupServiceLocator() {
       userRemoteDataSource: UserInstructorRemoteDataSourceImpl(),
     ),
   );
+
+
+   getIt.registerSingleton<InsMaterialUseCase>(InsMaterialUseCase
+    (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
+
+ getIt.registerSingleton<InsMaterialFilesUseCase>(InsMaterialFilesUseCase
+    ( filesRepo: InsMaterialFilesRepository(filesDataSource: InsMaterialFileRemoteDataSourceImpl(), 
+    fileLocalDataSource: InsMaterialFileLocalDataSourceImpl())));
+   
+
 }

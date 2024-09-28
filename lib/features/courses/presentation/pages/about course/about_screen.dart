@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/core/utils/assets.dart';
@@ -37,7 +38,8 @@ class AboutCourseScreen extends StatelessWidget {
                           text: 'Material',
                           color: Colors.greenAccent.withOpacity(.25),
                           image: AssetsData.courseMaterialImage, onTap: () { 
-                            GoRouter.of(context).push(AppRouter.kMaterialFolders); 
+                           role=="Student"? GoRouter.of(context).push(AppRouter.kMaterialFolders)
+                           :GoRouter.of(context).push(AppRouter.kInsMaterialScreen);
                            },
                         ),
                         const SizedBox(
