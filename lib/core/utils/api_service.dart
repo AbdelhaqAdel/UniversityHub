@@ -157,6 +157,35 @@ class DioHelper {
 
 
 
+static Future<Response> uploadFile({
+  required String url,
+  Map<String, dynamic>? query,
+  Map<String, dynamic>? data,
+  required File file,  
+}) async {
+  FormData formData = FormData();
+  dio.options.headers = {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer $token',
+  };
+    String fileName = file.path.split('/').last;
+    formData.files.add(MapEntry(
+      'file',
+      await MultipartFile.fromFile(
+        file.path,
+        filename: fileName,
+      ),
+    ));
+  return await dio.post(
+    url,
+    queryParameters: query,
+    data: formData,
+  );
+}
+
+
+ 
+
 }
 
 
