@@ -2,10 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../../core/style/textStyles.dart';
+
 class EndDate extends StatelessWidget {
   const EndDate({
-    super.key,
+    super.key, required this.endDate,
   });
+  final DateTime? endDate;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,26 +42,18 @@ class EndDate extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white.withOpacity(.3),
               ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: 8.0, horizontal: 15),
+              child: Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
                 child: Row(
                   children: [
                     Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
+                        '${endDate!.hour} : ',
+                        style: Styles.textStyle16black
                     ),
                     Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w800,
-                      ),
+                        '${endDate!.minute}',
+                        style:Styles.textStyle16black
                     ),
                   ],
                 ),
@@ -70,18 +67,14 @@ class EndDate extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white.withOpacity(.3),
               ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: 8.0, horizontal: 15),
+              child:  Padding(
+                padding:
+                EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
                 child: Row(
                   children: [
                     Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
+                        '${endDate!.day} / ${endDate!.month}',
+                        style:Styles.textStyle16black
                     ),
                   ],
                 ),

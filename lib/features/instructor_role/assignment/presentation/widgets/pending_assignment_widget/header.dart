@@ -42,7 +42,7 @@ class PendingHeader extends StatelessWidget {
                   GoRouter.of(context).pop();
                   customDialog(
                     context: context,
-                    widget: UpdateTaskDialog(assignmentEntity: assignmentEntity),
+                    widget: UpdateTaskDialog(assignmentEntity: assignmentEntity, cubit: AssignmentInstructorCubit.get(context),),
                   );
                 });
           },

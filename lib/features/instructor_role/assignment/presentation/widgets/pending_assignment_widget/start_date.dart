@@ -2,11 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:universityhup/core/style/textStyles.dart';
 
 class StartDate extends StatelessWidget {
   const StartDate({
-    super.key,
+    super.key, required this.startData,
   });
+  final DateTime? startData;
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +43,18 @@ class StartDate extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white.withOpacity(.3),
               ),
-              child: const Padding(
+              child: Padding(
                 padding:
-                EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
                 child: Row(
                   children: [
                     Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
+                     '${startData!.hour} : ',
+                      style: Styles.textStyle16black
                     ),
-                    Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w800,
-                      ),
+                     Text(
+                      '${startData!.minute}',
+                      style:Styles.textStyle16black
                     ),
                   ],
                 ),
@@ -71,18 +68,14 @@ class StartDate extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white.withOpacity(.3),
               ),
-              child: const Padding(
+              child:  Padding(
                 padding:
                 EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
                 child: Row(
                   children: [
                     Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      '${startData!.day} / ${startData!.month}',
+                      style:Styles.textStyle16black
                     ),
                   ],
                 ),

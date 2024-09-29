@@ -7,6 +7,7 @@ import 'package:universityhup/features/instructor_role/material/presentation/pag
 import 'package:universityhup/features/instructor_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
+import '../../features/instructor_role/assignment/presentation/manager/assignment_cubit.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_result_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
@@ -129,8 +130,19 @@ abstract class AppRouter {
 
       GoRoute(
         path: kTaskResultScreen,
-        builder: (context, state) =>  TaskResultScreen(taskId: state.extra as String,),
+        builder: (context, state) {
+          // Extract the taskId and cubit from the extra map
+          final Map<String, dynamic> extraData = state.extra as Map<String, dynamic>;
+          final String taskId = extraData['taskId'] as String;
+          final AssignmentInstructorCubit cubit = extraData['cubit'] as AssignmentInstructorCubit;
+
+          return TaskResultScreen(taskId: taskId, cubit: cubit);
+        },
       ),
+      // GoRoute(
+      //   path: kTaskResultScreen,
+      //   builder: (context, state) =>  TaskResultScreen(taskId: state.extra as String, cubit: state.extra as AssignmentInstructorCubit,),
+      // ),
 
     ],
   );
