@@ -47,3 +47,13 @@ class UpdateMaterialErrorState extends MaterialsState {
     final String error;
   UpdateMaterialErrorState({required this.error});
 }
+
+class DeleteMaterialLoadingState extends MaterialsState {}
+
+class DeleteMaterialSuccessState extends MaterialsState {}
+
+class DeleteMaterialErrorState extends MaterialsState {
+    final String error;
+  DeleteMaterialErrorState({required this.error});
+}
+

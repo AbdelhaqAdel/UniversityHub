@@ -3,6 +3,7 @@ import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/functions/open_file.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/delete_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
@@ -10,11 +11,14 @@ part 'material_state.dart';
 
 class InsMaterialCubit extends Cubit<MaterialsState> {
  
-  InsMaterialCubit({required this.materialUseCase,required this.fileUseCase,required this.updateMaterialUseCase}) : super(MaterialInitial());
+  InsMaterialCubit({required this.materialUseCase,required this.fileUseCase,required this.updateMaterialUseCase,
+  required this.deleteMaterialUseCase 
+  }) : super(MaterialInitial());
   static InsMaterialCubit get(context) => BlocProvider.of(context);
   final InsMaterialUseCase materialUseCase; 
   final InsMaterialFilesUseCase fileUseCase; 
   final UpdateMaterialUseCase updateMaterialUseCase; 
+  final DeleteMaterialUseCase deleteMaterialUseCase;
 
   Future<void>fetchAllMaterials()async{
     emit(GetAllMaterialsLoadingState());
@@ -71,6 +75,31 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
       );
       result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
         (right) => emit(UpdateMaterialSuccessState(),), 
+      );
+  }
+
+ Future<void> deleteFolder({
+    required String folderId,
+  }) async {
+    emit(DeleteMaterialLoadingState());
+     final result= await deleteMaterialUseCase.call(
+        'Folder?lectureId=$folderId'
+      );
+      result.fold((error) => emit(DeleteMaterialErrorState(error: error.toString()),),
+        (r) => emit(DeleteMaterialSuccessState(),), 
+      );
+  }
+
+    Future<void> deleteFile({
+    required int fileId,
+  }) async {
+    print('File id ::: $fileId');
+    emit(DeleteMaterialLoadingState());
+     final result= await deleteMaterialUseCase.call(
+        'File?FileId=$fileId'
+      );
+      result.fold((error) => emit(DeleteMaterialErrorState(error: error.toString()),),
+        (right) => emit(DeleteMaterialSuccessState(),), 
       );
   }
 }

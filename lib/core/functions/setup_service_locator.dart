@@ -11,6 +11,7 @@ import 'package:universityhup/features/instructor_role/material/data/data_source
 import 'package:universityhup/features/instructor_role/material/data/data_sources/material_remote_data_source.dart';
 import 'package:universityhup/features/instructor_role/material/data/repositories/material_files_repo_impl.dart';
 import 'package:universityhup/features/instructor_role/material/data/repositories/material_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/delete_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
@@ -112,6 +113,7 @@ void setupServiceLocator() {
     ),
   );
 
+
    getIt.registerSingleton<InsMaterialUseCase>(InsMaterialUseCase
     (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
   
@@ -121,6 +123,10 @@ void setupServiceLocator() {
    
       getIt.registerSingleton<UpdateMaterialUseCase>(UpdateMaterialUseCase
     (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
+
+     getIt.registerSingleton<DeleteMaterialUseCase>(DeleteMaterialUseCase
+    (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
+
 
   getIt.registerSingleton<AssignmentInstructorRepo>(
     AssignmentInstructorRepoImpl(

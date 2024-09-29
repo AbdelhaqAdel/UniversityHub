@@ -6,7 +6,8 @@ import 'package:universityhup/core/widgets/glass_box.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/widgets/edit%20folder%20widgets/folder_form.dart';
 
 class GlassBoxCustom extends StatelessWidget {
-  const GlassBoxCustom({super.key,required this.text,required this.folderController,required this.folderFormKey,required this.onTap}); 
+  const GlassBoxCustom({super.key,required this.text,required this.folderController,required this.folderFormKey,
+  required this.onTap}); 
  final String text;
  final GlobalKey<FormState> folderFormKey; 
  final TextEditingController folderController;

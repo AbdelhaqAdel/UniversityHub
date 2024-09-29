@@ -8,5 +8,9 @@ abstract class InsMaterialRepo{
    Future<Either<Failure, void>>updateMaterial({
     required String url
   });
+
+  Future<Either<Failure, void>>deleteMaterial({
+    required String url
+  });
   
 }

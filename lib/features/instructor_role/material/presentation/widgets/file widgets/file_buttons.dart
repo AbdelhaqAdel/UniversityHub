@@ -30,7 +30,11 @@ class FileButtons extends StatelessWidget {
                  });
                },),
                const SizedBox(width: 10,),
-               DeleteButton(folderController: folderController, text: fileEntity.fileName,),
+               DeleteButton(folderController: folderController, text: fileEntity.fileName, onTapYes: (){
+                InsMaterialCubit.get(context).deleteFile(fileId: fileEntity.lectureFileId).then((v){
+                  Navigator.pop(context);
+                });
+               },),
                 ],
               ),
       ),

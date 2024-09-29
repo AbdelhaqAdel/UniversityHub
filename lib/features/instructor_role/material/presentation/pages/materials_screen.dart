@@ -4,6 +4,7 @@ import 'package:universityhup/core/widgets/app_bar.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
 import 'package:universityhup/core/widgets/screen_path.dart';
 import 'package:universityhup/core/widgets/tapbar_widget.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/delete_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/widgets/labs_builder.dart';
 import '../../domain/use_cases/material_files_usecase.dart';
@@ -20,7 +21,7 @@ class InsMaterialScreen extends StatelessWidget {
     return BlocProvider(
       create: (context)=> InsMaterialCubit(
         materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(), 
-        updateMaterialUseCase: getIt.get<UpdateMaterialUseCase>(),
+        updateMaterialUseCase: getIt.get<UpdateMaterialUseCase>(), deleteMaterialUseCase: getIt.get<DeleteMaterialUseCase>(),
         )..fetchAllMaterials(),
 
       child: BlocConsumer<InsMaterialCubit,MaterialsState>(

@@ -34,7 +34,13 @@ class FolderButtons extends StatelessWidget {
                      
                      },),
                const SizedBox(width: 10,),
-               DeleteButton(folderController: folderController, text: 'name',),
+               DeleteButton(folderController: folderController, text: 'name',
+               onTapYes: (){
+                 InsMaterialCubit.get(context).deleteFolder(folderId: insFolder.lectureId??'').then((v){
+                   Navigator.pop(context);
+                 });
+               },
+               ),
                 ],
               ),
       ),

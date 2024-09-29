@@ -39,4 +39,20 @@ class InsMaterialRepository extends InsMaterialRepo{
       }
     }
   }
+  
+  @override
+  Future<Either<Failure, void>> deleteMaterial({required String url})async {
+     try{
+      final response= await materialDataSource.deleteMaterial(
+      url: url
+    );
+    return right(response);
+    }catch(error){
+      if(error is DioException){
+        return left(ServerFailure.fromDiorError(error));
+      }else{
+        return left(ServerFailure(error.toString()));
+      }
+    }
+  }
 }

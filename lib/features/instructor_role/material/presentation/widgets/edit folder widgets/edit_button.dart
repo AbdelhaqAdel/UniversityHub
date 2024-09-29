@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/delete_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
@@ -29,6 +30,7 @@ class EditButton extends StatelessWidget {
               builder: (BuildContext context) => BlocProvider(
                 create: (context) => InsMaterialCubit(
                           materialUseCase: getIt<InsMaterialUseCase>(),fileUseCase: getIt<InsMaterialFilesUseCase>(),
+                            deleteMaterialUseCase:getIt.get<DeleteMaterialUseCase>() ,
                         updateMaterialUseCase: getIt.get<UpdateMaterialUseCase>(),
                           ),
                 child:   BlocConsumer<InsMaterialCubit,MaterialsState>(

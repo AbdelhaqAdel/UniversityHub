@@ -4,8 +4,9 @@ import 'package:universityhup/core/widgets/custom_confirm_alert.dart';
 import 'package:universityhup/core/widgets/glass_box.dart';
 
 class DeleteGlassBoxCustom extends StatelessWidget {
-  const DeleteGlassBoxCustom({super.key,required this.text}); 
+  const DeleteGlassBoxCustom({super.key,required this.text, required this.onTapYes}); 
  final String text;
+ final Function onTapYes;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +30,12 @@ class DeleteGlassBoxCustom extends StatelessWidget {
                             },
                             text:
                                 'Do you want to delete $text ?',
-                            yes: () {
-                              // App_cubit.get(context).INS_DeleteMaterialFolder(
+                            yes: () {onTapYes();
+                              // InsMaterialCubit.get(context).deleteFolder(
                               //     folderId: insFolder.lectureId);
                               // Navigator.pop(context);
-                            },),
+                            },
+                            ),
                      color: Colors.white.withOpacity(.5),
                       borderRadius: 20.sp,
                       x: 15,
