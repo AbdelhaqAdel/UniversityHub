@@ -26,9 +26,9 @@ class ChangeTapBarState extends MaterialsState {}
 class GetAllFilesLoadingState extends MaterialsState {}
 
 class GetAllFilesSuccessState extends MaterialsState {
-  static List<String> quesAnswers=[];
-  static void setCourseName({required answers}){
-    answers=answers;
+  static List<FileEntity> allFiles=[];
+  static void setFilesList({required  List<FileEntity> files}){
+    allFiles=files;
   }
  final List<FileEntity> files;
   GetAllFilesSuccessState({required this.files});
@@ -47,3 +47,23 @@ class UpdateMaterialErrorState extends MaterialsState {
     final String error;
   UpdateMaterialErrorState({required this.error});
 }
+
+class DeleteMaterialLoadingState extends MaterialsState {}
+
+class DeleteMaterialSuccessState extends MaterialsState {}
+
+class DeleteMaterialErrorState extends MaterialsState {
+    final String error;
+  DeleteMaterialErrorState({required this.error});
+}
+
+
+class AddMaterialLoadingState extends MaterialsState {}
+
+class AddMaterialSuccessState extends MaterialsState {}
+
+class AddMaterialErrorState extends MaterialsState {
+    final String error;
+  AddMaterialErrorState({required this.error});
+}
+

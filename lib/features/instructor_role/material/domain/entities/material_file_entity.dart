@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-part 'material_file_entity.g.dart';
 @HiveType(typeId: 3)
 class FileEntity{
   @HiveField(0)

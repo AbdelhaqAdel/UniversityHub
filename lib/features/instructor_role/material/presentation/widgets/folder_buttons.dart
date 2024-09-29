@@ -26,10 +26,21 @@ class FolderButtons extends StatelessWidget {
                 text: insFolder.lectureName!,onTap: (){
                   if (folderFormKey
                         .currentState!.validate()) {
-                       InsMaterialCubit.get(context).updateFolderName(folderId: insFolder.lectureId??'', newFolderName: folderController.text);
-                     } },),
+                       InsMaterialCubit.get(context).updateFolderName(folderId: insFolder.lectureId??'', newFolderName: folderController.text).then((v){
+                      Navigator.pop(context);
+
+                       });
+                     } 
+                     
+                     },),
                const SizedBox(width: 10,),
-               DeleteButton(folderController: folderController, text: 'name',),
+               DeleteButton(folderController: folderController, text: 'name',
+               onTapYes: (){
+                 InsMaterialCubit.get(context).deleteFolder(folderId: insFolder.lectureId??'').then((v){
+                   Navigator.pop(context);
+                 });
+               },
+               ),
                 ],
               ),
       ),

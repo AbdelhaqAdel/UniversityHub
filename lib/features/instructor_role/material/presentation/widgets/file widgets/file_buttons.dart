@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
+import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/widgets/delete%20folder%20widgets/delete_button.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/widgets/edit%20folder%20widgets/edit_button.dart';
 
@@ -23,11 +24,17 @@ class FileButtons extends StatelessWidget {
                EditButton(folderController: folderController,
                 folderFormKey:folderFormKey ,
                 text: fileEntity.fileName,onTap: (){
-                // InsMaterialCubit.get(context).updateFileName(folderId: fileEntity.lectureFileId,
-                //  newFolderName: folderController.text, url: url)
+                InsMaterialCubit.get(context).updateFileName(fileId: fileEntity.lectureFileId,
+                 newFileName: folderController.text).then((v){
+                  Navigator.pop(context);
+                 });
                },),
                const SizedBox(width: 10,),
-               DeleteButton(folderController: folderController, text: fileEntity.fileName,),
+               DeleteButton(folderController: folderController, text: fileEntity.fileName, onTapYes: (){
+                InsMaterialCubit.get(context).deleteFile(fileId: fileEntity.lectureFileId).then((v){
+                  Navigator.pop(context);
+                });
+               },),
                 ],
               ),
       ),

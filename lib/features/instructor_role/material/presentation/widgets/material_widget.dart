@@ -17,6 +17,7 @@ class MaterialWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+        height:  MediaQuery.of(context).size.height*0.075,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(width: .5),

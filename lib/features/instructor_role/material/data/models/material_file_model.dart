@@ -12,9 +12,9 @@ class FileModel extends FileEntity{
   factory FileModel.fromJson(Map<String, dynamic> json) {
     return FileModel(
     fileName : json['fileName'],
-    filePath : json['FilePath'],
-    createdAt : json['CreatedAt'],
-    lectureFileId:json['LectureFileId'],
+    filePath : json['filePath'],
+    createdAt : json['createdAt'],
+    lectureFileId:json['lectureFileId'],
    );
    
   }
@@ -22,9 +22,9 @@ class FileModel extends FileEntity{
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['fileName'] = fileName;
-    data['FilePath'] = filePath;
-    data['CreatedAt'] = createdAt;
-    data['LectureFileId']=lectureFileId;
+    data['filePath'] = filePath;
+    data['createdAt'] = createdAt;
+    data['lectureFileId']=lectureFileId;
     return data;
   }
 }
