@@ -86,7 +86,6 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     emit(SetGradeAssignmentLoadingState());
     var result = await setGradeAssignmentUseCase.call(setGradeAssignmentInputModel);
     result.fold((failure) {
-      print(failure.message);
       emit(SetGradeAssignmentErrorState(failure.toString()));
     }, (right) {
       emit(SetGradeAssignmentSuccessState());

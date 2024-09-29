@@ -2,16 +2,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../domain/entities/assignment_entity.dart';
+import '../../../../../../core/constants/constant.dart';
 
 
-class CompleteAssignmentInstructorInfo extends StatelessWidget {
-  const CompleteAssignmentInstructorInfo({
+class CompeteTaskInfo extends StatelessWidget {
+  const CompeteTaskInfo({
     super.key,
-    required this.assignmentEntity,
+    required this.startDate,
+    required this.endDate,
   });
 
-  final AssignmentInstructorEntity? assignmentEntity;
+  final DateTime? startDate;
+  final DateTime? endDate;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +36,13 @@ class CompleteAssignmentInstructorInfo extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    '${assignmentEntity?.taskName}',
-                    textAlign: TextAlign.start,
+                    currentCycleName!,
+                    overflow: TextOverflow.ellipsis,
                     maxLines: 1,
+                    textAlign: TextAlign.start,
                     style: const TextStyle(
-                        fontWeight: FontWeight.w700, fontSize: 13),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 13),
                   ),
                 ),
               ],
@@ -56,30 +60,11 @@ class CompleteAssignmentInstructorInfo extends StatelessWidget {
                   width: 7,
                 ),
                 Text(
-                  '${assignmentEntity?.endDate}',
+                  'Start    ${startDate!.day} / ${startDate!.month}',
                   textAlign: TextAlign.start,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 13),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 2,
-            ),
-            const Row(
-              children: [
-                FaIcon(
-                  FontAwesomeIcons.chartLine,
-                  size: 12,
-                ),
-                SizedBox(
-                  width: 7,
-                ),
-                Text(
-                  '',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 13),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13),
                 ),
               ],
             ),
@@ -98,14 +83,14 @@ class CompleteAssignmentInstructorInfo extends StatelessWidget {
                 SizedBox(
                   width: 150,
                   child: Text(
-                    'Ended ${assignmentEntity?.startDate}',
+                    'End    ${endDate!.day} / ${endDate!.month}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.start,
                     style: const TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 13,
-                        color: Colors.red),
+                        color: Colors.red,
+                        fontSize: 13),
                   ),
                 ),
               ],

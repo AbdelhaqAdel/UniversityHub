@@ -4,9 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/functions/custom_snack_bar.dart';
 import '../../../../../core/utils/app_router.dart';
-import '../../domain/entities/assignment_entity.dart';
 import '../manager/assignment_cubit.dart';
-import '../pages/assignment_screen.dart';
 import 'complete_assignment.dart';
 
 class CompleteAssignmentInstructorListView extends StatefulWidget {
@@ -21,8 +19,6 @@ class CompleteAssignmentInstructorListView extends StatefulWidget {
 
 class _CompleteAssignmentInstructorListViewState
     extends State<CompleteAssignmentInstructorListView> {
-  static List<AssignmentInstructorEntity> completedAssignmentInstructorEntity =
-      [];
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +56,17 @@ class _CompleteAssignmentInstructorListViewState
                     );
                   },
                   child: CompleteAssignmentInstructor(
-                      assignmentEntity: GetAssignmentInstructorSuccessState
-                          .completedAssignmentInstructorEntity[index])),
+                    assignmentEntity: GetAssignmentInstructorSuccessState
+                        .completedAssignmentInstructorEntity[index],
+                    startDate: DateTime.parse(
+                        GetAssignmentInstructorSuccessState
+                            .completedAssignmentInstructorEntity[index]
+                            .startDate!),
+                    endDate: DateTime.parse(
+                        GetAssignmentInstructorSuccessState
+                            .completedAssignmentInstructorEntity[index]
+                            .endDate!),
+                  )),
               separatorBuilder: (context, index) => const SizedBox(
                 height: 10,
               ),

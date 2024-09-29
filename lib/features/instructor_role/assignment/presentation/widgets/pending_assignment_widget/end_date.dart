@@ -69,7 +69,7 @@ class EndDate extends StatelessWidget {
               ),
               child:  Padding(
                 padding:
-                EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
                 child: Row(
                   children: [
                     Text(
