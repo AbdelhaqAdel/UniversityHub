@@ -11,7 +11,6 @@ class FileWidget extends StatelessWidget {
   final FileEntity file;
   @override
   Widget build(BuildContext context) {
-      // final TextEditingController fileController = TextEditingController();
     var screenSize=MediaQuery.of(context).size;
     return  Container(
     decoration: BoxDecoration(

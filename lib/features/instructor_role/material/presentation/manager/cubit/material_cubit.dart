@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/functions/open_file.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_folder_entity.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/add_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/delete_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
@@ -12,14 +15,16 @@ part 'material_state.dart';
 class InsMaterialCubit extends Cubit<MaterialsState> {
  
   InsMaterialCubit({required this.materialUseCase,required this.fileUseCase,required this.updateMaterialUseCase,
-  required this.deleteMaterialUseCase 
+  required this.deleteMaterialUseCase ,required this.addMaterialUseCase
   }) : super(MaterialInitial());
   static InsMaterialCubit get(context) => BlocProvider.of(context);
   final InsMaterialUseCase materialUseCase; 
   final InsMaterialFilesUseCase fileUseCase; 
   final UpdateMaterialUseCase updateMaterialUseCase; 
   final DeleteMaterialUseCase deleteMaterialUseCase;
+    final AddMaterialUseCase addMaterialUseCase;
 
+String? folderId;
   Future<void>fetchAllMaterials()async{
     emit(GetAllMaterialsLoadingState());
     final result=await materialUseCase.call(currentCycleId);
@@ -38,6 +43,7 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
        (error)=>emit(GetAllFilesErrorState(error:error.message )),
        (allFiles){
         GetAllFilesSuccessState.setFilesList(files:allFiles);
+        folderId=lecId;
         emit(GetAllFilesSuccessState(files: allFiles));},
        );
   }
@@ -60,7 +66,9 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
         'FolderName?name=$newFolderName&lectureId=$folderId'
       );
       result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
-        (r) => emit(UpdateMaterialSuccessState(),), 
+        (r) {
+                    fetchAllMaterials();
+          emit(UpdateMaterialSuccessState(),);} 
       );
   }
 
@@ -74,7 +82,9 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
         'file?file_Id=$fileId&fileName=$newFileName'
       );
       result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
-        (right) => emit(UpdateMaterialSuccessState(),), 
+        (right) {
+
+           emit(UpdateMaterialSuccessState(),);} 
       );
   }
 
@@ -86,7 +96,9 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
         'Folder?lectureId=$folderId'
       );
       result.fold((error) => emit(DeleteMaterialErrorState(error: error.toString()),),
-        (r) => emit(DeleteMaterialSuccessState(),), 
+        (r) {
+                    fetchAllMaterials();
+           emit(DeleteMaterialSuccessState(),);} 
       );
   }
 
@@ -99,7 +111,52 @@ class InsMaterialCubit extends Cubit<MaterialsState> {
         'File?FileId=$fileId'
       );
       result.fold((error) => emit(DeleteMaterialErrorState(error: error.toString()),),
-        (right) => emit(DeleteMaterialSuccessState(),), 
+        (right) { 
+          emit(DeleteMaterialSuccessState(),);} 
       );
   }
+
+
+ 
+ Future<void> addFolder({
+    required String folderName,
+  }) async {
+    emit(AddMaterialLoadingState());
+     final result= await addMaterialUseCase.call(
+      url: 'Instructor/UploadLectureFolder',
+      isFolder: true,
+      folderName: folderName,
+      );
+      result.fold((error) => emit(AddMaterialErrorState(error: error.toString()),),
+        (r) {
+             fetchAllMaterials();
+           emit(AddMaterialSuccessState(),);} 
+      );
+  }
+
+ Future<void> addFile() async {
+    emit(AddMaterialLoadingState());
+     final result= await addMaterialUseCase.call(
+      url: 'Instructor/UploadLectureFile?lectureId=$folderId&file_Name=${pickedFile?.path.split('/').last}', 
+      isFolder: true,
+      file: pickedFile,
+      );
+      result.fold((error) => emit(AddMaterialErrorState(error: error.toString()),),
+        (r) {
+             fetchAllMaterials();
+           emit(AddMaterialSuccessState(),);} 
+      );
+  }
+
+  File? pickedFile;
+  void pickMaterialFile()async{
+     await pickFile().then((files){
+       pickedFile=files[0];
+       
+     });
+  }
+
+
+
+
 }
