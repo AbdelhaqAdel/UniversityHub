@@ -9,10 +9,12 @@ import '../../../../../core/constants/constant.dart';
 
 class PendingAssignmentInstructor extends StatelessWidget {
   final AssignmentInstructorEntity? assignmentEntity;
+
   const PendingAssignmentInstructor({
     super.key,
     required this.assignmentEntity,
   });
+  
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,11 @@ class PendingAssignmentInstructor extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  PendingInfo(assignmentEntity: assignmentEntity,),
+                  PendingInfo(assignmentEntity: assignmentEntity, startDate: DateTime.parse(
+                      assignmentEntity
+                          !.endDate!), endDate: DateTime.parse(
+                      assignmentEntity
+                      !.endDate!),),
                   const PendingStates(),
                 ],
               ),

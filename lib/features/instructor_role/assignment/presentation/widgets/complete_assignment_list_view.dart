@@ -60,8 +60,17 @@ class _CompleteAssignmentInstructorListViewState
                     );
                   },
                   child: CompleteAssignmentInstructor(
-                      assignmentEntity: GetAssignmentInstructorSuccessState
-                          .completedAssignmentInstructorEntity[index])),
+                    assignmentEntity: GetAssignmentInstructorSuccessState
+                        .completedAssignmentInstructorEntity[index],
+                    startDate: DateTime.parse(
+                        GetAssignmentInstructorSuccessState
+                            .completedAssignmentInstructorEntity[index]
+                            .startDate!),
+                    endDate: DateTime.parse(
+                        GetAssignmentInstructorSuccessState
+                            .completedAssignmentInstructorEntity[index]
+                            .endDate!),
+                  )),
               separatorBuilder: (context, index) => const SizedBox(
                 height: 10,
               ),

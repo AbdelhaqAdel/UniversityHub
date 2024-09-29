@@ -4,13 +4,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../domain/entities/assignment_entity.dart';
 class PendingInfo extends StatelessWidget {
+
   const PendingInfo({
     super.key,
-    required this.assignmentEntity,
+    required this.assignmentEntity,required this.startDate,required this.endDate,
   });
 
   final AssignmentInstructorEntity? assignmentEntity;
-
+  final DateTime? startDate;
+  final DateTime? endDate;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -46,19 +48,19 @@ class PendingInfo extends StatelessWidget {
             const SizedBox(
               height: 2,
             ),
-            const Row(
+             Row(
               children: [
-                FaIcon(
+                const FaIcon(
                   FontAwesomeIcons.user,
                   size: 12,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 Text(
-                  'Start',
+                  'Start    ${startDate!.day} / ${startDate!.month}',
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 13),
                 ),
@@ -67,23 +69,23 @@ class PendingInfo extends StatelessWidget {
             const SizedBox(
               height: 2,
             ),
-            const Row(
+             Row(
               children: [
-                FaIcon(
+                const FaIcon(
                   FontAwesomeIcons.clock,
                   size: 12,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 SizedBox(
                   width: 150,
                   child: Text(
-                    'Ended ',
+                    'Deadline   ${endDate!.hour} : ${endDate!.minute}  ${endDate!.day} / ${endDate!.month}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.start,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.red,
                         fontSize: 13),
