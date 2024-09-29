@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/features/instructor_role/assignment/domain/use_cases/get_student_submit_assignment_usecase.dart';
 
+import '../../../../../core/functions/date_time_picker.dart';
 import '../../../../../core/functions/open_file.dart';
 import '../../data/models/add_assignment_input.dart';
 import '../../data/models/set_grade_assignment_input.dart';
@@ -102,6 +103,11 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     });
   }
 
+  Future<String?> pickDateTime({required context}) async {
+   String? dateTime= await dataTimePicker(context: context);
+   emit(PickDateTime());
+   return dateTime;
+  }
 
   List<File> file = [];
   Future<void> callPickFile() async {

@@ -1,36 +1,28 @@
-import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
-import 'package:day_night_time_picker/lib/state/time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/start_date.dart';
 import '../../../../../../core/functions/date_time_picker.dart';
-import '../../../../../../core/functions/setup_service_locator.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../data/models/update_assignment_input.dart';
 import '../../../domain/entities/assignment_entity.dart';
-import '../../../domain/repositories/assignment_repo.dart';
-import '../../../domain/use_cases/add_assignment_usecase.dart';
-import '../../../domain/use_cases/delete_assignment_usecase.dart';
-import '../../../domain/use_cases/get_assignment_usecase.dart';
-import '../../../domain/use_cases/get_student_submit_assignment_usecase.dart';
-import '../../../domain/use_cases/set_grade_assignment_usecase.dart';
-import '../../../domain/use_cases/update_assignment_usecase.dart';
 import '../../manager/assignment_cubit.dart';
-import 'package:intl/intl.dart';
 
-import 'end_date.dart'; // Make sure to import this package for date formatting.
+import 'end_date.dart';
 
 
 class UpdateTaskDialog extends StatefulWidget {
   const UpdateTaskDialog({
     super.key,
-    required this.assignmentEntity,
+    required this.assignmentEntity, required this.cubit,
   });
 
   final AssignmentInstructorEntity? assignmentEntity;
+  final AssignmentInstructorCubit cubit;
+
 
 
   @override
@@ -41,33 +33,13 @@ class _UpdateTaskDialogState extends State<UpdateTaskDialog> {
   var updateTaskFormKey = GlobalKey<FormState>();
   var taskGradeController = TextEditingController();
   var taskNameController = TextEditingController();
-  String? startDate;
-  String? endDate;
-
+  String? startDate=DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
+  String? endDate =DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          AssignmentInstructorCubit(
-              getAssignmentInstructorUseCase: GetAssignmentInstructorUseCase(
-                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-              ),
-              updateAssignmentInstructorUseCase: UpdateAssignmentInstructorUseCase(
-                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-              ),
-              setGradeAssignmentUseCase: SetGradeAssignmentUseCase(
-                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-              ),
-              addAssignmentUseCase: AddAssignmentUseCase(
-                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-              ),
-              deleteAssignmentUseCase: DeleteAssignmentUseCase(
-                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-              ),
-              getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(
-                assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-              )),
+    return BlocProvider.value(
+      value: widget.cubit,
       child: BlocListener<AssignmentInstructorCubit, AssignmentInstructorState>(
         listener: (context, state) {
           if(state is GetAssignmentInstructorSuccessState ){
@@ -127,9 +99,9 @@ class _UpdateTaskDialogState extends State<UpdateTaskDialog> {
                         height: 60,
                         child: GestureDetector(
                           onTap: () async {
-                            startDate = await dataTimePicker(context: context);
+                            startDate = await AssignmentInstructorCubit.get(context).pickDateTime(context: context);
                           },
-                          child: StartDate(),
+                          child:  StartDate(startData:DateTime.parse(startDate!)),
                         ),
                       ),
                       const SizedBox(
@@ -139,9 +111,9 @@ class _UpdateTaskDialogState extends State<UpdateTaskDialog> {
                         height: 60,
                         child: GestureDetector(
                           onTap: () async {
-                            endDate = await dataTimePicker(context: context);
+                            endDate = await AssignmentInstructorCubit.get(context).pickDateTime(context: context);
                           },
-                          child: EndDate(),
+                          child:  EndDate(endDate:DateTime.parse(endDate!)),
                         ),
                       ),
                       const SizedBox(

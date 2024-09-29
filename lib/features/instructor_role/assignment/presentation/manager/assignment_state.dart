@@ -40,6 +40,8 @@ class PickFileLoading extends AssignmentInstructorState{}
 class PickFileError extends AssignmentInstructorState{}
 class PickFileSuccess extends AssignmentInstructorState{}
 
+class PickDateTime extends AssignmentInstructorState{}
+
 class UpdateAssignmentLoadingState extends AssignmentInstructorState{}
 class UpdateAssignmentSuccessState extends AssignmentInstructorState{}
 class UpdateAssignmentErrorState extends AssignmentInstructorState{

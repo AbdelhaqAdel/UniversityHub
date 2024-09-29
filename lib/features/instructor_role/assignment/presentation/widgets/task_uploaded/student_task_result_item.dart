@@ -58,26 +58,8 @@ class StudentTaskInfoItem extends StatelessWidget {
   }
 
   void clickOnMore(BuildContext context) {
-     customDialog(context: context, widget:  BlocProvider(
-      create: (context) => AssignmentInstructorCubit(
-          getAssignmentInstructorUseCase: GetAssignmentInstructorUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          updateAssignmentInstructorUseCase: UpdateAssignmentInstructorUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          setGradeAssignmentUseCase: SetGradeAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          addAssignmentUseCase: AddAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          deleteAssignmentUseCase: DeleteAssignmentUseCase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ),
-          getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(
-            assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          )),
+     customDialog(context: context, widget:  BlocProvider.value(
+       value: AssignmentInstructorCubit.get(context),
       child: AddGradeDialog( studentTaskUploadedEntity: studentTaskUploadedEntity!,taskId: taskId,),
     ),);
   }
