@@ -52,17 +52,17 @@ class CompeteTaskInfo extends StatelessWidget {
             ),
             Row(
               children: [
-                FaIcon(
+                const FaIcon(
                   FontAwesomeIcons.user,
                   size: 12,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 Text(
                   'Start    ${startDate!.day} / ${startDate!.month}',
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 13),
                 ),
@@ -73,11 +73,11 @@ class CompeteTaskInfo extends StatelessWidget {
             ),
             Row(
               children: [
-                FaIcon(
+                const FaIcon(
                   FontAwesomeIcons.clock,
                   size: 12,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 SizedBox(
@@ -87,7 +87,7 @@ class CompeteTaskInfo extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.start,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.red,
                         fontSize: 13),

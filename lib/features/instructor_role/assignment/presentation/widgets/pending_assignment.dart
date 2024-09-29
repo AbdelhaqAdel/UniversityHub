@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:universityhup/features/instructor_role/assignment/domain/entities/assignment_entity.dart';
 import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/header.dart';
 import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/info.dart';
 import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/states.dart';
-import '../../../../../core/constants/constant.dart';
 
 class PendingAssignmentInstructor extends StatelessWidget {
   final AssignmentInstructorEntity? assignmentEntity;
@@ -62,7 +60,6 @@ class PendingAssignmentInstructor extends StatelessWidget {
 
 class _LinearPercent extends StatelessWidget {
   const _LinearPercent({
-    super.key,
     required this.assignmentEntity,
   });
 

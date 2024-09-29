@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../../../../../core/constants/constant.dart';
-import '../../../../../core/utils/app_router.dart';
 import '../../domain/entities/assignment_entity.dart';
 import 'complete_assignment_widget/complete_header.dart';
 import 'complete_assignment_widget/info.dart';
