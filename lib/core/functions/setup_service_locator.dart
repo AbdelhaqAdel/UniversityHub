@@ -6,11 +6,9 @@ import 'package:universityhup/features/calendar/domain/use_cases/get_calender_us
 import 'package:universityhup/features/courses/data/data_sources/courses_local_data_source.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
-import 'package:universityhup/features/instructor_role/material/data/data_sources/material_file_local_data_source.dart';
-import 'package:universityhup/features/instructor_role/material/data/data_sources/material_file_remote_data_source.dart';
 import 'package:universityhup/features/instructor_role/material/data/data_sources/material_remote_data_source.dart';
-import 'package:universityhup/features/instructor_role/material/data/repositories/material_files_repo_impl.dart';
 import 'package:universityhup/features/instructor_role/material/data/repositories/material_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/material/domain/use_cases/add_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/delete_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_files_usecase.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/material_usecase.dart';
@@ -114,18 +112,24 @@ void setupServiceLocator() {
   );
 
 
+   getIt.registerSingleton<InsMaterialRepository>(InsMaterialRepository
+    (materialDataSource: InsMaterialRemoteDataSourceImpl()));
+  
+
    getIt.registerSingleton<InsMaterialUseCase>(InsMaterialUseCase
-    (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
+    (materialRepo: getIt.get<InsMaterialRepository>()));
   
  getIt.registerSingleton<InsMaterialFilesUseCase>(InsMaterialFilesUseCase
-    ( filesRepo: InsMaterialFilesRepository(filesDataSource: InsMaterialFileRemoteDataSourceImpl(), 
-    fileLocalDataSource: InsMaterialFileLocalDataSourceImpl())));
+    ( filesRepo: getIt.get<InsMaterialRepository>()));
    
       getIt.registerSingleton<UpdateMaterialUseCase>(UpdateMaterialUseCase
-    (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
+    (materialRepo: getIt.get<InsMaterialRepository>()));
 
      getIt.registerSingleton<DeleteMaterialUseCase>(DeleteMaterialUseCase
-    (materialRepo: InsMaterialRepository(materialDataSource: InsMaterialRemoteDataSourceImpl())));
+    (materialRepo: getIt.get<InsMaterialRepository>()));
+
+  getIt.registerSingleton<AddMaterialUseCase>(AddMaterialUseCase
+    (materialRepo:getIt.get<InsMaterialRepository>()));
 
 
   getIt.registerSingleton<AssignmentInstructorRepo>(
