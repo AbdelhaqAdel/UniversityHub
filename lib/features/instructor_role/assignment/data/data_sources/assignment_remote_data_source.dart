@@ -51,7 +51,6 @@ class AssignmentInstructorRemoteDataSourceImpl
   Future updateAssignment(
       {required UpdateAssignmentInstructorInputModel
           updateAssignmentInstructorInputModel}) async {
-    print(updateAssignmentInstructorInputModel.toMap());
     await DioHelper.put(
             url:
                 'Instructor/UpdateAnAssignment?taskId=${updateAssignmentInstructorInputModel.taskId}',
