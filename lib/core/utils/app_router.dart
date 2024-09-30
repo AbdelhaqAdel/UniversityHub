@@ -9,6 +9,7 @@ import 'package:universityhup/features/instructor_role/material/presentation/pag
 import 'package:universityhup/features/student_role/material/presentation/pages/materials_screen.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/pages/ques_result_screen.dart';
 import '../../features/instructor_role/assignment/presentation/manager/assignment_cubit.dart';
+import '../../features/instructor_role/assignment/presentation/pages/add_assignment_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_result_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
@@ -35,11 +36,12 @@ abstract class AppRouter {
   static const kInsMaterialFile = '/InsMaterialFileScreen';
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
-
   static const kQuizResultScreen='/QuizResultScreen';
   static const kAssignmentInstructorScreen='/AssignmentInstructorScreen';
   static const kTaskResultScreen='/TaskResultScreen';
   static const kInsGrade = '/InsGradeScreen';
+  static const kAddAssignmentScreen = '/AddAssignmentScreen';
+
 
   //---------------------------
 
@@ -142,13 +144,19 @@ abstract class AppRouter {
           return TaskResultScreen(taskId: taskId, cubit: cubit);
         },
       ),
-      // GoRoute(
-      //   path: kTaskResultScreen,
-      //   builder: (context, state) =>  TaskResultScreen(taskId: state.extra as String, cubit: state.extra as AssignmentInstructorCubit,),
-      // ),
      GoRoute(
         path: kInsGrade,
         builder: (context, state) => const InsGradeScreen(),
+      ),
+      GoRoute(
+        path: kAddAssignmentScreen,
+        builder: (context, state) {
+          // Extract the taskId and cubit from the extra map
+          final Map<String, dynamic> extraData = state.extra as Map<String, dynamic>;
+          final AssignmentInstructorCubit cubit = extraData['cubit'] as AssignmentInstructorCubit;
+
+          return AddAssignmentScreen(cubit: cubit,);
+        },
       ),
     ],
   );

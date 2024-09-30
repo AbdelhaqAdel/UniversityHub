@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/utils/app_router.dart';
 
 import '../../../../../core/functions/setup_service_locator.dart';
 import '../../domain/repositories/assignment_repo.dart';
@@ -36,8 +39,32 @@ class AssignmentInstructorScreen extends StatelessWidget {
           ),
           getStudentSubmitAssignmentUsecase: GetStudentSubmitAssignmentUsecase(
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
-          ))..getAssignmentInstructor(),
-      child: const AssignmentInstructorBody(),
+          ))
+        ..getAssignmentInstructor(),
+      child: const Scaffold(
+        floatingActionButton: AddTaskActionButton(),
+        body: AssignmentInstructorBody(),
+      ),
+    );
+  }
+}
+
+class AddTaskActionButton extends StatelessWidget {
+  const AddTaskActionButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+        onPressed: () {
+      GoRouter.of(context).push(AppRouter.kAddAssignmentScreen, extra: {
+        'cubit': AssignmentInstructorCubit.get(context),
+      });
+    },
+        backgroundColor: Colors.blue,
+      shape: const CircleBorder(),
+      child: const FaIcon(FontAwesomeIcons.plus,color: Colors.white,),
     );
   }
 }
