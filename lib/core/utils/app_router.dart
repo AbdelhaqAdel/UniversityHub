@@ -41,6 +41,8 @@ abstract class AppRouter {
   static const kTaskResultScreen='/TaskResultScreen';
   static const kInsGrade = '/InsGradeScreen';
   static const kAddAssignmentScreen = '/AddAssignmentScreen';
+  // static const kAfterAddAssignment='Layout/AboutCourseScreen/AssignmentInstructorScreen';
+
 
 
   //---------------------------
@@ -148,6 +150,10 @@ abstract class AppRouter {
         path: kInsGrade,
         builder: (context, state) => const InsGradeScreen(),
       ),
+      // GoRoute(
+      //   path: kAfterAddAssignment,
+      //   builder: (context, state) => const AssignmentInstructorScreen(),
+      // ),
       GoRoute(
         path: kAddAssignmentScreen,
         builder: (context, state) {

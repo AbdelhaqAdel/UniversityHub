@@ -42,20 +42,18 @@ class AssignmentInstructorScreen extends StatelessWidget {
           ))
         ..getAssignmentInstructor(),
       child: const Scaffold(
-        floatingActionButton: AddTaskActionButton(),
+        floatingActionButton:  _AddTaskActionButton(),
         body: AssignmentInstructorBody(),
       ),
     );
   }
 }
 
-class AddTaskActionButton extends StatelessWidget {
-  const AddTaskActionButton({
-    super.key,
-  });
+class _AddTaskActionButton extends StatelessWidget {
+  const _AddTaskActionButton();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return FloatingActionButton(
         onPressed: () {
       GoRouter.of(context).push(AppRouter.kAddAssignmentScreen, extra: {
