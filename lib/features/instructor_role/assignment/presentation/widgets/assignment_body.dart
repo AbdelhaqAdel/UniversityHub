@@ -31,34 +31,32 @@ class _AssignmentInstructorBodyState extends State<AssignmentInstructorBody>
     return DefaultTabController(
       length: 2, // Number of tabs
       initialIndex: tabController.index,
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 30,
+      child: SafeArea(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            DefaultAppBar(text: currentCycleName, context: context),
+            const SizedBox(
+              height: 30,
+            ),
+            const AssignmentInstructorDashboard(),
+            CustomTabBar(tabController: tabController,),
+            const SizedBox(
+              height: 15,
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: tabController,
+                physics: const NeverScrollableScrollPhysics(),
+                children: const [
+                  PendingAssignmentInstructorListView(),
+                  CompleteAssignmentInstructorListView(),
+                ],
               ),
-              DefaultAppBar(text: currentCycleName, context: context),
-              const SizedBox(
-                height: 30,
-              ),
-              const AssignmentInstructorDashboard(),
-               CustomTabBar(tabController: tabController,),
-              const SizedBox(
-                height: 15,
-              ),
-              Expanded(
-                child: TabBarView(
-                  controller: tabController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [
-                    PendingAssignmentInstructorListView(),
-                    CompleteAssignmentInstructorListView(),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
