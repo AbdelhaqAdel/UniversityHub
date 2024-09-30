@@ -4,7 +4,7 @@ List<DataColumn> tableColumns(BuildContext context) {
   return [
     DataColumn(
       label: SizedBox(
-        width: MediaQuery.of(context).size.width * .50,
+        width: MediaQuery.of(context).size.width * .38,
         child: Column(
           children: [
             Text(
