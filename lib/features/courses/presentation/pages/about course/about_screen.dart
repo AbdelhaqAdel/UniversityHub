@@ -86,7 +86,8 @@ class AboutCourseScreen extends StatelessWidget {
                           color: Colors.lightBlueAccent.withOpacity(.25),
                           image: AssetsData.courseGradesImage,
                           onTap: () {
-                            GoRouter.of(context).push(AppRouter.kGrade);
+                             role=="Student"?GoRouter.of(context).push(AppRouter.kGrade)
+                             :GoRouter.of(context).push(AppRouter.kInsGrade);
 
                           },
                         ),

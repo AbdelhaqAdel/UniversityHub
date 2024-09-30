@@ -6,6 +6,9 @@ import 'package:universityhup/features/calendar/domain/use_cases/get_calender_us
 import 'package:universityhup/features/courses/data/data_sources/courses_local_data_source.dart';
 import 'package:universityhup/features/courses/data/data_sources/courses_remote_datasource.dart';
 import 'package:universityhup/features/courses/data/repositories/courses_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/grade/data/data_sources/grade_remote_data_source.dart';
+import 'package:universityhup/features/instructor_role/grade/data/repositories/grade_repo_impl.dart';
+import 'package:universityhup/features/instructor_role/grade/domain/repositories/grade_repo.dart';
 import 'package:universityhup/features/instructor_role/material/data/data_sources/material_remote_data_source.dart';
 import 'package:universityhup/features/instructor_role/material/data/repositories/material_repo_impl.dart';
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/add_material_use_case.dart';
@@ -135,6 +138,12 @@ void setupServiceLocator() {
   getIt.registerSingleton<AssignmentInstructorRepo>(
     AssignmentInstructorRepoImpl(
       assignmentRemoteDataSource: AssignmentInstructorRemoteDataSourceImpl(),
+    ),
+  );
+
+    getIt.registerSingleton<InsGradeRepo>(
+    InsGradeRepoImpl(
+       gradeRemoteDataSource: InsGradeRemoteDataSourceImpl(),
     ),
   );
 }

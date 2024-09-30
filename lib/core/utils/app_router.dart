@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/features/courses/presentation/pages/about%20course/about_screen.dart';
+import 'package:universityhup/features/instructor_role/grade/presentation/pages/grade_screen.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/pages/material_files_screen.dart';
 import 'package:universityhup/features/instructor_role/material/presentation/pages/materials_screen.dart';
@@ -32,12 +33,14 @@ abstract class AppRouter {
   static const kInsMaterialScreen = '/InsMaterialScreen';
   static const kMaterialFile = '/MaterialFileScreen';
   static const kInsMaterialFile = '/InsMaterialFileScreen';
-
   static const kAssignmentScreen = '/AssignmentScreen';
   static const kGrade = '/Grade';
+
   static const kQuizResultScreen='/QuizResultScreen';
   static const kAssignmentInstructorScreen='/AssignmentInstructorScreen';
   static const kTaskResultScreen='/TaskResultScreen';
+  static const kInsGrade = '/InsGradeScreen';
+
   //---------------------------
 
   static BuildContext? context1;
@@ -143,7 +146,10 @@ abstract class AppRouter {
       //   path: kTaskResultScreen,
       //   builder: (context, state) =>  TaskResultScreen(taskId: state.extra as String, cubit: state.extra as AssignmentInstructorCubit,),
       // ),
-
+     GoRoute(
+        path: kInsGrade,
+        builder: (context, state) => const InsGradeScreen(),
+      ),
     ],
   );
 }
