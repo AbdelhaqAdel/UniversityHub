@@ -1,11 +1,11 @@
-class GradeEntity {
- final String? title;
- final  int? studentGrade;
- final  int? fullGrade;
- final String? date;
+class InsGradeEntity {
+ final String id;
+ final  String title;
+ final  int? grade;
+ final String date;
 
 
- GradeEntity({required this.title,required this.studentGrade,required this.fullGrade,required this.date});
+ InsGradeEntity({required this.id,required this.title,required this.grade,required this.date});
 
 
 }
