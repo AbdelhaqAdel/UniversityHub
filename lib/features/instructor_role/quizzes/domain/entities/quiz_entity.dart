@@ -1,20 +1,19 @@
-class QuizEntity {
-  String? id;
-  String? title;
-  String? notes;
-  String? startDate;
-  String? endDate;
-  String? createdAt;
-  String? status;
+class QuizInstructorEntity {
+  final String? id;
+  final String? title;
+  final String? startDate;
+  final String? endDate;
+  final String? status;
+  final int? numberOfAllStudents;
+  final int? numberOfStudentsSolve;
 
-  QuizEntity(
-      { 
-      required this.id,
-      required this.title,
-      required this.notes,
-      required this.startDate,
-      required this.endDate,
-      required this.createdAt,
-      required this.status,
-      });
+  QuizInstructorEntity({
+    required this.id,
+    required this.title,
+    required this.startDate,
+    required this.endDate,
+    required this.numberOfAllStudents,
+    required this.numberOfStudentsSolve,
+    required this.status,
+  });
 }

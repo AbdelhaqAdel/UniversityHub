@@ -1,31 +1,57 @@
-import 'package:dio/dio.dart';
-import 'package:universityhup/core/constants/constant.dart';
-import 'package:universityhup/core/utils/api_service.dart';
-import 'package:universityhup/core/utils/end_point.dart';
-
+import '../../../../../core/constants/constant.dart';
+import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/quiz_entity.dart';
+import '../models/add_quiz_input.dart';
 import '../models/quiz_model.dart';
 
-abstract class QuizzesRemoteDataSource{
-  Future <List<QuizEntity>>fetchAllQuizzes();
+
+abstract class QuizInstructorRemoteDataSource {
+  Future<List<QuizInstructorEntity>> getQuizInstructor();
+  Future addQuiz(
+      {required AddQuizInputModel addQuizInputModel});
+  Future deleteQuiz({required String quizId});
 }
-class QuizzesRemoteDataSourceImpl extends QuizzesRemoteDataSource{
-  List<QuizEntity>quizzesList=[];
-  
+
+class QuizInstructorRemoteDataSourceImpl
+    extends QuizInstructorRemoteDataSource {
   @override
-  Future<List<QuizEntity>> fetchAllQuizzes()async {
-    await DioHelper.get(url:'${EndPoint.allQuizzes}$currentCycleId',
-    token:token
-     ).then((value){
-      fillQuizList(value);
+  Future<List<QuizInstructorEntity>> getQuizInstructor() async {
+    List<QuizInstructorEntity> quizEntityList = [];
+    await DioHelper.get(
+      url: 'Instructor/GetAllQuizesForOneCourse?cycleId=$currentCycleId',
+      token: token,
+    ).then((value) async {
+      if (value.statusCode == 200) {
+        var json = value.data;
+        quizEntityList = setQuizInstructorData(json);
+      }
     });
-    return quizzesList;
+    return quizEntityList;
   }
- void fillQuizList(Response<dynamic> list) {
-  quizzesList=[];
-     for (var element in list.data) {
-     quizzesList.add(QuizModel.fromJson(element));
+
+  List<QuizInstructorEntity> setQuizInstructorData(
+      List<dynamic> json) {
+    List<QuizInstructorEntity> quizEntityList = [];
+    for (var element in json) {
+      quizEntityList.add(QuizInstructorModel.fromJson(element));
     }
+    return quizEntityList;
   }
-  
+
+  @override
+  Future deleteQuiz({required String quizId}) async {
+    await DioHelper.deleteData(
+      url: 'Instructor/DeleteQuiz?quizId=$quizId',
+      token: token,
+    );
+  }
+
+  @override
+  Future addQuiz({required AddQuizInputModel addQuizInputModel}) async{
+    DioHelper.post(
+      url: 'Instructor/createQuiz',
+      token: token,
+      data: addQuizInputModel.toJson(),
+    );
+  }
 }

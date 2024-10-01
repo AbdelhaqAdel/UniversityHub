@@ -12,6 +12,10 @@ import '../../features/instructor_role/assignment/presentation/manager/assignmen
 import '../../features/instructor_role/assignment/presentation/pages/add_assignment_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_result_screen.dart';
 import '../../features/instructor_role/assignment/presentation/pages/assignment_screen.dart';
+import '../../features/instructor_role/quizzes/presentation/manager/quiz_cubit.dart';
+import '../../features/instructor_role/quizzes/presentation/pages/add_quiz_screen.dart';
+import '../../features/instructor_role/quizzes/presentation/pages/quiz_question.dart';
+import '../../features/instructor_role/quizzes/presentation/pages/quiz_screen.dart';
 import '../../features/layout/presentation/pages/layout.dart';
 import '../../features/login/presentation/pages/login.dart';
 import '../../features/student_role/assignment/presentation/pages/assignment_screen.dart';
@@ -41,6 +45,9 @@ abstract class AppRouter {
   static const kTaskResultScreen='/TaskResultScreen';
   static const kInsGrade = '/InsGradeScreen';
   static const kAddAssignmentScreen = '/AddAssignmentScreen';
+  static const kQuizInstructorScreen = '/QuizInstructorScreen';
+  static const kAddQuizScreen = '/AddQuizScreen';
+  static const kQuizQuestion = '/QuizQuestion';
   // static const kAfterAddAssignment='Layout/AboutCourseScreen/AssignmentInstructorScreen';
 
 
@@ -162,6 +169,28 @@ abstract class AppRouter {
           final AssignmentInstructorCubit cubit = extraData['cubit'] as AssignmentInstructorCubit;
 
           return AddAssignmentScreen(cubit: cubit,);
+        },
+      ),
+      GoRoute(
+        path: kQuizInstructorScreen,
+        builder: (context, state) => const QuizInstructorScreen(),
+      ),
+      GoRoute(
+        path: kAddQuizScreen,
+        builder: (context, state) {
+          final Map<String, dynamic> extraData = state.extra as Map<String, dynamic>;
+          final QuizInstructorCubit cubit = extraData['cubit'] as QuizInstructorCubit;
+
+          return AddQuizScreen(cubit: cubit,);
+        },
+      ),
+      GoRoute(
+        path: kQuizQuestion,
+        builder: (context, state) {
+          final Map<String, dynamic> extraData = state.extra as Map<String, dynamic>;
+          final QuizInstructorCubit cubit = extraData['cubit'] as QuizInstructorCubit;
+
+          return QuizQuestion(cubit: cubit,);
         },
       ),
     ],
