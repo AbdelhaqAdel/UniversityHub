@@ -119,7 +119,7 @@ abstract class AppRouter {
       
       GoRoute(
         path: kMaterialFolders,
-        builder: (context, state) => MaterialScreen(),
+        builder: (context, state) => const MaterialScreen(),
       ),
 
       GoRoute(

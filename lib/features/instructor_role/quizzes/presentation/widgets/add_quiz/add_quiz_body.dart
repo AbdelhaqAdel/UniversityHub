@@ -226,11 +226,12 @@ class _AddQuizBodyState extends State<AddQuizBody> {
                                                   await QuizInstructorCubit
                                                           .get(context)
                                                       .pickDateTime(
-                                                          context: context);
+                                                          context: context)??DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
                                             },
                                             child: StartDate(
                                                 startData:
-                                                    DateTime.parse(startDate!)),
+                                                    DateTime.parse(startDate!
+                                                    )),
                                           ),
                                         ),
                                         const SizedBox(
@@ -244,14 +245,14 @@ class _AddQuizBodyState extends State<AddQuizBody> {
                                                   await QuizInstructorCubit
                                                           .get(context)
                                                       .pickDateTime(
-                                                          context: context);
+                                                          context: context)??DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
                                             },
                                             child: EndDate(
                                                 endDate:
-                                                    DateTime.parse(endDate!)),
+                                                    DateTime.parse(endDate!),
                                           ),
                                         ),
-                                      ],
+                                        )],
                                     ),
                                   ),
                                   color: Colors.white.withOpacity(.2),

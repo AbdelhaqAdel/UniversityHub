@@ -7,22 +7,21 @@ class LectureBuilder extends StatelessWidget {
   const LectureBuilder({super.key});
 
   @override
- Widget build(BuildContext context) {
-    return BlocBuilder<MaterialCubit,MaterialsState>(builder: (context,state){
-       if(state is GetAllMaterialsLoadingState){
+  Widget build(BuildContext context) {
+    return BlocBuilder<MaterialCubit, MaterialsState>(
+        builder: (context, state) {
+      if (state is GetAllMaterialsLoadingState) {
         return const Center(child: CircularProgressIndicator());
-      }
-     else if(GetAllMaterialsSuccessState.allLectures.isNotEmpty){
+      } else if (GetAllMaterialsSuccessState.allLectures.isNotEmpty) {
         return MaterialGridView(
-        context1: context,
-        materials:GetAllMaterialsSuccessState.allLectures,
-      );}else if(state is GetAllMaterialsErrorState){
+          context1: context,
+          materials: GetAllMaterialsSuccessState.allLectures,
+        );
+      } else if (state is GetAllMaterialsErrorState) {
         return Center(child: Text(state.error));
-      }else{
+      } else {
         return const Center(child: Text('No Lectures Found'));
       }
-    }
-    );
-
+    });
   }
 }

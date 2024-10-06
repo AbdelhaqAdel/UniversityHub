@@ -17,6 +17,10 @@ class MaterialUseCase extends UseCase<Map<String,List<FolderEntity>>,String>{
     },(allMaterials){
      filterMaterialsIntoMap(allMaterials);
     });
+    print('-------------------------------');
+    print(allMaterials.keys);
+    print('-------------------------------');
+
     return Right(allMaterials);
   }
 
@@ -24,7 +28,6 @@ class MaterialUseCase extends UseCase<Map<String,List<FolderEntity>>,String>{
 void filterMaterialsIntoMap(List<FolderEntity> list) {
     List<FolderEntity>lectures=[];
   List<FolderEntity>labs=[];
-  allMaterials={};
      for (FolderEntity element in list) {
       if(element.type=='Lecture'){
       lectures.add(element);
@@ -32,7 +35,8 @@ void filterMaterialsIntoMap(List<FolderEntity> list) {
        labs.add(element);
       }
     }
-   allMaterials.addAll({"lectures":lectures,"labs":labs});
+    allMaterials={"lectures":lectures,"labs":labs};
+   // allMaterials.addAll({"lectures":lectures,"labs":labs});
   }
 }
 

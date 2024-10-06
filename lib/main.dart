@@ -11,7 +11,6 @@ import 'core/utils/simple_bloc_observer.dart';
 
 
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   systemStatesNavigationBar();
