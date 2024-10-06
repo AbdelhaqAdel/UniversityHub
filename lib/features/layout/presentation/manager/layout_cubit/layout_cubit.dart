@@ -4,8 +4,10 @@ import 'package:universityhup/features/calendar/presentation/pages/calender_scre
 import 'package:universityhup/features/courses/presentation/pages/all_courses_screen.dart';
 
 import '../../../../../core/constants/constant.dart';
+import '../../../../instructor_role/dashboard/presentation/pages/dashboard.dart';
 import '../../../../instructor_role/user/presentation/pages/user_screen.dart';
 import '../../../../news/presentation/pages/news_screen.dart';
+import '../../../../student_role/dashboard/presentation/pages/dashboard.dart';
 import '../../../../student_role/user/presentation/pages/user_screen.dart';
 
 part 'layout_state.dart';
@@ -18,7 +20,7 @@ class LayoutCubit extends Cubit<LayoutState> {
   int currentNavigationBarIndex = 0;
   List<Widget> navigationBarScreens = [
 
-    const CoursesScreen(),
+    role=='Student'? const DashboardScreen():const DashboardInstructorScreen(),
     const NewsScreen(),
     const CoursesScreen(),
     const CalenderScreen(),

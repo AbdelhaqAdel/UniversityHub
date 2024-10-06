@@ -134,13 +134,13 @@ class _LoginBodyState extends State<LoginBody> {
                                 tileColor: Colors.blue,
                                 hoverColor: Colors.blue,
                                 activeColor: Colors.blue,
-                                title: Text(
+                                title: const Text(
                                   'Student',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                contentPadding: EdgeInsets.all(0),
+                                contentPadding: const EdgeInsets.all(0),
 
 
                                 value:  'AbdulMajeedSallam@gmail.com',
@@ -163,13 +163,13 @@ class _LoginBodyState extends State<LoginBody> {
                                 tileColor: Colors.blue,
                                 hoverColor: Colors.blue,
                                 activeColor: Colors.blue,
-                                title: Text(
+                                title: const Text(
                                   'Doctor',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                contentPadding: EdgeInsets.all(0),
+                                contentPadding: const EdgeInsets.all(0),
 
 
 
@@ -230,9 +230,12 @@ class _LoginBodyState extends State<LoginBody> {
 
   void _loginSuccess(LoginSuccessState state, context) async {
     showSnackBar(message: 'Login Successful', context: context);
-    GoRouter.of(context).push(AppRouter.kLayout);
+    loginEntity =LoginSuccessState.loginEntity;
     token=LoginSuccessState.loginEntity?.token;
     role=LoginSuccessState.loginEntity?.userRole;
+    GoRouter.of(context).push(AppRouter.kLayout);
+
+
 
     // save('isLogin', true, kStartBox);
     // save('uId', LoginSuccessState.loginEntity?.uid, kStartBox);

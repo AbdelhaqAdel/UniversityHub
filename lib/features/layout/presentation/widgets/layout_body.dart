@@ -48,7 +48,7 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 70.0),
+      padding: const EdgeInsets.only(top: 60.0),
       child: cubit.navigationBarScreens[cubit.currentNavigationBarIndex],
     );
 
