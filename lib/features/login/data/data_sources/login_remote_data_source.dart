@@ -1,4 +1,7 @@
+import 'package:universityhup/core/constants/hive_constants.dart';
+
 import '../../../../core/constants/constant.dart';
+import '../../../../core/functions/hive_function.dart';
 import '../../../../core/utils/api_service.dart';
 import '../../../../core/utils/end_point.dart';
 import '../../domain/entities/login_entity.dart';
@@ -20,6 +23,8 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource{
       'password': loginDataModel.password,
     }).then((value) async {
       loginEntity = LoginModel.fromJson(value.data);
+      HiveService.save<LoginEntity>(
+          'loginEntity', loginEntity, HiveConstants.kLoginEntityBox);
       return loginEntity;
     });
     return loginEntity!;

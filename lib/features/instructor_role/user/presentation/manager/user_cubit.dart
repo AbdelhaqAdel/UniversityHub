@@ -13,6 +13,7 @@ class UserInstructorCubit extends Cubit<UserInstructorState> {
     emit(GetUserInstructorLoadingState());
     var result = await getUserInstructorUseCase.call();
     result.fold((failure) {
+      print(failure.message);
       emit(GetUserInstructorErrorState(failure.toString()));
     }, (right) {
       emit(GetUserInstructorSuccessState(userEntity: right));

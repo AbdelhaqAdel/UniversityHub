@@ -1,5 +1,7 @@
 
 import '../../../../../core/constants/constant.dart';
+import '../../../../../core/constants/hive_constants.dart';
+import '../../../../../core/functions/hive_function.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/user_entity.dart';
 import '../models/user_model.dart';
@@ -20,7 +22,11 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
       if (value.statusCode == 200) {
         var json = value.data;
         userEntity= UserModel.fromJson(json);
+        HiveService.save<UserEntity>(
+            'user', userEntity, HiveConstants.kUserStudentBox);
       }
+    }).catchError((e) {
+      return userEntity;
     });
     return userEntity;
   }

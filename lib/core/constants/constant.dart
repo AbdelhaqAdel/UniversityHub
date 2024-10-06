@@ -2,6 +2,9 @@
 import 'package:day_night_time_picker/lib/state/time.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/login/domain/entities/login_entity.dart';
+import '../../features/student_role/user/domain/entities/user_entity.dart';
+
 
 bool? isOnboarding;
 bool? isLogin;
@@ -13,6 +16,12 @@ String? role;
 
 String? startDate;
 String? endDate;
+
+UserEntity? userEntity ;
+
+LoginEntity? loginEntity;
+
+
 
 
 
