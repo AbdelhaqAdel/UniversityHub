@@ -224,7 +224,7 @@ class _AddAssignmentBodyState extends State<AddAssignmentBody> {
                                                   await AssignmentInstructorCubit
                                                           .get(context)
                                                       .pickDateTime(
-                                                          context: context);
+                                                          context: context)??DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
                                             },
                                             child: StartDate(
                                                 startData:
@@ -242,7 +242,7 @@ class _AddAssignmentBodyState extends State<AddAssignmentBody> {
                                                   await AssignmentInstructorCubit
                                                           .get(context)
                                                       .pickDateTime(
-                                                          context: context);
+                                                          context: context)??DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
                                             },
                                             child: EndDate(
                                                 endDate:

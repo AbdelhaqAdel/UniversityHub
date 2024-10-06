@@ -98,7 +98,7 @@ class _UpdateTaskDialogState extends State<UpdateTaskDialog> {
                         height: 60,
                         child: GestureDetector(
                           onTap: () async {
-                            startDate = await AssignmentInstructorCubit.get(context).pickDateTime(context: context);
+                            startDate = await AssignmentInstructorCubit.get(context).pickDateTime(context: context)??DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
                           },
                           child:  StartDate(startData:DateTime.parse(startDate!)),
                         ),
@@ -110,7 +110,7 @@ class _UpdateTaskDialogState extends State<UpdateTaskDialog> {
                         height: 60,
                         child: GestureDetector(
                           onTap: () async {
-                            endDate = await AssignmentInstructorCubit.get(context).pickDateTime(context: context);
+                            endDate = await AssignmentInstructorCubit.get(context).pickDateTime(context: context)??DateFormat("yyyy-MM-ddTHH:mm:ss.SSS").format(DateTime.now());
                           },
                           child:  EndDate(endDate:DateTime.parse(endDate!)),
                         ),

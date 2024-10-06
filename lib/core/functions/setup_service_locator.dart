@@ -54,7 +54,6 @@ import '../../features/student_role/user/data/data_sources/user_remote_data_sour
 import '../../features/student_role/user/data/repositories/user_repo_impl.dart';
 import '../../features/student_role/user/domain/repositories/user_repo.dart';
 
-
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
@@ -66,30 +65,38 @@ void setupServiceLocator() {
       coursesDataSource: CoursesRemoteDataSourceImpl(),
       coursesLocalDataSource: CoursesLocalDataSourceImpl()));
 
-  getIt.registerSingleton<QuizUseCase>(QuizUseCase
-    (quizRepo: QuizRepository(quizDataSource: QuizzesRemoteDataSourceImpl())));
+  getIt.registerSingleton<QuizUseCase>(QuizUseCase(
+      quizRepo: QuizRepository(quizDataSource: QuizzesRemoteDataSourceImpl())));
 
-  getIt.registerSingleton<FetchQuizDataUseCase>(FetchQuizDataUseCase
-    (quizDataRepo: QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
+  getIt.registerSingleton<FetchQuizDataUseCase>(FetchQuizDataUseCase(
+      quizDataRepo:
+          QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
 
-  getIt.registerSingleton<SubmitQuizUseCase>(SubmitQuizUseCase
-    (quizDataRepo: QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
+  getIt.registerSingleton<SubmitQuizUseCase>(SubmitQuizUseCase(
+      quizDataRepo:
+          QuizDataRepository(quizDataSource: QuizDataRemoteDataSourceImpl())));
 
-    getIt.registerSingleton<MaterialFilesRepository >(MaterialFilesRepository
-    (filesDataSource: MaterialFileRemoteDataSourceImpl(), fileLocalDataSource: MaterialFileLocalDataSourceImpl(),));
+  getIt.registerSingleton<MaterialFilesRepository>(MaterialFilesRepository(
+    filesDataSource: MaterialFileRemoteDataSourceImpl(),
+    fileLocalDataSource: MaterialFileLocalDataSourceImpl(),
+  ));
 
-   getIt.registerSingleton<MaterialUseCase>(MaterialUseCase
-    (materialRepo: MaterialRepository(materialDataSource: MaterialRemoteDataSourceImpl())));
+  getIt.registerSingleton<MaterialUseCase>(MaterialUseCase(
+      materialRepo: MaterialRepository(
+          materialDataSource: MaterialRemoteDataSourceImpl())));
 
-    getIt.registerSingleton<MaterialFilesUseCase>(MaterialFilesUseCase
-    ( filesRepo: MaterialFilesRepository(filesDataSource: MaterialFileRemoteDataSourceImpl(), 
-    fileLocalDataSource: MaterialFileLocalDataSourceImpl())));
-    
-     getIt.registerSingleton<GetCalendarDayEventsUseCase>(GetCalendarDayEventsUseCase
-    (CalendarRepositoryImpl(calenderRemoteDataSourceImpl: CalenderRemoteDataSourceImpl())));
+  getIt.registerSingleton<MaterialFilesUseCase>(MaterialFilesUseCase(
+      filesRepo: MaterialFilesRepository(
+          filesDataSource: MaterialFileRemoteDataSourceImpl(),
+          fileLocalDataSource: MaterialFileLocalDataSourceImpl())));
 
-   getIt.registerSingleton<AddEventToCalendarUseCase>(AddEventToCalendarUseCase
-    (CalendarRepositoryImpl(calenderRemoteDataSourceImpl: CalenderRemoteDataSourceImpl())));
+  getIt.registerSingleton<GetCalendarDayEventsUseCase>(
+      GetCalendarDayEventsUseCase(CalendarRepositoryImpl(
+          calenderRemoteDataSourceImpl: CalenderRemoteDataSourceImpl())));
+
+  getIt.registerSingleton<AddEventToCalendarUseCase>(AddEventToCalendarUseCase(
+      CalendarRepositoryImpl(
+          calenderRemoteDataSourceImpl: CalenderRemoteDataSourceImpl())));
 
   getIt.registerSingleton<AssignmentRepo>(
     AssignmentRepoImpl(
@@ -98,7 +105,7 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<GradeRepo>(
     GradeRepoImpl(
-       gradeRemoteDataSource: GradeRemoteDataSourceImpl(),
+      gradeRemoteDataSource: GradeRemoteDataSourceImpl(),
     ),
   );
   getIt.registerSingleton<NewsRepo>(
@@ -117,26 +124,23 @@ void setupServiceLocator() {
     ),
   );
 
+  getIt.registerSingleton<InsMaterialRepository>(InsMaterialRepository(
+      materialDataSource: InsMaterialRemoteDataSourceImpl()));
 
-   getIt.registerSingleton<InsMaterialRepository>(InsMaterialRepository
-    (materialDataSource: InsMaterialRemoteDataSourceImpl()));
-  
+  getIt.registerSingleton<InsMaterialUseCase>(
+      InsMaterialUseCase(materialRepo: getIt.get<InsMaterialRepository>()));
 
-   getIt.registerSingleton<InsMaterialUseCase>(InsMaterialUseCase
-    (materialRepo: getIt.get<InsMaterialRepository>()));
-  
- getIt.registerSingleton<InsMaterialFilesUseCase>(InsMaterialFilesUseCase
-    ( filesRepo: getIt.get<InsMaterialRepository>()));
-   
-      getIt.registerSingleton<UpdateMaterialUseCase>(UpdateMaterialUseCase
-    (materialRepo: getIt.get<InsMaterialRepository>()));
+  getIt.registerSingleton<InsMaterialFilesUseCase>(
+      InsMaterialFilesUseCase(filesRepo: getIt.get<InsMaterialRepository>()));
 
-     getIt.registerSingleton<DeleteMaterialUseCase>(DeleteMaterialUseCase
-    (materialRepo: getIt.get<InsMaterialRepository>()));
+  getIt.registerSingleton<UpdateMaterialUseCase>(
+      UpdateMaterialUseCase(materialRepo: getIt.get<InsMaterialRepository>()));
 
-  getIt.registerSingleton<AddMaterialUseCase>(AddMaterialUseCase
-    (materialRepo:getIt.get<InsMaterialRepository>()));
+  getIt.registerSingleton<DeleteMaterialUseCase>(
+      DeleteMaterialUseCase(materialRepo: getIt.get<InsMaterialRepository>()));
 
+  getIt.registerSingleton<AddMaterialUseCase>(
+      AddMaterialUseCase(materialRepo: getIt.get<InsMaterialRepository>()));
 
   getIt.registerSingleton<AssignmentInstructorRepo>(
     AssignmentInstructorRepoImpl(
@@ -144,9 +148,9 @@ void setupServiceLocator() {
     ),
   );
 
-    getIt.registerSingleton<InsGradeRepo>(
+  getIt.registerSingleton<InsGradeRepo>(
     InsGradeRepoImpl(
-       gradeRemoteDataSource: InsGradeRemoteDataSourceImpl(),
+      gradeRemoteDataSource: InsGradeRemoteDataSourceImpl(),
     ),
   );
   getIt.registerSingleton<QuizInstructorRepo>(
