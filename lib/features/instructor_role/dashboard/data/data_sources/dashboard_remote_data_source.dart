@@ -1,5 +1,8 @@
 
+import 'package:universityhup/core/constants/hive_constants.dart';
+
 import '../../../../../core/constants/constant.dart';
+import '../../../../../core/functions/hive_function.dart';
 import '../../../../../core/utils/api_service.dart';
 import '../../domain/entities/dashboard_entity.dart';
 import '../models/dashboard_model.dart';
@@ -21,7 +24,11 @@ class DashboardInstructorRemoteDataSourceImpl extends DashboardInstructorRemoteD
       if (value.statusCode == 200) {
         var json = value.data;
         dashboardEntity= setDashboardInstructorData(json);
+        HiveService.saveListOfType<DashboardInstructorEntity>(
+            dashboardEntity, HiveConstants.kDashboardINSBox);
       }
+    }).catchError((onError){
+      return null;
     });
     return dashboardEntity;
   }

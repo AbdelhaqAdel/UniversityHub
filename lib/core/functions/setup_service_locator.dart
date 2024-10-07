@@ -29,6 +29,7 @@ import 'package:universityhup/features/news/data/repositories/news_repo_impl.dar
 import '../../features/instructor_role/assignment/data/data_sources/assignment_remote_data_source.dart';
 import '../../features/instructor_role/assignment/data/repositories/assignment_repo_impl.dart';
 import '../../features/instructor_role/assignment/domain/repositories/assignment_repo.dart';
+import '../../features/instructor_role/dashboard/data/data_sources/dashboard_local_data_source.dart';
 import '../../features/instructor_role/dashboard/domain/repositories/dashboard_repo.dart';
 import '../../features/instructor_role/quizzes/data/data_sources/quiz_remote_data_source.dart';
 import '../../features/instructor_role/quizzes/domain/repositories/quiz_repo.dart';
@@ -175,7 +176,7 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<DashboardInstructorRepo>(
     DashboardInstructorRepoImpl(
-      dashboardRemoteDataSource: DashboardInstructorRemoteDataSourceImpl(),
+      dashboardRemoteDataSource: DashboardInstructorRemoteDataSourceImpl(), dashboardInstructorLocalDataSource: DashboardInstructorLocalDataSourceImpl(),
     ) ,
   );
 }
