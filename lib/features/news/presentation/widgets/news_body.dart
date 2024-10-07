@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/widgets/app_bar.dart';
 import 'news_listview.dart';
 
 class NewsBody extends StatelessWidget {
@@ -10,6 +9,7 @@ class NewsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 30,),
         CustomTitle(),
@@ -28,33 +28,36 @@ class CustomTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment:
-      CrossAxisAlignment.start,
-      mainAxisAlignment:
-      MainAxisAlignment.center,
-      children: [
-        Text(
-          'News & events !',
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(fontSize: 23,),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0),
+      child: Column(
+        crossAxisAlignment:
+        CrossAxisAlignment.start,
+        mainAxisAlignment:
+        MainAxisAlignment.start,
+        children: [
+          Text(
+            'News & events !',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(fontSize: 23,),
 
-          // TextStyle(
-          //   fontWeight: FontWeight.w700,
-          //   fontSize: 25,
-          //   color: Colors.black,
-          // ),
-        ),
-        Text(
-          'Time Line Here.',
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall
-              ?.copyWith(fontSize: 18),
-        ),
-      ],
+            // TextStyle(
+            //   fontWeight: FontWeight.w700,
+            //   fontSize: 25,
+            //   color: Colors.black,
+            // ),
+          ),
+          Text(
+            'Time Line Here.',
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(fontSize: 18),
+          ),
+        ],
+      ),
     );
   }
 }

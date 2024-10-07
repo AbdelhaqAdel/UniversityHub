@@ -13,6 +13,7 @@ class NewsCubit extends Cubit<NewsState> {
     emit(GetNewsLoadingState());
     var result = await getNewsUseCase.call();
     result.fold((failure) {
+      print(failure.message);
       emit(GetNewsErrorState(failure.toString()));
     }, (right) {
       emit(GetNewsSuccessState(newsEntity: right));
