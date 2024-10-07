@@ -47,8 +47,9 @@ class NewsHeader extends StatelessWidget {
                     '${newsEntity.userName}',
                     style: Theme.of(context)
                         .textTheme
-                        .bodySmall
+                        .bodyLarge
                         ?.copyWith(
+                      fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.w800,
                     ),

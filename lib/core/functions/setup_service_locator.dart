@@ -20,6 +20,7 @@ import 'package:universityhup/features/instructor_role/material/domain/use_cases
 import 'package:universityhup/features/instructor_role/material/domain/use_cases/update_material_use_case.dart';
 import 'package:universityhup/features/instructor_role/quizzes/data/repositories/quiz_repo_impl.dart';
 import 'package:universityhup/features/instructor_role/user/data/data_sources/user_local_data_source.dart';
+import 'package:universityhup/features/news/data/data_sources/news_local_data_source.dart';
 import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_data_source.dart';
 import 'package:universityhup/features/student_role/quizzes/data/data_sources/quiz_data_remote_data_Source.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
@@ -119,6 +120,7 @@ void setupServiceLocator() {
   getIt.registerSingleton<NewsRepo>(
     NewsRepoImpl(
       newsRemoteDataSource: NewsRemoteDataSourceImpl(),
+      newsLocalDataSource: NewsLocalDataSourceImpl(),
     ),
   );
   getIt.registerSingleton<UserRepo>(
