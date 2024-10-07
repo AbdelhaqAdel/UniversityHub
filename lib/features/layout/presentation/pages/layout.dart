@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/constant.dart';
 // import '../widgets/custom_drawer.dart';
+import '../widgets/custom_drawer.dart';
 import '../widgets/layout_body.dart';
 
 class Layout extends StatelessWidget {
@@ -10,7 +11,7 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: layoutScaffoldKey,
-      // drawer: const CustomDrawer(),
+      drawer: const CustomDrawer(),
       body: const LayoutBody(),
     );
   }
