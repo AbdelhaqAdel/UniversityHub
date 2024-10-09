@@ -29,7 +29,8 @@ Future<void> hiveSetup() async {
 
   await Hive.openBox(HiveConstants.kStartBox);
   await Hive.openBox<CoursesModel>(HiveConstants.coursesBox);
-  await Hive.openBox<List<FolderEntity>>(HiveConstants.materialBox);
+  await Hive.openBox<FolderEntity>(HiveConstants.materialBox);
+  await Hive.openBox<List<FileEntity>>(HiveConstants.materialFilesBox);
   await Hive.openBox<UserEntity>(HiveConstants.kUserStudentBox);
   await Hive.openBox<UserInstructorEntity>(HiveConstants.kUserInstructorBox);
   await Hive.openBox<LoginEntity>(HiveConstants.kLoginEntityBox);

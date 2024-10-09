@@ -1,15 +1,17 @@
 import 'package:hive/hive.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
+import 'package:universityhup/features/student_role/material/domain/entities/material_file_entity.dart';
 import 'package:universityhup/features/student_role/material/domain/entities/material_folder_entity.dart';
 
-abstract class MaterialFileLocalDataSource {
-  Future<List<FolderEntity>> fetchCoursesFromHive();
+abstract class FilesLocalDataSource {
+  List<FileEntity> fetchFilesFromHive({required folderId});
 }
-class MaterialFileLocalDataSourceImpl extends MaterialFileLocalDataSource{
+class MaterialFileLocalDataSourceImpl extends FilesLocalDataSource{
   @override
-  Future<List<FolderEntity>> fetchCoursesFromHive() async {
-  var box= Hive.box<FolderEntity>(HiveConstants.materialBox);
-  print('getting cached data');
-     return box.values.toList();
+  List<FileEntity> fetchFilesFromHive({required folderId})  {
+  List<FileEntity>allFiles=[];
+  var box= Hive.box<List<FolderEntity>>(HiveConstants.materialBox);
+  allFiles= (box.get(folderId, defaultValue: []) as List).cast<FileEntity>();
+    return allFiles;
   }
 }
