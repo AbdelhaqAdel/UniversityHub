@@ -24,7 +24,8 @@ class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
   }); 
    return coursesList;
   }catch(error){
-    return Hive.box<CoursesModel>(HiveConstants.coursesBox).values.toList();
+    List<CoursesModel>localCourses=Hive.box<CoursesModel>(HiveConstants.coursesBox).values.toList();
+    return localCourses;
   }
 }
  void fillCoursesList(Response<dynamic> list) {
