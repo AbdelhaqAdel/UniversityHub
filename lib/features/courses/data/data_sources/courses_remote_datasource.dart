@@ -19,7 +19,7 @@ class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
       ).then((value) {
        fillCoursesList(value);
   });
-    // HiveService.saveDataToHive<CoursesModel>(coursesList, HiveConstants.coursesBox);
+    HiveService.saveListOfType<CoursesModel>(coursesList, HiveConstants.coursesBox);
    return coursesList;
 }
  void fillCoursesList(Response<dynamic> list) {
@@ -28,9 +28,6 @@ class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
      for (var element in list.data) {
      coursesList.add(CoursesModel.fromJson(element));
     }
-    coursesList.forEach((e){
-      print(e.name);
-    });
   }
 
 }

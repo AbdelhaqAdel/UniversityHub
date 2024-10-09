@@ -13,11 +13,10 @@ class CoursesRepository extends CoursesRepo{
   @override
   Future<Either<Failure, List<CoursesModel>>> getAllCourses() async{
    try{
-    //  List<CoursesModel>cachedCourses =await coursesLocalDataSource
-    //      .fetchCoursesFromHive();
-    //  if(cachedCourses.isNotEmpty){
-    //    return right(cachedCourses);
-    //  }
+    List<CoursesModel>coursesFromHive= coursesLocalDataSource.fetchCoursesFromHive();
+    if(coursesFromHive.isNotEmpty){
+      return right(coursesFromHive);
+    }
       List<CoursesModel>courses=await coursesDataSource.fetchCourses();
     return right(courses);
      }catch(error){
@@ -28,27 +27,4 @@ class CoursesRepository extends CoursesRepo{
     }
        }  }
 
-   
-
-
-  // try{
-  //    List<CoursesModel>cachedCourses =await coursesLocalDataSource
-  //        .fetchCoursesFromHive();
-  //    if(cachedCourses.isNotEmpty){
-  //      return right(cachedCourses);
-  //    }}catch(error){
-  //    }
-  //    try{
-  //   if (await networkInfo.isConnected) {
-  //  List<CoursesModel>courses=await coursesDataSource.fetchCourses();
-  //   return right(courses);
-  // }
-  // }catch(error){
-  //   if(error is DioException){
-  //     return left(ServerFailure.fromDiorError(error));
-  //   }else{
-  //     return left(ServerFailure(error.toString()));
-  //   }
-  //  }
-  // }
 }
