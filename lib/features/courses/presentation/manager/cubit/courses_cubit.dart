@@ -13,9 +13,7 @@ class CoursesCubit extends Cubit<CoursesState> {
     result.fold(
        (error)=>emit(GetAllCoursesErrorState(error:error.message )),
        (courses){
-        courses.forEach((e){
-          print(e.name);
-        });
+       
         emit(GetAllCoursesSuccessState(courses: courses));},
 
        );

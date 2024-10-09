@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:hive/hive.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
 import 'package:universityhup/core/functions/hive_function.dart';
@@ -13,14 +14,18 @@ class CoursesRemoteDataSourceImpl extends CoursesRemoteDataSource{
   List<CoursesModel>coursesList=[];
   @override
   Future<List<CoursesModel>> fetchCourses()async {
+    try{
      await  DioHelper.get(
         url:role=="Student"? EndPoint.allCourses:EndPoint.insAllCourses,
         token:token,
       ).then((value) {
-       fillCoursesList(value);
-  });
     HiveService.saveListOfType<CoursesModel>(coursesList, HiveConstants.coursesBox);
+       fillCoursesList(value);
+  }); 
    return coursesList;
+  }catch(error){
+    return Hive.box<CoursesModel>(HiveConstants.coursesBox).values.toList();
+  }
 }
  void fillCoursesList(Response<dynamic> list) {
 

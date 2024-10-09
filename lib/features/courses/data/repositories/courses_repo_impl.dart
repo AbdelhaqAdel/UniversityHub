@@ -12,15 +12,18 @@ class CoursesRepository extends CoursesRepo{
   CoursesRepository({required this.coursesDataSource,required this.coursesLocalDataSource});
   @override
   Future<Either<Failure, List<CoursesModel>>> getAllCourses() async{
+     List<CoursesModel>coursesFromHive= coursesLocalDataSource.fetchCoursesFromHive();
    try{
-    List<CoursesModel>coursesFromHive= coursesLocalDataSource.fetchCoursesFromHive();
-    if(coursesFromHive.isNotEmpty){
+      List<CoursesModel>courses=await coursesDataSource.fetchCourses();
+        if(courses.isEmpty){
       return right(coursesFromHive);
     }
-      List<CoursesModel>courses=await coursesDataSource.fetchCourses();
     return right(courses);
      }catch(error){
          if(error is DioException){
+          if(ServerFailure.fromDiorError(error).message =='No Internet Connection'&&coursesFromHive.isNotEmpty){
+            return right(coursesFromHive);
+          }
       return left(ServerFailure.fromDiorError(error));
     }else{
       return left(ServerFailure(error.toString()));
