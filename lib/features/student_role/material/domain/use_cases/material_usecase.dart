@@ -28,7 +28,7 @@ class MaterialUseCase extends UseCase<Map<String, List<FolderEntity>>, String> {
     });
   }
 
-  void filterMaterialsIntoMap(List<FolderEntity> list) {
+  void filterMaterialsIntoMap(List<dynamic> list) {
     List<FolderEntity> lectures = [];
     List<FolderEntity> labs = [];
     for (FolderEntity element in list) {

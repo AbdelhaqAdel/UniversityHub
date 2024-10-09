@@ -15,17 +15,20 @@ class MaterialRepository extends MaterialRepo{
 
   @override
   Future<Either<Failure, List<FolderEntity>>> getAllMaterials({required String courseId}) async{
-    List<FolderEntity>localFolders=foldersLocalDataSource.fetchCoursesFromHive();
+        List<FolderEntity>localFolders=[];
+
     try{
       final List<FolderEntity>allMaterials=await materialDataSource.fetchAllMaterials(courseId:courseId );
       foldersLocalDataSource.fetchCoursesFromHive();
       if(allMaterials.isEmpty){
+        localFolders=foldersLocalDataSource.fetchCoursesFromHive();
         return right(localFolders);
       }
       return right(allMaterials);
     }catch(error){
     if(error is DioException){
           if(ServerFailure.fromDiorError(error).message =='No Internet Connection'&&localFolders.isNotEmpty){
+           localFolders= foldersLocalDataSource.fetchCoursesFromHive();
             return right(localFolders);
           }
       return left(ServerFailure.fromDiorError(error));

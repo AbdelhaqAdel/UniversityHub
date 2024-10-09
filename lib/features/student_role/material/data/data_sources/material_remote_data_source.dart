@@ -22,6 +22,7 @@ class MaterialRemoteDataSourceImpl extends MaterialRemoteDataSource{
     token:token
      ).then((value){
       fillMateriaMap(value);
+    // HiveService.clear<FolderEntity>(HiveConstants.materialFilesBox);
       HiveService.saveMap<FolderEntity>(key: currentCycleId??'noId', value: allMaterials,boxName: HiveConstants.materialBox);
     });
    return allMaterials;
@@ -36,6 +37,7 @@ class MaterialRemoteDataSourceImpl extends MaterialRemoteDataSource{
      for (var element in list.data) {
       allMaterials.add(FolderModel.fromJson(element));
     }
+    // allMaterials.forEach((e){print(e.lectureName);});
   }
   
 }
