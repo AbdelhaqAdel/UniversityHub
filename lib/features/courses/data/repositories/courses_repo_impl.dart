@@ -12,43 +12,22 @@ class CoursesRepository extends CoursesRepo{
   CoursesRepository({required this.coursesDataSource,required this.coursesLocalDataSource});
   @override
   Future<Either<Failure, List<CoursesModel>>> getAllCourses() async{
+     List<CoursesModel>coursesFromHive= coursesLocalDataSource.fetchCoursesFromHive();
    try{
-    //  List<CoursesModel>cachedCourses =await coursesLocalDataSource
-    //      .fetchCoursesFromHive();
-    //  if(cachedCourses.isNotEmpty){
-    //    return right(cachedCourses);
-    //  }
       List<CoursesModel>courses=await coursesDataSource.fetchCourses();
+        if(courses.isEmpty){
+      return right(coursesFromHive);
+    }
     return right(courses);
      }catch(error){
          if(error is DioException){
+          if(ServerFailure.fromDiorError(error).message =='No Internet Connection'&&coursesFromHive.isNotEmpty){
+            return right(coursesFromHive);
+          }
       return left(ServerFailure.fromDiorError(error));
     }else{
       return left(ServerFailure(error.toString()));
     }
        }  }
 
-   
-
-
-  // try{
-  //    List<CoursesModel>cachedCourses =await coursesLocalDataSource
-  //        .fetchCoursesFromHive();
-  //    if(cachedCourses.isNotEmpty){
-  //      return right(cachedCourses);
-  //    }}catch(error){
-  //    }
-  //    try{
-  //   if (await networkInfo.isConnected) {
-  //  List<CoursesModel>courses=await coursesDataSource.fetchCourses();
-  //   return right(courses);
-  // }
-  // }catch(error){
-  //   if(error is DioException){
-  //     return left(ServerFailure.fromDiorError(error));
-  //   }else{
-  //     return left(ServerFailure(error.toString()));
-  //   }
-  //  }
-  // }
 }

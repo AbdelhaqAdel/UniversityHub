@@ -13,11 +13,18 @@ class MaterialFilesRepository extends MaterialFilesRepo{
 
   @override
   Future<Either<Failure,List<FileEntity>>> getAllMaterialsFiles({required lecId}) async{
+    List<FileEntity>localFiles=fileLocalDataSource.fetchFilesFromHive(folderId: lecId);
     try{
       final List<FileEntity>allFiles=await filesDataSource.fetchAllMaterialFiles(lecId:lecId);
+      if(allFiles.isEmpty){
+        return right(localFiles);
+      }
       return right(allFiles);
     }catch(error){
     if(error is DioException){
+       if(ServerFailure.fromDiorError(error).message =='No Internet Connection'&&localFiles.isNotEmpty){
+            return right(localFiles);
+          }
       return left(ServerFailure.fromDiorError(error));
     }else{
       return left(ServerFailure(error.toString()));

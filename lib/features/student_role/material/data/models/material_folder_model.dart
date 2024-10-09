@@ -25,7 +25,7 @@ class FolderModel extends FolderEntity{
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['lectureId']=lectureId;
     data['lectureName'] = lectureName;
     data['semesterName'] = semesterName;

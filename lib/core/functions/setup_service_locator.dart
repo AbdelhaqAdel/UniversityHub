@@ -22,6 +22,7 @@ import 'package:universityhup/features/instructor_role/quizzes/data/repositories
 import 'package:universityhup/features/instructor_role/user/data/data_sources/user_local_data_source.dart';
 import 'package:universityhup/features/news/data/data_sources/news_local_data_source.dart';
 import 'package:universityhup/features/student_role/material/data/data_sources/material_file_local_data_source.dart';
+import 'package:universityhup/features/student_role/material/data/data_sources/material_local_data_source.dart';
 import 'package:universityhup/features/student_role/quizzes/data/data_sources/quiz_data_remote_data_Source.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import 'package:universityhup/features/news/data/data_sources/news_remote_data_source.dart';
@@ -93,7 +94,7 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<MaterialUseCase>(MaterialUseCase(
       materialRepo: MaterialRepository(
-          materialDataSource: MaterialRemoteDataSourceImpl())));
+          materialDataSource: MaterialRemoteDataSourceImpl(), foldersLocalDataSource: FoldersLocalDataSourceImpl())));
 
   getIt.registerSingleton<MaterialFilesUseCase>(MaterialFilesUseCase(
       filesRepo: MaterialFilesRepository(

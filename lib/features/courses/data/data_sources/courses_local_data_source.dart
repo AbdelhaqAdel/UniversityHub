@@ -4,14 +4,15 @@ import 'package:universityhup/core/constants/hive_constants.dart';
 import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
 
 abstract class CoursesLocalDataSource {
-  Future<List<CoursesModel>> fetchCoursesFromHive();
+  List<CoursesModel> fetchCoursesFromHive();
 }
 class CoursesLocalDataSourceImpl extends CoursesLocalDataSource{
   @override
-  Future<List<CoursesModel>> fetchCoursesFromHive() async {
+ List<CoursesModel> fetchCoursesFromHive()  {
+  List<CoursesModel>allCourses=[];
   var box= Hive.box<CoursesModel>(HiveConstants.coursesBox);
-  print('getting cached data');
-     return box.values.toList();
+  allCourses=box.values.toList();
+  return allCourses;
   }
 
 }
