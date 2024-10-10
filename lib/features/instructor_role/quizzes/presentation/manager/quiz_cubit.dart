@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 import 'package:universityhup/features/instructor_role/quizzes/presentation/manager/quiz_state.dart';
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/functions/date_time_picker.dart';
@@ -46,6 +47,9 @@ class QuizInstructorCubit extends Cubit<QuizInstructorState> {
     result.fold((failure) {
       emit(AddQuizErrorState(failure.toString()));
     }, (right) {
+         StoryServices.insStoreHistoryToHive(materialName: 'Quiz title: Quiz1', 
+                 historyMessage: 'New quiz added');
+         
       emit(AddQuizSuccessState());
       addQuizInputModel=AddQuizInputModel();
     });

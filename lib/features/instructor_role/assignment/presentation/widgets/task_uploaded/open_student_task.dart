@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 
 import '../../../../../../core/functions/open_file.dart';
 
@@ -17,6 +18,8 @@ class OpenStudentTask extends StatelessWidget {
       child: InkWell(
         onTap: () {
           downloadAndOpenFile(filePath);
+          StoryServices.insStoreHistoryToHive(materialName: 'File name: ${filePath.split('/').last}', 
+          historyMessage: 'New student task downloaded');
         },
         child: Container(
           padding:
