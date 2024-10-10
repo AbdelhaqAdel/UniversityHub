@@ -1,40 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
+import 'package:universityhup/features/history/presentation/widgets/history_icon_button.dart';
 import '../../../../core/constants/constant.dart';
-import '../../../../core/functions/custom_snack_bar.dart';
-import '../../../../core/utils/app_router.dart';
 
 class LayoutAppBar extends StatelessWidget {
   const LayoutAppBar({
-    super.key,
+    super.key, required this.cubitContext,
   });
+  final BuildContext cubitContext;
 
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return  const SafeArea(
       child: SizedBox(
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-            const DrawerIcon(),
-            const Spacer(),
-            InkWell(
-              onTap: (){
-                GoRouter.of(context).push(AppRouter.kAssignmentScreen);
-
-                showSnackBar(message: 'coming soon :)',context: context);
-              },
-              child: const Padding(
-                padding: EdgeInsets.only(top: 0.0, right: 20),
-                child: FaIcon(FontAwesomeIcons.opencart),
-              ),
-            ),
-
-          ],
+            DrawerIcon(),
+            Spacer(),
+            HistoryIconButton(),
+          
+           ],
         ),
       ),
     );
