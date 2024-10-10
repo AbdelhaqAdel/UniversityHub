@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 
 import '../../../../../../core/functions/custom_snack_bar.dart';
 import '../../../../../../core/functions/open_file.dart';
@@ -149,6 +150,8 @@ class UploadAndDownload extends StatelessWidget {
                                                       downloadAndOpenFile(
                                                           assignmentEntity!
                                                               .filePath!);
+                                                      StoryServices.stuStoreHistoryToHive(materialName: 'File name: ${assignmentEntity!.taskName!}', 
+                                                      historyMessage: 'New assignment downloaded');
                                                     },
                                                   )),
                                               const SizedBox(
