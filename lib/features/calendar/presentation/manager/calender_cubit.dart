@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universityhup/core/constants/constant.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 import 'package:universityhup/features/calendar/domain/use_cases/add_to_calender_use_case.dart';
 import 'package:universityhup/features/calendar/domain/use_cases/get_calender_use_case.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
@@ -24,6 +26,10 @@ void addEvent({required String event, required String start, required String end
       },
       (msg) {
         if (!isClosed) {
+             role=="Student"? StoryServices.stuStoreHistoryToHive(materialName: 'Event title: $event', 
+                 historyMessage: 'New event added')
+               :StoryServices.insStoreHistoryToHive(materialName: 'Event title: $event', 
+                 historyMessage: 'New event added');
           emit(AddEventSuccessState());
         }
       },
