@@ -20,7 +20,6 @@ class InsMaterialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      // GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
       GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return BlocProvider(
@@ -47,7 +46,8 @@ class InsMaterialScreen extends StatelessWidget {
                              .currentState!
                              .validate()) {
                            InsMaterialCubit.get(context).addFolder(
-                             folderName: materialController.text,   
+                             folderName: materialController.text, 
+                             type:cubit.tapBarIndex==0?"Lecture":"Lab"
                            ).then((value) {
                              Navigator.pop(context);
                            });   

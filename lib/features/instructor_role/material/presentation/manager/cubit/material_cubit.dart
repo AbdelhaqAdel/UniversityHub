@@ -64,7 +64,7 @@ String? folderId;
       );
       result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
         (r) {
-                    fetchAllMaterials();
+          fetchAllMaterials();
           emit(UpdateMaterialSuccessState(),);} 
       );
   }
@@ -73,14 +73,13 @@ String? folderId;
     required int fileId,
     required String newFileName,
   }) async {
-    print('File id ::: $fileId');
     emit(UpdateMaterialLoadingState());
      final result= await updateMaterialUseCase.call(
         'file?file_Id=$fileId&fileName=$newFileName'
       );
       result.fold((error) => emit(UpdateMaterialErrorState(error: error.toString()),),
         (right) {
-
+           fetchMaterialFiles(lecId: folderId!);
            emit(UpdateMaterialSuccessState(),);} 
       );
   }
@@ -102,13 +101,13 @@ String? folderId;
     Future<void> deleteFile({
     required int fileId,
   }) async {
-    print('File id ::: $fileId');
     emit(DeleteMaterialLoadingState());
      final result= await deleteMaterialUseCase.call(
         'File?FileId=$fileId'
       );
       result.fold((error) => emit(DeleteMaterialErrorState(error: error.toString()),),
         (right) { 
+          fetchMaterialFiles(lecId: folderId!);
           emit(DeleteMaterialSuccessState(),);} 
       );
   }
@@ -117,12 +116,14 @@ String? folderId;
  
  Future<void> addFolder({
     required String folderName,
+    required String type,
   }) async {
     emit(AddMaterialLoadingState());
      final result= await addMaterialUseCase.call(
       url: 'Instructor/UploadLectureFolder',
       isFolder: true,
       folderName: folderName,
+      type: type,
       );
       result.fold((error) => emit(AddMaterialErrorState(error: error.toString()),),
         (r) {
@@ -135,25 +136,24 @@ String? folderId;
     emit(AddMaterialLoadingState());
      final result= await addMaterialUseCase.call(
       url: 'Instructor/UploadLectureFile?lectureId=$folderId&file_Name=${pickedFile?.path.split('/').last}', 
-      isFolder: true,
+      isFolder: false,
       file: pickedFile,
-      );
+            );
       result.fold((error) => emit(AddMaterialErrorState(error: error.toString()),),
         (r) {
-             fetchAllMaterials();
+           fetchMaterialFiles(lecId: folderId!);
            emit(AddMaterialSuccessState(),);} 
       );
   }
 
   File? pickedFile;
   void pickMaterialFile()async{
-     await pickFile().then((files){
+   Future.delayed(const Duration(seconds:2)).then((_){
+    emit(PickFileSuccessState());
+   });
+    await pickFile().then((files){
        pickedFile=files[0];
-       
-     });
+      });
   }
-
-
-
 
 }
