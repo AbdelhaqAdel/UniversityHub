@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/functions/store_to_history.dart';
@@ -13,29 +14,51 @@ class CalendarCubit extends Cubit<CalendarState> {
   final GetCalendarDayEventsUseCase getEventsUseCase;
   CalendarCubit({required this.getEventsUseCase,required this.addEventUseCase}) : super(CalendarInitialState());
 
-void addEvent({required String event, required String start, required String end}) async {
-  if (!isClosed) {
-    emit(AddEventLoadingState());
-    final result = await addEventUseCase.call(event, startDate, endDate);
-    getDayEvents();  
-    result.fold(
-      (error) {
-        if (!isClosed) {
-          emit(AddEventErrorState(error.toString()));
-        }
-      },
-      (msg) {
-        if (!isClosed) {
-             role=="Student"? StoryServices.stuStoreHistoryToHive(materialName: 'Event title: $event', 
-                 historyMessage: 'New event added')
-               :StoryServices.insStoreHistoryToHive(materialName: 'Event title: $event', 
-                 historyMessage: 'New event added');
+void addEvent({
+  required String event,
+  required String start,
+  required String end,
+  required context,
+}) async {
+ // Prevents action if the Cubit is closed
+  
+  emit(AddEventLoadingState());
+  
+  final result = await addEventUseCase.call(event, start, end);
+  
+  result.fold(
+    (error) {
+        emit(AddEventErrorState(error.toString()));
+    
+    },
+    (msg) async {
+      try {
+
+          if (role == "Student") {
+            StoryServices.stuStoreHistoryToHive(
+              materialName: 'Event title: $event',
+              historyMessage: 'New event added',
+            );
+          } else {
+            StoryServices.insStoreHistoryToHive(
+              materialName: 'Event title: $event',
+              historyMessage: 'New event added',
+            );
+          }
+          await getDayEvents().then((f){
+             Navigator.pop(context);
+          });
           emit(AddEventSuccessState());
+        
+      } catch (e) {
+        if (!isClosed) {
+          emit(AddEventErrorState('Failed to retrieve events: ${e.toString()}'));
         }
-      },
-    );
-  }
+      }
+    },
+  );
 }
+
 
 
   Future<void> getDayEvents() async {
