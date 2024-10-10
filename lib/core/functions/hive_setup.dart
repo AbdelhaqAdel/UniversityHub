@@ -2,8 +2,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
 import 'package:universityhup/features/courses/data/models/all_courses_model.dart';
 import 'package:universityhup/features/history/data/models/history_adapter.dart';
-import 'package:universityhup/features/history/data/models/history_model.dart';
-
 import '../../features/instructor_role/dashboard/domain/entities/dashboard_entity.dart';
 import '../../features/instructor_role/user/domain/entities/user_entity.dart';
 import '../../features/login/domain/entities/login_entity.dart';
@@ -39,7 +37,9 @@ Future<void> hiveSetup() async {
   await Hive.openBox<LoginEntity>(HiveConstants.kLoginEntityBox);
   await Hive.openBox<NewsEntity>(HiveConstants.kNewsBox);
   await Hive.openBox<DashboardInstructorEntity>(HiveConstants.kDashboardINSBox);
-  await Hive.openBox(HiveConstants.kHistory);
+  await Hive.openBox(HiveConstants.kStuHistory);
+  await Hive.openBox(HiveConstants.kInsHistory);
+
   // await Hive.openBox<DashboardEntity>(HiveConstants.kDashboardSTUBox);
 
 
