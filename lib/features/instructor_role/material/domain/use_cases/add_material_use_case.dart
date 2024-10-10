@@ -10,11 +10,13 @@ class AddMaterialUseCase {
    final InsMaterialRepository materialRepo;
    Map<String,List<FolderEntity>>allMaterials={};
 
-  Future<Either<Failure, void>> call({required String url,required bool isFolder, String ?folderName,    File ?file,
+  Future<Either<Failure, void>> call({required String url,required bool isFolder, String ?folderName,File ?file,
+  String?type,
 }) async{
     return await materialRepo.addMaterial( url: url,
      isFolder:isFolder,
      folderName: folderName,
+     type:type??'',
      file:file,
      );
   }

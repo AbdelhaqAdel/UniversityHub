@@ -67,3 +67,6 @@ class AddMaterialErrorState extends MaterialsState {
   AddMaterialErrorState({required this.error});
 }
 
+class PickFileSuccessState extends MaterialsState {}
+
+

@@ -22,6 +22,7 @@ abstract class InsMaterialRepo{
   Future<Either<Failure, void>>addMaterial({
     String?folderName,  
     File ?file,
+     required String type,
     required bool isFolder,
     required String url,  });
   

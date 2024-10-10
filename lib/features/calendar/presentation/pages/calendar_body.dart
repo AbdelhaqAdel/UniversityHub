@@ -11,73 +11,72 @@ import 'package:universityhup/features/calendar/presentation/widgets/calendar_li
 import 'package:universityhup/features/calendar/presentation/widgets/calendar_table.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/floating_action_button.dart';
 
-// ignore: must_be_immutable
-class CalendarBody extends StatelessWidget {
-    CalendarBody({super.key});
+class CalendarBody extends StatefulWidget {
+  const CalendarBody({Key? key}) : super(key: key);
+
+  @override
+  _CalendarBodyState createState() => _CalendarBodyState();
+}
+
+class _CalendarBodyState extends State<CalendarBody> {
   final GlobalKey<ScaffoldState>? scaffoldKey = GlobalKey();
-   
   var eventBodyController = TextEditingController();
   var formKey = GlobalKey<FormState>();
-    List<CalendarEntity> events=[];  
+  List<CalendarEntity> events = [];
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=>CalendarCubit(getEventsUseCase: getIt.get<GetCalendarDayEventsUseCase>(),
-       addEventUseCase: getIt.get<AddEventToCalendarUseCase>())..getDayEvents(),
+      create: (context) => CalendarCubit(
+        getEventsUseCase: getIt.get<GetCalendarDayEventsUseCase>(),
+        addEventUseCase: getIt.get<AddEventToCalendarUseCase>(),
+      )..getDayEvents(),
       child: BlocConsumer<CalendarCubit, CalendarState>(
-        listener: (context, state) => {
-          if(state is GetEventsSuccessState){
-            events=state.events
+        listener: (context, state) {
+          if (state is GetEventsSuccessState) {
+            setState(() {
+              events = state.events;
+            });
+          }
+          if (state is AddEventSuccessState) {
+            CalendarCubit.get(context).getDayEvents(); // Refresh events list after adding
           }
         },
         builder: (context, state) {
           return Scaffold(
-              key: scaffoldKey,
-              backgroundColor: Colors.transparent,
-              floatingActionButton: CustomFloatingAction(),
-              body:  SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 0.0),
-                  child: Column(
-                    children: [
-                       CalendarTable(),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child:
-                          ConditionalBuilder(
-                               condition:events.isNotEmpty &&state is!GetEventsLoadingState,
-                               builder:(context){
-                                return CalendarListView(events: events,);},
-                           fallback:(context) {
-                             if (events.isEmpty && state is! GetEventsLoadingState) {
-                               return
-                                 const Column(
-                                   mainAxisAlignment: MainAxisAlignment.center,
-                                   children: [
-                                     Center(child: Text('No Event here..'),),
-                                   ],
-                                 );
-                             } else {
-                               return  const Column(
-                                   mainAxisAlignment: MainAxisAlignment.center,
-                                 children: [
-                                   Center(child: CircularProgressIndicator()),
-                                 ],
-                               );
-                             }
-                           }
-                        ),
-                      
+            key: scaffoldKey,
+            backgroundColor: Colors.transparent,
+            floatingActionButton: CustomFloatingAction(),
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 0.0),
+                child: Column(
+                  children: [
+                    CalendarTable(),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: ConditionalBuilder(
+                          condition: events.isNotEmpty,
+                          builder: (context) {
+                            return CalendarListView(events: events);
+                          },
+                          fallback: (context) {
+                            if (events.isEmpty && state is! GetEventsLoadingState) {
+                              return const Center(child: Text('No Event here..'));
+                            } else {
+                              return const Center(child: CircularProgressIndicator());
+                            }
+                          },
                         ),
                       ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      ],
-                  ),
+                    ),
+                    const SizedBox(height: 50),
+                  ],
                 ),
-              ));
+              ),
+            ),
+          );
         },
       ),
     );

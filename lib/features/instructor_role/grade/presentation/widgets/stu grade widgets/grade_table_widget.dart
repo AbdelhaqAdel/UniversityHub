@@ -12,7 +12,7 @@ class GradeTableWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child:  SingleChildScrollView(
-          scrollDirection: Axis.vertical, // Enable vertical scrolling
+          scrollDirection: Axis.vertical,
           child: DataTable(
             decoration: BoxDecoration(
               color: Colors.transparent,
