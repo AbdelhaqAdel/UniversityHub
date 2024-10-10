@@ -21,7 +21,7 @@ class LayoutBody extends StatelessWidget {
               const BackGroundShape(),
               const BlurLayer(),
               Screen(cubit: cubit),
-              const LayoutAppBar(),
+             LayoutAppBar(cubitContext: context,),
              const Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,

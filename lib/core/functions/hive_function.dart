@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:universityhup/core/constants/constant.dart';
 
 class HiveService {
   static void saveListOfType<ListType>(
@@ -23,22 +22,15 @@ class HiveService {
     static void saveMap<entityType>({required String key,required List<entityType> value,required String boxName}) {
     var box = Hive.box<List<entityType>>(boxName);
    box.delete(key).then((v){
-    // box.clear().then((v){
-    box.put(key, value).then((v){print(box.get(currentCycleId, defaultValue: []).runtimeType);});
-
-    // });
+    box.put(key, value);
    });
 
   }
   
   static List<entityType> fetchMap<entityType>({required String key, required String boxName}) {
-  var box = Hive.box(boxName);
-  
-  // Get the data from the box, ensuring proper casting with a default empty list.
-  var retrievedList = box.get(key, defaultValue: <entityType>[]) ?? [];
-  
-  // Cast each item to the correct entityType if needed
-  return (retrievedList as List<dynamic>).map((item) => item as entityType).toList();
+  var box = Hive.box<List<entityType>>(boxName);
+    var retrievedList = box.get(key, defaultValue: <entityType>[]) ?? [];
+    return (retrievedList as List<dynamic>).map((item) => item as entityType).toList();
 }
 
 

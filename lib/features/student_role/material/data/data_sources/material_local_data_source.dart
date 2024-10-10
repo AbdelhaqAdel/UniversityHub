@@ -9,21 +9,11 @@ abstract class FoldersLocalDataSource {
 }
 class FoldersLocalDataSourceImpl extends FoldersLocalDataSource{
   @override
-  // List<FolderEntity> fetchCoursesFromHive()  {
-  // List<FolderEntity>allFolders=[];
-  // allFolders= HiveService.fetchMap(boxName:HiveConstants.materialBox,key:currentCycleId!,);
-  // // var box= Hive.box<List<FolderEntity>>(HiveConstants.materialBox);
-  // // print('------------------------------${box.get(currentCycleId??'noId', defaultValue: []).runtimeType}');
-  // // allFolders= (box.get(currentCycleId??'noId', defaultValue: []) as List).cast<FolderEntity>();
-
-
-  //   return allFolders;
-  // }
-   List<FolderEntity> fetchCoursesFromHive() {
-  var box = Hive.box<List<FolderEntity>>(HiveConstants.materialBox);
-  
-  List<FolderEntity>? folders = box.get(currentCycleId, defaultValue: <FolderEntity>[]);
-
-  return folders??[];
-}
+  List<FolderEntity> fetchCoursesFromHive()  {
+  List<FolderEntity>allFolders=[];
+  allFolders= HiveService.fetchMap(boxName:HiveConstants.materialBox,key:currentCycleId!,);
+  var box= Hive.box<List<FolderEntity>>(HiveConstants.materialBox);
+  allFolders= (box.get(currentCycleId??'noId', defaultValue: []) as List).cast<FolderEntity>();
+    return allFolders;
+  }
 }

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/functions/custom_dialog.dart';
 import 'package:universityhup/core/functions/custom_snack_bar.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 import 'package:universityhup/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/update_task_dialog.dart';
 
 import '../../../../../../core/functions/open_file.dart';
@@ -118,6 +119,8 @@ class PendingHeader extends StatelessWidget {
                   downloadAndOpenFile(assignmentEntity!.filePath!);
                   GoRouter.of(context).pop();
                   showSnackBar(context: context, message: 'File Loading ');
+                  StoryServices.insStoreHistoryToHive(materialName: 'File name: ${assignmentEntity!.taskName!}', 
+                   historyMessage: 'New assignment downloaded');
                 });
           },
           child: Container(

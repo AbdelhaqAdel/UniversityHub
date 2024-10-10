@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:universityhup/core/functions/open_file.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 import 'package:universityhup/features/instructor_role/material/domain/entities/material_file_entity.dart';
-import 'package:universityhup/features/instructor_role/material/presentation/manager/cubit/material_cubit.dart';
 
 
 import 'file_custom_widget.dart';
@@ -28,7 +29,9 @@ class FileGridView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => InkWell(
              onTap: (){
-              InsMaterialCubit.get(context).openFile(filePath: files[index].filePath); 
+              downloadNewFileOrOpen(files[index].filePath,context);
+                  StoryServices.insStoreHistoryToHive(materialName: 'File name: ${files[index].fileName}', 
+                 historyMessage: 'New file downloaded');
              },
              child: FileWidget(
               file: files[index],

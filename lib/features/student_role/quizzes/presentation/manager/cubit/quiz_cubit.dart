@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universityhup/core/functions/store_to_history.dart';
 import 'package:universityhup/features/student_role/quizzes/domain/use_cases/submit_quiz_usecase.dart';
 import '../../../data/models/question_data_model.dart';
 import '../../../domain/entities/quiz_entity.dart';
@@ -44,8 +45,10 @@ class QuizCubit extends Cubit<QuizState> {
     final response=await submitQuizUseCase.call(quizId,allQuizAnswers);
     response.fold((error)=>emit(SubmitQuizErrorState(error: error.message)),
      (grade){
-      print('user grade : $grade');
       SubmitQuizSuccessState.setQuizGrade(grade: grade);
+       StoryServices.stuStoreHistoryToHive(materialName: 'Quiz title: Quiz1', 
+                 historyMessage: 'New quiz Submitted');
+              
       emit(SubmitQuizSuccessState());},
      );
 }

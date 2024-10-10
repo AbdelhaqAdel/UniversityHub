@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/constants/constant.dart';
-import 'package:universityhup/core/functions/open_file.dart';
 import 'package:universityhup/features/student_role/material/data/repositories/material_files_repo_impl.dart';
 import '../../../domain/entities/material_file_entity.dart';
 import '../../../domain/entities/material_folder_entity.dart';
@@ -41,8 +40,6 @@ class MaterialCubit extends Cubit<MaterialsState> {
     tapBarIndex = index;
     emit(ChangeTapBarState());
   }
- void openFile({required String filePath}){
-  downloadAndOpenFile(filePath);
- }
+
 
 }

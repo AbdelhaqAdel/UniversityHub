@@ -53,9 +53,6 @@ String? folderId;
     tapBarIndex = index;
     emit(ChangeTapBarState());
   }
- void openFile({required String filePath}){
-  downloadAndOpenFile(filePath);
- }
  
  Future<void> updateFolderName({
     required String folderId,
