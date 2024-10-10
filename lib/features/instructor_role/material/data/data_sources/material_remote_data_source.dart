@@ -17,7 +17,8 @@ abstract class InsMaterialRemoteDataSource{
 
   Future<void> updateMaterial({required String url,});Future<void> deleteMaterial({required String url,});
 
-     Future<void> addMaterial({String?folderName,required bool isFolder,File ?file,required String url,});
+     Future<void> addMaterial({String?folderName,required String type,
+required bool isFolder,File ?file,required String url,});
 }
 class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
   List<FolderEntity>allMaterials=[];
@@ -91,6 +92,7 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
     File ?file,
     required bool isFolder,
     required String url, 
+    required String type,
     }) async{
       if(isFolder) {
         await DioHelper.post(
@@ -98,7 +100,7 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
           token: token,
           data: {
             "title": folderName,
-            "type": 'Lecture',
+            "type": type,
             "cycleId": currentCycleId
           }
       ).then((v){print('added successfully');
@@ -107,6 +109,7 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
     });
 
       }else{
+        print(';;;;;;;;;;;;;;;;;;;;;;;;;;;;;$file$url');
         await DioHelper.uploadFile(
           url: url,
          file:file??File(''),

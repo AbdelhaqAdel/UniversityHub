@@ -73,12 +73,15 @@ class InsMaterialRepository extends InsMaterialRepo{
   }
 
   @override
-  Future<Either<Failure, void>> addMaterial({String? folderName, File ?file, required bool isFolder, required String url})async {
+  Future<Either<Failure, void>> addMaterial({String? folderName, File ?file,required String type,
+
+   required bool isFolder, required String url})async {
      try{
       final response= await materialDataSource.addMaterial(
       url: url, 
       isFolder: isFolder,
       folderName: folderName,
+      type: type,
       file: file
     );
     return right(response);
