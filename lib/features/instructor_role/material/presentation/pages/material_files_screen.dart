@@ -12,7 +12,9 @@ class InsMaterialFileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<InsMaterialCubit,MaterialsState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+ 
+      },
       builder: (context, state) {
         InsMaterialCubit.get(context).pickedFile=null;
        GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -22,7 +24,9 @@ class InsMaterialFileScreen extends StatelessWidget {
              formKey: formKey,
              onTap: (){
               if(InsMaterialCubit.get(context).pickedFile!=null){
-                InsMaterialCubit.get(context).addFile();
+                InsMaterialCubit.get(context).addFile().then((v){
+                  Navigator.pop(context);
+                });
               }else{
                 InsMaterialCubit.get(context).pickMaterialFile();
                }
