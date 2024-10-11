@@ -14,31 +14,32 @@ class PostListview extends StatefulWidget {
 }
 
 class _PostListviewState extends State<PostListview> {
-   List<NewsEntity> newsEntity = [];
+  List<NewsEntity> newsEntity = [];
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewsCubit, NewsState>(
       listener: (context, state) {
-        if(state is GetNewsSuccessState){
+        if (state is GetNewsSuccessState) {
           showSnackBar(context: context, message: 'GetNewsSuccessState');
-          newsEntity=state.newsEntity;
+          newsEntity = state.newsEntity;
         }
       },
       builder: (context, state) {
-        if(newsEntity.isNotEmpty ){
+        if (newsEntity.isNotEmpty) {
           return Expanded(
             child: ListView.separated(
-                itemBuilder: (context, index) =>  NewsItem(newsEntity:newsEntity[index],),
-                separatorBuilder: (context, index) =>
-                const SizedBox(
-                  height: 5,
-                ),
+                itemBuilder: (context, index) => NewsItem(
+                      newsEntity: newsEntity[index],
+                    ),
+                separatorBuilder: (context, index) => const SizedBox(
+                      height: 5,
+                    ),
                 itemCount: newsEntity.length),
           );
-
-        }else{
-          return const Expanded(child: Center(child: CircularProgressIndicator()));
+        } else {
+          return const Expanded(
+              child: Center(child: CircularProgressIndicator()));
         }
       },
     );
