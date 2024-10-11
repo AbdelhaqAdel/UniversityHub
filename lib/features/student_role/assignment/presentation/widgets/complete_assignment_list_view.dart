@@ -26,7 +26,6 @@ class _CompleteAssignmentListViewState
     return BlocConsumer<AssignmentCubit, AssignmentState>(
       listener: (context, state) {
         if (state is GetAssignmentSuccessState) {
-          showSnackBar(context: context, message: 'GetAssignmentSuccessState');
         }
       },
       builder: (context, state) {

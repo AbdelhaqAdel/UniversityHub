@@ -26,12 +26,12 @@ class EndDate extends StatelessWidget {
           children: [
             const FaIcon(FontAwesomeIcons.clock),
             const SizedBox(
-              width: 12,
+              width: 7,
             ),
             Text(
               'End',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 17,
                 color: Colors.black.withOpacity(.7),
                 fontWeight: FontWeight.w700,
               ),
@@ -44,18 +44,17 @@ class EndDate extends StatelessWidget {
               ),
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
-                child: Row(
-                  children: [
-                    Text(
-                        '${endDate!.hour} : ',
-                        style: Styles.textStyle16black
-                    ),
-                    Text(
-                        '${endDate!.minute}',
-                        style:Styles.textStyle16black
-                    ),
-                  ],
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width* .17,
+
+                  child: Text(
+                      '${endDate!.hour} : ${endDate!.minute}',
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: Styles.textStyle16black
+                  ),
                 ),
               ),
             ),
@@ -69,14 +68,17 @@ class EndDate extends StatelessWidget {
               ),
               child:  Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
-                child: Row(
-                  children: [
-                    Text(
-                        '${endDate!.day} / ${endDate!.month}',
-                        style:Styles.textStyle16black
-                    ),
-                  ],
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width* .17,
+                  child: Text(
+                      '${endDate!.day} / ${endDate!.month}',
+                      textAlign: TextAlign.center,
+
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style:Styles.textStyle16black
+                  ),
                 ),
               ),
             ),

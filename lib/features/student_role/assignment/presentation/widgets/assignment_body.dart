@@ -38,7 +38,7 @@ class _AssignmentBodyState extends State<AssignmentBody>
               const SizedBox(
                 height: 30,
               ),
-              DefaultAppBar(text: "cubit.currentCourseName", context: context),
+              DefaultAppBar( context: context),
               const SizedBox(
                 height: 30,
               ),

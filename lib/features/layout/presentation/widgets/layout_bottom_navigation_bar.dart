@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/style/colors.dart';
 import '../manager/layout_cubit/layout_cubit.dart';
 
-class LayoutNavigationBar extends StatefulWidget {
+class LayoutNavigationBar extends StatelessWidget {
   const LayoutNavigationBar({
     super.key,
   });
 
   @override
-  State<LayoutNavigationBar> createState() => _LayoutNavigationBarState();
-}
-
-class _LayoutNavigationBarState extends State<LayoutNavigationBar> {
-  @override
   Widget build(BuildContext context) {
+    return BlocBuilder<LayoutCubit, LayoutState>(
+  builder: (context, state) {
     return Padding(
       padding: const EdgeInsets.only(
         bottom: 12.0,
@@ -61,10 +59,7 @@ class _LayoutNavigationBarState extends State<LayoutNavigationBar> {
           currentIndex: LayoutCubit.get(context).currentNavigationBarIndex,
 
           onTap: (index) {
-            setState(() {
               LayoutCubit.get(context).onTapNavigationBar(index);
-            });
-
           },
           items: const [
             BottomNavigationBarItem(
@@ -91,5 +86,7 @@ class _LayoutNavigationBarState extends State<LayoutNavigationBar> {
         ),
       ),
     );
+  },
+);
   }
 }

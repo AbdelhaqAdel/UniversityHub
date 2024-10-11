@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../manager/assignment_cubit.dart';
 
 class AssignmentDashboard extends StatelessWidget {
   const AssignmentDashboard({
@@ -8,52 +11,52 @@ class AssignmentDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: const RadialGradient(
-            radius: 1.1,
-            center: Alignment.topRight,
-            colors: [
-              Colors.blue,
-              Colors.indigo
-            ],
-          ),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(18.0),
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'You are a super warrior !',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 17),
-                  ),
-                  SizedBox(height: 20),
-                  _Done( text: 'Done 4 task today',),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  _Done( text: 'Done 10 task yesterday',),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  _Done( text: 'Done 100 task last month',),
+    return BlocBuilder<AssignmentCubit, AssignmentState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: const RadialGradient(
+                radius: 1.1,
+                center: Alignment.topRight,
+                colors: [
+                  Colors.blue,
+                  Colors.indigo
                 ],
               ),
-              _Image(),
-            ],
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child:  Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'You are a super warrior !',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 17),
+                      ),
+                      const SizedBox(height: 20),
+                      _Done( text: 'Your have ${GetAssignmentSuccessState.pendingAssignmentEntity.length} pending tasks',),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      _Done( text: 'Your have ${GetAssignmentSuccessState.completedAssignmentEntity.length} Completed tasks',),
+                    ],
+                  ),
+                  const _Image(),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

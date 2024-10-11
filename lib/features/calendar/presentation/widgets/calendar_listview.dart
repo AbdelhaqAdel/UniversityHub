@@ -40,32 +40,35 @@ class _CalendarListViewState extends State<CalendarListView> {
       builder: (context, state) {
         if (state is GetEventsSuccessState) {
           events = state.events;
-          return ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemBuilder: (context, index) =>
-                CalendarItem(
-                    event: events[index],
-                    color1: calenderColors1[(index + 1) % 4 == 0
-                        ? 3
-                        : (index + 1) % 4 == 1
-                        ? 2
-                        : (index + 1) % 4 == 2
-                        ? 1
-                        : 0],
-                    color2: calenderColors2[(index + 1) % 4 == 0
-                        ? 3
-                        : (index + 1) % 4 == 1
-                        ? 2
-                        : (index + 1) % 4 == 2
-                        ? 1
-                        : 0]),
-            separatorBuilder: (context, index) =>
-                Container(
-                  height: 15,
-                  color: Colors.transparent,
-                ),
-            itemCount: events.length,
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15.0),
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context, index) =>
+                  CalendarItem(
+                      event: events[index],
+                      color1: calenderColors1[(index + 1) % 4 == 0
+                          ? 3
+                          : (index + 1) % 4 == 1
+                          ? 2
+                          : (index + 1) % 4 == 2
+                          ? 1
+                          : 0],
+                      color2: calenderColors2[(index + 1) % 4 == 0
+                          ? 3
+                          : (index + 1) % 4 == 1
+                          ? 2
+                          : (index + 1) % 4 == 2
+                          ? 1
+                          : 0]),
+              separatorBuilder: (context, index) =>
+                  Container(
+                    height: 15,
+                    color: Colors.transparent,
+                  ),
+              itemCount: events.length,
+            ),
           );
         }
        else if (events.isEmpty && state is GetEventsLoadingState) {

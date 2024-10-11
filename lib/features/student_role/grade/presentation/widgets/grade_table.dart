@@ -22,8 +22,6 @@ class _GradeTableState extends State<GradeTable> {
     return BlocConsumer<GradeCubit, GradeState>(
       listener: (context, state) {
         if (state is GetGradeSuccessState) {
-          showSnackBar(
-              context: context, message: '${state.gradeEntity.length}');
           gradeEntity = state.gradeEntity;
         }
       },

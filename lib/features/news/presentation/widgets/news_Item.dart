@@ -6,9 +6,10 @@ import 'package:universityhup/features/news/domain/entities/news_entity.dart';
 import 'news_header.dart';
 
 class NewsItem extends StatelessWidget {
-  const NewsItem({super.key, required this.newsEntity});
-  final NewsEntity newsEntity;
-
+  const NewsItem({super.key, required this.caption, required this.image, required this.isImage});
+  final String caption;
+  final String image;
+  final bool isImage;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +21,7 @@ class NewsItem extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  NewsHeader(newsEntity: newsEntity),
+                  const NewsHeader(),
                   const SizedBox(
                     height: 8,
                   ),
@@ -32,8 +33,8 @@ class NewsItem extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  NewsContent(newsEntity: newsEntity),
-                  NewsImage(newsEntity: newsEntity),
+                  NewsContent(caption: caption),
+                  NewsImage(image: image,isImage:isImage),
                 ],
               ),
             ),
@@ -50,10 +51,10 @@ class NewsItem extends StatelessWidget {
 class NewsContent extends StatelessWidget {
   const NewsContent({
     super.key,
-    required this.newsEntity,
+    required this.caption,
   });
 
-  final NewsEntity newsEntity;
+  final String caption;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class NewsContent extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 30.0),
                   child: Text(
-                    '${newsEntity.content}',
+                    caption,
                     // 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
                     //'Congratulations, you have completed your registration ! Lets start your learning journey next.',
                     maxLines: 4,
@@ -92,15 +93,17 @@ class NewsContent extends StatelessWidget {
 class NewsImage extends StatelessWidget {
   const NewsImage({
     super.key,
-    required this.newsEntity,
+    required this.image, required this.isImage,
   });
 
-  final NewsEntity newsEntity;
+  final String image;
+  final bool isImage;
+
 
   @override
   Widget build(BuildContext context) {
     return ConditionalBuilder(
-        condition: newsEntity.filePath != null|| newsEntity.filePath != '',
+        condition: isImage,
         builder: (context) => Padding(
           padding: const EdgeInsets.only(
               left: 0, right: 0.0, top: 5),
@@ -111,7 +114,7 @@ class NewsImage extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               color: Colors.blueGrey.withOpacity(.2),
               image: DecorationImage(
-                image: NetworkImage('${newsEntity.filePath}'),
+                image: AssetImage(image),
                 fit: BoxFit.cover,
                 onError: (exception, stackTrace) => const SizedBox(),
               ),
