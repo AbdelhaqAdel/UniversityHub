@@ -7,14 +7,14 @@ import '../../domain/entities/dashboard_entity.dart';
 
 
 abstract class DashboardLocalDataSource {
-  DashboardEntity? getDashboardInstructor();
+  DashboardEntity? getDashboardSTU();
 }
 
 class DashboardLocalDataSourceImpl extends DashboardLocalDataSource {
   @override
-  DashboardEntity? getDashboardInstructor() {
+  DashboardEntity? getDashboardSTU() {
     DashboardEntity? dashboardEntity ;
-    var box = Hive.box<DashboardEntity>(HiveConstants.kDashboardINSBox);
+    var box = Hive.box<DashboardEntity>(HiveConstants.kDashboardSTUBox);
     dashboardEntity = box.get('dashboardEntity');
     return dashboardEntity;
   }

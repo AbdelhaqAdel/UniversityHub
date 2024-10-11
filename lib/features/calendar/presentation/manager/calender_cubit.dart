@@ -45,9 +45,6 @@ void addEvent({
               historyMessage: 'New event added',
             );
           }
-          await getDayEvents().then((f){
-             Navigator.pop(context);
-          });
           emit(AddEventSuccessState());
         
       } catch (e) {

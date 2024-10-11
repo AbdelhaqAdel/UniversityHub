@@ -22,7 +22,6 @@ class _CalendarBodyState extends State<CalendarBody> {
   final GlobalKey<ScaffoldState>? scaffoldKey = GlobalKey();
   var eventBodyController = TextEditingController();
   var formKey = GlobalKey<FormState>();
-  List<CalendarEntity> events = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +32,9 @@ class _CalendarBodyState extends State<CalendarBody> {
       )..getDayEvents(),
       child: BlocConsumer<CalendarCubit, CalendarState>(
         listener: (context, state) {
-          if (state is GetEventsSuccessState) {
-            setState(() {
-              events = state.events;
-            });
-          }
-          if (state is AddEventSuccessState) {
-            CalendarCubit.get(context).getDayEvents(); // Refresh events list after adding
-          }
+          // if (state is AddEventSuccessState) {
+          //   CalendarCubit.get(context).getDayEvents(); // Refresh events list after adding
+          // }
         },
         builder: (context, state) {
           return Scaffold(
@@ -53,24 +47,7 @@ class _CalendarBodyState extends State<CalendarBody> {
                 child: Column(
                   children: [
                     CalendarTable(),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: ConditionalBuilder(
-                          condition: events.isNotEmpty,
-                          builder: (context) {
-                            return CalendarListView(events: events);
-                          },
-                          fallback: (context) {
-                            if (events.isEmpty && state is! GetEventsLoadingState) {
-                              return const Center(child: Text('No Event here..'));
-                            } else {
-                              return const Center(child: CircularProgressIndicator());
-                            }
-                          },
-                        ),
-                      ),
-                    ),
+                  const Expanded(child: CalendarListView()),
                     const SizedBox(height: 50),
                   ],
                 ),

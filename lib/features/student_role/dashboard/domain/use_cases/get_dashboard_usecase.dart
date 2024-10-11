@@ -35,13 +35,13 @@ class GetDashboardUseCase extends UseCase<
  ({
  List<DashboardTask> dashboardEntityTaskList,
  List<DashboardQuiz> dashboardEntityQuizList
- }) filterDashboardData(DashboardEntity dashboardEntityList) {
+ }) filterDashboardData(DashboardEntity? dashboardEntityList) {
   List<DashboardTask> dashboardEntityTaskList = [];
   List<DashboardQuiz> dashboardEntityQuizList = [];
-  for (var element in dashboardEntityList.tasks!) {
+  for (var element in dashboardEntityList?.tasks??[]) {
      dashboardEntityTaskList.add(element);
   }
-  for (var element in dashboardEntityList.quizzes!) {
+  for (var element in dashboardEntityList?.quizzes??[]) {
     dashboardEntityQuizList.add(element);
   }
   return (

@@ -41,12 +41,12 @@ class DashboardQuiz {
     required this.createdAt,
   });
   factory DashboardQuiz.fromJson(Map<String, dynamic> json) => DashboardQuiz(
-    title: json["title"],
-    startDate: json["startDate"],
-    endDate: json["endDate"],
-    grade: json["grade"],
-    createdAt: json["createdAt"],
-  );
+        title: json["title"],
+        startDate: json["startDate"],
+        endDate: json["endDate"],
+        grade: json["grade"],
+        createdAt: json["createdAt"],
+      );
 }
 
 @HiveType(typeId: 15)
@@ -74,10 +74,10 @@ class DashboardTask {
     required this.createdAt,
   });
   factory DashboardTask.fromJson(Map<String, dynamic> json) => DashboardTask(
-    title: json["title"],
-    startDate: json["startDate"],
-    endDate: json["endDate"],
-    grade: json["grade"],
-    createdAt: json["createdAt"],
-  );
+        title: json["title"],
+        startDate: json["startDate"],
+        endDate: json["endDate"],
+        grade: json["grade"],
+        createdAt: json["createdAt"],
+      );
 }

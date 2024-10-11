@@ -39,8 +39,7 @@ Future<void> hiveSetup() async {
   await Hive.openBox<DashboardInstructorEntity>(HiveConstants.kDashboardINSBox);
   await Hive.openBox(HiveConstants.kStuHistory);
   await Hive.openBox(HiveConstants.kInsHistory);
-
-  // await Hive.openBox<DashboardEntity>(HiveConstants.kDashboardSTUBox);
+  await Hive.openBox<DashboardEntity>(HiveConstants.kDashboardSTUBox);
 
 
   var startBoxData = Hive.box(HiveConstants.kStartBox);

@@ -37,6 +37,7 @@ class CustomFloatingAction extends StatelessWidget {
                child: BlocConsumer<CalendarCubit, CalendarState>(
                 listener: (context, state) {
                   if (state is AddEventSuccessState) {
+                    Navigator.pop(context);
                     CalendarCubit.get(context).getDayEvents();
                   }
                 },

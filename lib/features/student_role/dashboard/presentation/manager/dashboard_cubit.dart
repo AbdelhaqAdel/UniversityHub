@@ -20,6 +20,7 @@ class DashboardCubit extends Cubit<DashboardState> {
     emit(GetDashboardLoadingState());
     var result = await getDashboardUseCase.call();
     result.fold((failure) {
+      print(failure.message);
       emit(GetDashboardErrorState(failure.toString()));
     }, (right) {
       GetDashboardSuccessState.dashboardTask =
