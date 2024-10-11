@@ -17,7 +17,7 @@ class CoursesWidget extends StatelessWidget {
     return  Container(
         padding:const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: Colors.black,
               width: .5,

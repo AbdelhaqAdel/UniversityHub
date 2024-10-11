@@ -24,8 +24,6 @@ class _CompleteQuizInstructorListViewState
     return BlocConsumer<QuizInstructorCubit, QuizInstructorState>(
       listener: (context, state) {
         if (state is GetQuizInstructorSuccessState) {
-          showSnackBar(
-              context: context, message: 'GetQuizInstructorSuccessState');
         }
       },
       builder: (context, state) {

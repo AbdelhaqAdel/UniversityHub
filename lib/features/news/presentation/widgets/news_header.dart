@@ -5,10 +5,8 @@ import '../../domain/entities/news_entity.dart';
 class NewsHeader extends StatelessWidget {
   const NewsHeader({
     super.key,
-    required this.newsEntity,
   });
 
-  final NewsEntity newsEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +42,7 @@ class NewsHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '${newsEntity.userName}',
+                    'Admin',
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge
@@ -70,9 +68,8 @@ class NewsHeader extends StatelessWidget {
                 ],
               ),
               Text(
-                '${DateTime.parse(newsEntity.createdAt!).year}-${DateTime.parse(newsEntity.createdAt!).month}'
-                    '-${DateTime.parse(newsEntity.createdAt!).day} at '
-                    '${DateTime.parse(newsEntity.createdAt!).hour}:${DateTime.parse(newsEntity.createdAt!).minute}',
+                '2024 at 2:57',
+
                 // '${news?.createdAt}',
                 style: TextStyle(
                   fontWeight: FontWeight.w800,

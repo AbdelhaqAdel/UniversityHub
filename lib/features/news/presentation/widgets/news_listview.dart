@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/functions/custom_snack_bar.dart';
+import '../../../../core/functions/dashboard_data.dart';
 import '../../domain/entities/news_entity.dart';
 import '../manager/news_cubit.dart';
 import '../manager/news_state.dart';
@@ -21,7 +21,6 @@ class _PostListviewState extends State<PostListview> {
     return BlocConsumer<NewsCubit, NewsState>(
       listener: (context, state) {
         if (state is GetNewsSuccessState) {
-          showSnackBar(context: context, message: 'GetNewsSuccessState');
           newsEntity = state.newsEntity;
         }
       },
@@ -29,13 +28,17 @@ class _PostListviewState extends State<PostListview> {
         if (newsEntity.isNotEmpty) {
           return Expanded(
             child: ListView.separated(
-                itemBuilder: (context, index) => NewsItem(
-                      newsEntity: newsEntity[index],
+              padding: const EdgeInsets.only(bottom: 100,top: 30),
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) =>  NewsItem(
+                      caption:caption[index],
+                      image:image[index],
+                      isImage:isImage[index],
                     ),
                 separatorBuilder: (context, index) => const SizedBox(
                       height: 5,
                     ),
-                itemCount: newsEntity.length),
+                itemCount: 6),
           );
         } else {
           return const Expanded(

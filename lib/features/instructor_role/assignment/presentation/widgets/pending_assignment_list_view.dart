@@ -21,7 +21,6 @@ class _PendingAssignmentInstructorListViewState extends State<PendingAssignmentI
     return BlocConsumer<AssignmentInstructorCubit, AssignmentInstructorState>(
       listener: (context, state) {
         if (state is GetAssignmentInstructorSuccessState) {
-          showSnackBar(context: context, message: 'GetAssignmentInstructorSuccessState');
         }
       },
       builder: (context, state) {

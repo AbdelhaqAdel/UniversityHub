@@ -1,6 +1,35 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+const List<String> caption=[
+  'Congratulations, you have completed your registration ! Lets start your learning journey next.',
+  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.'
+      'Congratulations, you have completed your registration ! Lets start your learning journey next.',
+  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.'
+      'Congratulations, you have completed your registration ! Lets start your learning journey next.',
+  'Congratulations, you have completed your registration ! Lets start your learning journey next.',
+  'Congratulations, you have completed your registration ! Lets start your learning journey next.',
+  'Congratulations, you have completed your registration ! Lets start your learning journey next.',
+];
+const List<String> image=[
+  'assets/images/post/6.png',
+  'assets/images/post/11.png',
+  'assets/images/post/1.png',
+  'assets/images/g7.png',
+  'assets/images/post/7.png',
+  'assets/images/a44.png',
 
+
+];
+const List<bool> isImage=[
+  true,
+  false,
+  true,
+  true,
+  false,
+  true,
+
+
+];
 final List<Widget> newsList = [
   Padding(
     padding: const EdgeInsets.all(10.0),

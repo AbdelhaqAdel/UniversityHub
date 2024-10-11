@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/functions/store_to_history.dart';
 import 'package:universityhup/features/instructor_role/quizzes/presentation/manager/quiz_state.dart';
-import '../../../../../core/constants/constant.dart';
 import '../../../../../core/functions/date_time_picker.dart';
 import '../../data/models/add_quiz_input.dart';
 import '../../domain/use_cases/add_quiz_usecase.dart';
@@ -23,7 +22,10 @@ class QuizInstructorCubit extends Cubit<QuizInstructorState> {
   final AddQuizUseCase addQuizUseCase;
 
   void getQuizInstructor() async {
+    GetQuizInstructorSuccessState.completedQuizInstructorEntity = [];
+    GetQuizInstructorSuccessState.pendingQuizInstructorEntity = [];
     emit(GetQuizInstructorLoadingState());
+
     var result = await getQuizInstructorUseCase.call();
     result.fold((failure) {
       emit(GetQuizInstructorErrorState(failure.toString()));
@@ -37,8 +39,6 @@ class QuizInstructorCubit extends Cubit<QuizInstructorState> {
     });
   }
 
-
-
   void addQuiz() async {
     emit(AddQuizLoadingState());
     Map<String, dynamic> data = fetchQuizQuestion();
@@ -47,15 +47,12 @@ class QuizInstructorCubit extends Cubit<QuizInstructorState> {
     result.fold((failure) {
       emit(AddQuizErrorState(failure.toString()));
     }, (right) {
-         StoryServices.insStoreHistoryToHive(materialName: 'Quiz title: Quiz1', 
-                 historyMessage: 'New quiz added');
-         
+      StoryServices.insStoreHistoryToHive(
+          materialName: 'Quiz title: Quiz1', historyMessage: 'New quiz added');
       emit(AddQuizSuccessState());
-      addQuizInputModel=AddQuizInputModel();
+      addQuizInputModel = AddQuizInputModel();
     });
   }
-
-
 
   void deleteQuiz({required String quizId}) async {
     emit(DeleteQuizLoadingState());

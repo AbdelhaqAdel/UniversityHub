@@ -27,7 +27,6 @@ class _UserInstructorBodyState extends State<UserInstructorBody> {
     return BlocConsumer<UserInstructorCubit, UserInstructorState>(
       listener: (context, state) {
         if(state is GetUserInstructorSuccessState){
-          showSnackBar(context: context, message: 'GetUserInstructorSuccessState');
           userEntity=state.userEntity;
         }
       },

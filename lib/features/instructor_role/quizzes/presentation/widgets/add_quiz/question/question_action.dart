@@ -109,7 +109,6 @@ class QuestionAction extends StatelessWidget {
             yes: () {
               GoRouter.of(context).pop();
               cubit.addQuiz();
-
             });
 
         break;
