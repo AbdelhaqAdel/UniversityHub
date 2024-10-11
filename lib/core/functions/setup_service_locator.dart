@@ -43,6 +43,7 @@ import '../../features/news/domain/repositories/news_repo.dart';
 import '../../features/student_role/assignment/data/data_sources/assignment_remote_data_source.dart';
 import '../../features/student_role/assignment/data/repositories/assignment_repo_impl.dart';
 import '../../features/student_role/assignment/domain/repositories/assignment_repo.dart';
+import '../../features/student_role/dashboard/data/data_sources/dashboard_local_data_source.dart';
 import '../../features/student_role/dashboard/data/data_sources/dashboard_remote_data_source.dart';
 import '../../features/student_role/dashboard/data/repositories/dashboard_repo_impl.dart';
 import '../../features/student_role/dashboard/domain/repositories/dashboard_repo.dart';
@@ -172,7 +173,7 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<DashboardRepo>(
     DashboardRepoImpl(
-       dashboardRemoteDataSource: DashboardRemoteDataSourceImpl(),
+       dashboardRemoteDataSource: DashboardRemoteDataSourceImpl(), dashboardLocalDataSource: DashboardLocalDataSourceImpl(),
     ) ,
   );
   getIt.registerSingleton<DashboardInstructorRepo>(

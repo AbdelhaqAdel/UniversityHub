@@ -9,6 +9,7 @@ class HiveService {
     });
   }
 
+
   static void save<entityType>(String key, value, String boxName) {
     var box = Hive.box<entityType>(boxName);
     box.put(key, value);
