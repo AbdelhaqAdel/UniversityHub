@@ -6,5 +6,5 @@ import '../../../../../core/errors/failure.dart';
 
 
 abstract class DashboardRepo{
-  Future<Either<Failure,DashboardEntity>>  getDashboard();
+  Future<Either<Failure,DashboardEntity?>>  getDashboard();
 }
