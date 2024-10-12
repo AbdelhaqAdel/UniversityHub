@@ -7,6 +7,7 @@ import 'package:universityhup/features/calendar/domain/use_cases/add_to_calender
 import 'package:universityhup/features/calendar/domain/use_cases/get_calender_use_case.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_cubit.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
+import 'package:universityhup/features/calendar/presentation/widgets/calendar_builder.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/calendar_listview.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/calendar_table.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/floating_action_button.dart';
@@ -47,7 +48,7 @@ class _CalendarBodyState extends State<CalendarBody> {
                 child: Column(
                   children: [
                     CalendarTable(),
-                  const Expanded(child: CalendarListView()),
+                  const Expanded(child: CalendarBuilder()),
                     const SizedBox(height: 50),
                   ],
                 ),

@@ -64,7 +64,9 @@ void addEvent({
       startDate??DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day}THH:mm:ss.SSS').format(ChangeCalenderDayState.thisFocusDay), 
       endDate?? DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day + 1}THH:mm:ss.SSS').format(ChangeCalenderDayState.thisFocusDay));
       events.fold((error)=>emit(GetEventsErrorState(error.toString())),
-       (allEvents)=>emit(GetEventsSuccessState(events: allEvents)));
+       (allEvents){
+        print('events--------${allEvents.length}');
+        emit(GetEventsSuccessState(events: allEvents));});
         }
 
   String? startDate;
