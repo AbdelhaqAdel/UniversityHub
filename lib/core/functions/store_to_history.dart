@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:universityhup/core/constants/constant.dart';
 import 'package:universityhup/core/constants/hive_constants.dart';
 import 'package:universityhup/features/history/data/models/history_model.dart';
 
@@ -45,7 +46,18 @@ class StoryServices{
     insHistoryBox.put(HiveConstants.kInsHistory, insHistoryList);
   }
 
-
-
+static void addHistoryToUserHive({required String event}) async{
+     if (role == "Student") {
+            stuStoreHistoryToHive(
+              materialName: 'Event title: $event',
+              historyMessage: 'New event added',
+            );
+          } else {
+            insStoreHistoryToHive(
+              materialName: 'Event title: $event',
+              historyMessage: 'New event added',
+            );
+          }
+}
 
 }
