@@ -86,10 +86,7 @@ class CustomFloatingAction extends StatelessWidget {
                                                     onTap: () async{
                                                       if (formKey.currentState!.validate()) {
                                                         CalendarCubit.get(context).addEvent(
-                                                          start: CalendarCubit.get(context).startDate!,
-                                                          end: CalendarCubit.get(context).endDate!,
-                                                          event: eventBodyController.text,
-                                                          context: context
+                                                          eventBody:  eventBodyController.text,
                                                         );
                                                       }
                                                     },

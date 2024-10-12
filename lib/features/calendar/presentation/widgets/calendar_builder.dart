@@ -11,9 +11,9 @@ class CalendarBuilder extends StatelessWidget {
     return BlocBuilder<CalendarCubit,CalendarState>(
       builder:(context,state){
         if(state is GetEventsSuccessState){
-          // if(state.events.isEmpty){
-          //   return const Center(child: Text('No Events Found'),);
-          // }
+          if(state.events.isEmpty){
+            return const Center(child: Text('No Events Found'),);
+          }
           return CalendarListView(events: state.events,);
         }
         else if(state is GetEventsErrorState){
