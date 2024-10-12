@@ -18,6 +18,10 @@ ThemeData appTheme = ThemeData(
     drawerTheme: const DrawerThemeData(
       scrimColor: Colors.transparent,
     ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: Colors.lightBlue,
+
+    ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 25,

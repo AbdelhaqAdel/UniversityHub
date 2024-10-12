@@ -16,7 +16,7 @@ class HistoryIconButton extends StatelessWidget {
             dialogWidget: RecentActivityDialog(cubitContext: context),
           );
         },
-        icon: const FaIcon(FontAwesomeIcons.opencart),
+        icon: const FaIcon(FontAwesomeIcons.clockRotateLeft),
       ),
     );
   }

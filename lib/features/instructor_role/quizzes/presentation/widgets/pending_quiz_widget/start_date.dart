@@ -27,12 +27,12 @@ class StartDate extends StatelessWidget {
           children: [
             const FaIcon(FontAwesomeIcons.clock),
             const SizedBox(
-              width: 12,
+              width: 7,
             ),
             Text(
               'Start',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 17,
                 color: Colors.black.withOpacity(.7),
                 fontWeight: FontWeight.w700,
               ),
@@ -45,18 +45,17 @@ class StartDate extends StatelessWidget {
               ),
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
-                child: Row(
-                  children: [
-                    Text(
-                     '${startData!.hour} : ',
-                      style: Styles.textStyle16black
-                    ),
-                     Text(
-                      '${startData!.minute}',
-                      style:Styles.textStyle16black
-                    ),
-                  ],
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width* .17,
+
+                  child: Text(
+                   '${startData!.hour} : ${startData!.minute}',
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                    style: Styles.textStyle16black
+                  ),
                 ),
               ),
             ),
@@ -70,14 +69,17 @@ class StartDate extends StatelessWidget {
               ),
               child:  Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
-                child: Row(
-                  children: [
-                    Text(
-                      '${startData!.day} / ${startData!.month}',
-                      style:Styles.textStyle16black
-                    ),
-                  ],
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width* .17,
+                  child: Text(
+                    '${startData!.day} / ${startData!.month}',
+                      textAlign: TextAlign.center,
+
+                      maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style:Styles.textStyle16black
+                  ),
                 ),
               ),
             ),

@@ -44,6 +44,8 @@ Future<void> hiveSetup() async {
 
   var startBoxData = Hive.box(HiveConstants.kStartBox);
   isOnboarding = startBoxData.get('isOnboarding') ?? false;
+  isLogin=startBoxData.get('isLogin') ?? false;
+  token=startBoxData.get('token');
 
   var box = Hive.box<LoginEntity>(HiveConstants.kLoginEntityBox);
   loginEntity = box.get('loginEntity');

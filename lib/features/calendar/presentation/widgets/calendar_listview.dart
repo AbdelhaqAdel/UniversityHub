@@ -46,7 +46,4 @@ class CalendarListView extends StatelessWidget {
                   color: Colors.transparent,
                 ),
             itemCount: events.length,
-          );
-     
-  }
-}
+          );  }}  

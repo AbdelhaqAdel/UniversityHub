@@ -16,7 +16,6 @@ class GradeBody extends StatelessWidget {
             children: [
               const SizedBox(height: 30,),
               DefaultAppBar(
-                  text: "currentCourseName",
                   context:context),
               const SizedBox(height: 30,),
               const GradeTable(),

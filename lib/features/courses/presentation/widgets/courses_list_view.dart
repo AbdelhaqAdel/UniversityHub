@@ -11,17 +11,20 @@ class CoursesListView extends StatelessWidget {
   final List<CoursesModel> courses;
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: courses.length,
-      itemBuilder: (context, index) => InkWell(
-          onTap: () {
-            currentCycleId=courses[index].cycleId;
-            currentCycleName=courses[index].name;
-            GoRouter.of(context).push(AppRouter.kAboutCourse);
-          },
-          child: CoursesWidget(courses: courses[index])),
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView.separated(
+        itemCount: courses.length,
+        itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              currentCycleId=courses[index].cycleId;
+              currentCycleName=courses[index].name;
+              GoRouter.of(context).push(AppRouter.kAboutCourse);
+            },
+            child: CoursesWidget(courses: courses[index])),
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 10,
+        ),
       ),
     );
   }

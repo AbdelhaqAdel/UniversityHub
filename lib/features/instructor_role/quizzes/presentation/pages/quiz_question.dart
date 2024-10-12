@@ -24,10 +24,7 @@ class _QuizQuestion extends State<QuizQuestion> {
       value: widget.cubit,
       child: BlocConsumer<QuizInstructorCubit, QuizInstructorState>(
       listener: (context, state) {
-        if(state is AddQuizSuccessState){
-          showSnackBar(context: context, message: 'quiz Created');
-          QuizInstructorCubit.get(context).getQuizInstructor();
-        }
+
       },
       builder: (context, state) {
         QuizInstructorCubit cubit = QuizInstructorCubit.get(context);

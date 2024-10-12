@@ -11,7 +11,7 @@ class BlurLayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 120, sigmaY: 120),
+        filter: ImageFilter.blur(sigmaX: 300, sigmaY: 300),
         child: const SizedBox(),
       ),
     );

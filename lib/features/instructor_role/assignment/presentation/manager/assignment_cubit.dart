@@ -20,7 +20,7 @@ part 'assignment_state.dart';
 class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
   AssignmentInstructorCubit(
       {required this.getStudentSubmitAssignmentUsecase,
-        required this.getAssignmentInstructorUseCase,
+      required this.getAssignmentInstructorUseCase,
       required this.updateAssignmentInstructorUseCase,
       required this.setGradeAssignmentUseCase,
       required this.addAssignmentUseCase,
@@ -36,6 +36,8 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
   final GetStudentSubmitAssignmentUsecase getStudentSubmitAssignmentUsecase;
 
   void getAssignmentInstructor() async {
+    GetAssignmentInstructorSuccessState.pendingAssignmentInstructorEntity = [];
+    GetAssignmentInstructorSuccessState.pendingAssignmentInstructorEntity = [];
     emit(GetAssignmentInstructorLoadingState());
     var result = await getAssignmentInstructorUseCase.call();
     result.fold((failure) {
@@ -50,7 +52,8 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     });
   }
 
-  void addAssignment({required AddAssignmentInputModel addAssignmentInputModel}) async {
+  void addAssignment(
+      {required AddAssignmentInputModel addAssignmentInputModel}) async {
     emit(AddAssignmentLoadingState());
     var result = await addAssignmentUseCase.call(addAssignmentInputModel);
     result.fold((failure) {
@@ -60,9 +63,12 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     });
   }
 
-  void updateAssignment({required UpdateAssignmentInstructorInputModel updateAssignmentInstructorInputModel}) async {
+  void updateAssignment(
+      {required UpdateAssignmentInstructorInputModel
+          updateAssignmentInstructorInputModel}) async {
     emit(UpdateAssignmentLoadingState());
-    var result = await updateAssignmentInstructorUseCase.call(updateAssignmentInstructorInputModel);
+    var result = await updateAssignmentInstructorUseCase
+        .call(updateAssignmentInstructorInputModel);
     result.fold((failure) {
       emit(UpdateAssignmentErrorState(failure.toString()));
     }, (right) {
@@ -82,9 +88,12 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     });
   }
 
-  void setGradeAssignment({required SetGradeAssignmentInputModel setGradeAssignmentInputModel}) async {
+  void setGradeAssignment(
+      {required SetGradeAssignmentInputModel
+          setGradeAssignmentInputModel}) async {
     emit(SetGradeAssignmentLoadingState());
-    var result = await setGradeAssignmentUseCase.call(setGradeAssignmentInputModel);
+    var result =
+        await setGradeAssignmentUseCase.call(setGradeAssignmentInputModel);
     result.fold((failure) {
       emit(SetGradeAssignmentErrorState(failure.toString()));
     }, (right) {
@@ -98,14 +107,15 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     result.fold((failure) {
       emit(GetStudentSubmitAssignmentErrorState(failure.toString()));
     }, (right) {
-      emit(GetStudentSubmitAssignmentSuccessState(studentTaskUploadedEntity: right));
+      emit(GetStudentSubmitAssignmentSuccessState(
+          studentTaskUploadedEntity: right));
     });
   }
 
   Future<String?> pickDateTime({required context}) async {
-   String? dateTime= await dataTimePicker(context: context);
-   emit(PickDateTime());
-   return dateTime;
+    String? dateTime = await dataTimePicker(context: context);
+    emit(PickDateTime());
+    return dateTime;
   }
 
   List<File> file = [];
@@ -113,13 +123,10 @@ class AssignmentInstructorCubit extends Cubit<AssignmentInstructorState> {
     emit(PickFileLoading());
 
     await pickFile().then((onValue) {
-      file=onValue;
+      file = onValue;
       emit(PickFileSuccess());
-
     }).catchError((onError) {
       emit(PickFileError());
-
     });
   }
 }
-

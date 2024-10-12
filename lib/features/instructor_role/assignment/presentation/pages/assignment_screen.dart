@@ -41,9 +41,18 @@ class AssignmentInstructorScreen extends StatelessWidget {
             assignmentRepo: getIt.get<AssignmentInstructorRepo>(),
           ))
         ..getAssignmentInstructor(),
-      child: const Scaffold(
-        floatingActionButton:  _AddTaskActionButton(),
-        body: AssignmentInstructorBody(),
+      child: BlocConsumer<AssignmentInstructorCubit, AssignmentInstructorState>(
+        listener: (context, state) {
+          if (state is AddAssignmentSuccessState) {
+            AssignmentInstructorCubit.get(context).getAssignmentInstructor();
+          }
+        },
+        builder: (context, state) {
+          return const Scaffold(
+            floatingActionButton: _AddTaskActionButton(),
+            body: AssignmentInstructorBody(),
+          );
+        },
       ),
     );
   }
@@ -55,14 +64,17 @@ class _AddTaskActionButton extends StatelessWidget {
   @override
   Widget build(context) {
     return FloatingActionButton(
-        onPressed: () {
-      GoRouter.of(context).push(AppRouter.kAddAssignmentScreen, extra: {
-        'cubit': AssignmentInstructorCubit.get(context),
-      });
-    },
-        backgroundColor: Colors.blue,
+      onPressed: () {
+        GoRouter.of(context).push(AppRouter.kAddAssignmentScreen, extra: {
+          'cubit': AssignmentInstructorCubit.get(context),
+        });
+      },
+      backgroundColor: Colors.blue,
       shape: const CircleBorder(),
-      child: const FaIcon(FontAwesomeIcons.plus,color: Colors.white,),
+      child: const FaIcon(
+        FontAwesomeIcons.plus,
+        color: Colors.white,
+      ),
     );
   }
 }

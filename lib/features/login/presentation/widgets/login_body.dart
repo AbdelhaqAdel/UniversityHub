@@ -5,7 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/hive_constants.dart';
 import '../../../../core/functions/custom_snack_bar.dart';
+import '../../../../core/functions/hive_function.dart';
 import '../../../../core/style/colors.dart';
 import '../../../../core/widgets/back_icon.dart';
 import '../../../../core/widgets/background.dart';
@@ -54,19 +56,7 @@ class _LoginBodyState extends State<LoginBody> {
                       children: [
 
                         const BackIcon(),
-                        Container(
-                          alignment: AlignmentDirectional.center,
-                          child: CircleAvatar(
-                            radius: 130,
-                            backgroundColor: Colors.black.withOpacity(.0),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Image.asset(
-                                'assets/images/login.png',
-                              ),
-                            ),
-                          ),
-                        ),
+                        const _Image(),
                         const SizedBox(
                           height: 25,
                         ),
@@ -83,10 +73,6 @@ class _LoginBodyState extends State<LoginBody> {
                                 .textTheme
                                 .bodySmall
                                 ?.copyWith(fontSize: 20)
-                          // TextStyle(
-                          //   fontSize:25,
-                          //   color: Colors.black87,
-                          // ),
                         ),
                         const Spacer(),
                         CustomTextFormField(
@@ -194,7 +180,7 @@ class _LoginBodyState extends State<LoginBody> {
                           height: 15,
                         ),
                         state is LoginLoadingState
-                            ? const CircularProgressIndicator()
+                            ? const SizedBox(height:70,child: Center(child: CircularProgressIndicator()))
                             : CustomButton(
                           onTap: () {
                             _clickOnLogin(cubit);
@@ -229,18 +215,36 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   void _loginSuccess(LoginSuccessState state, context) async {
-    showSnackBar(message: 'Login Successful', context: context);
     loginEntity =LoginSuccessState.loginEntity;
     token=LoginSuccessState.loginEntity?.token;
     role=LoginSuccessState.loginEntity?.userRole;
-    GoRouter.of(context).push(AppRouter.kLayout);
+    GoRouter.of(context).go(AppRouter.kLayout);
+    HiveService.save('isLogin', true, HiveConstants.kStartBox);
+    HiveService.save('token', token, HiveConstants.kStartBox);
+    isLogin=true;
+  }
+}
 
+class _Image extends StatelessWidget {
+  const _Image({
+    super.key,
+  });
 
-
-    // save('isLogin', true, kStartBox);
-    // save('uId', LoginSuccessState.loginEntity?.uid, kStartBox);
-    // save('isSkip', false, kStartBox);
-    // save('id', LoginSuccessState.loginEntity?.id, kStartBox);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: AlignmentDirectional.center,
+      child: CircleAvatar(
+        radius: 130,
+        backgroundColor: Colors.black.withOpacity(.0),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Image.asset(
+            'assets/images/login.png',
+          ),
+        ),
+      ),
+    );
   }
 }
 
