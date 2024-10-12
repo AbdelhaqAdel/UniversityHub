@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:universityhup/core/functions/custom_snack_bar.dart';
 import 'package:universityhup/core/utils/app_router.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/manager/cubit/quiz_cubit.dart';
 import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quiz_custom_widget.dart';
@@ -21,7 +22,11 @@ class QuizzesListView extends StatelessWidget {
         onTap: (){
       GetAllQuizDataSuccessState.setQuizId(id: quiz[index].id);
       AppRouter.context1=context1;
-       GoRouter.of(context1).push(AppRouter.kQuizzesQues,extra: quiz[index].id,);
+      if(quiz[index].status!='Solved'){
+         GoRouter.of(context1).push(AppRouter.kQuizzesQues,extra: quiz[index].id,);
+      }else{
+        showSnackBar(context: context, message: 'Quiz Solved');
+      }
         },
         child: QuizWidget(quiz:quiz[index],index: index,)),
       separatorBuilder: (context,index)=>const SizedBox(height: 25,),

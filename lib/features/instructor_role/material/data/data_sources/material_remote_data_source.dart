@@ -61,28 +61,20 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
   Future<void> updateMaterial({
     required String url,
   }) async {
-    print(url);
     await DioHelper.put(
       url:'Instructor/UpdateLecture$url',
       token: token
-    ).then((v){print('updated successfully');
-    }).catchError((e){
-      print('error in update material ${e.toString()}');
-    });
+    );
   }
 
    @override
   Future<void> deleteMaterial({
     required String url,
   }) async {
-    print(url);
     await DioHelper.deleteData(
       url:'Instructor/DeleteLecture$url',
       token: token
-    ).then((v){print('deleted successfully');
-    }).catchError((e){
-      print('error in delete material ${e.toString()}');
-    });
+    );
   }
   
 
@@ -103,13 +95,8 @@ class InsMaterialRemoteDataSourceImpl extends InsMaterialRemoteDataSource{
             "type": type,
             "cycleId": currentCycleId
           }
-      ).then((v){print('added successfully');
-    }).catchError((e){
-      print('error in add material ${e.toString()}');
-    });
-
+      );
       }else{
-        print(';;;;;;;;;;;;;;;;;;;;;;;;;;;;;$file$url');
         await DioHelper.uploadFile(
           url: url,
          file:file??File(''),

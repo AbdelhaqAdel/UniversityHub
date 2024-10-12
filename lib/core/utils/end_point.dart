@@ -17,7 +17,7 @@ abstract class EndPoint{
   static String allMaterialFiles= 'Students/Getfilesoflecture?lectureId=';
     static String insAllMaterialFiles= 'Instructor/Getfilesoflecture?lectureId=';
 
-  static String getCalendarEvents='Calendar/GetAllCalendar';
+  static String getCalendarEvents='Calendar/GetByStartAndEnd?start=';
   static String addToCalendar='Calendar';
 
   static const String STU_INFO='Students/GetStudentInfo';

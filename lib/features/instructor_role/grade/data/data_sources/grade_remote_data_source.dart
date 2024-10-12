@@ -34,6 +34,7 @@ class InsGradeRemoteDataSourceImpl extends InsGradeRemoteDataSource {
     for (var element in json) {
       gradeEntityList.add(InsGradeModel.fromJson(element));
     }
+  
     return gradeEntityList;
   }
   

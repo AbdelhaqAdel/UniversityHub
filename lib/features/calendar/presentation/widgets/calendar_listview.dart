@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/event_item.dart';
 
-import '../manager/calender_cubit.dart';
-import '../manager/calender_state.dart';
-
-class CalendarListView extends StatefulWidget {
-  const CalendarListView({super.key,});
-
-
-  @override
-  State<CalendarListView> createState() => _CalendarListViewState();
-}
-
-class _CalendarListViewState extends State<CalendarListView> {
+class CalendarListView extends StatelessWidget {
+  const CalendarListView({super.key, required this.events,});
+   final List<CalendarEntity> events;
   @override
   Widget build(BuildContext context) {
     List calenderColors1 = [
@@ -29,20 +19,10 @@ class _CalendarListViewState extends State<CalendarListView> {
       Colors.green,
       Colors.deepPurple,
     ];
-    List<CalendarEntity> events=[];
 
-    return BlocConsumer<CalendarCubit, CalendarState>(
-      listener: (context, state) {
-        // if (state is GetEventsSuccessState) {
-        //   events = state.events;
-        // }
-        },
-      builder: (context, state) {
-        if (state is GetEventsSuccessState) {
-          events = state.events;
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15.0),
-            child: ListView.separated(
+     return Padding(
+       padding: const EdgeInsets.all(8.0),
+       child: ListView.separated(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) =>
@@ -69,14 +49,4 @@ class _CalendarListViewState extends State<CalendarListView> {
                   ),
               itemCount: events.length,
             ),
-          );
-        }
-       else if (events.isEmpty && state is GetEventsLoadingState) {
-          return const Center(child: CircularProgressIndicator());
-        } else {
-          return const Center(child: Text('No Event here..'));
-        }
-      },
-    );
-  }
-}
+     );  }}  

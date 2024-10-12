@@ -41,7 +41,8 @@ class QuizDataRemoteDataSourceImpl extends QuizDataRemoteDataSource{
       'quizId': quizId,
       'answers': submitQuizAnswers,
     }).then((value) {
-        quizGrade = value.data['totalGrade'];
+        quizGrade = value.data['totalStudentGrade'];
+        print('----------Stu grade$quizGrade');
     });
     return Future.value(quizGrade);
   }

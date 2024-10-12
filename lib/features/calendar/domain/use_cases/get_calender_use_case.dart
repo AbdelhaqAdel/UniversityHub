@@ -7,8 +7,7 @@ class GetCalendarDayEventsUseCase {
   final CalendarRepository calendarRepo;
 
   GetCalendarDayEventsUseCase(this.calendarRepo);
-
-  Future<Either<Failure, List<CalendarEntity>>> call([String? startDate,String? endDate]) {
+   Future<Either<Failure, List<CalendarEntity>>> call([String? startDate,String? endDate]) {
      return calendarRepo.getCalendarDayEvents(startDate!, endDate!);
 
   }

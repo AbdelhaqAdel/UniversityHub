@@ -10,7 +10,11 @@ class QuizResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<QuizCubit,QuizState>(
-      listener: (context,state){},
+      listener: (context,state){
+        if(state is SubmitQuizSuccessState){
+          QuizCubit.get(context).fetchAllQuizzes();
+        }
+      },
       builder: (context,state){
         return Scaffold(
           body: SafeArea(

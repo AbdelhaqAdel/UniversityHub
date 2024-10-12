@@ -48,7 +48,6 @@ class QuizCubit extends Cubit<QuizState> {
       SubmitQuizSuccessState.setQuizGrade(grade: grade);
        StoryServices.stuStoreHistoryToHive(materialName: 'Quiz title: Quiz1', 
                  historyMessage: 'New quiz Submitted');
-              
       emit(SubmitQuizSuccessState());},
      );
 }

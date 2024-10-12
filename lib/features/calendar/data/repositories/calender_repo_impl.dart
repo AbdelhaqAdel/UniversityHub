@@ -26,9 +26,9 @@ class CalendarRepositoryImpl implements CalendarRepository {
   }
 
     @override
-  Future<Either<Failure, String>> addEventToCalendar({required String startDate, required String endDate, required String eventBody}) async {
+  Future<Either<Failure, String>> addEventToCalendar({required calendarEntity}) async {
     try{
-     final response= await calenderRemoteDataSourceImpl.addEventToCalendar( startDate: startDate, endDate: endDate, eventBody: eventBody);
+     final response= await calenderRemoteDataSourceImpl.addEventToCalendar(calendarEntity: calendarEntity );
       return right(response);
   }catch(error){
        if(error is DioException){

@@ -6,6 +6,6 @@ abstract class CalendarRepository {
 
   Future<Either<Failure, List<CalendarEntity>>> getCalendarDayEvents(String startDate, String endDate);
 
-  Future<Either<Failure, String>> addEventToCalendar({required String startDate, required String endDate, required String eventBody});
+  Future<Either<Failure, String>> addEventToCalendar({required CalendarEntity calendarEntity});
 
 }

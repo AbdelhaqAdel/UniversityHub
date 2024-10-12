@@ -1,13 +1,11 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:universityhup/core/functions/setup_service_locator.dart';
-import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 import 'package:universityhup/features/calendar/domain/use_cases/add_to_calender_use_case.dart';
 import 'package:universityhup/features/calendar/domain/use_cases/get_calender_use_case.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_cubit.dart';
 import 'package:universityhup/features/calendar/presentation/manager/calender_state.dart';
-import 'package:universityhup/features/calendar/presentation/widgets/calendar_listview.dart';
+import 'package:universityhup/features/calendar/presentation/widgets/calendar_builder.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/calendar_table.dart';
 import 'package:universityhup/features/calendar/presentation/widgets/floating_action_button.dart';
 
@@ -31,11 +29,7 @@ class _CalendarBodyState extends State<CalendarBody> {
         addEventUseCase: getIt.get<AddEventToCalendarUseCase>(),
       )..getDayEvents(),
       child: BlocConsumer<CalendarCubit, CalendarState>(
-        listener: (context, state) {
-          // if (state is AddEventSuccessState) {
-          //   CalendarCubit.get(context).getDayEvents(); // Refresh events list after adding
-          // }
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
             key: scaffoldKey,
@@ -47,8 +41,8 @@ class _CalendarBodyState extends State<CalendarBody> {
                 child: Column(
                   children: [
                     CalendarTable(),
-                  const Expanded(child: CalendarListView()),
-                    const SizedBox(height: 50),
+                    const Expanded(child: CalendarBuilder()),
+                     SizedBox(height: MediaQuery.of(context).size.height / 15),
                   ],
                 ),
               ),
