@@ -6,7 +6,7 @@ import 'package:universityhup/features/calendar/data/models/calender_model.dart'
 import 'package:universityhup/features/calendar/domain/entities/calender_entity.dart';
 
 abstract class CalenderRemoteDataSource {
-   Future<String> addEventToCalendar({required String startDate, required String endDate, required String eventBody});
+   Future<String> addEventToCalendar({required CalendarEntity calendarEntity});
     Future<List<CalendarEntity>> getCalendarDayEvents(String startDate, String endDate);
 }  
 
@@ -16,7 +16,7 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
   @override
   Future<List<CalendarEntity>> getCalendarDayEvents(String startDate, String endDate) async {
     await DioHelper.get(
-      url: 'Calendar/GetByStartAndEnd?start=$startDate&end=$endDate',
+      url: '${EndPoint.getCalendarEvents}$startDate&end=$endDate',
       token: token,
     ).then((value){
       fillCalenderList(value);
@@ -24,21 +24,26 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
     return dayEvents;
   }
    void fillCalenderList(Response<dynamic> list) {
-  dayEvents=[];
+   dayEvents=[];
      for (var element in list.data) {
      dayEvents.add(CalenderModel.fromJson(element));
     }
-  }
+ }
 
-    @override
-  Future<String> addEventToCalendar({required String startDate, required String endDate, required String eventBody}) async {
-     await DioHelper.post(token: token, url: EndPoint.addToCalendar,data: {
-      'start': startDate.toString(),
-      'end':  endDate.toString(),
-      'body': eventBody,
-    }).then((value) {
-      return value.data;
-    });
-    return '';
-  }
+@override
+Future<String> addEventToCalendar({required CalendarEntity calendarEntity}) async {
+  final CalenderModel calenderModel = CalenderModel(
+    startDate: calendarEntity.startDate.toString(),
+    endDate: calendarEntity.endDate.toString(),
+    eventBody: calendarEntity.eventBody,
+  );
+  
+  final response = await DioHelper.post(
+    token: token,
+    url: EndPoint.addToCalendar,
+    data:calenderModel.toJson(),
+
+  );
+  return response.data;
+}
 }

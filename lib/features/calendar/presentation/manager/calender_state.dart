@@ -15,7 +15,7 @@ class AddEventErrorState extends CalendarState {
 
 class GetEventsLoadingState extends CalendarState {}
 class GetEventsSuccessState extends CalendarState {
-  final List<CalendarEntity> events;
+   List<CalendarEntity> events=[];
   GetEventsSuccessState({required this.events});
 }
 class GetEventsErrorState extends CalendarState {

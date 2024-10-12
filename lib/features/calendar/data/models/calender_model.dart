@@ -17,10 +17,10 @@ class CalenderModel extends CalendarEntity {
     );
   }
 
-  Map<String, dynamic> toJson() {
+   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['startDate'] = startDate;
-    data['endDate'] = endDate;
+    data['start'] = startDate;
+    data['end'] = endDate;
     data['body'] = eventBody;
     return data;
   }
