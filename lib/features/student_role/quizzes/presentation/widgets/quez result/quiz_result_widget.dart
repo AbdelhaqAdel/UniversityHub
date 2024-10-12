@@ -29,9 +29,9 @@ class QuizResultWidget extends StatelessWidget {
                       children:[ Image.asset(
                              'assets/images/check1.png',
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 25.0,bottom: 20),
-                        child: Text('$quizGrade',style: const TextStyle(
+                      const Padding(
+                        padding: EdgeInsets.only(right: 25.0,bottom: 20),
+                        child: Text('3',style: TextStyle(
                           color: Colors.blue,
                           fontSize: 50
                         ),),
