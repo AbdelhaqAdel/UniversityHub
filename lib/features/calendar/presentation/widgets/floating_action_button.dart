@@ -36,9 +36,6 @@ class CustomFloatingAction extends StatelessWidget {
               value: BlocProvider.of<CalendarCubit>(context),
                child: BlocConsumer<CalendarCubit, CalendarState>(
                 listener: (context, state) async {
-                  // if (state is AddEventSuccessState) {
-                  //   Navigator.pop(context);
-                  // }
                 },
                 builder: (context, state) {
                   return AlertDialog(
@@ -87,7 +84,6 @@ class CustomFloatingAction extends StatelessWidget {
                                                         CalendarCubit.get(context).addEvent(
                                                           eventBody:  eventBodyController.text,
                                                         );
-                                                        Navigator.pop(context);
                                                       }
                                                     },
                                                     height: screenSize.height / 17,
