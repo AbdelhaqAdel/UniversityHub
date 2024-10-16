@@ -37,18 +37,20 @@ void addEvent({
 
   Future<void> getDayEvents() async {
     emit(GetEventsLoadingState());
-    String defaultStartDate=DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day}THH:mm:ss.SSS').format(ChangeCalenderDayState.thisFocusDay);
-    String defaultEndDate=DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day + 1}THH:mm:ss.SSS').format(ChangeCalenderDayState.thisFocusDay);
- 
+    String defaultStartDate=DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day}').format(ChangeCalenderDayState.thisFocusDay);
+    String defaultEndDate=DateFormat('yyyy-MM-${ChangeCalenderDayState.thisFocusDay.day + 1}').format(ChangeCalenderDayState.thisFocusDay);
+     print('$startDate      $endDate');
+         print('$defaultStartDate      $defaultEndDate');
+
       final events = await getEventsUseCase.call(
-      startDate??defaultStartDate, 
-      endDate??defaultEndDate );
+      defaultStartDate,
+      defaultEndDate);
       events.fold((error)=>emit(GetEventsErrorState(error.toString())),
        (allEvents){
         emit(GetEventsSuccessState(events: allEvents));});
         }
 
-  String? startDate=DateFormat('yyyy-MM-${DateTime.now().day}THH:mm:ss.SSS').format(focusDay);
+  String? startDate;
   String? endDate;
   void selectCalenderDay({
     required DateTime focusDay,

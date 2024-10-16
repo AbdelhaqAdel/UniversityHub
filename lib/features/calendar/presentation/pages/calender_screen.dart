@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:universityhup/features/calendar/presentation/pages/calendar_body.dart';
+import 'package:universityhup/features/calendar/presentation/widgets/calendar_body.dart';
 
 class CalenderScreen extends StatelessWidget {
   const CalenderScreen({super.key});
