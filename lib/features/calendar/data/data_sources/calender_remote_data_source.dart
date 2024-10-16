@@ -19,6 +19,10 @@ class CalenderRemoteDataSourceImpl extends CalenderRemoteDataSource {
       url: '${EndPoint.getCalendarEvents}$startDate&end=$endDate',
       token: token,
     ).then((value){
+      print('----------------------');
+      print(value.data);
+      print('----------------------');
+
       fillCalenderList(value);
     });
     return dayEvents;

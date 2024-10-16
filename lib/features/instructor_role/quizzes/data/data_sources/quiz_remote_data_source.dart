@@ -23,6 +23,10 @@ class QuizInstructorRemoteDataSourceImpl
     ).then((value) async {
       if (value.statusCode == 200) {
         var json = value.data;
+        print('---------------------------------------------');
+        print(json);
+        print('---------------------------------------------');
+
         quizEntityList = setQuizInstructorData(json);
       }
     });

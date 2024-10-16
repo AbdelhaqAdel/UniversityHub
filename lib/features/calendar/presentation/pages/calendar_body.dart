@@ -29,7 +29,12 @@ class _CalendarBodyState extends State<CalendarBody> {
         addEventUseCase: getIt.get<AddEventToCalendarUseCase>(),
       )..getDayEvents(),
       child: BlocConsumer<CalendarCubit, CalendarState>(
-        listener: (context, state) {},
+        listener: (context, state) async {
+          if (state is AddEventSuccessState) {
+            await Future.delayed(const Duration(seconds: 5));
+            CalendarCubit.get(context).getDayEvents();
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             key: scaffoldKey,

@@ -60,7 +60,6 @@ class QuizInstructorCubit extends Cubit<QuizInstructorState> {
     result.fold((failure) {
       emit(DeleteQuizErrorState(failure.toString()));
     }, (right) {
-      getQuizInstructor();
       emit(DeleteQuizSuccessState());
     });
   }
