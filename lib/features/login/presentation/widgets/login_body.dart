@@ -201,17 +201,17 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   void _clickOnLogin(LoginCubit cubit) {
-    if (loginFormKey.currentState!.validate()) {
+    // if (loginFormKey.currentState!.validate()) {
     LoginDataModel loginDataModel = LoginDataModel(
-      email: emailController.text,
-      password: passwordController.text,
-      // email: skip,
-      // password: 'P@ssw0rd',
+      // email: emailController.text,
+      // password: passwordController.text,
+      email: skip,
+      password: 'P@ssw0rd',
     );
     cubit.login(
       loginDataModel: loginDataModel,
     );
-    }
+    // }
   }
 
   void _loginSuccess(LoginSuccessState state, context) async {
