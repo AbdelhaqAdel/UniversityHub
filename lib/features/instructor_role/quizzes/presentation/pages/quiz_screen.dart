@@ -35,11 +35,17 @@ class QuizInstructorScreen extends StatelessWidget {
       child:  Scaffold(
         floatingActionButton: const _AddQuizActionButton(),
         body: BlocConsumer<QuizInstructorCubit, QuizInstructorState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if(state is AddQuizSuccessState){
               showSnackBar(context: context, message: 'quiz Created');
               GoRouter.of(context).pop();
-
+              await Future.delayed(const Duration(seconds: 2));
+                QuizInstructorCubit.get(context).getQuizInstructor();
+            }
+            if(state is DeleteQuizSuccessState){
+              showSnackBar(context: context, message: 'quiz Deleted');
+              // GoRouter.of(context).pop();
+              await Future.delayed(const Duration(seconds: 1));
               QuizInstructorCubit.get(context).getQuizInstructor();
             }
             },

@@ -48,7 +48,7 @@ void addEvent({
         emit(GetEventsSuccessState(events: allEvents));});
         }
 
-  String? startDate;
+  String? startDate=DateFormat('yyyy-MM-${DateTime.now().day}THH:mm:ss.SSS').format(focusDay);
   String? endDate;
   void selectCalenderDay({
     required DateTime focusDay,
