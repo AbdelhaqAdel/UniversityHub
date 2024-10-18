@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:universityhup/features/student_role/quizzes/presentation/widgets/quez%20result/quiz_result_builder.dart';
 import '../manager/cubit/quiz_cubit.dart';
+import '../widgets/quez_result/quiz_result_builder.dart';
 
 class QuizResultScreen extends StatelessWidget {
   const QuizResultScreen({super.key});
