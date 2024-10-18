@@ -46,3 +46,21 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+/lib/core/widgets/
+/lib/core/functions/
+/lib/core/constants/
+/lib/features/news/presentation/widgets/news_Item.dart
+/lib/features/news/presentation/widgets/news_listview.dart
+/lib/features/news/presentation/widgets/news_header.dart
+/lib/features/instructor_role/quizzes/presentation/widgets/
+/lib/features/instructor_role/material/presentation/manager/
+/lib/features/instructor_role/dashboard/presentation/widgets/
+/lib/features/instructor_role/assignment/presentation/widgets/pending_assignment_widget/
+/lib/features/instructor_role/assignment/presentation/widgets/complete_assignment_widget/
+/lib/features/instructor_role/assignment/presentation/widgets/add_assignment/
+/lib/features/student_role/dashboard/presentation/widgets/
+/lib/features/student_role/quizzes/presentation/widgets/quez_result/
+
+
+
+/assets/
