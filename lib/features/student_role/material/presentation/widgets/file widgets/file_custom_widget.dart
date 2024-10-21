@@ -33,6 +33,8 @@ class FileWidget extends StatelessWidget {
           ),
           child: Text(
               file.filePath.split('.').last,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style:Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white), 
             ),
           ),
@@ -40,22 +42,24 @@ class FileWidget extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: SizedBox(
-            width: double.infinity,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                  file.fileName,
+          
                   style: Theme.of(context).textTheme.bodyMedium,
                   overflow: TextOverflow.ellipsis,
                   maxLines:1,
                 ),
                 Text(
-              '${file.createdAt.split('T').first} at ${file.createdAt.split('T').last}',
+                '${file.createdAt.split('T').first} at ${file.createdAt.split('T').last}',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style:Theme.of(context).textTheme.labelSmall,)
               ],
             ),
