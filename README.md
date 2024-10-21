@@ -21,5 +21,5 @@ Offline Access: Both students and instructors can access course materials offlin
 [Linkedin Post](www.linkedin.com/in/abdelaziz-elsayed-aab278252)
 
 
-![poster](./readme/@Abdelaziz.png)
+![poster](./@Abdelaziz.png)
 
