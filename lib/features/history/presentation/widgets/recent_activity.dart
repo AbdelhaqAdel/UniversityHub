@@ -51,6 +51,8 @@ class RecentActivityContent extends StatelessWidget {
 }
 
 class RecentActivityHeader extends StatelessWidget {
+  const RecentActivityHeader({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -58,7 +60,7 @@ class RecentActivityHeader extends StatelessWidget {
       style: TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.w900,
-        color: Colors.black.withOpacity(.7),
+        color: Colors.white.withOpacity(.8),
       ),
     );
   }

@@ -12,7 +12,7 @@ class CardData extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
@@ -37,40 +37,7 @@ class CardData extends StatelessWidget {
                         ),
                         maxLines: 1,
                       ),
-                       const SizedBox(height: 5),
-                      Container(
-                        height: 35.h,
-                        width:200,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        color: KColors.subTitleColor.withOpacity(.2),
 
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const FaIcon(
-                              FontAwesomeIcons.clock,
-                              color: KColors.c1Color,
-                              size: 20,
-                            ),
-                            const SizedBox(width: 5),
-                            Text(
-                              history.historyTime??'',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w900,
-                                color: Colors.black,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                         ),
-                        ),
-                      ),
-             
                     ],
                   ),
                 );
